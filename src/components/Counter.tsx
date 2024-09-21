@@ -1,15 +1,16 @@
-import { FC } from 'react';
+import { FC,useState } from 'react';
 
 import styles from './Counter.module.scss';
 
-type TProps ={
-    count: number
-}
-
-export const Counter:FC<TProps> = ({count}) => {
+export const Counter:FC = () => {
+  const [count, setCount] = useState(0);
+  
   return (
     <>
       <div className={styles.title}>{count}</div> 
+      <button onClick={() => setCount(count + 1)}>
+        Increment
+      </button>
     </>
   );
 }
