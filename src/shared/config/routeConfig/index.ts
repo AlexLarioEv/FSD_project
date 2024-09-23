@@ -1,0 +1,1 @@
+export { routeConfig, RoutePath, EAppRoutes } from './routeConfig'
