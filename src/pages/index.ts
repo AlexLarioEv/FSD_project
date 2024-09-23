@@ -1,2 +1,2 @@
-export { LazyAboutPage } from './AboutPage';
-export { LazyMainPage } from './MainPage';
+export { AboutPage } from './AboutPage';
+export { MainPage } from './MainPage';

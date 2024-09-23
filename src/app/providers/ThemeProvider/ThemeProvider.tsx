@@ -1,5 +1,5 @@
 import { FC, useMemo,useState } from "react";
-import {ThemeContext, ETheme, IThemeContextProps, LOCAL_STORAGE_THEME_KEY } from './ThemeContext'
+import {ThemeContext, ETheme, IThemeContextProps, LOCAL_STORAGE_THEME_KEY } from 'shared';
 
 const defaultTheme = localStorage.getItem(LOCAL_STORAGE_THEME_KEY) as ETheme || ETheme.LIGHT;
 

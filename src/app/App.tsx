@@ -1,12 +1,12 @@
 import { Suspense } from 'react'
 import { Routes, Route, Link } from 'react-router-dom';
 
-import { LazyMainPage, LazyAboutPage } from './pages';
-import { useTheme } from './theme'
+import { MainPage, AboutPage } from 'pages';
+import { useTheme , classNames } from 'shared';
 
 import './styles/index.scss';
 
-export default function App() {
+export const App = () => {
   const {theme, setTheme} = useTheme()
 
   const handleTheme= () => {
@@ -14,14 +14,14 @@ export default function App() {
   }
 
   return (
-    <div className={`app ${theme}`}>
+    <div className={classNames('app', {}, [theme])}>
       <button onClick={handleTheme}>{theme}</button>
       <Link to={'/'}> Main Page </Link>
       <Link to={'/about'}> to about page </Link>
       <Suspense fallback='Loading...'>
         <Routes>
-          <Route path='/about' element={<LazyAboutPage />}/>
-          <Route path='/' element={<LazyMainPage />}/>
+          <Route path='/about' element={<AboutPage />}/>
+          <Route path='/' element={<MainPage />}/>
         </Routes>
       </Suspense>
     </div>

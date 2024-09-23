@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import {IThemeContextProps, ThemeContext, ETheme, LOCAL_STORAGE_THEME_KEY} from '../hoc';
+import {IThemeContextProps, ThemeContext, ETheme, LOCAL_STORAGE_THEME_KEY} from '../contexts';
 
 export const useTheme = () : IThemeContextProps=> {
     const {theme, setTheme} = useContext(ThemeContext);
