@@ -4,13 +4,13 @@ import { Routes, Route } from 'react-router-dom';
 import { routeConfig } from 'shared/config';
 
 export const AppRouter = () => {
-    return (      
+  return (      
     <Suspense fallback='Loading...'>
-        <Routes>
+      <Routes>
         {Object.values(routeConfig).map(({path, element})=> <Route key={path} path={path} element={
-            <div className='page-wrapper'>
-                  {element}
-            </div>}/>)};
-        </Routes>
+          <div className='page-wrapper'>
+            {element}
+          </div>}/>)};
+      </Routes>
     </Suspense>)
 }

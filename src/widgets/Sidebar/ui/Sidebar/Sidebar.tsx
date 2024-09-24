@@ -1,7 +1,7 @@
 import { FC, useState } from "react";
 import { useTranslation } from 'react-i18next';
 
-import { classNames } from "shared/lib";
+import {classNames} from "shared/lib";
 import { ThemeSwitcher } from "widgets/ThemeSwitcher";
 
 import styles from './Sidebar.module.scss';

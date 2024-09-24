@@ -7,9 +7,9 @@ import './shared/config/i18';
 
 const root = createRoot(document.getElementById('root'));
 root.render(
-    <BrowserRouter>
-        <ThemeProvider>
-            <App />
-        </ThemeProvider>
-    </BrowserRouter>
+  <BrowserRouter>
+    <ThemeProvider>
+      <App />
+    </ThemeProvider>
+  </BrowserRouter>
 );

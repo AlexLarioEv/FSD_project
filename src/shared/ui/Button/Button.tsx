@@ -13,11 +13,12 @@ enum EButtonType  {
   CLEAR = 'clear'
 }
 
-export const Button: FC<TButtonProps> = ({ className, children,type = EButtonType.CLEAR, ...otherProps }) => {
+export const Button: FC<TButtonProps> = (
+  { className, children,type = EButtonType.CLEAR, ...otherProps }) => {
     
   return (
     <button className={classNames(styles.Button, {}, [className, styles[type]])} {...otherProps}>
-        {children}
+      {children}
     </button>
   );
 };

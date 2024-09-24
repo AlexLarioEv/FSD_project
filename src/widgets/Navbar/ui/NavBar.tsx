@@ -11,14 +11,16 @@ type TNavBarProps = {
 }
 
 export const NavBar: FC<TNavBarProps> = ({className}) => {
-    const {t} = useTranslation();
+  const {t} = useTranslation();
 
-    return (
-        <div className={classNames(styles.navbar, {}, [className])}>
-            <div className={styles.links}>
-                <AppLink type={EApplinkTypes.SECONDARY} className={styles.mainLink} to={'/'}> {t('mainLink')} </AppLink>
-                <AppLink type={EApplinkTypes.SECONDARY} to={'/about'}> {t('aboutLink')} </AppLink>
-            </div>
-        </div>
-    );
+  return (
+    <div className={classNames(styles.navbar, {}, [className])}>
+      <div className={styles.links}>
+        <AppLink type={EApplinkTypes.SECONDARY} className={styles.mainLink} to={'/'}> 
+          {t('mainLink')} 
+        </AppLink>
+        <AppLink type={EApplinkTypes.SECONDARY} to={'/about'}> {t('aboutLink')} </AppLink>
+      </div>
+    </div>
+  );
 }
