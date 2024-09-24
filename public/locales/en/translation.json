@@ -3,5 +3,8 @@
     "mainLink": "Main",
     "aboutLink": "About us",
     "close": "Close",
-    "open": "Open"
+    "open": "Open",
+    "not_fund": "Page not fund",
+    "error": "Page error",
+    "please_try_again":  "Refresh Web App"
 }
