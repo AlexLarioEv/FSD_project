@@ -4,20 +4,23 @@ import { classNames } from "shared/lib";
 
 import styles from './Button.module.scss';
 
-type TButtonProps = {
-  className?: string;
-  type?: string;
-} & ButtonHTMLAttributes<HTMLButtonElement>;
-
-enum EButtonType  {
+export enum EButtonType  {
   CLEAR = 'clear'
 }
 
+export type TButtonProps = {
+  className?: string;
+  theme?: EButtonType;
+  testId?: string;
+} & ButtonHTMLAttributes<HTMLButtonElement>;
+
+
 export const Button: FC<TButtonProps> = (
-  { className, children,type = EButtonType.CLEAR, ...otherProps }) => {
+  { className, children,theme = EButtonType.CLEAR, testId, ...otherProps }) => {
     
   return (
-    <button className={classNames(styles.Button, {}, [className, styles[type]])} {...otherProps}>
+    <button data-testid={testId} 
+      className={classNames(styles.Button, {}, [className, styles[theme]])} {...otherProps}>
       {children}
     </button>
   );

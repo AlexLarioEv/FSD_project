@@ -29,7 +29,7 @@ export default [
       'react/react-in-jsx-scope': 'off',
       'no-shadow': 'warn',
       'no-unused-vars': 'off',
-      'max-len': ['error', {'code': 100,'ignoreComments': true}],
+      'max-len': ['error', {'code': 120,'ignoreComments': true}],
       '@typescript-eslint/no-unused-vars': [
         "error",
         { argsIgnorePattern: "^_", varsIgnorePattern: "^_" },
