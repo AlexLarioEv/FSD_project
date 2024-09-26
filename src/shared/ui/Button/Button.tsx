@@ -5,7 +5,8 @@ import { classNames } from "shared/lib";
 import styles from './Button.module.scss';
 
 export enum EButtonType  {
-  CLEAR = 'clear'
+  CLEAR = 'clear',
+  BORDER = 'border'
 }
 
 export type TButtonProps = {
