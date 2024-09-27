@@ -9,9 +9,9 @@ type TPageLoaderProps = {
 };
 
 export const PageLoader: FC<TPageLoaderProps> = ({ className }) => {
-  return (
-    <div className={classNames(styles.PageLoader, {}, [className])}>
-      <Loader/>
-    </div>
-  );
+    return (
+        <div className={classNames(styles.PageLoader, {}, [className])}>
+            <Loader/>
+        </div>
+    );
 };

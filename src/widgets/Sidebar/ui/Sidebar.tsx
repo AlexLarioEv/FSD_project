@@ -15,27 +15,27 @@ type TSidebarProps = {
 };
 
 export const Sidebar: FC<TSidebarProps> = ({ className,testId }) => {
-  const [collapsed, setCollapsed] = useState(false);
-  const {t} = useTranslation()
+    const [collapsed, setCollapsed] = useState(false);
+    const {t} = useTranslation()
 
-  const handleToggle = () => {
-    setCollapsed(prev => !prev)
-  }
+    const handleToggle = () => {
+        setCollapsed(prev => !prev)
+    }
 
-  return (
-    <div data-testid={testId}
-      className={classNames(styles.Sidebar, {[styles.collapsed]: collapsed}, [className])
-      }>
-      <Button 
-        testId="toggleSidebar"  
-        onClick={handleToggle}
-      > 
-        {t(collapsed ? 'open' : 'close')} 
-      </Button>
-      <div className={styles.switcher}>
-        <ThemeSwitcher />
-        <LangSwitcher/>
-      </div>
-    </div>
-  );
+    return (
+        <div data-testid={testId}
+            className={classNames(styles.Sidebar, {[styles.collapsed]: collapsed}, [className])
+            }>
+            <Button 
+                testId="toggleSidebar"  
+                onClick={handleToggle}
+            > 
+                {t(collapsed ? 'open' : 'close')} 
+            </Button>
+            <div className={styles.switcher}>
+                <ThemeSwitcher />
+                <LangSwitcher/>
+            </div>
+        </div>
+    );
 };

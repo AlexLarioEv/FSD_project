@@ -39,4 +39,7 @@
       "module": "CommonJS"
     }
   },
+  "exclude": [
+    "config/storybook/main.ts"
+  ]
 }

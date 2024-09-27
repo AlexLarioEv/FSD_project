@@ -4,8 +4,8 @@ import { NavBar } from './NavBar';
 
 
 const meta = {
-  title: 'widgets/NavBar',
-  component: NavBar,
+    title: 'widgets/NavBar',
+    component: NavBar,
 } satisfies Meta<typeof NavBar>;
 
 export default meta;

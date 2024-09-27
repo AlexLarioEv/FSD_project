@@ -17,12 +17,12 @@ export type TButtonProps = {
 
 
 export const Button: FC<TButtonProps> = (
-  { className, children,theme = EButtonType.CLEAR, testId, ...otherProps }) => {
+    { className, children,theme = EButtonType.CLEAR, testId, ...otherProps }) => {
     
-  return (
-    <button data-testid={testId} 
-      className={classNames(styles.Button, {}, [className, styles[theme]])} {...otherProps}>
-      {children}
-    </button>
-  );
+    return (
+        <button data-testid={testId} 
+            className={classNames(styles.Button, {}, [className, styles[theme]])} {...otherProps}>
+            {children}
+        </button>
+    );
 };

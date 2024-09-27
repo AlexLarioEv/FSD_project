@@ -10,10 +10,10 @@ type TNotFundPageProps = {
 };
 
 export const NotFundPage: FC<TNotFundPageProps> = ({ className }) => {
-  const {t} = useTranslation()
-  return (
-    <div className={classNames(styles.NotFundPage, {}, [className])}>
-      {t('not_fund')}
-    </div>
-  );
+    const {t} = useTranslation()
+    return (
+        <div className={classNames(styles.NotFundPage, {}, [className])}>
+            {t('not_fund')}
+        </div>
+    );
 };

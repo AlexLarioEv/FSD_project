@@ -4,8 +4,8 @@ import AboutPage from './AboutPage';
 
 
 const meta = {
-  title: 'pages/AboutPage',
-  component: AboutPage,
+    title: 'pages/AboutPage',
+    component: AboutPage,
 
 } satisfies Meta<typeof AboutPage>;
 

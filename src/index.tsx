@@ -5,14 +5,17 @@ import {App, ThemeProvider} from "./app";
 import {ErrorBoundary} from './app/providers/ErrorBoundary'
 
 import './shared/config/i18';
+import { ETheme,LOCAL_STORAGE_THEME_KEY } from 'shared/contexts';
+
+const defaultTheme = localStorage.getItem(LOCAL_STORAGE_THEME_KEY) as ETheme || ETheme.LIGHT;
 
 const root = createRoot(document.getElementById('root'));
 root.render(
-  <BrowserRouter>
-    <ErrorBoundary>
-      <ThemeProvider>
-        <App />
-      </ThemeProvider>
-    </ErrorBoundary>
-  </BrowserRouter>
+    <BrowserRouter>
+        <ErrorBoundary>
+            <ThemeProvider value={defaultTheme}>
+                <App />
+            </ThemeProvider>
+        </ErrorBoundary>
+    </BrowserRouter>
 );

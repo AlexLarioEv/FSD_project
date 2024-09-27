@@ -13,15 +13,15 @@ type TThemeSwitcherProps = {
 };
 
 export const ThemeSwitcher: FC<TThemeSwitcherProps> = ({ className }) => {
-  const {theme, setTheme} = useTheme()
+    const {theme, setTheme} = useTheme()
 
-  const handleTheme= () => {
-    setTheme(theme)
-  }
+    const handleTheme= () => {
+        setTheme(theme)
+    }
 
-  return (
-    <Button className={classNames('', {}, [className])} onClick={handleTheme}>
-      {theme === ETheme.LIGHT ? <LightIcon/> : <DarkIcon/>}
-    </Button>
-  );
+    return (
+        <Button className={classNames('', {}, [className])} onClick={handleTheme}>
+            {theme === ETheme.LIGHT ? <LightIcon/> : <DarkIcon/>}
+        </Button>
+    );
 };

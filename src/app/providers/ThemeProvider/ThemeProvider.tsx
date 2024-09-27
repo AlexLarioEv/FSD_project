@@ -1,19 +1,25 @@
-import { FC, ReactNode, useMemo,useState } from "react";
-import {ThemeContext, ETheme, IThemeContextProps, LOCAL_STORAGE_THEME_KEY } from 'shared/contexts';
+import { FC, ReactNode, useEffect, useMemo,useState } from "react";
+import {ThemeContext, ETheme, IThemeContextProps } from 'shared/contexts';
 
-const defaultTheme = localStorage.getItem(LOCAL_STORAGE_THEME_KEY) as ETheme || ETheme.LIGHT;
 
 type TProps = {
+  value: ETheme;
   children: ReactNode
 }
 
-export const ThemeProvider: FC<TProps> = ({children}) => {
-  const [theme, setTheme] = useState<ETheme>(defaultTheme);
+export const ThemeProvider: FC<TProps> = ({children, value}) => {
+    const [theme, setTheme] = useState<ETheme>(value);
+    const defaultProps = useMemo<IThemeContextProps>(() => ({theme, setTheme}),[theme, setTheme])
 
-  const defaultProps = useMemo<IThemeContextProps>(() => ({theme, setTheme}),[theme, setTheme])
+    useEffect(()=> {
+        setTheme(value)
+    },[value])
 
-  return (
-    <ThemeContext.Provider value={defaultProps}>
-      {children}
-    </ThemeContext.Provider>)
+    return (
+        <ThemeContext.Provider value={defaultProps}>
+            <div className={theme}>
+                {children}
+            </div>
+        </ThemeContext.Provider>
+    )
 }

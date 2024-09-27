@@ -9,15 +9,15 @@ type TLangSwitcherProps = {
 };
 
 export const LangSwitcher: FC<TLangSwitcherProps> = ({ className }) => {
-  const { t, i18n } = useTranslation() 
+    const { t, i18n } = useTranslation() 
 
-  const handleClick = () => {
-    i18n.changeLanguage(i18n.language === 'ru' ? 'en' : 'ru');
-  }
+    const handleClick = () => {
+        i18n.changeLanguage(i18n.language === 'ru' ? 'en' : 'ru');
+    }
 
-  return (
-    <Button onClick={handleClick} className={classNames('', {}, [className])}>
-      {t('language')}
-    </Button>
-  );
+    return (
+        <Button onClick={handleClick} className={classNames('', {}, [className])}>
+            {t('language')}
+        </Button>
+    );
 };

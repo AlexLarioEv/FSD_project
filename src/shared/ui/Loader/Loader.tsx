@@ -9,7 +9,7 @@ type TLoaderProps = {
 };
 
 export const Loader: FC<TLoaderProps> = ({ className }) => {
-  return (
-    <span className={classNames(styles.Loader, {}, [className])}></span>
-  );
+    return (
+        <span className={classNames(styles.Loader, {}, [className])}></span>
+    );
 };

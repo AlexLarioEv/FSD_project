@@ -1,7 +1,7 @@
 import {FC} from 'react'
 
 const JestEmptyComponent:FC = () => {
-  return null;
+    return null;
 }
 
 export default JestEmptyComponent;

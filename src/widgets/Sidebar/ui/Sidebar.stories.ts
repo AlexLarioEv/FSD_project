@@ -4,8 +4,8 @@ import { Sidebar } from './Sidebar';
 
 
 const meta = {
-  title: 'widgets/Sidebar',
-  component: Sidebar,
+    title: 'widgets/Sidebar',
+    component: Sidebar,
 } satisfies Meta<typeof Sidebar>;
 
 export default meta;
