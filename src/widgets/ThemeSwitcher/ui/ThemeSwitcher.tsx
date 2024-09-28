@@ -1,6 +1,6 @@
 import { FC } from "react";
 
-import { Button } from 'shared/ui';
+import { Button } from 'shared/ui/Button';
 import { classNames } from "shared/lib";
 import { useTheme } from 'shared/hooks'
 import { ETheme } from 'shared/contexts'

@@ -1,10 +1,15 @@
 import { FC, useState } from "react";
 import { useTranslation } from 'react-i18next';
 
+import { AppLink, EApplinkTypes } from "shared/ui"
 import { ThemeSwitcher } from "widgets/ThemeSwitcher/ui";
 import { LangSwitcher } from "widgets/LangSwitcher/ui";
+import MainImage from 'shared/assets/icons/main-20-20.svg'
+import AboutImage from 'shared/assets/icons/about-20-20.svg'
 
-import { Button } from "shared/ui";
+import { RoutePath } from "shared/config/routeConfig";
+
+import { Button, EButtonSize} from "shared/ui/Button";
 import { classNames } from "shared/lib";
 
 import styles from './Sidebar.module.scss';
@@ -26,11 +31,30 @@ export const Sidebar: FC<TSidebarProps> = ({ className,testId }) => {
         <div data-testid={testId}
             className={classNames(styles.Sidebar, {[styles.collapsed]: collapsed}, [className])
             }>
+            <div className={styles.links}>
+                <AppLink className={styles.link} type={EApplinkTypes.SECONDARY} to={RoutePath.main}> 
+                    <div>
+                    
+                        <MainImage className={styles.icon}/>
+                    </div>
+                    <span className={styles.text_link}>
+                        {t('mainLink')} 
+                    </span>
+                </AppLink>
+                <AppLink className={styles.link} type={EApplinkTypes.SECONDARY} to={RoutePath.about}> 
+                    <AboutImage className={styles.icon}/>
+                    <span className={styles.text_link}>
+                        {t('aboutLink')} 
+                    </span>
+                </AppLink>
+            </div>
             <Button 
+                size={EButtonSize.L}
+                className={styles.button}
                 testId="toggleSidebar"  
                 onClick={handleToggle}
             > 
-                {t(collapsed ? 'open' : 'close')} 
+                {t(collapsed ? '>' : '<')} 
             </Button>
             <div className={styles.switcher}>
                 <ThemeSwitcher />

@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 
-import { Button, EButtonType } from './Button';
+import { Button, EButtonTheme } from './Button';
 import { ETheme } from 'shared/contexts';
 
 
@@ -29,14 +29,14 @@ export const Default: Story = {
 
 export const Clear: Story = {
     args: {
-        theme: EButtonType.CLEAR,
+        theme: EButtonTheme.CLEAR,
         children: 'Button'
     },
 };
 
 export const ClearDark: Story = {
     args: {
-        theme: EButtonType.CLEAR,
+        theme: EButtonTheme.CLEAR,
         children: 'Button'
     },
     parameters: {
@@ -46,14 +46,14 @@ export const ClearDark: Story = {
 
 export const Border: Story = {
     args:{
-        theme: EButtonType.BORDER,
+        theme: EButtonTheme.BORDER,
         children: 'Button'
     }
 }
 
 export const BorderDark: Story = {
     args: {
-        theme: EButtonType.BORDER,
+        theme: EButtonTheme.BORDER,
         children: 'Button'
     },
     parameters: {
