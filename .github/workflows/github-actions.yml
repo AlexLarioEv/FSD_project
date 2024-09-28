@@ -1,9 +1,11 @@
 name: CI
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
   pull_request:
-    branches: [ master, develop ]
+    branches: [ main, develop ]
+  workflow_dispatch:
+
 jobs:
   pipeline: 
     runs-on: ubuntu-latest
