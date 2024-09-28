@@ -9,15 +9,12 @@
     box-sizing: border-box;
     animation: rotation 1s linear infinite;
   }
+
   .Loader::after,
   .Loader::before {
-    content: '';  
-    box-sizing: border-box;
+    content: '';
     position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
+    inset: 0;
     margin: auto;
     border: 3px solid;
     border-color: transparent transparent #FF3D00 #FF3D00;
@@ -25,9 +22,10 @@
     height: 40px;
     border-radius: 50%;
     box-sizing: border-box;
-    animation: rotationBack 0.5s linear infinite;
+    animation: rotation-back 0.5s linear infinite;
     transform-origin: center center;
   }
+
   .Loader::before {
     width: 32px;
     height: 32px;
@@ -39,14 +37,17 @@
     0% {
       transform: rotate(0deg);
     }
+
     100% {
       transform: rotate(360deg);
     }
   } 
-  @keyframes rotationBack {
+
+  @keyframes rotation-back {
     0% {
       transform: rotate(0deg);
     }
+
     100% {
       transform: rotate(-360deg);
     }
