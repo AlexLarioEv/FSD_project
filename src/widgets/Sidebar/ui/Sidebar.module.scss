@@ -24,20 +24,15 @@
 }
 
 .links {
-   width: var(--sidebar-width);
-   display: flex;
-   flex-direction: column;
-   padding-left: 24px;
-   gap: 8px;
+    display: flex;
+    flex-direction: column;
+    padding-left: 24px;
+    gap: 8px;
 }
 
 .link {
     display: flex;
     gap: 8px;
-}
-
-.text_link{
-    transition: 0.3s opacity;
 }
 
 .icon {
@@ -51,15 +46,5 @@
         gap: 0;
         flex-direction: column;
         align-items: center;
-    }
-
-    .links {
-        width: var(--sidebar-width);
-        overflow: hidden;
-    }
-
-    .text_link {
-        width: var(--sidebar-width-collapsed);
-        opacity: 0;
     }
 }

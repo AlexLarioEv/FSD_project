@@ -1,0 +1,42 @@
+.Modal{
+    position: absolute;
+    inset: 0;
+    z-index: 1000;
+}
+
+.overlay{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background: rgb(0 0 0 / 66%);
+}
+
+.content{
+    padding: 16px;
+    border-radius: 8px ;
+    background: var(--bg-color);
+    color: var(--primary-color);
+    animation-duration: 0.3s;
+    animation-name: open;
+}
+
+.closed {
+    .content{
+        scale: 0.01;
+        transition: 0.3s scale;
+    }
+}
+
+
+@keyframes open {
+    from {
+        scale: 0.3;
+    }
+  
+    to {
+        scale: 1;
+    }
+  }
+

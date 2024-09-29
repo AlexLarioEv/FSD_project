@@ -34,17 +34,16 @@ export const Sidebar: FC<TSidebarProps> = ({ className,testId }) => {
             <div className={styles.links}>
                 <AppLink className={styles.link} type={EApplinkTypes.SECONDARY} to={RoutePath.main}> 
                     <div>
-                    
                         <MainImage className={styles.icon}/>
                     </div>
                     <span className={styles.text_link}>
-                        {t('mainLink')} 
+                        {!collapsed && t('mainLink')} 
                     </span>
                 </AppLink>
                 <AppLink className={styles.link} type={EApplinkTypes.SECONDARY} to={RoutePath.about}> 
                     <AboutImage className={styles.icon}/>
                     <span className={styles.text_link}>
-                        {t('aboutLink')} 
+                        {!collapsed && t('aboutLink')} 
                     </span>
                 </AppLink>
             </div>

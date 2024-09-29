@@ -3,7 +3,7 @@ import pluginJs from "@eslint/js";
 import tseslint from "typescript-eslint";
 import pluginReact from "eslint-plugin-react";
 import i18next from 'eslint-plugin-i18next';
-
+import reactHooks from "eslint-plugin-react-hooks";
 
 export default [
     {languageOptions: { globals: globals.browser }},
@@ -12,6 +12,10 @@ export default [
     pluginReact.configs.flat.recommended,
     i18next.configs['flat/recommended'],
     {
+        plugins: {
+            "react": pluginReact,
+            "react-hooks": reactHooks,
+        },
         files: ["**/*.{js,mjs,cjs,ts,jsx,tsx}"],
         "settings": {
             "react": {
@@ -33,7 +37,10 @@ export default [
             '@typescript-eslint/no-unused-vars': [
                 "error",
                 { argsIgnorePattern: "^_", varsIgnorePattern: "^_" },
-            ]},
+            ],
+            ...reactHooks.configs.recommended.rules,
+            "react-hooks/exhaustive-deps": "error",
+        },
         ignores: [
             "node_modules/*",    
             "build/*",       

@@ -5,8 +5,6 @@ import { Sidebar } from 'widgets/Sidebar/ui';
 
 import { classNames } from 'shared/lib';
 
-import './styles/index.scss';
-
 export const App = () => {
 
     return (
