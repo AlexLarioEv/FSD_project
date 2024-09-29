@@ -10,5 +10,5 @@ export const createReduxStore = (initialState:TStateShema) => {
         },
         devTools: __IS_DEV__,
         preloadedState: initialState,
-      })      
+    })      
 }

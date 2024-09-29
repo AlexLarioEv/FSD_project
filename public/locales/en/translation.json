@@ -7,5 +7,7 @@
     "not_fund": "Page not fund",
     "error": "Page error",
     "please_try_again":  "Refresh Web App",
-    "sign_in": "Sign in"
+    "sign_in": "Sign in",
+    "increment": "increment",
+    "decrement": "decrement"
 }

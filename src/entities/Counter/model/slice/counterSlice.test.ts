@@ -1,4 +1,3 @@
-import { DeepPartial } from 'shared/lib/helpers';
 import {counterReducer, counterActions} from './counterSlice'
 import { TCounterShema } from '../types';
 
