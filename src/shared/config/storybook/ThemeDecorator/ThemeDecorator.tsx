@@ -7,7 +7,7 @@ import { ETheme } from 'shared/contexts'
 export const ThemeDecorator: Decorator = (StoreComponent, context) => {
     const theme = context.parameters.theme || context.globals.theme
     const storyTheme = theme === 'dark' ? ETheme.DARK : ETheme.LIGHT
-
+    
     return (
         <ThemeProvider value={storyTheme}>
             <ThemeBlock>

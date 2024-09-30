@@ -11,6 +11,7 @@ export default ({ config }: {config: webpack.Configuration}) => {
         src: path.resolve(__dirname, '..', '..', 'src'),
     };
     config.resolve.modules.push(paths.src);
+    config.resolve.preferAbsolute = true;
     config.resolve.extensions.push('.ts', '.tsx');
 
    
@@ -27,6 +28,10 @@ export default ({ config }: {config: webpack.Configuration}) => {
         use: ['@svgr/webpack'],
     });
     config.module.rules.push(buildCssLoader(true));
+
+    config.plugins.push(new webpack.DefinePlugin({
+        __IS_DEV__: JSON.stringify(true)
+    }))
 
     return config;
 };
