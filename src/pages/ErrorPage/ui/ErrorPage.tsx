@@ -1,10 +1,10 @@
 import { FC } from "react";
 
-import { classNames } from "shared/lib";
+import { classNames } from "@/shared/lib";
 
 import styles from './ErrorPage.module.scss';
 import { useTranslation } from "react-i18next";
-import { Button } from "shared/ui/Button";
+import { Button } from "@/shared/ui/Button";
 
 type TErrorPageProps = {
   className?: string;

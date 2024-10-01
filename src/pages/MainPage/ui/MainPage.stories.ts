@@ -4,7 +4,7 @@ import MainPage from './MainPage';
 
 
 const meta = {
-    title: 'pages/MainPage',
+    title: '@/pages/MainPage',
     component: MainPage,
 
 } satisfies Meta<typeof MainPage>;

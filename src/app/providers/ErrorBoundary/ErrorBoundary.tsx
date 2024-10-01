@@ -1,6 +1,6 @@
 import { Component, ErrorInfo, ReactNode, Suspense } from "react";
 
-import{ ErrorPage } from 'pages/ErrorPage/ui'
+import{ ErrorPage } from '@/pages/ErrorPage/ui'
 
 type TProps = {
     children: ReactNode

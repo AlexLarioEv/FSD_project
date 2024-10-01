@@ -1,16 +1,16 @@
 import { FC, useState } from "react";
 import { useTranslation } from 'react-i18next';
 
-import { AppLink, EApplinkTypes } from "shared/ui"
-import { ThemeSwitcher } from "widgets/ThemeSwitcher/ui";
-import { LangSwitcher } from "widgets/LangSwitcher/ui";
-import MainImage from 'shared/assets/icons/main-20-20.svg'
-import AboutImage from 'shared/assets/icons/about-20-20.svg'
+import { AppLink, EApplinkTypes } from "@/shared/ui"
+import { ThemeSwitcher } from "@/widgets/ThemeSwitcher/ui";
+import { LangSwitcher } from "@/widgets/LangSwitcher/ui";
+import MainImage from '@/shared/assets/icons/main-20-20.svg'
+import AboutImage from '@/shared/assets/icons/about-20-20.svg'
 
-import { RoutePath } from "shared/config/routeConfig";
+import { RoutePath } from "@/shared/config/routeConfig";
 
-import { Button, EButtonSize} from "shared/ui/Button";
-import { classNames } from "shared/lib";
+import { Button, EButtonSize} from "@/shared/ui/Button";
+import { classNames } from "@/shared/lib";
 
 import styles from './Sidebar.module.scss';
 

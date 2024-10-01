@@ -4,7 +4,7 @@ import { PageLoader } from './PageLoader';
 
 
 const meta = {
-    title: 'widgets/PageLoader',
+    title: '@/widgets/PageLoader',
     component: PageLoader,
 } satisfies Meta<typeof PageLoader>;
 

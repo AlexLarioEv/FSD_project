@@ -1,5 +1,5 @@
 import { FC, ReactNode, useEffect, useMemo,useState } from "react";
-import {ThemeContext, ETheme, IThemeContextProps } from 'shared/contexts';
+import {ThemeContext, ETheme, IThemeContextProps } from '@/shared/contexts';
 
 
 type TProps = {

@@ -1,4 +1,4 @@
-import { MainPage, AboutPage, NotFundPage } from "pages"
+import { MainPage, AboutPage, NotFundPage } from "@/pages"
 import { RouteProps } from "react-router-dom"
 
 export enum EAppRoutes {

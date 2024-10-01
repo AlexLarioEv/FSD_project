@@ -1,6 +1,6 @@
 import { getCounterValue } from "./getCounterValue";
-import { TStateShema } from "app/providers/StoreProvider/config/types";
-import { DeepPartial } from "shared/lib/helpers";
+import { TStateShema } from "@/app/providers/StoreProvider/config/types";
+import { DeepPartial } from "@/shared/lib/helpers";
 
 describe('getCounter', ()=>{
     test('should return counter value', ()=> {

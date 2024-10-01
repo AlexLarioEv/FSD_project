@@ -1,8 +1,8 @@
 import { Decorator } from '@storybook/react/'
 
-import {ThemeProvider} from "app";
+import {ThemeProvider} from "@/app";
 import {ThemeBlock} from './ThemeBlock'
-import { ETheme } from 'shared/contexts'
+import { ETheme } from '@/shared/contexts'
 
 export const ThemeDecorator: Decorator = (StoreComponent, context) => {
     const theme = context.parameters.theme || context.globals.theme

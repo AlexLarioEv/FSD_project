@@ -1,6 +1,6 @@
 import { FC } from "react";
 
-import { classNames } from "shared/lib";
+import { classNames } from "@/shared/lib";
 
 import styles from './Loader.module.scss';
 

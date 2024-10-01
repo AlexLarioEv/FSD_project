@@ -2,11 +2,11 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 
 import { Button, EButtonTheme } from './Button';
-import { ETheme } from 'shared/contexts';
+import { ETheme } from '@/shared/contexts';
 
 
 const meta = {
-    title: 'shared/Button',
+    title: '@/shared/Button',
     component: Button,
     parameters: {
 

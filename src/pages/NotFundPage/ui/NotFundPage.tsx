@@ -1,6 +1,6 @@
 import { FC } from "react";
 
-import { classNames } from "shared/lib";
+import { classNames } from "@/shared/lib";
 
 import styles from './NotFundPage.module.scss';
 import { useTranslation } from "react-i18next";

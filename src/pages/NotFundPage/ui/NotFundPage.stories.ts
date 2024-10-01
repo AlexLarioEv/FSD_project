@@ -4,7 +4,7 @@ import {NotFundPage} from './NotFundPage';
 
 
 const meta = {
-    title: 'pages/NotFundPage',
+    title: '@/pages/NotFundPage',
     component: NotFundPage,
 
 } satisfies Meta<typeof NotFundPage>;

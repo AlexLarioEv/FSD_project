@@ -1,7 +1,7 @@
 import { FC } from "react";
 
-import { Button } from "shared/ui/Button";
-import { classNames } from "shared/lib";
+import { Button } from "@/shared/ui/Button";
+import { classNames } from "@/shared/lib";
 import { useTranslation } from 'react-i18next';
 
 type TLangSwitcherProps = {

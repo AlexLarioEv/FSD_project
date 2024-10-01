@@ -1,10 +1,10 @@
 import { FC, useState } from "react"
 
-import { classNames} from 'shared/lib'
+import { classNames} from '@/shared/lib'
 
 import styles from './NavBar.module.scss'
-import { Button } from "shared/ui/Button"
-import { Modal } from "shared/ui/Modal"
+import { Button } from "@/shared/ui/Button"
+import { Modal } from "@/shared/ui/Modal"
 import { useTranslation } from "react-i18next"
 
 type TNavBarProps = {
