@@ -8,7 +8,7 @@ import { classNames } from '@/shared/lib';
 export const App = () => {
 
     return (
-        <div className={classNames('@/app', {}, [])}>
+        <div className={classNames('app', {}, [])}>
             <NavBar />
             <div  className='content-page'>
                 <Sidebar/>

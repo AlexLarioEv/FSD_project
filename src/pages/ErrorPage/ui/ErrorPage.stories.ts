@@ -4,7 +4,7 @@ import {ErrorPage} from './ErrorPage';
 
 
 const meta = {
-    title: '@/pages/ErrorPage',
+    title: 'pages/ErrorPage',
     component: ErrorPage,
 
 } satisfies Meta<typeof ErrorPage>;

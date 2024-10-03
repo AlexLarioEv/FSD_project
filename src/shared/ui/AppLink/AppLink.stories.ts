@@ -2,12 +2,11 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 
 import { AppLink, EApplinkTypes } from './AppLink';
-// import theme from 'config/storybook/theme';
 import { ETheme } from '@/shared/contexts';
 
 
 const meta = {
-    title: '@/shared/AppLink',
+    title: 'shared/AppLink',
     component: AppLink,
     parameters: {
 
@@ -24,14 +23,14 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
     args: {
-        children: '@/appLink'
+        children: 'appLink'
     },
 };
 
 export const Primary: Story = {
     args: {
         type: EApplinkTypes.PRIMARY,
-        children: '@/appLink'
+        children: 'appLink'
     },
     parameters: {
         theme: ETheme.DARK
@@ -41,6 +40,6 @@ export const Primary: Story = {
 export const Secondary: Story = {
     args: {
         type: EApplinkTypes.SECONDARY,
-        children: '@/appLink'
+        children: 'appLink'
     },
 }

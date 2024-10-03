@@ -1,11 +1,12 @@
 import { FC, useState } from "react"
+import { useTranslation } from "react-i18next"
 
+import {AuthModal} from '@/features/AuthByUserName'
+
+import { Button } from "@/shared/ui/Button"
 import { classNames} from '@/shared/lib'
 
 import styles from './NavBar.module.scss'
-import { Button } from "@/shared/ui/Button"
-import { Modal } from "@/shared/ui/Modal"
-import { useTranslation } from "react-i18next"
 
 type TNavBarProps = {
     className?: string
@@ -27,7 +28,7 @@ export const NavBar: FC<TNavBarProps> = ({className}) => {
             <div className={styles.auth}>
                 <Button onClick={handleClick}>{t('sign_in')}</Button>
             </div>
-            <Modal isOpen={isOpen} onClose={handleClose}></Modal>
+            <AuthModal isOpen={isOpen} onClose={handleClose} />
         </div>
     );
 }

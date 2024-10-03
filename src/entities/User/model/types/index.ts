@@ -1,0 +1,1 @@
+export {TUserShema, TUser} from './UserShema'

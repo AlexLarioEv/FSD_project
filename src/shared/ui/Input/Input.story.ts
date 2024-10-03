@@ -1,12 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { PageLoader } from './PageLoader';
+import {Input} from './Input';
 
 
 const meta = {
-    title: 'widgets/PageLoader',
-    component: PageLoader,
-} satisfies Meta<typeof PageLoader>;
+    title: 'shared/Input',
+    component: Input,
+
+} satisfies Meta<typeof Input>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;

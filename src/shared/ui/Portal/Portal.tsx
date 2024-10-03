@@ -3,6 +3,8 @@ import { createPortal } from "react-dom"
 import { ThemeProvider  } from '@/app'
 import { ETheme, LOCAL_STORAGE_THEME_KEY } from '@/shared/contexts'
 
+import 'app/styles/index.scss'
+
 type TProps = {
     children: ReactNode;
     element?: HTMLElement

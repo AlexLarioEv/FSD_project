@@ -6,7 +6,7 @@ import { ETheme } from '@/shared/contexts';
 
 
 const meta = {
-    title: '@/shared/Button',
+    title: 'shared/Button',
     component: Button,
     parameters: {
 

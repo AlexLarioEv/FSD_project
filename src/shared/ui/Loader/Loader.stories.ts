@@ -4,7 +4,7 @@ import { Loader } from './Loader';
 
 
 const meta = {
-    title: '@/shared/Loader',
+    title: 'shared/Loader',
     component: Loader,
 
 } satisfies Meta<typeof Loader>;

@@ -1,12 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { PageLoader } from './PageLoader';
+import {AuthForm} from './AuthForm';
 
 
 const meta = {
-    title: 'widgets/PageLoader',
-    component: PageLoader,
-} satisfies Meta<typeof PageLoader>;
+    title: 'features/AuthForm',
+    component: AuthForm,
+
+} satisfies Meta<typeof AuthForm>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;

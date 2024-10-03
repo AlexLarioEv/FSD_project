@@ -1,13 +1,13 @@
 import { useTranslation } from 'react-i18next';
 
-import {Counter} from '@/entities/Counter';
+import {Input} from '@/shared/ui/Input';
 
 const MainPage = () => {
     const {t} = useTranslation('mainPage')
 
     return (<div>
-        <Counter/>
         {t('title')}
+        <Input placeholder='Ввод'/>
     </div>)
 };
 
