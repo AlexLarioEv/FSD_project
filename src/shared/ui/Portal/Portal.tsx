@@ -1,7 +1,9 @@
 import {ReactNode, FC}from 'react'
 import { createPortal } from "react-dom"
 import { ThemeProvider  } from '@/app'
-import { ETheme, LOCAL_STORAGE_THEME_KEY } from '@/shared/contexts'
+
+import { ETheme } from '@/shared/contexts'
+import {ELocalStorageKey}from '@/shared/const'
 
 import 'app/styles/index.scss'
 
@@ -12,7 +14,7 @@ type TProps = {
 
 
 export const Portal: FC<TProps> = ({children, element = document.body}) => {
-    const defaultTheme = localStorage.getItem(LOCAL_STORAGE_THEME_KEY) as ETheme || ETheme.LIGHT;
+    const defaultTheme = localStorage.getItem(ELocalStorageKey.THEME) as ETheme || ETheme.LIGHT;
 
     const content = <ThemeProvider value={defaultTheme}>{children}</ThemeProvider>
 

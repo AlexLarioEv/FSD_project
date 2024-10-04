@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
-import {TCounterShema} from '../types'
+import {TCounterSchema} from '../types'
 
-const initialState: TCounterShema = {value: 0}
+const initialState: TCounterSchema = {value: 0}
 
 export const counterSlice = createSlice({
     name: 'counter',

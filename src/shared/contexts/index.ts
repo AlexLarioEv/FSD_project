@@ -1,1 +1,1 @@
-export {ThemeContext, ETheme, LOCAL_STORAGE_THEME_KEY, IThemeContextProps} from './ThemeContext'
+export {ThemeContext, ETheme, IThemeContextProps} from './ThemeContext'

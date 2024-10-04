@@ -7,11 +7,11 @@ import {StoreProvider} from '@/app/providers/StoreProvider'
 import {RoutePath} from '@/shared/config/routeConfig'
 import i18nForTest from '@/shared/config/i18/i18nForTest'
 import { DeepPartial } from '@/shared/lib/helpers';
-import { TStateShema } from '@/app/providers/StoreProvider/config/types';
+import { TStateSchema } from '@/app/providers/StoreProvider/config/types';
 
 type TRenderOptions = {
     route?: string
-    initialState?: DeepPartial<TStateShema>
+    initialState?: DeepPartial<TStateSchema>
 }
 
 export const componentRender = (component: ReactNode, optins?: TRenderOptions) => {

@@ -1,1 +1,1 @@
-export {TUserShema, TUser} from './UserShema'
+export {TUserSchema, TUser} from './UserSchema'

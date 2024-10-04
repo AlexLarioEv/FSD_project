@@ -20,15 +20,20 @@ export type TButtonProps = {
     theme?: EButtonTheme;
     size?: EButtonSize;
     testId?: string;
+    inverted?: boolean;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
 
 export const Button: FC<TButtonProps> = (
-    { className, children,theme = EButtonTheme.CLEAR, size, testId, ...otherProps }) => {
+    { className, children,theme = EButtonTheme.CLEAR, size, testId,inverted, ...otherProps }) => {
     
+    const mods: Record<string, boolean> = {
+        [styles.inverted]: inverted
+    }
+
     return (
         <button data-testid={testId} 
-            className={classNames(styles.Button, {}, [
+            className={classNames(styles.Button, mods, [
                 className, 
                 styles[theme], 
                 styles[size]])} 

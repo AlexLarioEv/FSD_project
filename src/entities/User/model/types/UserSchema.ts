@@ -3,6 +3,6 @@ export type TUser = {
     username: string;
 }
 
-export type TUserShema = {
+export type TUserSchema = {
     auth?: TUser;
 }

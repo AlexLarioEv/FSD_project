@@ -1,0 +1,1 @@
+export {Text, ETypeText} from './Text';

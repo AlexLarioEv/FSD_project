@@ -1,0 +1,1 @@
+export {ELocalStorageKey} from './localStorage'

@@ -1,12 +1,12 @@
 import {Counter} from './Counter'
 
 import {fireEvent, screen} from '@testing-library/react'
-import { TStateShema } from '@/app/providers/StoreProvider/config/types'
+import { TStateSchema } from '@/app/providers/StoreProvider/config/types'
 import { DeepPartial } from '@/shared/lib/helpers'
 import {componentRender} from '@/shared/lib/test'
 
 describe('Counter', ()=> {
-    const state: DeepPartial<TStateShema> = {counter: {value: 5}}
+    const state: DeepPartial<TStateSchema> = {counter: {value: 5}}
 
     test('Counter render', ()=> {
         componentRender(<Counter />,{initialState: state});

@@ -1,8 +1,8 @@
 import {counterReducer, counterActions} from './counterSlice'
-import { TCounterShema } from '../types';
+import { TCounterSchema } from '../types';
 
 describe('counterSlice.test', ()=>{
-    const state: TCounterShema = {value: 10};
+    const state: TCounterSchema = {value: 10};
 
     test('decremented', ()=> {
         expect(counterReducer(state, counterActions.decremented())).toEqual({value: 9});

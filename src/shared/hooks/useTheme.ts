@@ -1,5 +1,7 @@
 import { useContext } from 'react';
-import {IThemeContextProps, ThemeContext, ETheme, LOCAL_STORAGE_THEME_KEY} from '../contexts';
+
+import {IThemeContextProps, ThemeContext, ETheme} from '../contexts';
+import {ELocalStorageKey} from '../const/localStorage'
 
 export const useTheme = () : IThemeContextProps=> {
     const {theme, setTheme} = useContext(ThemeContext);
@@ -7,7 +9,7 @@ export const useTheme = () : IThemeContextProps=> {
     const toggleTheme = () => {
         const newTheme = theme === ETheme.DARK ? ETheme.LIGHT : ETheme.DARK
         setTheme(newTheme)
-        localStorage.setItem(LOCAL_STORAGE_THEME_KEY, newTheme)
+        localStorage.setItem(ELocalStorageKey.THEME, newTheme)
     }
 
     return {theme, setTheme: toggleTheme}
