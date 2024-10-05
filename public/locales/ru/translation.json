@@ -9,5 +9,7 @@
     "please_try_again":  "Перезагрузка WEB приложения",
     "sign_in": "Войти",
     "increment": "Добавить",
-    "decrement": "Убавить"
+    "decrement": "Убавить",
+    "login": "Логин",
+    "password": "Пароль"
 }

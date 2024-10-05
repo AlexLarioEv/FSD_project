@@ -52,6 +52,7 @@ export const Sidebar: FC<TSidebarProps> = ({ className,testId }) => {
                 className={styles.button}
                 testId="toggleSidebar"  
                 onClick={handleToggle}
+                inverted
             > 
                 {t(collapsed ? '>' : '<')} 
             </Button>

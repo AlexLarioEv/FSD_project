@@ -1,9 +1,10 @@
-import { FC } from "react";
+import { FC, Suspense } from "react";
 
-import { classNames } from "@/shared/lib";
+import { Loader } from "@/shared/ui";
 import { Modal } from "@/shared/ui/Modal";
+import { classNames } from "@/shared/lib";
 
-import {AuthForm} from '../AuthForm'
+import {LazyAuthForm} from '../AuthForm'
 
 type TAuthModalProps = {
   className?: string;
@@ -15,7 +16,9 @@ export const AuthModal: FC<TAuthModalProps> = ({ className, isOpen, onClose }) =
 
     return (
         <Modal isOpen={isOpen} onClose={onClose} className={classNames('', {}, [className])}>
-            <AuthForm/>
+            <Suspense fallback={<Loader/>}>
+                <LazyAuthForm/>
+            </Suspense>
         </Modal>
     );
 };

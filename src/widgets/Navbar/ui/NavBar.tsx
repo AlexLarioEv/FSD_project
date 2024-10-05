@@ -1,7 +1,7 @@
 import { FC, useState } from "react"
 import { useTranslation } from "react-i18next"
 
-import {AuthModal} from '@/features/AuthByUserName'
+import {AuthModal} from '@/features/AuthByUserName/ui'
 
 import { Button } from "@/shared/ui/Button"
 import { classNames} from '@/shared/lib'
@@ -26,7 +26,7 @@ export const NavBar: FC<TNavBarProps> = ({className}) => {
     return (
         <div className={classNames(styles.navbar, {}, [className])}>
             <div className={styles.auth}>
-                <Button onClick={handleClick}>{t('sign_in')}</Button>
+                <Button inverted onClick={handleClick}>{t('sign_in')}</Button>
             </div>
             <AuthModal isOpen={isOpen} onClose={handleClose} />
         </div>

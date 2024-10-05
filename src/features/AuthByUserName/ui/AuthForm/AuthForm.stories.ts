@@ -1,6 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import {createStateStory} from '@/shared/config/storybook'
 
-import {AuthForm} from './AuthForm';
+import { loginReducer} from '../../model/slice';
+
+import AuthForm from './AuthForm';
 
 
 const meta = {
@@ -12,5 +15,12 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+const  stateStory = createStateStory({login: {
+    username: '231231'
+}}, {
+    login: loginReducer
+})
 
-export const Default: Story = {};
+export const Default: Story = {
+    parameters: stateStory
+};

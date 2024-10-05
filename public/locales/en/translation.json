@@ -9,5 +9,7 @@
     "please_try_again":  "Refresh Web App",
     "sign_in": "Sign in",
     "increment": "increment",
-    "decrement": "decrement"
+    "decrement": "decrement",
+    "login": "Login",
+    "password": "Password"
 }

@@ -1,50 +1,59 @@
-import { FC } from "react";
+import {  useCallback, memo } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 
-import {getLogin} from '../../model/selector'
-import {loginByUserName} from '../../model/services'
-
 import { Button } from "@/shared/ui/Button";
 import { Input } from "@/shared/ui/Input/Input";
-import { classNames } from "@/shared/lib";
-import {useAppDispatch} from '@/shared/hooks'
+import { classNames } from "@/shared/lib/helpers";
+import { DynamicModuleRender } from "@/shared/lib/components";
+import { useAppDispatch } from '@/shared/hooks'
 import { ETypeText, Text } from "@/shared/ui/Text";
+import { Loader } from "@/shared/ui";
 
-import {loginActions} from '../../model/slice'
+import {getLogin} from '../../model/selector'
+import {loginByUserName} from '../../model/services'
+import {loginActions, loginReducer} from '../../model/slice'
 
 import styles from "./AuthForm.module.scss";
-import { Loader } from "@/shared/ui";
 
 type TAuthFormProps = {
     className?: string;
 };
 
 
-export const AuthForm: FC<TAuthFormProps> = ({ className }) => {
+const initialReducers = {
+    login:loginReducer
+};
+
+const AuthForm = memo(({ className }:TAuthFormProps) => {
     const {t} = useTranslation()
-    const {password, username, isLoading, error} = useSelector(getLogin)
+    const {password, username, isLoading, error} = useSelector(getLogin) || {}
     const dispatch = useAppDispatch()
         
-    
-    const handleAuth = () => {
+    const handleAuth = useCallback(() => {
         dispatch(loginByUserName({username, password}));
-    }
+    },[username,password,dispatch])
 
-    const changeUsername = (value: string) => {
+    const changeUsername = useCallback((value: string) => {
         dispatch(loginActions.setUsername(value));
-    }
+    },[dispatch])
 
-    const changePassword = (value: string) => {
+    const changePassword = useCallback((value: string) => {
         dispatch(loginActions.setPassword(value));
-    }
+    },[dispatch])
 
     return (
-        <div className={classNames(styles.AuthForm, {}, [className])}>
-            <Input onChange={changeUsername} placeholder="Login" autoFocus/>
-            <Input onChange={changePassword} placeholder="Password"/>
-            {error && <Text title="Error" description={error} type={ETypeText.ERROR}/>}
-            {isLoading ? <Loader /> : <Button onClick={handleAuth}>{t('sign_in')}</Button>}
-        </div>
+        <DynamicModuleRender reducers={initialReducers}>
+            <div className={classNames(styles.AuthForm, {}, [className])}>
+                <Input onChange={changeUsername} value={username} placeholder={t("login")} autoFocus/>
+                <Input onChange={changePassword} value={password}  placeholder={t("password")}/>
+                {error && <Text title="Error" description={error} type={ETypeText.ERROR}/>}
+                {isLoading ? <Loader /> : <Button onClick={handleAuth}>{t('sign_in')}</Button>}
+            </div>
+        </DynamicModuleRender>
     );
-};
+});
+
+AuthForm.displayName= 'AuthForm'
+
+export default AuthForm

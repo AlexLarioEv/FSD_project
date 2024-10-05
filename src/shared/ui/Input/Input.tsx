@@ -18,7 +18,7 @@ type TInputProps = {
 export const Input: FC<TInputProps> = ({
     className, 
     onChange, 
-    value, 
+    value='', 
     type = 'text', 
     placeholder, 
     autofocus, 

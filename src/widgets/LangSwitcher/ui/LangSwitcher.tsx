@@ -16,7 +16,7 @@ export const LangSwitcher: FC<TLangSwitcherProps> = ({ className }) => {
     }
 
     return (
-        <Button onClick={handleClick} className={classNames('', {}, [className])}>
+        <Button inverted onClick={handleClick} className={classNames('', {}, [className])}>
             {t('language')}
         </Button>
     );
