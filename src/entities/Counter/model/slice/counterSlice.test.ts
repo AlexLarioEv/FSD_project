@@ -12,7 +12,7 @@ describe('counterSlice.test', ()=>{
         expect(counterReducer(state, counterActions.incremented())).toEqual({value: 11});
     });
 
-    test('incremented', ()=> {
+    test('state undefined', ()=> {
         expect(counterReducer(undefined, counterActions.incremented())).toEqual({value: 1});
     });
 });

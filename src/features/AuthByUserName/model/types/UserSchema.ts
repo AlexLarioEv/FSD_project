@@ -4,3 +4,8 @@ export type TLoginSchema = {
     error?: string;
     isLoading?: boolean;
 }
+
+export type TLoginByUsernameProps = {
+    username: string;
+    password: string;
+}

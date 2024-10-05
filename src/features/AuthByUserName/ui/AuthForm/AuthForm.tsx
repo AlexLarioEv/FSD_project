@@ -2,13 +2,10 @@ import {  useCallback, memo } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 
-import { Button } from "@/shared/ui/Button";
-import { Input } from "@/shared/ui/Input/Input";
+import { Loader,Text,ETypeText,Input,Button } from "@/shared/ui";
 import { classNames } from "@/shared/lib/helpers";
 import { DynamicModuleRender } from "@/shared/lib/components";
 import { useAppDispatch } from '@/shared/hooks'
-import { ETypeText, Text } from "@/shared/ui/Text";
-import { Loader } from "@/shared/ui";
 
 import {getLogin} from '../../model/selector'
 import {loginByUserName} from '../../model/services'
