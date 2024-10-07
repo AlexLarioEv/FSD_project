@@ -1,0 +1,18 @@
+.link {
+    display: flex;
+    gap: 8px;
+}
+
+.icon {
+    fill: var(--inverted-secondary-color);
+}
+
+.collapsed {
+    width: var(--sidebar-width-collapsed);
+
+    .switcher{
+        gap: 0;
+        flex-direction: column;
+        align-items: center;
+    }
+}

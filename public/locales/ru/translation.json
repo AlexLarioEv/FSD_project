@@ -1,7 +1,8 @@
 {
-    "language": "ru",
-    "mainLink": "Главная",
-    "aboutLink": "О сайте",
+    "language": "Ru",
+    "main": "Главная",
+    "about": "О сайте",
+    "profile": "Профиль",
     "close": "Закрыть",
     "open": "Открыть",
     "not_fund": "Страница не найдена",
@@ -11,5 +12,6 @@
     "increment": "Добавить",
     "decrement": "Убавить",
     "login": "Логин",
+    "exit": "Выйти",
     "password": "Пароль"
 }

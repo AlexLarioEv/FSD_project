@@ -2,6 +2,7 @@ import type { AnyAction, EnhancedStore, Reducer, ReducersMapObject} from '@redux
 import type { TCounterSchema } from '@/entities/Counter';
 import type {TUserSchema} from '@/entities/User'
 import type {TLoginSchema} from '@/features/AuthByUserName'
+import { TProfileSchema } from '@/entities/Profile';
 
 export type TStateSchema = {
     counter: TCounterSchema
@@ -9,6 +10,7 @@ export type TStateSchema = {
 
     // Асинхронный редюсеры
     login?:TLoginSchema
+    profile?: TProfileSchema
 };
 
 export type TStateSchemaKey  = keyof TStateSchema;

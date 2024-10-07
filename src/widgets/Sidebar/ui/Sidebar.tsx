@@ -1,16 +1,15 @@
-import { FC, useState } from "react";
+import { FC, useState, useMemo } from "react";
 import { useTranslation } from 'react-i18next';
 
-import { AppLink, EApplinkTypes } from "@/shared/ui"
 import { ThemeSwitcher } from "@/widgets/ThemeSwitcher/ui";
 import { LangSwitcher } from "@/widgets/LangSwitcher/ui";
-import MainImage from '@/shared/assets/icons/main-20-20.svg'
-import AboutImage from '@/shared/assets/icons/about-20-20.svg'
 
-import { RoutePath } from "@/shared/config/routeConfig";
-
-import { Button, EButtonSize} from "@/shared/ui/Button";
+import {  Button, EButtonSize } from "@/shared/ui"
 import { classNames } from "@/shared/lib";
+import {SidebarItem} from '../../SidebarItem/'
+
+
+import { sidebarItems} from '../model/items'
 
 import styles from './Sidebar.module.scss';
 
@@ -21,32 +20,27 @@ type TSidebarProps = {
 
 export const Sidebar: FC<TSidebarProps> = ({ className,testId }) => {
     const [collapsed, setCollapsed] = useState(false);
+    const [toggle, setToggle]  = useState(false)
     const {t} = useTranslation()
 
     const handleToggle = () => {
         setCollapsed(prev => !prev)
     }
 
+    const sidebarLinks = useMemo(()=> sidebarItems.map(({path, Icon, text}, index)=> {
+        return <SidebarItem path={path} Icon={Icon} text={text} collapsed={collapsed} key={index}/>
+    }),[collapsed])
+    
+
+
     return (
         <div data-testid={testId}
             className={classNames(styles.Sidebar, {[styles.collapsed]: collapsed}, [className])
             }>
             <div className={styles.links}>
-                <AppLink className={styles.link} type={EApplinkTypes.SECONDARY} to={RoutePath.main}> 
-                    <div>
-                        <MainImage className={styles.icon}/>
-                    </div>
-                    <span className={styles.text_link}>
-                        {!collapsed && t('mainLink')} 
-                    </span>
-                </AppLink>
-                <AppLink className={styles.link} type={EApplinkTypes.SECONDARY} to={RoutePath.about}> 
-                    <AboutImage className={styles.icon}/>
-                    <span className={styles.text_link}>
-                        {!collapsed && t('aboutLink')} 
-                    </span>
-                </AppLink>
+                {sidebarLinks}
             </div>
+            <Button inverted onClick={()=>setToggle((prev)=>!prev)}>{`value ${toggle}`}</Button>
             <Button 
                 size={EButtonSize.L}
                 className={styles.button}

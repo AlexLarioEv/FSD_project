@@ -25,10 +25,11 @@ export type TButtonProps = {
 
 
 export const Button: FC<TButtonProps> = (
-    { className, children,theme = EButtonTheme.CLEAR, size, testId,inverted, ...otherProps }) => {
+    { className, children,theme = EButtonTheme.CLEAR, size, testId,inverted, disabled, ...otherProps }) => {
     
     const mods: Record<string, boolean> = {
-        [styles.inverted]: inverted
+        [styles.inverted]: inverted,
+        [styles.disabled]: disabled
     }
 
     return (
@@ -37,6 +38,7 @@ export const Button: FC<TButtonProps> = (
                 className, 
                 styles[theme], 
                 styles[size]])} 
+            disabled={disabled}
             {...otherProps}>
             {children}
         </button>

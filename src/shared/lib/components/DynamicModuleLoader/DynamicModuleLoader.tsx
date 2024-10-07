@@ -1,9 +1,11 @@
-import {FC, useEffect, PropsWithChildren} from 'react'
-import { Reducer } from '@reduxjs/toolkit'
-import {ReduxStoreWithManager, TStateSchemaKey} from '@/app/providers/StoreProvider/config'
+import {FC, PropsWithChildren} from 'react'
 import { useStore,useDispatch} from 'react-redux'
+import { Reducer } from '@reduxjs/toolkit'
 
-export type ReducerList = {
+import {useIgnoreEffectDeps} from '@/shared/hooks'
+import {ReduxStoreWithManager, TStateSchemaKey} from '@/app/providers/StoreProvider/config'
+
+export type TReducerList = {
     [key in TStateSchemaKey]?: Reducer
 }
 
@@ -11,11 +13,11 @@ type ReducerListEntry = [TStateSchemaKey, Reducer]
 
 type TDynamicModuleRenderProps = PropsWithChildren<
 {
-    reducers: ReducerList;
+    reducers: TReducerList;
     removeAfterUnmount?: boolean;
 }>;
 
-export const DynamicModuleRender:FC<TDynamicModuleRenderProps> = ({
+export const DynamicModuleLoader:FC<TDynamicModuleRenderProps> = ({
     children, 
     reducers,
     removeAfterUnmount = true, 
@@ -24,7 +26,7 @@ export const DynamicModuleRender:FC<TDynamicModuleRenderProps> = ({
     const store = useStore() as ReduxStoreWithManager
     const dispatch = useDispatch()
 
-    useEffect(()=> {
+    useIgnoreEffectDeps(()=> {
         Object.entries(reducers).forEach(([nameReducer, reducer]: ReducerListEntry) =>{
             store.reducerManager.add( nameReducer ,reducer)
             dispatch({type: `@INIT ${name} reducer`})
@@ -37,7 +39,6 @@ export const DynamicModuleRender:FC<TDynamicModuleRenderProps> = ({
                 })
             }
         }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
 

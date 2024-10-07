@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { memo } from "react";
 
 import { Button } from "@/shared/ui/Button";
 import { classNames } from "@/shared/lib";
@@ -8,7 +8,7 @@ type TLangSwitcherProps = {
   className?: string;
 };
 
-export const LangSwitcher: FC<TLangSwitcherProps> = ({ className }) => {
+const LangSwitcher = memo(({ className }:TLangSwitcherProps) => {
     const { t, i18n } = useTranslation() 
 
     const handleClick = () => {
@@ -20,4 +20,8 @@ export const LangSwitcher: FC<TLangSwitcherProps> = ({ className }) => {
             {t('language')}
         </Button>
     );
-};
+});
+
+LangSwitcher.displayName = 'LangSwitcher';
+
+export {LangSwitcher};

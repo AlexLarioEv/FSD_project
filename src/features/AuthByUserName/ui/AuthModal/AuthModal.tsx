@@ -17,7 +17,7 @@ export const AuthModal: FC<TAuthModalProps> = ({ className, isOpen, onClose }) =
     return (
         <Modal isOpen={isOpen} onClose={onClose} className={classNames('', {}, [className])}>
             <Suspense fallback={<Loader/>}>
-                <LazyAuthForm/>
+                <LazyAuthForm onSuccess={onClose}/>
             </Suspense>
         </Modal>
     );
