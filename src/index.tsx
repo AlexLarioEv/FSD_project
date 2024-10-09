@@ -13,13 +13,13 @@ import './app/styles/index.scss'
 const defaultTheme = localStorage.getItem(ELocalStorageKey.THEME) as ETheme || ETheme.LIGHT;
 const root = createRoot(document.getElementById('root'));
 root.render(
-    <StoreProvider>
-        <BrowserRouter>
+    <BrowserRouter>
+        <StoreProvider>
             <ErrorBoundary>
                 <ThemeProvider value={defaultTheme} >
                     <App />
                 </ThemeProvider>
             </ErrorBoundary>
-        </BrowserRouter>
-    </StoreProvider>
+        </StoreProvider>
+    </BrowserRouter>
 );

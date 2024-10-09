@@ -20,7 +20,6 @@ type TSidebarProps = {
 
 export const Sidebar: FC<TSidebarProps> = ({ className,testId }) => {
     const [collapsed, setCollapsed] = useState(false);
-    const [toggle, setToggle]  = useState(false)
     const {t} = useTranslation()
 
     const handleToggle = () => {
@@ -40,7 +39,6 @@ export const Sidebar: FC<TSidebarProps> = ({ className,testId }) => {
             <div className={styles.links}>
                 {sidebarLinks}
             </div>
-            <Button inverted onClick={()=>setToggle((prev)=>!prev)}>{`value ${toggle}`}</Button>
             <Button 
                 size={EButtonSize.L}
                 className={styles.button}

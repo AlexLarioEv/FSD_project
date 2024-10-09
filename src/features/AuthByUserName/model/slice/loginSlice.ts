@@ -22,7 +22,7 @@ export const loginSlice = createSlice({
 
         }).addCase(loginByUserName.rejected, (state, action) => {
             state.isLoading = false;
-            state.error = action.payload;
+            state.error = action.error.message;
 
         }).addCase(loginByUserName.fulfilled, (state, action)=> {
             state.isLoading = false;

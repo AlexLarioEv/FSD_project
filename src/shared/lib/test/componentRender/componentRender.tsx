@@ -17,12 +17,12 @@ type TRenderOptions = {
 export const componentRender = (component: ReactNode, optins?: TRenderOptions) => {
     const {route = RoutePath.main,  initialState} = optins || {};
     return render(
-        <StoreProvider initialState={initialState}>
-            <I18nextProvider i18n={i18nForTest}>
-                <MemoryRouter initialEntries={[route]}>
+        <MemoryRouter initialEntries={[route]}>
+            <StoreProvider initialState={initialState}>
+                <I18nextProvider i18n={i18nForTest}>
                     {component}
-                </MemoryRouter>,
-            </I18nextProvider>
-        </StoreProvider>
+                </I18nextProvider>
+            </StoreProvider>
+        </MemoryRouter>,
     )
 }

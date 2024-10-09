@@ -5,6 +5,7 @@ import { DeepPartial } from '@/shared/lib/helpers';
 
 import {createReduxStore} from '../config'
 import { TStateSchema } from '../config/types';
+import { useNavigate } from 'react-router-dom';
 
 type TStoreProvideProps = {
   children?: ReactNode;
@@ -13,8 +14,12 @@ type TStoreProvideProps = {
 };
 
 export const StoreProvider: FC<TStoreProvideProps> = ({ children,  initialState, asyncReducers}) => {
-    
-    const store = createReduxStore(initialState as TStateSchema, asyncReducers as ReducersMapObject<TStateSchema>)
+    const navigate = useNavigate()
+    const store = createReduxStore(
+        initialState as TStateSchema, 
+        asyncReducers as ReducersMapObject<TStateSchema>, 
+        navigate
+    )
     return (
         <Provider store={store}>
             {children}

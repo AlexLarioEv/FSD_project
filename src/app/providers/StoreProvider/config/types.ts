@@ -1,4 +1,11 @@
-import type { AnyAction, EnhancedStore, Reducer, ReducersMapObject} from '@reduxjs/toolkit';
+import type { 
+    AnyAction, 
+    EnhancedStore, 
+    Reducer, 
+    ReducersMapObject} from '@reduxjs/toolkit';
+import { NavigateFunction } from 'react-router-dom';
+import { AxiosInstance } from 'axios';
+
 import type { TCounterSchema } from '@/entities/Counter';
 import type {TUserSchema} from '@/entities/User'
 import type {TLoginSchema} from '@/features/AuthByUserName'
@@ -23,4 +30,15 @@ export interface ReducerManager  {
 }
 export interface ReduxStoreWithManager extends EnhancedStore<TStateSchema> {
     reducerManager: ReducerManager
+}
+
+
+type TExtraThunk = {
+    navigate: NavigateFunction
+    api: AxiosInstance
+}
+
+export type TAsyncThunk<T> = {
+    rejectWithValue: T
+    extra: TExtraThunk
 }

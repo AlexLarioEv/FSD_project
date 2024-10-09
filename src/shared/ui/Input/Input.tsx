@@ -1,4 +1,11 @@
-import { FC, InputHTMLAttributes, useState,useRef, HTMLInputTypeAttribute, SyntheticEvent,ChangeEvent } from "react";
+import { 
+    InputHTMLAttributes, 
+    useState,
+    useRef, 
+    HTMLInputTypeAttribute, 
+    SyntheticEvent,
+    ChangeEvent, 
+    memo } from "react";
 
 import { classNames } from "@/shared/lib";
 
@@ -15,7 +22,7 @@ type TInputProps = {
   autofocus?: boolean;
 } & TInputAttributes;
 
-export const Input: FC<TInputProps> = ({
+export const Input = memo(({
     className, 
     onChange, 
     value='', 
@@ -23,7 +30,7 @@ export const Input: FC<TInputProps> = ({
     placeholder, 
     autofocus, 
     ...otherProps
-}) => {
+}:TInputProps) => {
     
     const [isFocus, setIsFocus] = useState(autofocus)
     const [caretPosition, setCaretPosition] = useState(0);
@@ -68,4 +75,7 @@ export const Input: FC<TInputProps> = ({
             </div>
         </div>
     );
-};
+}); 
+
+Input.displayName = 'Input';
+
