@@ -11,7 +11,7 @@ import './shared/config/i18';
 import './app/styles/index.scss'
 
 const defaultTheme = localStorage.getItem(ELocalStorageKey.THEME) as ETheme || ETheme.LIGHT;
-const root = createRoot(document.getElementById('root'));
+const root = createRoot(document.getElementById('root') as Element);
 root.render(
     <BrowserRouter>
         <StoreProvider>

@@ -9,8 +9,6 @@ export type TReducerList = {
     [key in TStateSchemaKey]?: Reducer
 }
 
-type ReducerListEntry = [TStateSchemaKey, Reducer]
-
 type TDynamicModuleRenderProps = PropsWithChildren<
 {
     reducers: TReducerList;
@@ -27,14 +25,14 @@ export const DynamicModuleLoader:FC<TDynamicModuleRenderProps> = ({
     const dispatch = useDispatch()
 
     useIgnoreEffectDeps(()=> {
-        Object.entries(reducers).forEach(([nameReducer, reducer]: ReducerListEntry) =>{
-            store.reducerManager.add( nameReducer ,reducer)
-            dispatch({type: `@INIT ${name} reducer`})
+        Object.entries(reducers).forEach(([nameReducer, reducer]) =>{
+            store.reducerManager.add( nameReducer as TStateSchemaKey,reducer)
+            dispatch({type: `@INIT ${nameReducer} reducer`})
         })
         return () => {
             if(removeAfterUnmount) {
-                Object.entries(reducers).forEach(([nameReducer]: ReducerListEntry) =>{
-                    store.reducerManager.remove(nameReducer)
+                Object.entries(reducers).forEach(([nameReducer]) =>{
+                    store.reducerManager.remove(nameReducer as TStateSchemaKey)
                     dispatch({type: `@DESTROY ${nameReducer} reducer`})
                 })
             }

@@ -1,27 +1,39 @@
+import axios, {AxiosStatic}  from 'axios';
+
+import {TAsyncThunk} from '@/app/providers/StoreProvider'
 import { TStateSchema } from "@/app/providers/StoreProvider/config";
 import { AsyncThunkAction } from "@reduxjs/toolkit";
 
 
-type TActionCreator<Return, Arg, RejectedValue> = (arg: Arg) => 
-    AsyncThunkAction<Return, Arg, {rejectValue: RejectedValue}>
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
+type ActionCreatorType<Return, Arg, RejectedValue>
+    = (arg: Arg) => AsyncThunkAction<Return, Arg, TAsyncThunk<RejectedValue>>;
+
+jest.mock('axios');
+
+const mockedAxios = jest.mocked(axios)
+
 export class TestAsyncThunk<Return, Arg, RejectedValue> {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     dispatch: jest.MockedFn<any>;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    navigate: jest.MockedFn<any>;
     getState: () => TStateSchema;
-    actionCreator: TActionCreator<Return, Arg, RejectedValue>
+    actionCreator: ActionCreatorType<Return, Arg, RejectedValue>
+    api: jest.MockedFunctionDeep<AxiosStatic>;
 
-    constructor(actionCreator: TActionCreator<Return, Arg, RejectedValue>){
+    constructor(actionCreator: ActionCreatorType<Return, Arg, RejectedValue>){
         this.actionCreator = actionCreator;
         this.dispatch = jest.fn();
         this.getState = jest.fn();
+        this.api = mockedAxios;
+        this.navigate = jest.fn();
     }
 
 
     async callThunk(arg: Arg) {
         const action = this.actionCreator(arg);
-        const result = await action(this.dispatch, this.getState, undefined);
+        const result = await action(this.dispatch, this.getState, {api: this.api, navigate: this.navigate});
 
         return result
     }

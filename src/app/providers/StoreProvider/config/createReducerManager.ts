@@ -1,20 +1,18 @@
-import { AnyAction, combineReducers, Reducer, ReducersMapObject } from "@reduxjs/toolkit"
+import { Action, combineReducers, Reducer } from "@reduxjs/toolkit";
 
-import {ReducerManager} from './types'
+import type {TStateSchema , TStateSchemaKey, Reducers, StaticReducers} from './types';
 
-import {TStateSchemaKey, TStateSchema} from './types'
+export function createReducerManager(initialReducers:StaticReducers) {
+    const reducers: Partial<Reducers> = { ...initialReducers }
 
-export function createReducerManager(initialReducers: ReducersMapObject<TStateSchema>):ReducerManager {
-    const reducers = { ...initialReducers }
-
-    let combinedReducer = combineReducers(reducers)
+    let combinedReducer = combineReducers(reducers as Reducers)
   
-    let keysToRemove:TStateSchemaKey[] = []
+    let keysToRemove: TStateSchemaKey[] = []
   
     return {
         getReducerMap: () => reducers,
 
-        reduce: (state:TStateSchema, action: AnyAction) => {
+        reduce: (state: Partial<TStateSchema>, action: Action) => {
             if (keysToRemove.length > 0) {
                 state = { ...state }
                 for (const key of keysToRemove) {
@@ -25,14 +23,14 @@ export function createReducerManager(initialReducers: ReducersMapObject<TStateSc
             return combinedReducer(state, action)
         },
 
-        add: (key:TStateSchemaKey, reducer: Reducer) => {
+        add: (key: TStateSchemaKey, reducer: Reducer) => {
             if (!key || reducers[key]) {
                 return
             }
 
             reducers[key] = reducer
 
-            combinedReducer = combineReducers(reducers)
+            combinedReducer = combineReducers(reducers as Reducers)
         },
   
 
@@ -45,7 +43,7 @@ export function createReducerManager(initialReducers: ReducersMapObject<TStateSc
   
             keysToRemove.push(key)
   
-            combinedReducer = combineReducers(reducers)
+            combinedReducer = combineReducers(reducers as Reducers)
         }
     }
 }

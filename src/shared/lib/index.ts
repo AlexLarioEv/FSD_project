@@ -1,1 +1,1 @@
-export { classNames } from './helpers';
+export { classNames, TMods } from './helpers';

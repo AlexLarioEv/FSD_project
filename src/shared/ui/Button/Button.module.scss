@@ -16,6 +16,11 @@
     border: solid var(--primary-color);
 }
 
+.size-auto{
+    width: auto;
+    height: auto;
+}
+
 .size-m {
     width: var(--font-line-m);
     height: var(--font-line-m);

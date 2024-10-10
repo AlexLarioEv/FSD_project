@@ -16,7 +16,7 @@ const ThemeSwitcher = memo(({ className }:TThemeSwitcherProps) => {
     const {theme, setTheme} = useTheme()
 
     const handleTheme= () => {
-        setTheme(theme)
+        setTheme?.(theme)
     }
 
     return (

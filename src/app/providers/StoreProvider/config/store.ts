@@ -1,5 +1,6 @@
-import { configureStore, ReducersMapObject } from '@reduxjs/toolkit';
+import { configureStore, ReducersMapObject,  } from '@reduxjs/toolkit';
 import { NavigateFunction } from 'react-router-dom';
+import { Reducer } from 'redux';
 
 import {counterReducer} from '@/entities/Counter';
 import { userReducer } from '@/entities/User';
@@ -8,35 +9,36 @@ import {api} from '@/shared/api'
 import {createReducerManager} from'./createReducerManager'
 import type {TStateSchema} from './types'
 
+export const staticReducer: ReducersMapObject<TStateSchema> = {
+    counter: counterReducer,
+    user: userReducer,
+}
+
 export const createReduxStore = (
     initialState?:TStateSchema, 
-    asyncReducers?: ReducersMapObject<TStateSchema>, 
     navigate?: NavigateFunction
 ) => {
 
-    const rootReducer: ReducersMapObject<TStateSchema> = {
-        counter: counterReducer,
-        user: userReducer,
-        ...asyncReducers
-    }
 
-    const reducerManager = createReducerManager(rootReducer)
+    const reducerManager = createReducerManager(staticReducer)
 
-    const store = configureStore<TStateSchema>({
-        reducer: reducerManager.reduce,
+    const store = configureStore({
+        reducer: reducerManager.reduce as Reducer<TStateSchema>,
         devTools: __IS_DEV__,
-        preloadedState: initialState,
-        middleware: getDefaultMiddleware => getDefaultMiddleware({
+        middleware: (getDefaultMiddleware) => getDefaultMiddleware({
             thunk: {
                 extraArgument: {
                     api,
                     navigate
                 }
-            }
-        })
-    })     
+            },
+        }),
+        preloadedState: initialState,
+    });
     
-    // @ts-expect-error Пока оставим так
+
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     store.reducerManager = reducerManager;
 
     return store

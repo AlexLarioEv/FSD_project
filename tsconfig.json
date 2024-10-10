@@ -18,6 +18,7 @@
     "paths": {
       "@/*": ["./src/*"],
     },
+    "strict": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true
   },
@@ -27,6 +28,7 @@
     }
   },
   "exclude": [
-    "config/storybook/main.ts"
+    "config/storybook/main.ts",
+    "config/storybook/webpack.config.ts"
   ]
 }

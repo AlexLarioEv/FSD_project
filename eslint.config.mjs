@@ -38,6 +38,7 @@ export default [
                 "error",
                 { argsIgnorePattern: "^_", varsIgnorePattern: "^_" },
             ],
+            '@typescript-eslint/no-unused-expressions': ["error", { "allowShortCircuit": true }],
             ...reactHooks.configs.recommended.rules,
             "react-hooks/exhaustive-deps": "error",
         },

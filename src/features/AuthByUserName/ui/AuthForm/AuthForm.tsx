@@ -28,10 +28,13 @@ const AuthForm = memo(({ className,onSuccess }:TAuthFormProps) => {
     const {password, username, isLoading, error} = useSelector(getLogin) || {}
     const dispatch = useAppDispatch()
         
-    const handleAuth = useCallback(async () => {
-        const result = await dispatch(loginByUserName({username, password}));
+    const handleAuth = useCallback( async () => {
+
+
+        const result = await dispatch(loginByUserName({username: username ?? '', password: password ?? ''}));
+
         if(result.meta.requestStatus === 'fulfilled'){
-            onSuccess() 
+            onSuccess && onSuccess() 
         }
     },[username,password,dispatch,onSuccess])
 

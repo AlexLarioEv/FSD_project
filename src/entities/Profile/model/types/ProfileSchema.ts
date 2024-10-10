@@ -12,7 +12,7 @@ export type TProfile = {
 }
 
 export type TProfileSchema = {
-    data?: TProfileSchema
+    data?: TProfile
     error?: string;
     isLoading: boolean;
     readonly: boolean;

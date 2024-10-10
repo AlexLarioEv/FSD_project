@@ -13,11 +13,10 @@ type TStoreProvideProps = {
   asyncReducers?: DeepPartial<ReducersMapObject<TStateSchema>>
 };
 
-export const StoreProvider: FC<TStoreProvideProps> = ({ children,  initialState, asyncReducers}) => {
+export const StoreProvider: FC<TStoreProvideProps> = ({ children,  initialState}) => {
     const navigate = useNavigate()
     const store = createReduxStore(
         initialState as TStateSchema, 
-        asyncReducers as ReducersMapObject<TStateSchema>, 
         navigate
     )
     return (

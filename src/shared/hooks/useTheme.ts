@@ -8,9 +8,9 @@ export const useTheme = () : IThemeContextProps=> {
 
     const toggleTheme = () => {
         const newTheme = theme === ETheme.DARK ? ETheme.LIGHT : ETheme.DARK
-        setTheme(newTheme)
+        setTheme?.(newTheme)
         localStorage.setItem(ELocalStorageKey.THEME, newTheme)
     }
 
-    return {theme, setTheme: toggleTheme}
+    return {theme: theme || ETheme.LIGHT, setTheme: toggleTheme}
 }

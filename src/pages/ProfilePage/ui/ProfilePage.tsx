@@ -1,7 +1,8 @@
 import { profileReducer } from "@/entities/Profile";
 import { DynamicModuleLoader, TReducerList } from "@/shared/lib/components";
-import { FC } from "react";
-import { useTranslation } from "react-i18next";
+import { FC, useEffect } from "react";
+import { ProfileCard, getProfile } from "@/entities/Profile";
+import { useAppDispatch } from "@/shared/hooks";
 
 const reducers:TReducerList = {
     profile: profileReducer
@@ -12,13 +13,16 @@ type TProfilePageProps = {
 };
 
 const ProfilePage: FC<TProfilePageProps> = () => {
-    const {t} = useTranslation()
+
+    const dispatch = useAppDispatch()
+
+    useEffect(()=> {
+        dispatch(getProfile())
+    },[dispatch])
 
     return (
         <DynamicModuleLoader reducers={reducers}>
-            <div >
-                {t('profile_page')}
-            </div>
+            <ProfileCard/>
         </DynamicModuleLoader>
     );
 };
