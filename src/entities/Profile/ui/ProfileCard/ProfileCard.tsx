@@ -5,9 +5,7 @@ import { useTranslation } from "react-i18next";
 import { classNames } from "@/shared/lib";
 import { Button, EButtonTheme, Input, Text } from "@/shared/ui";
 
-import {getProfileData} from '../../model/selector'
-
-import styles from "./ProfileCard.module.scss";
+import {getProfileData} from '../../model/selector';
 
 type TProfileCardProps = {
   className?: string;
@@ -18,7 +16,7 @@ export const ProfileCard: FC<TProfileCardProps> = ({ className }) => {
     const {first, lastname} = useSelector(getProfileData) || {};
 
     return (
-        <div className={classNames(styles.ProfileCard, {}, [className])}>
+        <div className={classNames('', {}, [className])}>
             <div>
                 <Text title={t('profile')}/>
                 <Button theme={EButtonTheme.BORDER}>{t('edit')}</Button>
