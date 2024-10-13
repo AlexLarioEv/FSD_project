@@ -25,13 +25,6 @@ export type TStateSchema = {
 
 export type TStateSchemaKey  = keyof TStateSchema;
 
-// export interface ReducerManager  {
-//     getReducerMap: () => ReducersMapObject<TStateSchema>
-//     reduce: (state: TStateSchema, action: AnyAction) =>  TStateSchema
-//     add: (key: TStateSchemaKey, reducer: Reducer) => void
-//     remove: (key: TStateSchemaKey) => void
-// }
-
 export type Reducers = Record<TStateSchemaKey, Reducer>
 
 export type ReducerManager = ReturnType<typeof createReducerManager>
@@ -48,6 +41,7 @@ export type TExtraThunk = {
 export type TAsyncThunk<T> = {
     rejectWithValue: T
     extra: TExtraThunk
+    state: TStateSchema
 }
 
 export type AppDispatch = ThunkDispatch<TStateSchema, undefined, Action>

@@ -15,17 +15,18 @@ type TInputAttributes = Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange' |
 
 type TInputProps = {
   className?: string;
-  value?: string;
+  value?: string | number;
   type?: HTMLInputTypeAttribute
   onChange?: (e: string) => void;
   placeholder?: string; 
   autofocus?: boolean;
+  disabled?: boolean;
 } & TInputAttributes;
 
 export const Input = memo(({
     className, 
     onChange, 
-    value='', 
+    value, 
     type = 'text', 
     placeholder, 
     autofocus, 

@@ -1,30 +1,92 @@
 import { FC } from "react";
-import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 
-import { classNames } from "@/shared/lib";
-import { Button, EButtonTheme, Input, Text } from "@/shared/ui";
+import { classNames, TMods } from "@/shared/lib";
+import { Input, Loader, Text, ETypeText,  ETextAlign} from "@/shared/ui";
 
-import {getProfileData} from '../../model/selector';
+
+import styles from './ProfileCard.module.scss';
+import { SelectCountry } from "@/entities/Country";
+import { SelectCurrency } from "@/entities/Currency";
+import { ECurrency } from '@/entities/Currency';
+import { ECountry } from '@/entities/Country';
+
+import {TProfile} from "../../model/types/ProfileSchema";
 
 type TProfileCardProps = {
-  className?: string;
-};
+    className?: string;
+    isLoading?: boolean;
+    error?: boolean;
+    readonly?: boolean;
+    onChangeFirstname?: (value: string) => void;
+    onChangeLastname?: (value: string) => void;
+    onChangeCity?: (value: string) => void;
+    onChangeAge?: (value: string) => void;
+    onChangeUsername?: (value: string) => void;
+    onChangeAvatar?: (value: string) => void;
+    onChangeCurrency?: (value: ECurrency) => void;
+    onChangeCountry?: (value: ECountry) => void;
+} & Partial<TProfile>;
 
-export const ProfileCard: FC<TProfileCardProps> = ({ className }) => {
+export const ProfileCard: FC<TProfileCardProps> = ({ 
+    className, 
+    first, 
+    lastname, 
+    age,
+    currency,
+    country,
+    city,
+    username,
+    avatar,
+    isLoading,
+    error,
+    readonly,
+    onChangeFirstname,
+    onChangeLastname,
+    onChangeCity,
+    onChangeAge,
+    onChangeUsername,
+    onChangeAvatar,
+    onChangeCurrency,
+    onChangeCountry,
+}) => {
     const {t} = useTranslation('profile')
-    const {first, lastname} = useSelector(getProfileData) || {};
 
+    const mods: TMods = {
+        [styles.edit]: !readonly
+    }
+
+    if (isLoading) {
+        return (
+            <div className={classNames(styles.ProfileCard, {}, [className, styles.loading])}>
+                <Loader />
+            </div>
+        );
+    }
+
+    if (error) {
+        return (
+            <div className={classNames(styles.ProfileCard, {}, [className, styles.error])}>
+                <Text
+                    type={ETypeText.ERROR}
+                    title={t('Произошла ошибка при загрузке профиля')}
+                    description={t('Попробуйте обновить страницу')}
+                    align={ETextAlign.CENTER}
+                />
+            </div>
+        );
+    }
+    
     return (
-        <div className={classNames('', {}, [className])}>
-            <div>
-                <Text title={t('profile')}/>
-                <Button theme={EButtonTheme.BORDER}>{t('edit')}</Button>
-            </div>
-            <div>
-                <Input placeholder={t('firstName')} value={first} />
-                <Input placeholder={t('lastName')} value={lastname} />
-            </div>
+        <div className={classNames(styles.ProfileCard, mods, [className])}>
+            <Input disabled={readonly} onChange={onChangeFirstname} placeholder={t('firstName')} value={first} />
+            <Input disabled={readonly} onChange={onChangeLastname} placeholder={t('lastName')} value={lastname} />
+            <Input disabled={readonly} onChange={onChangeAge} placeholder={t('age')} value={age} />
+            <Input disabled={readonly} onChange={onChangeCity} placeholder={t('city')} value={city} />
+            <Input disabled={readonly} onChange={onChangeUsername} placeholder={t('username')} value={username} />
+            <Input disabled={readonly} onChange={onChangeAvatar} placeholder={t('avatar')} value={avatar} />
+            <SelectCurrency readonly={readonly} onChange={onChangeCurrency} defaultValue={currency}/>
+            <SelectCountry readonly={readonly} onChange={onChangeCountry} defaultValue={country}/>
         </div>
     );
 };

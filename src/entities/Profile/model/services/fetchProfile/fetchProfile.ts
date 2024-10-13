@@ -2,9 +2,9 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 
 import {TAsyncThunk} from '@/app/providers/StoreProvider'
 
-import { TProfile  } from '../types/ProfileSchema';
+import { TProfile  } from '../../types/ProfileSchema';
 
-export const getProfile = createAsyncThunk<TProfile, void, TAsyncThunk<string>>(
+export const fetchProfile = createAsyncThunk<TProfile, void, TAsyncThunk<string>>(
     'profile/getProfile',
     async (_, {extra, rejectWithValue}) => {
         try {

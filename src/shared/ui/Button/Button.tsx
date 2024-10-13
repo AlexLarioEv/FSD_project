@@ -22,6 +22,7 @@ export type TButtonProps = {
     size?: EButtonSize;
     testId?: string;
     inverted?: boolean;
+    danger?: boolean;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
 
@@ -31,13 +32,15 @@ export const Button: FC<TButtonProps> = ({
     size = EButtonSize.AUTO, 
     testId,
     inverted, 
-    disabled, 
+    disabled,
+    danger,
     ...otherProps 
 }) => {
     
     const mods: TMods = {
         [styles.inverted]: inverted,
         [styles.disabled]: disabled,
+        [styles.danger]: danger,
     }
 
     return (

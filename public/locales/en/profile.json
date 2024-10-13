@@ -2,5 +2,10 @@
     "profile": "Profile",
     "edit": "Edit",
     "firstName": "First Name",
-    "lastName": "Last Name"
+    "lastName": "Last Name",
+    "age": "Age",
+    "city": "City",
+    "username": "Username",
+    "avatar": "Avatar",
+    "save": "save"
 }

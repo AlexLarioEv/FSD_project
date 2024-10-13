@@ -1,1 +1,1 @@
-export {Text, ETypeText} from './Text';
+export {Text, ETypeText, ETextAlign} from './Text';

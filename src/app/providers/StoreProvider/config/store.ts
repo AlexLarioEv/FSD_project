@@ -16,11 +16,12 @@ export const staticReducer: ReducersMapObject<TStateSchema> = {
 
 export const createReduxStore = (
     initialState?:TStateSchema, 
+    asyncReducers?: ReducersMapObject<TStateSchema>,
     navigate?: NavigateFunction
 ) => {
+    const reducers = {...staticReducer , ...asyncReducers};
 
-
-    const reducerManager = createReducerManager(staticReducer)
+    const reducerManager = createReducerManager(reducers)
 
     const store = configureStore({
         reducer: reducerManager.reduce as Reducer<TStateSchema>,

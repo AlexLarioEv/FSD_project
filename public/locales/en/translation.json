@@ -13,5 +13,7 @@
     "decrement": "decrement",
     "login": "Login",
     "exit": "Exit",
-    "password": "Password"
+    "password": "Password",
+    "currency": "Currency",
+    "country": "Country"
 }

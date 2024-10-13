@@ -1,9 +1,10 @@
-import {ECountry, ECurrency} from '@/shared/const'
+import { ECountry } from '../../../Country'
+import { ECurrency} from '../../../Currency'
 
 export type TProfile = {
     first: string,
     lastname: string,
-    age: 22,
+    age: number,
     currency: ECurrency,
     country: ECountry,
     city: string,
@@ -12,7 +13,8 @@ export type TProfile = {
 }
 
 export type TProfileSchema = {
-    data?: TProfile
+    data?: TProfile;
+    form?: Partial<TProfile>;
     error?: string;
     isLoading: boolean;
     readonly: boolean;

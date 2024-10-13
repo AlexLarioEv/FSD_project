@@ -1,0 +1,15 @@
+.label{
+    margin-right: 8px 
+};
+
+.select{
+    background: transparent;
+    outline: none;
+    border: 2px solid var(--inverted-bg-color);
+    color: var(--primary-color)
+}
+
+.option{
+    color: var(--inverted-primary-color);
+    background: var(--inverted-bg-color);
+}

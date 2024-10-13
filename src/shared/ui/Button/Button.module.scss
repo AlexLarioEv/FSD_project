@@ -46,3 +46,8 @@
 .disabled{
     opacity: 0.7;
 }
+
+.danger{
+    color: var(--error-color);
+    border: solid var(--error-color);
+}
