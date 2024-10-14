@@ -1,15 +1,21 @@
-import {useCallback, FC, useEffect } from 'react'
+import {useCallback, FC, useEffect, useMemo } from 'react';
 
-import { profileReducer } from "@/entities/Profile";
-import { DynamicModuleLoader, TReducerList } from "@/shared/lib/components";
-import { ProfileCard, fetchProfile } from "@/entities/Profile";
-import { useAppDispatch } from "@/shared/hooks";
-import { selectorProfile,profileActions } from '@/entities/Profile'
-import { useAppSelector } from "@/shared/hooks";
+import { 
+    ProfileCard, 
+    fetchProfile, 
+    selectorProfile,
+    profileActions,
+    profileReducer,
+    EErrorValidateForm 
+} from "@/entities/Profile";
 import { ECurrency } from '@/entities/Currency';
 import { ECountry } from '@/entities/Country';
+import { DynamicModuleLoader, TReducerList } from "@/shared/lib/components";
+import { useAppDispatch,useAppSelector } from "@/shared/hooks";
 
 import {ProfilePageHeader} from './ProfilePageHeader/ProfilePageHeader';
+import { Text , ETypeText} from '@/shared/ui';
+import { useTranslation } from 'react-i18next';
 
 const reducers:TReducerList = {
     profile: profileReducer
@@ -20,6 +26,7 @@ type TProfilePageProps = {
 };
 
 const ProfilePage: FC<TProfilePageProps> = () => {
+    const {t} = useTranslation('profile');
 
     const {firstName, lastName,userName, age, country, currency, avatar, city, isLoading, error, readonly} = 
     useAppSelector( state =>  ({
@@ -35,6 +42,7 @@ const ProfilePage: FC<TProfilePageProps> = () => {
         avatar : selectorProfile.getAvatar(state),
         readonly: selectorProfile.isReadOnly(state),
     }))
+    const isServerError = error?.includes(EErrorValidateForm.SERVER_ERROR)
 
     const dispatch = useAppDispatch()
 
@@ -74,12 +82,22 @@ const ProfilePage: FC<TProfilePageProps> = () => {
         dispatch(fetchProfile())
     },[dispatch])
 
+    const textError =useMemo(()=> !isServerError ? 
+        error?.map((errorName) => <Text
+            key={errorName} 
+            type={ETypeText.ERROR} 
+            title={t('error')} 
+            description={t(errorName)}
+        />) 
+        : null , [isServerError, error, t])
+
     return (
         <DynamicModuleLoader reducers={reducers}>
             <ProfilePageHeader readonly={readonly} avatarUrl={avatar} avatarName={userName}/>
+            {textError}
             <ProfileCard
                 isLoading={isLoading}
-                error={error}
+                error={error?.includes(EErrorValidateForm.SERVER_ERROR)}
                 readonly={readonly}
                 first={firstName} 
                 lastname={lastName} 

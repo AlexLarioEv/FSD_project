@@ -2,9 +2,9 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 
 import {TAsyncThunk} from '@/app/providers/StoreProvider'
 
-import { TProfile  } from '../../types/ProfileSchema';
+import { TProfile, TErrorList, EErrorValidateForm } from '../../types/ProfileSchema';
 
-export const fetchProfile = createAsyncThunk<TProfile, void, TAsyncThunk<string>>(
+export const fetchProfile = createAsyncThunk<TProfile, void, TAsyncThunk<TErrorList>>(
     'profile/getProfile',
     async (_, {extra, rejectWithValue}) => {
         try {
@@ -16,7 +16,7 @@ export const fetchProfile = createAsyncThunk<TProfile, void, TAsyncThunk<string>
 
             return response.data;
         } catch {
-            return rejectWithValue('error');
+            return rejectWithValue([EErrorValidateForm.SERVER_ERROR]);
         }
     },
 )

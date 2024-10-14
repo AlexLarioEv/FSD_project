@@ -39,9 +39,9 @@ export type TExtraThunk = {
 }
 
 export type TAsyncThunk<T> = {
-    rejectWithValue: T
-    extra: TExtraThunk
-    state: TStateSchema
+    rejectValue: T;
+    extra: TExtraThunk;
+    state: TStateSchema;
 }
 
 export type AppDispatch = ThunkDispatch<TStateSchema, undefined, Action>

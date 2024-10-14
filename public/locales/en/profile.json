@@ -8,5 +8,11 @@
     "username": "Username",
     "avatar": "Avatar",
     "save": "Save",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "firstLastNameNotCorrect": "First name and last name not correct",
+    "ageNotCorrect": "Age not correct",
+    "currencyNotCorrect": "Currency not correct",
+    "countryNotCorrect": "Country not correct",
+    "notData": "Data is not find",
+    "error": "Error"
 }

@@ -8,5 +8,11 @@
     "username": "Логин",
     "avatar": "Аватар",
     "save": "Сохранить",
-    "cancel": "Отменить"
+    "cancel": "Отменить",
+    "firstLastNameNotCorrect": "Имя и фамилия невалидны",
+    "ageNotCorrect": "Возраст невалиден",
+    "currencyNotCorrect": "Валюта невалидна",
+    "countryNotCorrect": "Страна невалидна",
+    "notData": "Данны невалидны",
+    "error": "Ошибка"
 }
