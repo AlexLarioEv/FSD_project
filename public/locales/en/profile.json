@@ -7,5 +7,6 @@
     "city": "City",
     "username": "Username",
     "avatar": "Avatar",
-    "save": "save"
+    "save": "Save",
+    "cancel": "Cancel"
 }

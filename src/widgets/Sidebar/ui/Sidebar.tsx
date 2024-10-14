@@ -12,6 +12,8 @@ import {SidebarItem} from '../../SidebarItem/'
 import { sidebarItems} from '../model/items'
 
 import styles from './Sidebar.module.scss';
+import { useSelector } from "react-redux";
+import { getUser } from "@/entities/User";
 
 type TSidebarProps = {
   className?: string;
@@ -21,14 +23,21 @@ type TSidebarProps = {
 export const Sidebar: FC<TSidebarProps> = ({ className,testId }) => {
     const [collapsed, setCollapsed] = useState(false);
     const {t} = useTranslation()
+    const {auth} = useSelector(getUser);
 
     const handleToggle = () => {
         setCollapsed(prev => !prev)
     }
 
-    const sidebarLinks = useMemo(()=> sidebarItems.map(({path, Icon, text}, index)=> {
+    const sidebarLinks = useMemo(()=> sidebarItems.filter(
+        ({authOnly})=> {
+            if(authOnly && !auth){
+                return false
+            }
+            return true
+        }).map(({path, Icon, text}, index)=> {
         return <SidebarItem path={path} Icon={Icon} text={text} collapsed={collapsed} key={index}/>
-    }),[collapsed])
+    }),[collapsed,auth])
     
 
 

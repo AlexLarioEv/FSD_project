@@ -9,6 +9,7 @@ export type TSidebarItem = {
     text: string,
     path: string,
     Icon: FunctionComponent<SVGAttributes<SVGElement>>,
+    authOnly?: boolean;
 }
     
 
@@ -24,6 +25,7 @@ export const sidebarItems: TSidebarItem[] = [
     },{
         text: EAppRoutes.PROFILE,
         path: RoutePath.profile,
-        Icon: ProfilePage
+        Icon: ProfilePage,
+        authOnly: true,
     }
 ]

@@ -1,6 +1,12 @@
 import { MainPage, AboutPage,ProfilePage, NotFundPage } from "@/pages"
 import { RouteProps } from "react-router-dom"
 
+
+type TAppRouteProps  = RouteProps & {
+    authOnly?: boolean;
+}
+
+
 export enum EAppRoutes {
   MAIN = 'main',
   ABOUT = 'about',
@@ -15,7 +21,7 @@ export const RoutePath: Record<EAppRoutes, string> = {
     [EAppRoutes.NOT_FUND]: '*'
 }
 
-export const routeConfig: Record<EAppRoutes, RouteProps> = {
+export const routeConfig: Record<EAppRoutes, TAppRouteProps> = {
     [EAppRoutes.MAIN]: {
         path: RoutePath.main,
         element: <MainPage/>
@@ -26,7 +32,8 @@ export const routeConfig: Record<EAppRoutes, RouteProps> = {
     },
     [EAppRoutes.PROFILE]: {
         path: RoutePath.profile,
-        element: <ProfilePage/>
+        element: <ProfilePage/>,
+        authOnly: true
     },
     [EAppRoutes.NOT_FUND]: {
         path: RoutePath.not_fund,
