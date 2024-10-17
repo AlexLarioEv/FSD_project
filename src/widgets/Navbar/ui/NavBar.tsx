@@ -1,10 +1,11 @@
 import { FC, useCallback,useEffect, useState } from "react"
 import { useTranslation } from "react-i18next"
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
 
 import {AuthModal} from '@/features/AuthByUserName/ui'
 import {getUser, userActions} from '@/entities/User'
 
+import { useAppSelector } from "@/shared/hooks"
 import { Button } from "@/shared/ui/Button"
 import { classNames} from '@/shared/lib'
 
@@ -17,7 +18,7 @@ type TNavBarProps = {
 export const NavBar: FC<TNavBarProps> = ({className}) => {
     const [isOpen, setIsOpen] = useState(false);
     const {t} = useTranslation();
-    const {auth} = useSelector(getUser)
+    const {auth} = useAppSelector(getUser)
     const dispatch = useDispatch();
 
     const handleOpenLoginModal = useCallback(() => {

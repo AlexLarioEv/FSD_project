@@ -95,7 +95,7 @@ const ProfilePage: FC<TProfilePageProps> = () => {
 
     return (
         <DynamicModuleLoader reducers={reducers}>
-            <ProfilePageHeader readonly={readonly} avatarUrl={avatar} avatarName={userName}/>
+            <ProfilePageHeader readonly={readonly}/>
             {textError}
             <ProfileCard
                 isLoading={isLoading}

@@ -6,17 +6,15 @@ import { profileActions, updateProfile } from '@/entities/Profile'
 import { } from "@/entities/Profile";
 
 import styles from "./ProfilePageHeader.module.scss";
-import { Avatar, Button, Text, EButtonTheme } from "@/shared/ui";
+import { Button, Text, EButtonTheme } from "@/shared/ui";
 import { useAppDispatch } from "@/shared/hooks";
 
 type TProfilePageHeaderProps = {
   className?: string;
-  avatarUrl?: string;
-  avatarName?: string;
   readonly?: boolean;
 };
 
-export const ProfilePageHeader: FC<TProfilePageHeaderProps> = ({ className,avatarUrl,avatarName,readonly }) => {
+export const ProfilePageHeader: FC<TProfilePageHeaderProps> = ({ className, readonly }) => {
     const {t} = useTranslation('profile');
     const dispatch = useAppDispatch();
 
@@ -47,7 +45,7 @@ export const ProfilePageHeader: FC<TProfilePageHeaderProps> = ({ className,avata
         <div className={classNames(styles.ProfilePageHeader, {}, [className])}>
 
             <Text title={t('profile')}/>
-            <Avatar size={100} src={avatarUrl ?? ''} alt={avatarName ?? ''}/>
+
             <div>
                 {buttonMenu}
             </div>

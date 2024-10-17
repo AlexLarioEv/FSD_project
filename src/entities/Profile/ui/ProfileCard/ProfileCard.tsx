@@ -2,7 +2,7 @@ import { FC } from "react";
 import { useTranslation } from "react-i18next";
 
 import { classNames, TMods } from "@/shared/lib";
-import { Input, Loader, Text, ETypeText,  ETextAlign} from "@/shared/ui";
+import { Input, Loader, Text, ETypeText,  ETextAlign, Avatar} from "@/shared/ui";
 
 
 import styles from './ProfileCard.module.scss';
@@ -79,6 +79,7 @@ export const ProfileCard: FC<TProfileCardProps> = ({
     
     return (
         <div className={classNames(styles.ProfileCard, mods, [className])}>
+            <Avatar className={styles.avatar} size={100} src={avatar ?? ''} alt={username ?? ''}/>
             <Input disabled={readonly} onChange={onChangeFirstname} placeholder={t('firstName')} value={first} />
             <Input disabled={readonly} onChange={onChangeLastname} placeholder={t('lastName')} value={lastname} />
             <Input disabled={readonly} onChange={onChangeAge} placeholder={t('age')} value={age} />

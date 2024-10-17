@@ -2,7 +2,7 @@ import { MainPage, AboutPage,ProfilePage, NotFundPage } from "@/pages"
 import { RouteProps } from "react-router-dom"
 
 
-type TAppRouteProps  = RouteProps & {
+export type TAppRouteProps  = RouteProps & {
     authOnly?: boolean;
 }
 

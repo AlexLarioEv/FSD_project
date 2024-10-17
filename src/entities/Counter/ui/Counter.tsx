@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { Button, EButtonTheme } from "@/shared/ui/Button";
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
+import { useAppSelector } from "@/shared/hooks";
 
 import {counterActions} from '../model/slice'
 import {getCounterValue} from '../model/selector'
@@ -8,7 +9,7 @@ import { useTranslation } from "react-i18next";
 
 export const Counter: FC= () => {
     const {t} = useTranslation();
-    const counter = useSelector(getCounterValue);
+    const counter = useAppSelector(getCounterValue);
 
     const dispatch = useDispatch();
 

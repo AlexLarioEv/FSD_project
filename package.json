@@ -6,6 +6,7 @@
   "scripts": {
     "start": "webpack serve --env port=3000",
     "start:server": "node ./json-server/index.js",
+    "start:dev": "concurrently \"npm start\" \"npm run start:server\"",
     "build:prod": "webpack --env mode=production",
     "build:dev": "webpack --env mode=development",
     "lint": "eslint \"**/*.{ts,tsx}\"",
@@ -53,6 +54,7 @@
     "babel-jest": "^29.7.0",
     "babel-loader": "^9.2.1",
     "chromatic": "^11.10.4",
+    "concurrently": "^9.0.1",
     "css-loader": "^6.6.0",
     "eslint": "^8.57.1",
     "eslint-plugin-i18next": "^6.1.0",

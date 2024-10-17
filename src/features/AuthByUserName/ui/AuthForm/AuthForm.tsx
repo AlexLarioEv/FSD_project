@@ -1,6 +1,6 @@
 import {  useCallback, memo } from "react";
 import { useTranslation } from "react-i18next";
-import { useSelector } from "react-redux";
+import { useAppSelector } from "@/shared/hooks";
 
 import { Text,ETypeText,Input,Button } from "@/shared/ui";
 import { classNames } from "@/shared/lib/helpers";
@@ -25,7 +25,7 @@ const initialReducers: TReducerList = {
 
 const AuthForm = memo(({ className,onSuccess }:TAuthFormProps) => {
     const {t} = useTranslation()
-    const {password, username, isLoading, error} = useSelector(getLogin) || {}
+    const {password, username, isLoading, error} = useAppSelector(getLogin) || {}
     const dispatch = useAppDispatch()
         
     const handleAuth = useCallback( async () => {

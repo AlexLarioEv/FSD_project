@@ -6,14 +6,13 @@ import { LangSwitcher } from "@/widgets/LangSwitcher/ui";
 
 import {  Button, EButtonSize } from "@/shared/ui"
 import { classNames } from "@/shared/lib";
-import {SidebarItem} from '../../SidebarItem/'
-
-
-import { sidebarItems} from '../model/items'
-
-import styles from './Sidebar.module.scss';
-import { useSelector } from "react-redux";
 import { getUser } from "@/entities/User";
+import { useAppSelector } from "@/shared/hooks";
+
+
+import {SidebarItem} from '../../SidebarItem/'
+import { sidebarItems} from '../model/items'
+import styles from './Sidebar.module.scss';
 
 type TSidebarProps = {
   className?: string;
@@ -23,7 +22,7 @@ type TSidebarProps = {
 export const Sidebar: FC<TSidebarProps> = ({ className,testId }) => {
     const [collapsed, setCollapsed] = useState(false);
     const {t} = useTranslation()
-    const {auth} = useSelector(getUser);
+    const {auth} = useAppSelector(getUser);
 
     const handleToggle = () => {
         setCollapsed(prev => !prev)
