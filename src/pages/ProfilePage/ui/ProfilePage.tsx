@@ -79,7 +79,9 @@ const ProfilePage: FC<TProfilePageProps> = () => {
     }, [dispatch]);
 
     useEffect(()=> {
-        dispatch(fetchProfile())
+        if(__PROJECT__ === 'frontend'){
+            dispatch(fetchProfile())
+        }
     },[dispatch])
 
     const textError =useMemo(()=> !isServerError ? 

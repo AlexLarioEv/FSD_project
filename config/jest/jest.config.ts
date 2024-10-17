@@ -4,11 +4,13 @@
  */
 
 import type {Config} from 'jest';
+import {EProject} from '../build/types/config'
 
 const config: Config = {
     globals: {
         __IS_DEV__: true,
         __API__: '',
+        __PROJECT__: EProject.JEST
     },
     clearMocks: true,
     testEnvironment: "jsdom",

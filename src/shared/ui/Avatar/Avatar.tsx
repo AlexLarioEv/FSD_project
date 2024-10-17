@@ -2,6 +2,7 @@ import { memo } from "react";
 
 import { classNames } from "@/shared/lib";
 
+import avatar from '@/shared/assets/icons/avatar.jpg'
 import styles from "./Avatar.module.scss";
 
 type TAvatarProps = {
@@ -17,7 +18,7 @@ const Avatar = memo(({ className, src, alt, size = 40}: TAvatarProps) => {
         <img
             className={classNames(styles.Avatar,{}, [className] )}
             style={{width: size, height: size}}
-            src={src}
+            src={src || avatar}
             alt={alt}
         />
     );
