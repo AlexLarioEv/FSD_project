@@ -1,7 +1,7 @@
 .Modal{
     position: absolute;
     inset: 0;
-    z-index: 1000;
+    z-index: var(--modal-z-index);
 }
 
 .overlay{

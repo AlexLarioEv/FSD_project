@@ -14,25 +14,35 @@ export enum ETextAlign {
     END ='end'
 }
 
+export enum ESizeText {
+    M = 'size_m',
+    L = 'size_l',
+}
+
 type TTextProps = {
     title?: string;
     description?: string;
-    className?: string;
     type?: ETypeText;
-    testId?: string;
+    size?: ESizeText;
     align?: ETextAlign;
+    testId?: string;
+    className?: string;
 };
 
 export const Text: FC<TTextProps> = ({ 
     className, 
     title, 
     description, 
+    size = ESizeText.M,
     type = ETypeText.PRIMARY,
     testId, 
     align=ETextAlign.START }) => {
 
     return (
-        <div data-testid={testId} className={classNames(styles.Text, {}, [className, styles[type], styles[align]])}>
+        <div data-testid={testId} className={classNames(
+            styles.Text, 
+            {}, 
+            [className, styles[type], styles[align], styles[size]])}>
             {title && <span className={classNames(styles.title)}>{title}</span>}
             {description && <span className={classNames(styles.description)}>{description}</span>}
         </div>

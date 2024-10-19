@@ -6,8 +6,9 @@ import { profileActions, updateProfile } from '@/entities/Profile'
 import { } from "@/entities/Profile";
 
 import styles from "./ProfilePageHeader.module.scss";
-import { Button, Text, EButtonTheme } from "@/shared/ui";
+import { Button, EButtonTheme } from "@/shared/ui";
 import { useAppDispatch } from "@/shared/hooks";
+import { Text } from '@/shared/ui/Text'
 
 type TProfilePageHeaderProps = {
   className?: string;

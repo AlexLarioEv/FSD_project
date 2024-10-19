@@ -14,7 +14,7 @@ import { DynamicModuleLoader, TReducerList } from "@/shared/lib/components";
 import { useAppDispatch,useAppSelector } from "@/shared/hooks";
 
 import {ProfilePageHeader} from './ProfilePageHeader/ProfilePageHeader';
-import { Text , ETypeText} from '@/shared/ui';
+import { Text , ETypeText} from '@/shared/ui/Text';
 import { useTranslation } from 'react-i18next';
 
 const reducers:TReducerList = {
@@ -84,7 +84,7 @@ const ProfilePage: FC<TProfilePageProps> = () => {
         }
     },[dispatch])
 
-    const textError =useMemo(()=> !isServerError ? 
+    const textError = useMemo(()=> !isServerError ? 
         error?.map((errorName) => <Text
             key={errorName} 
             type={ETypeText.ERROR} 
@@ -94,7 +94,7 @@ const ProfilePage: FC<TProfilePageProps> = () => {
         : null , [isServerError, error, t])
 
     return (
-        <DynamicModuleLoader reducers={reducers}>
+        <DynamicModuleLoader reducers={reducers} removeAfterUnmount={false}>
             <ProfilePageHeader readonly={readonly}/>
             {textError}
             <ProfileCard

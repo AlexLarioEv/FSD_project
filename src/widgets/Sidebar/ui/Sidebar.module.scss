@@ -1,8 +1,11 @@
 .Sidebar {
     position: relative;
-    width: var(--sidebar-width);
+    max-width: var(--sidebar-width);
+    min-height: calc(100vh - var(--navbar-height));
     background: var(--inverted-bg-color);
     transition: 0.3s width;
+    z-index: var(--sidebar-button-z-index);
+    flex-basis: 33%;
 }
 
 
@@ -39,7 +42,7 @@
 }
 
 .collapsed {
-    width: var(--sidebar-width-collapsed);
+    max-width: var(--sidebar-width-collapsed);
 
     .switcher{
         gap: 0;

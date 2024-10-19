@@ -5,6 +5,7 @@ import {staticReducer} from './store'
 
 import type { TCounterSchema } from '@/entities/Counter';
 import type {TUserSchema} from '@/entities/User';
+import type {TArticleSchema} from '@/entities/Article';
 import type {TLoginSchema} from '@/features/AuthByUserName';
 import { TProfileSchema } from '@/entities/Profile';
 
@@ -20,6 +21,7 @@ export type TStateSchema = {
     // Асинхронный редюсеры
     login?: TLoginSchema;
     profile?: TProfileSchema;
+    article?: TArticleSchema;
 };
 
 

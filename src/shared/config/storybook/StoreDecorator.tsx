@@ -8,7 +8,7 @@ import { TStateSchema } from '@/app/providers/StoreProvider/config';
 
 export const StoreAndRouteDecorator: Decorator = (StoreComponent, context) => {
 
-
+    // Передача state и asyncReducers через parameters в storybook
     const state: DeepPartial<TStateSchema> = context.parameters.state;
     const asyncReducers: DeepPartial<ReducersMapObject<TStateSchema>> = context.parameters.asyncReducers;
 

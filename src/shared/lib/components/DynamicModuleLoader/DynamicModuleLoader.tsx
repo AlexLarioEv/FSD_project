@@ -1,9 +1,10 @@
-import {FC, PropsWithChildren} from 'react'
+import {FC, PropsWithChildren, useState} from 'react'
 import { useStore,useDispatch} from 'react-redux'
 import { Reducer } from '@reduxjs/toolkit'
 
 import {useIgnoreEffectDeps} from '@/shared/hooks'
 import {ReduxStoreWithManager, TStateSchemaKey} from '@/app/providers/StoreProvider/config'
+import { Loader } from '@/shared/ui'
 
 export type TReducerList = {
     [key in TStateSchemaKey]?: Reducer
@@ -20,6 +21,7 @@ export const DynamicModuleLoader:FC<TDynamicModuleRenderProps> = ({
     reducers,
     removeAfterUnmount = true, 
 }) =>{
+    const [initReduser, setInitReduser] = useState(false)
 
     const store = useStore() as ReduxStoreWithManager
     const dispatch = useDispatch()
@@ -28,6 +30,7 @@ export const DynamicModuleLoader:FC<TDynamicModuleRenderProps> = ({
         Object.entries(reducers).forEach(([nameReducer, reducer]) =>{
             store.reducerManager.add( nameReducer as TStateSchemaKey,reducer)
             dispatch({type: `@INIT ${nameReducer} reducer`})
+            setInitReduser(true)
         })
         return () => {
             if(removeAfterUnmount) {
@@ -42,7 +45,7 @@ export const DynamicModuleLoader:FC<TDynamicModuleRenderProps> = ({
 
     return (
         <>
-            {children}
+            {initReduser ? children : <Loader/>}
         </>
     )
 }
