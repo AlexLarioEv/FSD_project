@@ -1,1 +1,1 @@
-export {ThemeContext, ETheme, IThemeContextProps} from './ThemeContext'
+export {ThemeContext, ETheme, type IThemeContextProps} from './ThemeContext';

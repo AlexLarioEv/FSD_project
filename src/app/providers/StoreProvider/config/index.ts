@@ -1,2 +1,2 @@
 export {createReduxStore} from './store';
-export {ReduxStoreWithManager, TStateSchema, TStateSchemaKey } from './types'
+export type {ReduxStoreWithManager, TStateSchema, TStateSchemaKey, TAsyncThunk } from './types'
