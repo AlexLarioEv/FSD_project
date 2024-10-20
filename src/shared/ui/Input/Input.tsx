@@ -23,7 +23,7 @@ type TInputProps = {
   disabled?: boolean;
 } & TInputAttributes;
 
-export const Input = memo(({
+const Input = memo(({
     className, 
     onChange, 
     value, 
@@ -79,4 +79,6 @@ export const Input = memo(({
 }); 
 
 Input.displayName = 'Input';
+
+export {Input};
 

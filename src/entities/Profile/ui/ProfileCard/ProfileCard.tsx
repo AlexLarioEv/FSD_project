@@ -2,7 +2,8 @@ import { FC } from "react";
 import { useTranslation } from "react-i18next";
 
 import { classNames, TMods } from "@/shared/lib";
-import { Input, Loader, Avatar} from "@/shared/ui";
+import { Input, Loader} from "@/shared/ui";
+import { Avatar } from '@/shared/ui/Avatar'
 import { Text, ETypeText,  ETextAlign} from "@/shared/ui/Text";
 
 import styles from './ProfileCard.module.scss';

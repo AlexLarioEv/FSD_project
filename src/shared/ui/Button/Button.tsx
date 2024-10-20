@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes, FC } from "react";
+import { ButtonHTMLAttributes, memo } from "react";
 
 import { classNames, TMods } from "@/shared/lib";
 
@@ -26,7 +26,7 @@ export type TButtonProps = {
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
 
-export const Button: FC<TButtonProps> = ({ 
+const Button = memo(({ 
     className, 
     children,theme = EButtonTheme.CLEAR, 
     size = EButtonSize.AUTO, 
@@ -35,7 +35,7 @@ export const Button: FC<TButtonProps> = ({
     disabled,
     danger,
     ...otherProps 
-}) => {
+}:TButtonProps) => {
     
     const mods: TMods = {
         [styles.inverted]: inverted,
@@ -54,4 +54,8 @@ export const Button: FC<TButtonProps> = ({
             {children}
         </button>
     );
-};
+});
+
+Button.displayName = 'Button';
+
+export {Button};

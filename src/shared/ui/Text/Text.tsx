@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { memo } from "react";
 import { classNames } from "@/shared/lib";
 
 import styles from './Text.module.scss';
@@ -29,14 +29,14 @@ type TTextProps = {
     className?: string;
 };
 
-export const Text: FC<TTextProps> = ({ 
+const Text = memo(({ 
     className, 
     title, 
     description, 
     size = ESizeText.M,
     type = ETypeText.PRIMARY,
     testId, 
-    align=ETextAlign.START }) => {
+    align=ETextAlign.START }:TTextProps) => {
 
     return (
         <div data-testid={testId} className={classNames(
@@ -47,4 +47,8 @@ export const Text: FC<TTextProps> = ({
             {description && <span className={classNames(styles.description)}>{description}</span>}
         </div>
     );
-};
+});
+
+Text.displayName = 'Text';
+
+export {Text};

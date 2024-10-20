@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { memo } from "react";
 
 import { classNames } from "@/shared/lib";
 import { Text } from "@/shared/ui/Text";
@@ -10,7 +10,7 @@ type TArticleImageBlockProps = {
   className?: string;
 } & Pick<IArticleImageBlock, 'src' | 'title'>;
 
-export const ArticleImageBlock: FC<TArticleImageBlockProps> = ({ className, title, src }) => {
+const ArticleImageBlock = memo(({ className, title, src }: TArticleImageBlockProps) => {
     return (
         <>
             <div className={classNames(styles.ArticleImageBlock, {}, [className])}>
@@ -19,4 +19,8 @@ export const ArticleImageBlock: FC<TArticleImageBlockProps> = ({ className, titl
             </div>
         </>
     );
-};
+});
+
+ArticleImageBlock.displayName = 'ArticleImageBlock';
+
+export {ArticleImageBlock};

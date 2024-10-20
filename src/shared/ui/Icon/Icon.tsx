@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { memo } from "react";
 
 import { classNames } from "@/shared/lib";
 
@@ -9,8 +9,12 @@ type TIconProps = {
     Svg: React.FunctionComponent<React.SVGAttributes<SVGElement>>;
 };
 
-export const Icon: FC<TIconProps> = ({ className,Svg }) => {
+const Icon= memo(({ className,Svg }: TIconProps) => {
     return (
         <Svg className={classNames(styles.Icon, {}, [className])}/>
     );
-};
+});
+
+Icon.displayName = 'Icon';
+
+export {Icon}

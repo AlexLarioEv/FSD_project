@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { memo } from "react";
 
 import { classNames } from "@/shared/lib";
 
@@ -16,15 +16,20 @@ type TAppLinkProps = LinkProps & {
 };
 
 
-export const AppLink: FC<TAppLinkProps> = ({ 
+const AppLink = memo(({ 
     className, 
     children, 
     type=EApplinkTypes.PRIMARY, 
-    ...otherProps}) => {
+    ...otherProps}: TAppLinkProps) => {
 
     return (
-        <Link  className={classNames(styles.AppLink, {}, [className, styles[type]])} {...otherProps} >
+        <Link className={classNames(styles.AppLink, {}, [className, styles[type]])} {...otherProps} >
             {children}
         </Link>
     );
-};
+});
+
+
+AppLink.displayName = 'AppLink';
+
+export {AppLink};

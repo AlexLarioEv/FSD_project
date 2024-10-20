@@ -1,17 +1,17 @@
-import { FC } from "react";
+import { memo } from "react";
 
 import { classNames } from "@/shared/lib";
+import { Text } from "@/shared/ui/Text";
 
 import {IArticleTextBlock} from '../../model/types/ArticleSchema'
 
 import styles from './ArticleTextBlock.module.scss';
-import { Text } from "@/shared/ui/Text";
 
 type TArticleTextBlockProps = {
   className?: string;
 } & Pick<IArticleTextBlock, 'title' | 'paragraphs'>;
 
-export const ArticleTextBlock: FC<TArticleTextBlockProps> = ({ className, title, paragraphs }) => {
+const ArticleTextBlock = memo(({ className, title, paragraphs }: TArticleTextBlockProps) => {
     return (
         <div className={classNames(styles.ArticleTextBlock, {}, [className])}>
             {title && (
@@ -22,4 +22,9 @@ export const ArticleTextBlock: FC<TArticleTextBlockProps> = ({ className, title,
             ))}
         </div>
     );
-};
+});
+
+
+ArticleTextBlock.displayName = 'ArticleTextBlock';
+
+export {ArticleTextBlock};

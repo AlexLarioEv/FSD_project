@@ -1,4 +1,4 @@
-import { FC, useCallback } from "react";
+import { useCallback, memo } from "react";
 
 import { classNames } from "@/shared/lib";
 import { Button , EButtonTheme} from "@/shared/ui/Button";
@@ -11,8 +11,7 @@ type TCodeProps = {
     code: string;
 };
 
-export const Code: FC<TCodeProps> = ({ className, code }) => {
-
+const Code= memo(({className, code}: TCodeProps) => {
     const onCopy = useCallback(() => {
         navigator.clipboard.writeText(code);
     }, [code]);
@@ -29,4 +28,8 @@ export const Code: FC<TCodeProps> = ({ className, code }) => {
             </pre>
         </div>
     );
-};
+});
+
+Code.displayName ='Code';
+
+export { Code };
