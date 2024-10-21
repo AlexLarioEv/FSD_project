@@ -1,6 +1,6 @@
 import { FC, Suspense } from "react";
 
-import { Loader } from "@/shared/ui";
+import { Loader } from "@/shared/ui/Loader";
 import { Modal } from "@/shared/ui/Modal";
 import { classNames } from "@/shared/lib";
 

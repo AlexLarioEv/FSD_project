@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import type { Meta, StoryObj } from '@storybook/react';
 
 import  ArticleDetails from './ArticleDetailsPage';
@@ -73,27 +72,23 @@ const article = {
             ]
         }
     ]
-}
+};
 
-// TODO: Изабвиться от asyncReducers
+const asyncReducers = {
+    article: articleReducer
+}
 
 const  stateStory = createStateStory({article:{
     data: article 
-}}, {
-    article: articleReducer
-})
+}}, asyncReducers)
 
 const  isLoadingStory = createStateStory({article:{
     isLoading: true 
-}}, {
-    article: articleReducer
-})
+}}, asyncReducers)
 
 const  isErrorStory = createStateStory({article:{
     error: 'error' 
-}}, {
-    article: articleReducer
-})
+}}, asyncReducers)
 
 
 const meta = {

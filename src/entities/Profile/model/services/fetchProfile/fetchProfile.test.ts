@@ -6,7 +6,9 @@ import { ECurrency } from '@/entities/Currency';
 import { ECountry } from '@/entities/Country';
 
 
-const profileData: TProfile = { first: 'Иван',
+const profileData: TProfile = { 
+    id: '1',
+    first: 'Иван',
     lastname: 'Иванов',
     age: 12,
     currency: ECurrency.EUR,
@@ -22,7 +24,7 @@ describe('fetchProfile',()=>{
 
         const thunk = new TestAsyncThunk(fetchProfile)
         thunk.api.get.mockReturnValue(Promise.resolve({data: profileData}))
-        const result = await thunk.callThunk(); 
+        const result = await thunk.callThunk('1'); 
 
         expect(thunk.api.get).toHaveBeenCalled();
         expect(result.meta.requestStatus).toBe('fulfilled'); 
@@ -35,7 +37,7 @@ describe('fetchProfile',()=>{
         thunk.api.get.mockReturnValue(Promise.resolve({
             status: 403
         }))
-        const result = await thunk.callThunk();
+        const result = await thunk.callThunk('1');
 
         expect(thunk.dispatch).toHaveBeenCalledTimes(2);
         expect(thunk.api.get).toHaveBeenCalled();

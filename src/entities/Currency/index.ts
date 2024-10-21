@@ -1,2 +1,2 @@
 export {ECurrency} from './model/types';
-export {SelectCurrency} from './ui/SelectCurrency/SelectCountry';
+export {SelectCurrency} from './ui/SelectCurrency/SelectCurrency';

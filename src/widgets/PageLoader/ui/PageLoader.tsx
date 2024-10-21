@@ -1,6 +1,6 @@
 import { FC } from "react";
 
-import { Loader } from '@/shared/ui'
+import { Loader } from '@/shared/ui/Loader'
 import { classNames } from "@/shared/lib";
 import styles from './PageLoader.module.scss';
 

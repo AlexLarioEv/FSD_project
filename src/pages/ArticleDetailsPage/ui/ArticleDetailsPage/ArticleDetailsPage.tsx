@@ -15,6 +15,8 @@ import { fetchCommentById } from "../../model/services/fetchCommentById";
 
 import styles from "./ArticleDetailsPage.module.scss"
 import { useAppDispatch, useInitEffect } from "@/shared/hooks";
+import { AddCommentForm } from "@/features/AddCommentForm";
+import { addCommentForArticle } from "../../model/services/addCommentForArticle/addCommentForArticle";
 type TArticleDetailsPageProps = {
   className?: string;
 };
@@ -33,6 +35,10 @@ const ArticleDetailsPage: FC<TArticleDetailsPageProps> = ({ className }) => {
     const commments = useSelector(getArticleComments.selectAll)
     const isCommentLoading = useSelector(isLoadingArticleDetailsComment)
 
+    const handleSendComment = (value: string) => {
+        dispatch(addCommentForArticle(value));
+    }
+
     useInitEffect(()=> {
         dispatch(fetchCommentById(String(id)))
 
@@ -43,6 +49,7 @@ const ArticleDetailsPage: FC<TArticleDetailsPageProps> = ({ className }) => {
             <div className={classNames('', {}, [className])}>
                 {id ? <ArticleDetails className={styles.articleDetails} id={id} /> : null}
                 <Text title= {t('comment')}/>
+                <AddCommentForm onSendComment={handleSendComment} className={styles.addCommentForm}/>
                 <CommentList isLoading={isCommentLoading} comments={commments}/>
             </div>
         </DynamicModuleLoader>

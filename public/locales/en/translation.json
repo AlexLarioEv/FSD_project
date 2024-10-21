@@ -17,5 +17,7 @@
     "exit": "Exit",
     "password": "Password",
     "currency": "Currency",
-    "country": "Country"
+    "country": "Country",
+    "add_comment": "Add comment",
+    "add": "Add"
 }

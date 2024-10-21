@@ -2,7 +2,8 @@ import { FC } from "react";
 import { useTranslation } from "react-i18next";
 
 import { classNames, TMods } from "@/shared/lib";
-import { Input, Loader} from "@/shared/ui";
+import { Loader} from "@/shared/ui/Loader";
+import { Input } from "@/shared/ui/Input";
 import { Avatar } from '@/shared/ui/Avatar'
 import { Text, ETypeText,  ETextAlign} from "@/shared/ui/Text";
 

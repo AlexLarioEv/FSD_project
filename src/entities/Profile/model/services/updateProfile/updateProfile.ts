@@ -18,7 +18,7 @@ export const updateProfile = createAsyncThunk<TProfile, void, TAsyncThunk<TError
                 return rejectWithValue(errorList)
             }
 
-            const response = await extra.api.put<TProfile>('/profile', form);
+            const response = await extra.api.put<TProfile>(`/profile/${form?.id}`, form);
 
             if (!response.data) {
                 throw new Error();

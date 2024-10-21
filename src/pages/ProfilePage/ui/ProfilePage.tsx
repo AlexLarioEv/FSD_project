@@ -1,4 +1,6 @@
-import {useCallback, FC, useEffect, useMemo } from 'react';
+import {useCallback, FC, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useParams } from 'react-router-dom';
 
 import { 
     ProfileCard, 
@@ -11,11 +13,10 @@ import {
 import { ECurrency } from '@/entities/Currency';
 import { ECountry } from '@/entities/Country';
 import { DynamicModuleLoader, TReducerList } from "@/shared/lib/components";
-import { useAppDispatch,useAppSelector } from "@/shared/hooks";
+import { Text , ETypeText} from '@/shared/ui/Text';
+import { useAppDispatch,useAppSelector, useInitEffect } from "@/shared/hooks";
 
 import {ProfilePageHeader} from './ProfilePageHeader/ProfilePageHeader';
-import { Text , ETypeText} from '@/shared/ui/Text';
-import { useTranslation } from 'react-i18next';
 
 const reducers:TReducerList = {
     profile: profileReducer
@@ -27,9 +28,11 @@ type TProfilePageProps = {
 
 const ProfilePage: FC<TProfilePageProps> = () => {
     const {t} = useTranslation('profile');
+    const {id} = useParams()
 
-    const {firstName, lastName,userName, age, country, currency, avatar, city, isLoading, error, readonly} = 
-    useAppSelector( state =>  ({
+    const {
+        firstName, lastName,userName, age, country, currency, avatar, city, isLoading, error, readonly 
+    } = useAppSelector( state =>  ({
         isLoading: selectorProfile.isLoadingProfileData(state),
         error: selectorProfile.isErrorProfileData(state),
         firstName: selectorProfile.getFirstName(state),
@@ -41,10 +44,11 @@ const ProfilePage: FC<TProfilePageProps> = () => {
         city: selectorProfile.getCity(state),
         avatar : selectorProfile.getAvatar(state),
         readonly: selectorProfile.isReadOnly(state),
-    }))
-    const isServerError = error?.includes(EErrorValidateForm.SERVER_ERROR)
+    }));
 
-    const dispatch = useAppDispatch()
+    const isServerError = error?.includes(EErrorValidateForm.SERVER_ERROR);
+    
+    const dispatch = useAppDispatch();
 
     const onChangeFirstname = useCallback((value?: string) => {
         dispatch(profileActions.updateProfile({ first: value || '' }));
@@ -78,11 +82,11 @@ const ProfilePage: FC<TProfilePageProps> = () => {
         dispatch(profileActions.updateProfile({country: value }));
     }, [dispatch]);
 
-    useEffect(()=> {
-        if(__PROJECT__ === 'frontend'){
-            dispatch(fetchProfile())
+    useInitEffect(()=>{
+        if(id){
+            dispatch(fetchProfile(id));
         }
-    },[dispatch])
+    })
 
     const textError = useMemo(()=> !isServerError ? 
         error?.map((errorName) => <Text

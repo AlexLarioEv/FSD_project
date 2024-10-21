@@ -4,7 +4,9 @@ import { ECountry } from '@/entities/Country';
 import {validateProfileData} from './validateProfileData';
 import { EErrorValidateForm, TProfile } from '../../types/ProfileSchema';
 
-let profileData: TProfile = { first: 'Иван',
+let profileData: TProfile = { 
+    id: '1',
+    first: 'Иван',
     lastname: 'Иванов',
     age: 12,
     currency: ECurrency.EUR,

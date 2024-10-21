@@ -1,1 +1,1 @@
-export {getUser, isAuth, isInit} from './getUser'
+export {getUser, isAuth, isInit, getAuthData} from './getUser'

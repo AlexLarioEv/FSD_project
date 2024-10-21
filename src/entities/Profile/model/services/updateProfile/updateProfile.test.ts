@@ -6,7 +6,9 @@ import { ECountry } from '@/entities/Country';
 import {updateProfile} from './updateProfile';
 import { EErrorValidateForm, TProfile } from '../../types/ProfileSchema';
 
-const profileData: TProfile = { first: 'Иван',
+const profileData: TProfile = { 
+    id: '1',
+    first: 'Иван',
     lastname: 'Иванов',
     age: 12,
     currency: ECurrency.EUR,

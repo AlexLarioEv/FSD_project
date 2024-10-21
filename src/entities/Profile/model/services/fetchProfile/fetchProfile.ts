@@ -4,11 +4,11 @@ import {TAsyncThunk} from '@/app/providers/StoreProvider'
 
 import { TProfile, TErrorList, EErrorValidateForm } from '../../types/ProfileSchema';
 
-export const fetchProfile = createAsyncThunk<TProfile, void, TAsyncThunk<TErrorList>>(
+export const fetchProfile = createAsyncThunk<TProfile, string, TAsyncThunk<TErrorList>>(
     'profile/getProfile',
-    async (_, {extra, rejectWithValue}) => {
+    async (idProfile, {extra, rejectWithValue}) => {
         try {
-            const response = await extra.api.get<TProfile>('/profile');
+            const response = await extra.api.get<TProfile>(`/profile/${idProfile}`);
 
             if (!response.data) {
                 throw new Error();

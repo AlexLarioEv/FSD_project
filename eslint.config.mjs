@@ -45,6 +45,12 @@ export default [
         ignores: [
             "node_modules/*",    
             "build/*",       
-        ]
+        ],
+    },
+    {
+        files: ['**/src/**/*.{test,stories}.{ts,tsx}'],
+        rules: {
+            "max-len": "off"
+        }
     }
 ];

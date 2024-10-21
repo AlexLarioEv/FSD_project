@@ -7,7 +7,8 @@ export {
     getCurrency, 
     getFirstName, 
     getLastName, 
-    getUsername } from './getProfileData/getProfileData';
+    getUsername,
+    getId } from './getProfileData/getProfileData';
 export {isErrorProfileData} from './isErrorProfileData/isErrorProfileData';
 export {isLoadingProfileData} from './isLoadingProfileData/isLoadingProfileData';
 export {isReadOnly} from './isReadOnly/isReadOnly';

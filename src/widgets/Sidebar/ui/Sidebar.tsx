@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { ThemeSwitcher } from "@/widgets/ThemeSwitcher/ui";
 import { LangSwitcher } from "@/widgets/LangSwitcher/ui";
 
-import {  Button, EButtonSize } from "@/shared/ui"
+import {  Button, EButtonSize } from "@/shared/ui/Button"
 import { classNames } from "@/shared/lib";
 import { getUser } from "@/entities/User";
 import { useAppSelector } from "@/shared/hooks";

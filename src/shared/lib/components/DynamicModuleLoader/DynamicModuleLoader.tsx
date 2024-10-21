@@ -4,7 +4,7 @@ import { Reducer } from '@reduxjs/toolkit'
 
 import {useIgnoreEffectDeps} from '@/shared/hooks'
 import {ReduxStoreWithManager, TStateSchemaKey} from '@/app/providers/StoreProvider/config'
-import { Loader } from '@/shared/ui'
+import { Loader } from '@/shared/ui/Loader'
 
 export type TReducerList = {
     [key in TStateSchemaKey]?: Reducer

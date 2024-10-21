@@ -12,3 +12,4 @@ export const getCountry = createSelector(getProfileData, (state) => state?.form?
 export const getCurrency = createSelector(getProfileData, (state) => state?.form?.currency ?? state?.data?.currency);
 export const getAvatar= createSelector(getProfileData, (state) => state?.form?.avatar ?? state?.data?.avatar);
 export const getAge = createSelector(getProfileData, (state) => state?.form?.age ?? state?.data?.age)
+export const getId = createSelector(getProfileData, (state) => state?.data?.id )

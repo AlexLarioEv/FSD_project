@@ -13,6 +13,7 @@ export enum EErrorValidateForm  {
 export type TErrorList = EErrorValidateForm[];
 
 export type TProfile = {
+    id: string,
     first: string,
     lastname: string,
     age: number,

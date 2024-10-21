@@ -1,6 +1,6 @@
 import { FC,FunctionComponent, SVGAttributes } from "react";
 import { useTranslation } from "react-i18next";
-import { AppLink, EApplinkTypes } from "@/shared/ui"
+import { AppLink, EApplinkTypes } from "@/shared/ui/AppLink"
 import { classNames } from "@/shared/lib";
 
 import styles from "./SidebarItem.module.scss";

@@ -2,7 +2,8 @@ import {  useCallback, memo } from "react";
 import { useTranslation } from "react-i18next";
 import { useAppSelector } from "@/shared/hooks";
 
-import { Input,Button } from "@/shared/ui";
+import { Input } from "@/shared/ui/Input";
+import { Button } from "@/shared/ui/Button";
 import { Text,ETypeText } from '@/shared/ui/Text'
 import { classNames } from "@/shared/lib/helpers";
 import { DynamicModuleLoader, TReducerList } from "@/shared/lib/components";

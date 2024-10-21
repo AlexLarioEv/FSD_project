@@ -9,7 +9,9 @@ describe('getProfileData', ()=> {
     test('get state', ()=>{
 
         const profile: TProfileSchema = {
-            data: { first: 'Иван',
+            data: {
+                id: '1', 
+                first: 'Иван',
                 lastname: 'Иванов',
                 age: 12,
                 currency: ECurrency.EUR,

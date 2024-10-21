@@ -1,14 +1,15 @@
 import { FC } from "react";
 import { useTranslation } from "react-i18next";
 
-import { classNames } from "@/shared/lib";
-import { profileActions, updateProfile } from '@/entities/Profile'
+import { profileActions, selectorProfile, updateProfile } from '@/entities/Profile'
 import { } from "@/entities/Profile";
+import { getAuthData } from "@/entities/User";
+import { classNames } from "@/shared/lib";
+import { Text } from '@/shared/ui/Text'
+import { Button, EButtonTheme } from "@/shared/ui/Button";
+import { useAppDispatch, useAppSelector } from "@/shared/hooks";
 
 import styles from "./ProfilePageHeader.module.scss";
-import { Button, EButtonTheme } from "@/shared/ui";
-import { useAppDispatch } from "@/shared/hooks";
-import { Text } from '@/shared/ui/Text'
 
 type TProfilePageHeaderProps = {
   className?: string;
@@ -18,6 +19,12 @@ type TProfilePageHeaderProps = {
 export const ProfilePageHeader: FC<TProfilePageHeaderProps> = ({ className, readonly }) => {
     const {t} = useTranslation('profile');
     const dispatch = useAppDispatch();
+
+    const {authData, idProfile} = useAppSelector( state =>  ({
+        idProfile: selectorProfile.getId(state),
+        authData: getAuthData(state)
+    }))
+    const canEdit = authData?.id === idProfile
 
     const handleEditProfile = () => {
         dispatch(profileActions.setReadOnly(false))
@@ -47,9 +54,7 @@ export const ProfilePageHeader: FC<TProfilePageHeaderProps> = ({ className, read
 
             <Text title={t('profile')}/>
 
-            <div>
-                {buttonMenu}
-            </div>
+            {canEdit && <div>{buttonMenu}</div>}
         </div>
     );
 };
