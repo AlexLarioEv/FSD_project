@@ -1,9 +1,10 @@
-import { render, screen, fireEvent } from "@testing-library/react";
+import { screen, fireEvent } from "@testing-library/react";
 import { Input } from "./Input";
+import { componentRender } from "@/shared/lib/test";
 
 describe("Input Component", () => {
     test("renders with default props", () => {
-        render(<Input />);
+        componentRender(<Input />);
         const inputElement = screen.getByRole("textbox");
         expect(inputElement).toBeInTheDocument();
         expect(inputElement).toHaveValue("");
@@ -11,13 +12,13 @@ describe("Input Component", () => {
 
     test("displays placeholder text", () => {
         const placeholderText = "Enter text";
-        render(<Input placeholder={placeholderText} />);
+        componentRender(<Input placeholder={placeholderText} />);
         const placeholderElement = screen.getByText(`${placeholderText}>`);
         expect(placeholderElement).toBeInTheDocument();
     });
 
     test("focuses input on click and shows caret", () => {
-        render(<Input />);
+        componentRender(<Input />);
         const inputElement = screen.getByRole("textbox");
 
         fireEvent.focus(inputElement);
@@ -28,7 +29,7 @@ describe("Input Component", () => {
 
     test("calls onChange and updates value correctly", () => {
         const handleChange = jest.fn();
-        render(<Input onChange={handleChange} />);
+        componentRender(<Input onChange={handleChange} />);
         const inputElement = screen.getByRole("textbox");
 
         fireEvent.change(inputElement, { target: { value: "Hello" } });
@@ -37,7 +38,7 @@ describe("Input Component", () => {
     });
 
     test("updates caret position on input", () => {
-        render(<Input />);
+        componentRender(<Input />);
         const inputElement = screen.getByRole("textbox");
 
         fireEvent.change(inputElement, { target: { value: "Hello" } });
@@ -48,7 +49,7 @@ describe("Input Component", () => {
     });
 
     test("handles autofocus prop", () => {
-        render(<Input data-testid="input" autofocus />);
+        componentRender(<Input data-testid="input" autofocus />);
         const inputElement = screen.getByTestId("input");
 
         fireEvent.focus(inputElement);  // manually focus

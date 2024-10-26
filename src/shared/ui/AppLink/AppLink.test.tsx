@@ -1,13 +1,9 @@
 /* eslint-disable i18next/no-literal-string */
-import { render, screen } from "@testing-library/react";
-import { BrowserRouter } from "react-router-dom";
+import { screen } from "@testing-library/react";
+import { componentRender } from "@/shared/lib/test";
 import { AppLink, EApplinkTypes } from "./AppLink";
 
-const setup = (props = {}) => render(
-    <BrowserRouter>
-        <AppLink to="/" {...props}>Test Link</AppLink>
-    </BrowserRouter>
-);
+const setup = (props = {}) => componentRender(<AppLink to="/" {...props}>Test Link</AppLink>);
 
 describe("AppLink Component", () => {
 
