@@ -25,13 +25,12 @@ const initialReducers: TReducerList = {
     login:loginReducer
 };
 
-const AuthForm = memo(({ className,onSuccess }:TAuthFormProps) => {
+const AuthForm = memo(({ className, onSuccess }:TAuthFormProps) => {
     const {t} = useTranslation()
     const {password, username, isLoading, error} = useAppSelector(getLogin) || {}
     const dispatch = useAppDispatch()
         
     const handleAuth = useCallback( async () => {
-
 
         const result = await dispatch(loginByUserName({username: username ?? '', password: password ?? ''}));
 
@@ -51,8 +50,8 @@ const AuthForm = memo(({ className,onSuccess }:TAuthFormProps) => {
     return (
         <DynamicModuleLoader reducers={initialReducers}>
             <div className={classNames(styles.AuthForm, {}, [className])}>
-                <Input onChange={changeUsername} value={username} placeholder={t("login")} autoFocus/>
-                <Input onChange={changePassword} value={password}  placeholder={t("password")}/>
+                <Input aria-label="login" onChange={changeUsername} value={username} placeholder={t("login")} autoFocus/>
+                <Input aria-label="password" onChange={changePassword} value={password}  placeholder={t("password")}/>
                 {error && <Text title="Error" description={error} type={ETypeText.ERROR}/>}
                 <Button disabled={isLoading} onClick={handleAuth}>{t('sign_in')}</Button>
             </div>
@@ -60,6 +59,6 @@ const AuthForm = memo(({ className,onSuccess }:TAuthFormProps) => {
     );
 });
 
-AuthForm.displayName= 'AuthForm'
+AuthForm.displayName = 'AuthForm';
 
-export default AuthForm
+export default AuthForm;

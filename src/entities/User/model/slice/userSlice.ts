@@ -3,7 +3,9 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import {ELocalStorageKey} from '@/shared/const'
 import {TUser, TUserSchema} from '../types'
 
-const initialState: TUserSchema = {_init:false};
+const initialState: TUserSchema = {
+    _init: false
+};
 
 export const userSlice = createSlice({
     name: 'user',

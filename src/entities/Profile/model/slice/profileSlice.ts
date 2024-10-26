@@ -18,7 +18,7 @@ export const profileSlice = createSlice({
         cancelEdit: (state) => {
             state.readonly = true;
             state.form = state.data;
-            state.error =undefined;
+            state.error = undefined;
         },
     },
 

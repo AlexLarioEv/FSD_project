@@ -23,7 +23,7 @@ describe('fetchProfile',()=>{
     test('success fetchProfile', async ()=> {
 
         const thunk = new TestAsyncThunk(fetchProfile)
-        thunk.api.get.mockReturnValue(Promise.resolve({data: profileData}))
+        thunk.api.get.mockReturnValue(Promise.resolve({data: profileData}));
         const result = await thunk.callThunk('1'); 
 
         expect(thunk.api.get).toHaveBeenCalled();

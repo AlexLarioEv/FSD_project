@@ -16,6 +16,7 @@ const Avatar = memo(({ className, src=avatar, alt='', size = 40}: TAvatarProps) 
 
     return (
         <img
+            data-testid={"avatar"}
             className={classNames(styles.Avatar,{}, [className] )}
             style={{width: size, height: size}}
             src={src || avatar}

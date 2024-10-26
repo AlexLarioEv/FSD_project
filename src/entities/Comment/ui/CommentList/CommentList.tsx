@@ -11,7 +11,7 @@ import { TComment } from "../../model/types/types";
 import styles from './CommentList.module.scss';
 
 type TCommentListProps = {
-    isLoading: boolean;
+    isLoading?: boolean;
     className?: string;
     comments?: TComment[]
     error?: string;

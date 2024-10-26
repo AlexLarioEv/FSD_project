@@ -15,16 +15,15 @@ type TSelectCountryProps = {
 const optionList = [ECountry.ARMENIA, ECountry.BELARUS, ECountry.KAZAKHSTAN, ECountry.RUSSIA, ECountry.UKRAINE]
 
 export const SelectCountry: FC<TSelectCountryProps> = ({ className,defaultValue,readonly, onChange }) => {
-    const {t} = useTranslation()
-
+    const {t} = useTranslation();
     
     const handleChange = (e: string) => {
         onChange && onChange(e as ECountry);
     }
 
-
     return (
         <Select 
+            testId="selectCountry"
             readonly={readonly}
             onChange={handleChange}
             className={className} 

@@ -72,7 +72,7 @@ const Input = memo(({
                     value={value} 
                     type={type} 
                 />
-                {isFocus && <span style={{left: `${caretPosition * 9}px`}} className={styles.caret}></span>}
+                {isFocus && <span data-testid='caret' style={{left: `${caretPosition * 9}px`}} className={styles.caret}></span>}
             </div>
         </div>
     );

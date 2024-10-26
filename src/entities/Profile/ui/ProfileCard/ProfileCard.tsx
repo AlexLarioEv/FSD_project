@@ -15,7 +15,7 @@ import { ECountry } from '@/entities/Country';
 
 import {TProfile} from "../../model/types/ProfileSchema";
 
-type TProfileCardProps = {
+export type TProfileCardProps = {
     className?: string;
     isLoading?: boolean;
     error?: boolean;
@@ -61,7 +61,7 @@ export const ProfileCard: FC<TProfileCardProps> = ({
     if (isLoading) {
         return (
             <div className={classNames(styles.ProfileCard, {}, [className, styles.loading])}>
-                <Loader />
+                <Loader testId="loader" />
             </div>
         );
     }
@@ -82,12 +82,12 @@ export const ProfileCard: FC<TProfileCardProps> = ({
     return (
         <div className={classNames(styles.ProfileCard, mods, [className])}>
             <Avatar className={styles.avatar} size={100} src={avatar ?? ''} alt={username ?? ''}/>
-            <Input disabled={readonly} onChange={onChangeFirstname} placeholder={t('firstName')} value={first} />
-            <Input disabled={readonly} onChange={onChangeLastname} placeholder={t('lastName')} value={lastname} />
-            <Input disabled={readonly} onChange={onChangeAge} placeholder={t('age')} value={age} />
-            <Input disabled={readonly} onChange={onChangeCity} placeholder={t('city')} value={city} />
-            <Input disabled={readonly} onChange={onChangeUsername} placeholder={t('username')} value={username} />
-            <Input disabled={readonly} onChange={onChangeAvatar} placeholder={t('avatar')} value={avatar} />
+            <Input aria-label="firstName" disabled={readonly} onChange={onChangeFirstname} placeholder={t('firstName')} value={first} />
+            <Input aria-label="lastName" disabled={readonly} onChange={onChangeLastname} placeholder={t('lastName')} value={lastname} />
+            <Input aria-label="age" disabled={readonly} onChange={onChangeAge} placeholder={t('age')} value={age} />
+            <Input aria-label="city" disabled={readonly} onChange={onChangeCity} placeholder={t('city')} value={city} />
+            <Input aria-label="username" disabled={readonly} onChange={onChangeUsername} placeholder={t('username')} value={username} />
+            <Input aria-label="avatar" disabled={readonly} onChange={onChangeAvatar} placeholder={t('avatar')} value={avatar} />
             <SelectCurrency readonly={readonly} onChange={onChangeCurrency} defaultValue={currency}/>
             <SelectCountry readonly={readonly} onChange={onChangeCountry} defaultValue={country}/>
         </div>

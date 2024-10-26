@@ -24,6 +24,7 @@ export const SelectCurrency: FC<TSelectCountryProps> = ({ className, defaultValu
 
     return (
         <Select
+            testId="selectCurrency"
             readonly={readonly}
             className={className} 
             label={t('currency')} 

@@ -32,7 +32,7 @@ const ArticleDetailsPage: FC<TArticleDetailsPageProps> = ({ className }) => {
     const {t} = useTranslation('articleDetails')
     const {id} =  useParams()
 
-    const commments = useSelector(getArticleComments.selectAll)
+    const comments = useSelector(getArticleComments.selectAll)
     const isCommentLoading = useSelector(isLoadingArticleDetailsComment)
 
     const handleSendComment = (value: string) => {
@@ -50,7 +50,7 @@ const ArticleDetailsPage: FC<TArticleDetailsPageProps> = ({ className }) => {
                 {id ? <ArticleDetails className={styles.articleDetails} id={id} /> : null}
                 <Text title= {t('comment')}/>
                 <AddCommentForm onSendComment={handleSendComment} className={styles.addCommentForm}/>
-                <CommentList isLoading={isCommentLoading} comments={commments}/>
+                <CommentList isLoading={isCommentLoading} comments={comments}/>
             </div>
         </DynamicModuleLoader>
     );

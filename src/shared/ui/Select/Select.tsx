@@ -10,11 +10,12 @@ type TSelectProps = {
     className?: string;
     defaultValue?: string;
     readonly?: boolean;
+    testId?: string;
     onChange?: (value:string) => void 
 };
 
 
-const Select = memo(({ className, label , options,defaultValue,readonly, onChange }: TSelectProps) => {
+const Select = memo(({ className, label , options, defaultValue, readonly, testId, onChange }: TSelectProps) => {
 
 
     const handleChange = (e: ChangeEvent<HTMLSelectElement>) =>{
@@ -31,7 +32,7 @@ const Select = memo(({ className, label , options,defaultValue,readonly, onChang
         </option>), [options, readonly]);
 
     return (
-        <div className={classNames(styles.Select, {}, [className])}>
+        <div data-testid={testId} className={classNames(styles.Select, {}, [className])}>
             <label className={styles.label}>{label}</label >
             <select onChange={handleChange} className={styles.select} value={defaultValue}>
                 {optionList}

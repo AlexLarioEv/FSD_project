@@ -6,5 +6,5 @@ export type TUser = {
 
 export type TUserSchema = {
     auth?: TUser;
-    _init?: boolean;
+    _init: boolean;
 }

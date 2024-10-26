@@ -9,7 +9,7 @@ import { Input } from '@/shared/ui/Input';
 import { DynamicModuleLoader, TReducerList } from "@/shared/lib/components";
 
 import {addCommentReducer, addCommentActions} from '../model/slice/addCommentSlice';
-import {getCommentText} from '../model/selectors/getCommentText';
+import {getCommentText} from '../model/selectors/getComment';
 import styles from './AddCommentForm.module.scss';
 
 type TAddCommentFormProps = {
@@ -41,7 +41,7 @@ const AddCommentForm = memo(({ className, onSendComment }: TAddCommentFormProps)
     return (
         <DynamicModuleLoader reducers={reducers}>
             <div className={classNames(styles.AddCommentForm, {}, [className])}>
-                <Input value={comment} onChange={handleChangeComment} placeholder={t('add_comment')}/>
+                <Input data-testid={'add_comment'} value={comment} onChange={handleChangeComment} placeholder={t('add_comment')}/>
                 <Button onClick={handleSendComment} theme={EButtonTheme.BORDER}>{t('add')}</Button>
             </div>
         </DynamicModuleLoader>

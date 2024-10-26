@@ -26,12 +26,12 @@ type TArticleDetailsProps = {
 export const ArticleDetails: FC<TArticleDetailsProps> = ({ className, id }) => {
 
     const dispatch = useAppDispatch()
-    const {isLoading, error, dataArtical} = useAppSelector((state)=> ({
+    const {isLoading, error, dataArticle} = useAppSelector((state)=> ({
         isLoading: isArticleLoading(state),
         error: getArticleError(state),
-        dataArtical: getArticleData(state)
+        dataArticle: getArticleData(state)
     }))
-    const {title, subtitle, img, views, blocks, createdAt} = dataArtical || {}
+    const {title, subtitle, img, views, blocks, createdAt} = dataArticle || {}
     let content:ReactNode = null;
     
     useInitEffect(()=> {

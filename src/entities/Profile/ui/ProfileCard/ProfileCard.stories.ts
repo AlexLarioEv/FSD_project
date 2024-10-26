@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { fn } from '@storybook/test';
 
 import { ProfileCard } from './ProfileCard';
 
@@ -8,7 +9,19 @@ const meta = {
     parameters: {
 
         layout: 'centered',
+
     },
+
+    args:{
+        onChangeAge: fn(),
+        onChangeLastname: fn(),
+        onChangeAvatar: fn(),
+        onChangeCity: fn(),
+        onChangeCountry: fn(),
+        onChangeCurrency: fn(),
+        onChangeFirstname: fn(),
+        onChangeUsername: fn(),
+    }
 
 } satisfies Meta<typeof ProfileCard>;
 
