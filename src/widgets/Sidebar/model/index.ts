@@ -1,1 +1,0 @@
-export { sidebarItems } from './items'
