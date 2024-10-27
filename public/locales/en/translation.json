@@ -19,5 +19,6 @@
     "currency": "Currency",
     "country": "Country",
     "add_comment": "Add comment",
-    "add": "Add"
+    "add": "Add",
+    "read_more":"Read_more..."
 }

@@ -1,6 +1,6 @@
 import { FC, memo } from "react";
 import { useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 import {ArticleDetails, articleReducer} from '@/entities/Article'
@@ -17,6 +17,8 @@ import styles from "./ArticleDetailsPage.module.scss"
 import { useAppDispatch, useInitEffect } from "@/shared/hooks";
 import { AddCommentForm } from "@/features/AddCommentForm";
 import { addCommentForArticle } from "../../model/services/addCommentForArticle/addCommentForArticle";
+import { Button, EButtonTheme } from "@/shared/ui/Button";
+import { RoutePath } from "@/shared/config/routeConfig";
 type TArticleDetailsPageProps = {
   className?: string;
 };
@@ -28,7 +30,7 @@ const reducers:TReducerList = {
 
 const ArticleDetailsPage: FC<TArticleDetailsPageProps> = ({ className }) => {
     const dispatch =  useAppDispatch();
-
+    const navigate = useNavigate()
     const {t} = useTranslation('articleDetails')
     const {id} =  useParams()
 
@@ -39,6 +41,10 @@ const ArticleDetailsPage: FC<TArticleDetailsPageProps> = ({ className }) => {
         dispatch(addCommentForArticle(value));
     }
 
+    const handleClickBack = () => {
+        navigate(RoutePath.article)
+    }
+
     useInitEffect(()=> {
         dispatch(fetchCommentById(String(id)))
 
@@ -47,6 +53,9 @@ const ArticleDetailsPage: FC<TArticleDetailsPageProps> = ({ className }) => {
     return (
         <DynamicModuleLoader  reducers={reducers} removeAfterUnmount={false}>
             <div className={classNames('', {}, [className])}>
+                <Button className={styles.buttonBack} theme={EButtonTheme.BORDER} onClick={handleClickBack}>
+                    {t("back_to_aricles")}
+                </Button>
                 {id ? <ArticleDetails className={styles.articleDetails} id={id} /> : null}
                 <Text title= {t('comment')}/>
                 <AddCommentForm onSendComment={handleSendComment} className={styles.addCommentForm}/>

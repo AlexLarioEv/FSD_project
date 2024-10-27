@@ -1,6 +1,8 @@
+/* eslint-disable max-len */
 import { FC,memo } from "react";
 
 import { classNames } from "@/shared/lib";
+import { ArticleList } from "@/entities/Article"
 
 import styles from './ArticlePage.module.scss';
 
@@ -10,7 +12,9 @@ type TArticlePageProps = {
 
 const ArticlePage: FC<TArticlePageProps> = ({ className }) => {
     return (
-        <div className={classNames(styles.ArticlePage, {}, [className])}/>
+        <div className={classNames(styles.ArticlePage, {}, [className])}>
+            <ArticleList articles={[]} />
+        </div>
     );
 };
 

@@ -1,3 +1,5 @@
+import { TUser } from "@/entities/User";
+
 export enum EArticleBlockType {
     CODE = 'CODE',
     IMAGE = 'IMAGE',
@@ -34,6 +36,11 @@ export enum EArticleType {
     ECONOMICS = 'ECONOMICS'
 }
 
+export enum EArticleView {
+    BIG = 'BIG',
+    SMALL = 'SMALL',
+}
+
 export interface TArticle {
     id: string;
     title: string;
@@ -41,6 +48,7 @@ export interface TArticle {
     img: string;
     views: number;
     createdAt: string;
+    user: TUser;
     type: EArticleType[];
     blocks: ArticleBlock[];
 }

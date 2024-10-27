@@ -38,13 +38,14 @@ export const ArticleDetails: FC<TArticleDetailsProps> = ({ className, id }) => {
         dispatch(fetchArticleById(id))
     })
     
+    
     const renderBlocksArticle  = useCallback(()=> {
         return blocks?.map((block)=> {
 
             switch (block.type) {
             
             case EArticleBlockType.TEXT:
-                return <ArticleTextBlock title={block.title} paragraphs={block.paragraphs}   />
+                return <ArticleTextBlock title={block.title} paragraphs={block.paragraphs} />
 
             case EArticleBlockType.CODE:
                 return <ArticleCodeBlock code={block.code} key={block.id} />

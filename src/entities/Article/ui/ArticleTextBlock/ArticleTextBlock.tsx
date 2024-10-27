@@ -7,7 +7,7 @@ import {IArticleTextBlock} from '../../model/types/ArticleSchema'
 
 import styles from './ArticleTextBlock.module.scss';
 
-type TArticleTextBlockProps = {
+export type TArticleTextBlockProps = {
   className?: string;
 } & Pick<IArticleTextBlock, 'title' | 'paragraphs'>;
 
