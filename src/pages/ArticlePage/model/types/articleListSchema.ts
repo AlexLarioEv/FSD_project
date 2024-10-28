@@ -10,4 +10,5 @@ export type TArticleListSchema ={
     page: number;
     limit?: number;
     hasMore: boolean;
+    _init: boolean;
 } & EntityState<TArticle, string>

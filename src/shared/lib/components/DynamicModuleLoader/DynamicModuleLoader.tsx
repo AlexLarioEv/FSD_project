@@ -21,15 +21,19 @@ export const DynamicModuleLoader:FC<TDynamicModuleRenderProps> = ({
     reducers,
     removeAfterUnmount = true, 
 }) =>{
-    const [initReduser, setInitReduser] = useState(false)
+    const [initReduser, setInitReduser] = useState(false);
 
-    const store = useStore() as ReduxStoreWithManager
-    const dispatch = useDispatch()
+    const store = useStore() as ReduxStoreWithManager;
+    const mountedReducers = store.reducerManager.getReducerMap();
+    const dispatch = useDispatch();
 
     useIgnoreEffectDeps(()=> {
         Object.entries(reducers).forEach(([nameReducer, reducer]) =>{
-            store.reducerManager.add( nameReducer as TStateSchemaKey,reducer)
-            dispatch({type: `@INIT ${nameReducer} reducer`})
+            const mounted = mountedReducers[nameReducer as TStateSchemaKey]
+            if(!mounted){
+                store.reducerManager.add( nameReducer as TStateSchemaKey,reducer)
+                dispatch({type: `@INIT ${nameReducer} reducer`})
+            }
             setInitReduser(true)
         })
         return () => {

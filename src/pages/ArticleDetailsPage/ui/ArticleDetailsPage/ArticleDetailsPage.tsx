@@ -19,7 +19,7 @@ import { AddCommentForm } from "@/features/AddCommentForm";
 import { addCommentForArticle } from "../../model/services/addCommentForArticle/addCommentForArticle";
 import { Button, EButtonTheme } from "@/shared/ui/Button";
 import { RoutePath } from "@/shared/config/routeConfig";
-import { Page } from "@/shared/ui/Page";
+import { Page } from "@/widgets/Page";
 type TArticleDetailsPageProps = {
   className?: string;
 };
@@ -52,7 +52,7 @@ const ArticleDetailsPage: FC<TArticleDetailsPageProps> = ({ className }) => {
     })
 
     return (
-        <DynamicModuleLoader  reducers={reducers} removeAfterUnmount={false}>
+        <DynamicModuleLoader  reducers={reducers}>
             <Page className={classNames('', {}, [className])}>
                 <Button className={styles.buttonBack} theme={EButtonTheme.BORDER} onClick={handleClickBack}>
                     {t("back_to_aricles")}

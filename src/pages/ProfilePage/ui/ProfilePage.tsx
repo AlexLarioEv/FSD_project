@@ -17,7 +17,7 @@ import { Text , ETypeText} from '@/shared/ui/Text';
 import { useAppDispatch,useAppSelector, useInitEffect } from "@/shared/hooks";
 
 import {ProfilePageHeader} from './ProfilePageHeader/ProfilePageHeader';
-import { Page } from '@/shared/ui/Page';
+import { Page } from '@/widgets/Page';
 
 const reducers:TReducerList = {
     profile: profileReducer
@@ -99,7 +99,7 @@ const ProfilePage: FC<TProfilePageProps> = () => {
         : null , [isServerError, error, t])
 
     return (
-        <DynamicModuleLoader reducers={reducers} removeAfterUnmount={false}>
+        <DynamicModuleLoader reducers={reducers} >
             <Page>
                 <ProfilePageHeader readonly={readonly}/>
                 {textError}

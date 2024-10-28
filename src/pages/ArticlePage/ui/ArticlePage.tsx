@@ -12,12 +12,13 @@ import {
     getViewArticleList, 
     isLoadinArticleList, 
     getPageArticleList, 
-    getHasMoreArticleList } from "../model/selectors/articleList";
+    getHasMoreArticleList, 
+    getInitArticleList} from "../model/selectors/articleList";
 import { articleListReducer, articleListAction, getArticleList } from "../model/slices/articleListSlice";
 import { fetchArticleList } from "../model/services/fetchArticleList";
 
 import styles from './ArticlePage.module.scss';
-import { Page } from "@/shared/ui/Page";
+import { Page } from "@/widgets/Page";
 
 type TArticlePageProps = {
   className?: string;
@@ -29,13 +30,14 @@ const reducers: TReducerList = {
 
 const ArticlePage: FC<TArticlePageProps> = ({ className }) => {
     const dispatch = useAppDispatch()
-    const {articles, error, loading, view, page, hasMore } = useAppSelector( state => ({ 
+    const {articles, error, loading, view, page, hasMore, inited } = useAppSelector( state => ({ 
         articles: getArticleList.selectAll(state),
         error: getErrorArticleList(state),
         loading: isLoadinArticleList(state),
         view: getViewArticleList(state),
         page: getPageArticleList(state),
         hasMore: getHasMoreArticleList(state),
+        inited: getInitArticleList(state)
     }))
 
     const handleSwichView = (value: EArticleView) => {
@@ -50,8 +52,10 @@ const ArticlePage: FC<TArticlePageProps> = ({ className }) => {
     },[page, hasMore, loading, dispatch])
 
     useInitEffect(()=>{
-        dispatch(articleListAction.initState())
-        dispatch(fetchArticleList({page: 1}));
+        if(!inited){
+            dispatch(articleListAction.initState())
+            dispatch(fetchArticleList({page: 1}));
+        }
     })
 
     return (

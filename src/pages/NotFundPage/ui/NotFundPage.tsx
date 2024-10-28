@@ -4,7 +4,7 @@ import { classNames } from "@/shared/lib";
 
 import styles from './NotFundPage.module.scss';
 import { useTranslation } from "react-i18next";
-import { Page } from "@/shared/ui/Page";
+import { Page } from "@/widgets/Page";
 
 type TNotFundPageProps = {
   className?: string;
