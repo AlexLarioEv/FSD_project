@@ -17,6 +17,7 @@ import { Text , ETypeText} from '@/shared/ui/Text';
 import { useAppDispatch,useAppSelector, useInitEffect } from "@/shared/hooks";
 
 import {ProfilePageHeader} from './ProfilePageHeader/ProfilePageHeader';
+import { Page } from '@/shared/ui/Page';
 
 const reducers:TReducerList = {
     profile: profileReducer
@@ -99,29 +100,31 @@ const ProfilePage: FC<TProfilePageProps> = () => {
 
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount={false}>
-            <ProfilePageHeader readonly={readonly}/>
-            {textError}
-            <ProfileCard
-                isLoading={isLoading}
-                error={error?.includes(EErrorValidateForm.SERVER_ERROR)}
-                readonly={readonly}
-                first={firstName} 
-                lastname={lastName} 
-                username={userName} 
-                age={age} 
-                country={country} 
-                currency={currency}
-                city={city} 
-                avatar={avatar}
-                onChangeFirstname={onChangeFirstname}
-                onChangeLastname={onChangeLastname}
-                onChangeCity={onChangeCity}
-                onChangeAge={onChangeAge}
-                onChangeUsername={onChangeUsername}
-                onChangeAvatar={onChangeAvatar}
-                onChangeCurrency={onChangeCurrency}
-                onChangeCountry={onChangeCountry}
-            />
+            <Page>
+                <ProfilePageHeader readonly={readonly}/>
+                {textError}
+                <ProfileCard
+                    isLoading={isLoading}
+                    error={error?.includes(EErrorValidateForm.SERVER_ERROR)}
+                    readonly={readonly}
+                    first={firstName} 
+                    lastname={lastName} 
+                    username={userName} 
+                    age={age} 
+                    country={country} 
+                    currency={currency}
+                    city={city} 
+                    avatar={avatar}
+                    onChangeFirstname={onChangeFirstname}
+                    onChangeLastname={onChangeLastname}
+                    onChangeCity={onChangeCity}
+                    onChangeAge={onChangeAge}
+                    onChangeUsername={onChangeUsername}
+                    onChangeAvatar={onChangeAvatar}
+                    onChangeCurrency={onChangeCurrency}
+                    onChangeCountry={onChangeCountry}
+                />
+            </Page>
         </DynamicModuleLoader>
     );
 };

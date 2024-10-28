@@ -6,4 +6,8 @@ export type TArticleListSchema ={
     isLoading: boolean;
     error?: string;
     view: EArticleView;
+
+    page: number;
+    limit?: number;
+    hasMore: boolean;
 } & EntityState<TArticle, string>

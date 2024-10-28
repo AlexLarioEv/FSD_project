@@ -1,6 +1,6 @@
 import { useEffect } from 'react'; 
  
-import { useCurrent } from './useCurrent'; 
+import { useCurrent } from '../useCurrent/useCurrent'; 
  
 export function useIgnoreEffectDeps(callback: () => void, deps: unknown[]): void { 
     const callbackRef = useCurrent(callback); 

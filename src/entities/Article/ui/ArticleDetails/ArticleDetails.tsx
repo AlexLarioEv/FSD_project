@@ -45,10 +45,10 @@ export const ArticleDetails: FC<TArticleDetailsProps> = ({ className, id }) => {
             switch (block.type) {
             
             case EArticleBlockType.TEXT:
-                return <ArticleTextBlock title={block.title} paragraphs={block.paragraphs} />
+                return <ArticleTextBlock key={block.id} title={block.title} paragraphs={block.paragraphs} />
 
             case EArticleBlockType.CODE:
-                return <ArticleCodeBlock code={block.code} key={block.id} />
+                return <ArticleCodeBlock  code={block.code} key={block.id} />
     
             case EArticleBlockType.IMAGE:
                 return <ArticleImageBlock src={block.src} title={block.title} key={block.id}/>

@@ -25,14 +25,12 @@ export const ArticleList: FC<TArticleListProps> = ({ className, view, articles, 
         />
     )),[articles, view])
 
-    if(isLoading){
-        const skeleton = Array(10).fill(0).map((_, index) => <ArticleItemLoading key={index} view={view} />);
-        return <div className={classNames(styles.ArticleList, {}, [className, styles[view]])}>{skeleton}</div>
-    }
+    const skeleton = Array(10).fill(0).map((_, index) => <ArticleItemLoading key={index} view={view} />);
     
     return (
         <div className={classNames(styles.ArticleList, {}, [className, styles[view]])}>
             {articleItem}
+            {isLoading && skeleton}
         </div>
     );
 };

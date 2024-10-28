@@ -14,7 +14,7 @@ export const App = () => {
     return (
         <div className={classNames('app', {}, [])}>
             <NavBar />
-            <div  className='content-page'>
+            <div className='content-page'>
                 <Sidebar/>
                 {initUser ?<AppRouter/> : null}
             </div>

@@ -19,6 +19,7 @@ import { AddCommentForm } from "@/features/AddCommentForm";
 import { addCommentForArticle } from "../../model/services/addCommentForArticle/addCommentForArticle";
 import { Button, EButtonTheme } from "@/shared/ui/Button";
 import { RoutePath } from "@/shared/config/routeConfig";
+import { Page } from "@/shared/ui/Page";
 type TArticleDetailsPageProps = {
   className?: string;
 };
@@ -52,7 +53,7 @@ const ArticleDetailsPage: FC<TArticleDetailsPageProps> = ({ className }) => {
 
     return (
         <DynamicModuleLoader  reducers={reducers} removeAfterUnmount={false}>
-            <div className={classNames('', {}, [className])}>
+            <Page className={classNames('', {}, [className])}>
                 <Button className={styles.buttonBack} theme={EButtonTheme.BORDER} onClick={handleClickBack}>
                     {t("back_to_aricles")}
                 </Button>
@@ -60,7 +61,7 @@ const ArticleDetailsPage: FC<TArticleDetailsPageProps> = ({ className }) => {
                 <Text title= {t('comment')}/>
                 <AddCommentForm onSendComment={handleSendComment} className={styles.addCommentForm}/>
                 <CommentList isLoading={isCommentLoading} comments={comments}/>
-            </div>
+            </Page>
         </DynamicModuleLoader>
     );
 };
