@@ -15,19 +15,18 @@ import { classNames } from "@/shared/lib";
 
 import { ArticleTextBlock,TArticleTextBlockProps } from "../ArticleTextBlock/ArticleTextBlock";
 import { EArticleBlockType, EArticleView, TArticle } from "../../model/types/ArticleSchema";
-import {ArticleItemLoading} from './ArticleItemLoading'
+
 import styles from './ArticleItem.module.scss';
 
 import Eye from "@/shared/assets/icons/eye-20-20.svg";
 
 type TArticleItemProps = {
     className?: string;
-    isLoading?: boolean;
     view: EArticleView;
     article: TArticle;
 };
 
-export const ArticleItem: FC<TArticleItemProps> = ({ className, view, article, isLoading }) => {
+export const ArticleItem: FC<TArticleItemProps> = ({ className, view, article }) => {
     const navigate = useNavigate()
     const {t} = useTranslation();
     
@@ -46,10 +45,6 @@ export const ArticleItem: FC<TArticleItemProps> = ({ className, view, article, i
     const handleClickCard = useCallback(() => {
         navigate(RoutePath.article_details + id)
     },[id, navigate])
-
-    if(isLoading){
-        return <ArticleItemLoading view={view}/>
-    }
 
     if(view === EArticleView.BIG){
         const textBlock = blocks.find(

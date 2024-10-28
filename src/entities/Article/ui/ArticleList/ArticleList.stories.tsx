@@ -40,7 +40,7 @@ const meta = {
     component: ArticleList,
 
     args:{
-        articles:[aricle,aricle,aricle ],
+        articles:[aricle,aricle,aricle],
         view: EArticleView.SMALL
     }
 
@@ -55,5 +55,18 @@ export const Small: Story = {};
 export const Big: Story = {
     args:{
         view: EArticleView.BIG
+    }
+};
+
+export const SmallLoader: Story = {
+    args:{
+        isLoading: true
+    }
+};
+
+export const BigLoader: Story = {
+    args:{
+        view: EArticleView.BIG,
+        isLoading: true
     }
 };

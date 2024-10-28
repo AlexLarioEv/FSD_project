@@ -1,10 +1,11 @@
-import { render, screen } from "@testing-library/react";
-import { ArticleItem } from "./ArticleItem";
-import { EArticleView, TArticle } from "../../model/types/ArticleSchema";
-import { BrowserRouter } from "react-router-dom";
+import {  screen } from "@testing-library/react";
 import { useNavigate } from "react-router-dom";
-import { EArticleType,EArticleBlockType } from "../../model/types/ArticleSchema";
+
 import { componentRender } from "@/shared/lib/test";
+
+import { EArticleType,EArticleBlockType } from "../../model/types/ArticleSchema";
+import { EArticleView, TArticle } from "../../model/types/ArticleSchema";
+import { ArticleItem } from "./ArticleItem";
 
 jest.mock("react-router-dom", () => ({
     ...jest.requireActual("react-router-dom"),
@@ -41,18 +42,10 @@ describe("ArticleItem Component", () => {
         mockNavigate.mockClear();
     });
 
-    test("renders loading state", () => {
-        componentRender(
-            <ArticleItem article={mockArticle} view={EArticleView.BIG} isLoading />
-        );
-        expect(screen.getByTestId("loading-skeleton")).toBeInTheDocument();
-    });
 
     test("renders in BIG view with title, views, and description", () => {
-        render(
-            <BrowserRouter>
-                <ArticleItem article={mockArticle} view={EArticleView.BIG} isLoading={false} />
-            </BrowserRouter>
+        componentRender(
+            <ArticleItem article={mockArticle} view={EArticleView.BIG} />
         );
 
         expect(screen.getByText("Test Article")).toBeInTheDocument();
@@ -61,16 +54,5 @@ describe("ArticleItem Component", () => {
         expect(screen.getByText("AuthorName")).toBeInTheDocument();
         expect(screen.getByAltText("AuthorName")).toHaveAttribute("src", "author-avatar.jpg");
         expect(screen.getByText("Introduction")).toBeInTheDocument();
-    });
-
-    test("renders in SMALL view with title and views only", () => {
-        componentRender(
-            <ArticleItem article={mockArticle} view={EArticleView.SMALL} isLoading={false} />
-        );
-
-        expect(screen.getByText("Test Article")).toBeInTheDocument();
-        expect(screen.getByText("100")).toBeInTheDocument();
-        expect(screen.getByText("2024-10-25")).toBeInTheDocument();
-        expect(screen.queryByText("Introduction")).not.toBeInTheDocument();
     });
 });

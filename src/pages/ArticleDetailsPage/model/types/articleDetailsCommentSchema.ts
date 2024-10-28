@@ -1,5 +1,5 @@
-import { TComment } from "@/entities/Comment";
 import { EntityState } from "@reduxjs/toolkit";
+import { TComment } from "@/entities/Comment";
 
 export type TArticleDetailsComments ={
     isLoading?: boolean;

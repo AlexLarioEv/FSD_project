@@ -55,16 +55,3 @@ export const Big: Story = {
         view: EArticleView.BIG
     }
 };
-
-export const SmallLoading: Story = {
-    args:{
-        isLoading: true
-    }
-};
-
-export const BigLoading: Story = {
-    args:{
-        view: EArticleView.BIG,
-        isLoading: true
-    }
-};

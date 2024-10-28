@@ -1,4 +1,5 @@
 export enum ELocalStorageKey {
     USER = 'user',
-    THEME= 'theme'
+    THEME= 'theme',
+    ARTICLE_PAGE_VIEW= 'articlePageView'
 };

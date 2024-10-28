@@ -3,12 +3,14 @@ import { NavigateFunction } from 'react-router-dom';
 import { AxiosInstance } from 'axios';
 
 import type { TArticleDetailsComments } from '@/pages/ArticleDetailsPage';
+import { TArticleListSchema } from '@/pages/ArticlePage';
 import type { TAddCommentFormSchema } from '@/features/AddCommentForm'
 import type { TLoginSchema } from '@/features/AuthByUserName';
 import type { TCounterSchema } from '@/entities/Counter';
 import type { TUserSchema } from '@/entities/User';
 import type { TArticleSchema } from '@/entities/Article';
 import type { TProfileSchema } from '@/entities/Profile';
+
 
 import {staticReducer} from './store'
 import {createReducerManager} from './createReducerManager'
@@ -25,6 +27,7 @@ export type TStateSchema = {
     article?: TArticleSchema;
     articleDetailsComment?: TArticleDetailsComments;
     addCommentForm?: TAddCommentFormSchema;
+    articleList?: TArticleListSchema;
 };
 
 export type TStateSchemaKey  = keyof TStateSchema;
