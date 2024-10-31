@@ -1,25 +1,26 @@
 import { FC, memo } from "react";
 import { useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-import {ArticleDetails, articleReducer} from '@/entities/Article'
-import {CommentList} from '@/entities/Comment'
+import { Page } from "@/widgets/Page";
+import { AddCommentForm } from "@/features/AddCommentForm";
+import { ArticleDetails, articleReducer } from '@/entities/Article'
+import { CommentList } from '@/entities/Comment'
 import { classNames } from "@/shared/lib";
 import { DynamicModuleLoader, TReducerList } from "@/shared/lib/components";
 import { Text } from "@/shared/ui/Text";
+import { useAppDispatch, useInitEffect } from "@/shared/hooks";
 
 import {isLoadingArticleDetailsComment} from '../../model/selectors/comments'
 import {articleDetailsCommentReducer, getArticleComments} from '../../model/slices/articleDetailsCommentSlice';
 import { fetchCommentById } from "../../model/services/fetchCommentById";
 
-import styles from "./ArticleDetailsPage.module.scss"
-import { useAppDispatch, useInitEffect } from "@/shared/hooks";
-import { AddCommentForm } from "@/features/AddCommentForm";
+
 import { addCommentForArticle } from "../../model/services/addCommentForArticle/addCommentForArticle";
-import { Button, EButtonTheme } from "@/shared/ui/Button";
-import { RoutePath } from "@/shared/config/routeConfig";
-import { Page } from "@/widgets/Page";
+import { ArticleDetailsHeader } from "../ArticleDetailsHeader/ArticleDetailsHeader";
+
+import styles from "./ArticleDetailsPage.module.scss"
 type TArticleDetailsPageProps = {
   className?: string;
 };
@@ -31,7 +32,6 @@ const reducers:TReducerList = {
 
 const ArticleDetailsPage: FC<TArticleDetailsPageProps> = ({ className }) => {
     const dispatch =  useAppDispatch();
-    const navigate = useNavigate()
     const {t} = useTranslation('articleDetails')
     const {id} =  useParams()
 
@@ -42,10 +42,6 @@ const ArticleDetailsPage: FC<TArticleDetailsPageProps> = ({ className }) => {
         dispatch(addCommentForArticle(value));
     }
 
-    const handleClickBack = () => {
-        navigate(RoutePath.article)
-    }
-
     useInitEffect(()=> {
         dispatch(fetchCommentById(String(id)))
 
@@ -54,9 +50,7 @@ const ArticleDetailsPage: FC<TArticleDetailsPageProps> = ({ className }) => {
     return (
         <DynamicModuleLoader  reducers={reducers}>
             <Page className={classNames('', {}, [className])}>
-                <Button className={styles.buttonBack} theme={EButtonTheme.BORDER} onClick={handleClickBack}>
-                    {t("back_to_aricles")}
-                </Button>
+                <ArticleDetailsHeader className={styles.articleHeader}/>
                 {id ? <ArticleDetails className={styles.articleDetails} id={id} /> : null}
                 <Text title= {t('comment')}/>
                 <AddCommentForm onSendComment={handleSendComment} className={styles.addCommentForm}/>

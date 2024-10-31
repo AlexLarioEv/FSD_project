@@ -6,10 +6,13 @@ import {AuthModal} from '@/features/AuthByUserName/ui'
 import {getUser, userActions} from '@/entities/User'
 
 import { useAppSelector } from "@/shared/hooks"
+import { Text,ETypeText } from "@/shared/ui/Text"
 import { Button } from "@/shared/ui/Button"
 import { classNames} from '@/shared/lib'
 
 import styles from './NavBar.module.scss'
+import { useNavigate } from "react-router-dom"
+import { RoutePath } from "@/shared/config/routeConfig"
 
 type TNavBarProps = {
     className?: string
@@ -18,8 +21,13 @@ type TNavBarProps = {
 export const NavBar: FC<TNavBarProps> = ({className}) => {
     const [isOpen, setIsOpen] = useState(false);
     const {t} = useTranslation();
+    const navigate = useNavigate()
     const {auth} = useAppSelector(getUser)
     const dispatch = useDispatch();
+    
+    const handleCreateArticle = () => {
+        navigate(RoutePath.article_create)
+    }
 
     const handleOpenLoginModal = useCallback(() => {
         setIsOpen(true)
@@ -39,6 +47,8 @@ export const NavBar: FC<TNavBarProps> = ({className}) => {
 
     return (
         <div className={classNames(styles.navbar, {}, [className])}>
+            <Text className={styles.mainTitle} type={ETypeText.INVERTED} title={t('main_title')}/>
+            <Button onClick={handleCreateArticle} inverted>{t('create_article')}</Button>
             <div className={styles.auth}>
                 {auth ? <Button inverted onClick={handleLogout}>{t('exit')}</Button>
                     : <Button inverted onClick={handleOpenLoginModal}>{t('sign_in')}</Button>}

@@ -11,8 +11,24 @@
     color: var(--secondary-color);
 }
 
-.error > .title, .error > .description{
-    color: var(--error-color)
+.error {
+    .title{
+        color: var(--error-color)
+    }
+
+    .description{
+        color: var(--error-color)
+    }
+}
+
+.inverted {
+    .title{
+        color: var(--inverted-primary-color);
+    }
+
+    .description{
+        color: var(--inverted-secondary-color);
+    }
 }
 
 .size_m {

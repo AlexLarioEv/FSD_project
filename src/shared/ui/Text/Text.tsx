@@ -5,6 +5,7 @@ import styles from './Text.module.scss';
 
 export enum ETypeText {
     PRIMARY = 'primary',
+    INVERTED = "inverted",
     ERROR = 'error',
 } 
 
