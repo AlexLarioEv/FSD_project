@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Select } from './Select';
+import  Select  from './Select';
 import { fn } from '@storybook/test';
 
 const meta = {
@@ -13,7 +13,7 @@ const meta = {
 
     args: { 
         label: 'Герой',
-        options: ['Заяц', 'Волк'],
+        options: [{ value: 'Заяц', content: 'Заяц'}, {value: 'Волк', content: 'Волк'}],
         onChange: fn()
     },
 

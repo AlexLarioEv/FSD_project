@@ -7,7 +7,7 @@
     "article_details": "Article details",
     "close": "Close",
     "open": "Open",
-    "not_fund": "Page not fund",
+    "not_fund_page": "Page not fund",
     "error": "Page error",
     "please_try_again":  "Refresh Web App",
     "sign_in": "Sign in",
@@ -20,5 +20,8 @@
     "country": "Country",
     "add_comment": "Add comment",
     "add": "Add",
-    "read_more":"Read_more..."
+    "read_more":"Read_more...",
+    "desc": "descending", 
+    "asc":"ascending",
+    "not_fund": "Not_fund"
 }

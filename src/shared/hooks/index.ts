@@ -6,3 +6,4 @@ export { useInitEffect } from './useInitEffect/useInitEffect';
 export { useAppSelector } from './useAppSelector/useAppSelector';
 export {useInfiniteScroll} from './useInfiniteScroll/useInfiniteScroll'
 export { useThrottle } from './useThrottle/useThrottle'
+export {useDebounce} from './useDebounce/useDebounce';

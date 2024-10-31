@@ -27,7 +27,7 @@ const viewTypes = [
     }
 ]
 
-export const ArticleViewSelector: FC<TArticleViewSelectorProps> = ({ className, view, onViewClick }) => {
+export const ArticleViewSelector: FC<TArticleViewSelectorProps> = ({ className, view = EArticleView.SMALL, onViewClick }) => {
 
     const handleClickView = useCallback((event: EArticleView) => () => {
         onViewClick(event);

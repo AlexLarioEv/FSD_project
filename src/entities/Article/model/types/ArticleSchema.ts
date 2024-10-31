@@ -31,6 +31,7 @@ export interface IArticleTextBlock extends ArticleBlockBase {
 export type ArticleBlock = IArticleCodeBlock | IArticleImageBlock | IArticleTextBlock;
 
 export enum EArticleType {
+    ALL="ALL",
     IT = 'IT',
     SCIENCE = 'SCIENCE',
     ECONOMICS = 'ECONOMICS'
@@ -53,6 +54,7 @@ export interface TArticle {
     blocks: ArticleBlock[];
 }
 
+export type TArticleKey = keyof TArticle
 
 export type TArticleSchema = {
     isLoading: boolean;

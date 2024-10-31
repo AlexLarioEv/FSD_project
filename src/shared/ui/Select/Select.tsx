@@ -4,31 +4,36 @@ import { classNames } from "@/shared/lib";
 
 import styles from "./Select.module.scss";
 
-type TSelectProps = {
+export type TOptionsType<T extends string> = {
+    value: T,
+    content: string,
+}
+
+type TSelectProps<T extends string> = {
     label?: string;
-    options?: string[]
+    options?: TOptionsType<T>[];
     className?: string;
     defaultValue?: string;
     readonly?: boolean;
     testId?: string;
-    onChange?: (value:string) => void 
+    onChange?: (value:T) => void 
 };
 
 
-const Select = memo(({ className, label , options, defaultValue, readonly, testId, onChange }: TSelectProps) => {
+const Select = <T extends string>({ className, label , options, defaultValue, readonly, testId, onChange }: TSelectProps<T>) => {
 
 
     const handleChange = (e: ChangeEvent<HTMLSelectElement>) =>{
-        onChange && onChange(e.target.value);
+        onChange && onChange(e.target.value as T);
     }
 
     const  optionList = useMemo(
-        () => options?.map((name, index) => <option 
+        () => options?.map(({value, content}, index) => <option 
             disabled = {readonly}
             className={styles.option} 
-            key={name || index} 
-            value={name}>
-            {name}
+            key={value || index} 
+            value={value}>
+            {content}
         </option>), [options, readonly]);
 
     return (
@@ -39,8 +44,6 @@ const Select = memo(({ className, label , options, defaultValue, readonly, testI
             </select>
         </div>
     );
-});
+}
 
-Select.displayName = 'Select'
-
-export { Select };
+export default memo(Select) as typeof Select ;

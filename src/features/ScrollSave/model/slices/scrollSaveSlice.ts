@@ -1,12 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-import {TScrollSaveShema} from '../types/ScrollSaveShema'
+import {TScrollSaveSchema} from '../types/ScrollSaveSchema'
 
-const initialState: TScrollSaveShema = {
+const initialState: TScrollSaveSchema = {
     scroll: {}
 };
 
-export const scrollSaveSlece = createSlice({
+export const scrollSaveSlice = createSlice({
     name: 'scrollSave',
     initialState,
     reducers: {
@@ -16,4 +16,4 @@ export const scrollSaveSlece = createSlice({
     }
 })
 
-export const {actions: scrollSaveActions, reducer: scrollSaveReducer} = scrollSaveSlece;
+export const {actions: scrollSaveActions, reducer: scrollSaveReducer} = scrollSaveSlice;

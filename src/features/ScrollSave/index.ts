@@ -1,4 +1,4 @@
 export {getScrollByPath} from './model/selectors/getScrollSave';
-export {scrollSaveReducer, scrollSaveActions} from './model/slices/scrollSaveSlece';
+export {scrollSaveReducer, scrollSaveActions} from './model/slices/scrollSaveSlice';
 
-export type { TScrollSaveShema } from './model/types/ScrollSaveShema';
+export type { TScrollSaveSchema } from './model/types/ScrollSaveSchema';

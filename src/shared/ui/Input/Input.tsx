@@ -13,7 +13,7 @@ import styles from "./Input.module.scss";
 
 type TInputAttributes = Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange' | 'value' >
 
-type TInputProps = {
+export type TInputProps = {
   className?: string;
   value?: string | number;
   type?: HTMLInputTypeAttribute

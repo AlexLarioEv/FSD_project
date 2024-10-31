@@ -28,7 +28,8 @@ export type TButtonProps = {
 
 const Button = memo(({ 
     className, 
-    children,theme = EButtonTheme.CLEAR, 
+    children,
+    theme = EButtonTheme.CLEAR, 
     size = EButtonSize.AUTO, 
     testId,
     inverted, 

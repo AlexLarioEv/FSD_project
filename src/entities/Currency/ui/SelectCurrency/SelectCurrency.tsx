@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { useTranslation } from "react-i18next";
 
-import { Select } from "@/shared/ui/Select";
+import { Select, TOptionsType } from "@/shared/ui/Select";
 
 import {ECurrency} from '../../model/types'
 
@@ -12,14 +12,18 @@ type TSelectCountryProps = {
   readonly?: boolean;
 };
 
-const optionList = [ECurrency.EUR, ECurrency.RUB, ECurrency.USD];
+const optionList: TOptionsType<ECurrency>[] = [
+    {value: ECurrency.EUR, content: ECurrency.EUR  },
+    {value: ECurrency.RUB, content: ECurrency.RUB  }, 
+    {value: ECurrency.USD, content: ECurrency.USD  }
+];
 
 export const SelectCurrency: FC<TSelectCountryProps> = ({ className, defaultValue, onChange, readonly}) => {
     const {t} = useTranslation()
 
-    const handleChange = (e: string) => {
+    const handleChange = (e: ECurrency) => {
         
-        onChange && onChange(e as ECurrency);
+        onChange && onChange(e);
     }
 
     return (

@@ -18,13 +18,14 @@ export const getArticleList = articleListAdapter.getSelectors<TStateSchema>((sta
     state.articleList || articleListAdapter.getInitialState())
   
 const articleListSlice = createSlice({
-    name: 'comments',
+    name: 'articleList',
     initialState: articleListAdapter.getInitialState<TArticleListSchema>({
         isLoading: false,
         error:undefined,
         ids: [],
         entities: {},
-        view: localStorage.getItem(ELocalStorageKey.ARTICLE_PAGE_VIEW) as EArticleView,
+        view: localStorage.getItem(ELocalStorageKey.ARTICLE_PAGE_VIEW) as EArticleView ?? EArticleView.SMALL,
+        limit: 9,
         page: 1,
         hasMore: true,
         _init: false,
@@ -44,13 +45,24 @@ const articleListSlice = createSlice({
         }
     },
     extraReducers: (builder) => {
-        builder.addCase(fetchArticleList.pending, (state)=> {
+        builder.addCase(fetchArticleList.pending, (state, action)=> {
             state.isLoading = true;
             state.error = undefined;
-        }).addCase(fetchArticleList.fulfilled, (state, action: PayloadAction<TArticle[]>)=> {
+
+            if(action.meta.arg?.replace){
+                articleListAdapter.removeAll(state);
+            }
+        }).addCase(fetchArticleList.fulfilled, (state, action)=> {
             articleListAdapter.setMany(state, action.payload);
-            state.hasMore = action.payload.length > 0;
+            state.hasMore = action.payload.length >= state.limit;
             state.isLoading = false;
+
+            if (action.meta.arg?.replace) {
+                articleListAdapter.setAll(state, action.payload);
+            } else {
+                articleListAdapter.addMany(state, action.payload);
+            }
+            
         }).addCase(fetchArticleList.rejected, (state, action)=> {
             state.error = action.payload;
             state.isLoading = false

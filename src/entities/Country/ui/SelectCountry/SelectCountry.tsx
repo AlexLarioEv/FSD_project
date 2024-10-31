@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { useTranslation } from "react-i18next";
 
-import { Select } from "@/shared/ui/Select";
+import { Select, TOptionsType } from "@/shared/ui/Select";
 
 import {ECountry} from '../../model/types'
 
@@ -12,13 +12,17 @@ type TSelectCountryProps = {
   onChange?: (e: ECountry) => void;
 };
 
-const optionList = [ECountry.ARMENIA, ECountry.BELARUS, ECountry.KAZAKHSTAN, ECountry.RUSSIA, ECountry.UKRAINE]
+const optionList: TOptionsType<ECountry>[] = [
+    {value: ECountry.ARMENIA, content: ECountry.ARMENIA  },
+    {value: ECountry.BELARUS, content: ECountry.BELARUS  },
+    {value: ECountry.KAZAKHSTAN, content: ECountry.RUSSIA  },
+    {value: ECountry.UKRAINE, content: ECountry.UKRAINE  }]
 
 export const SelectCountry: FC<TSelectCountryProps> = ({ className,defaultValue,readonly, onChange }) => {
     const {t} = useTranslation();
     
-    const handleChange = (e: string) => {
-        onChange && onChange(e as ECountry);
+    const handleChange = (e: ECountry) => {
+        onChange && onChange(e);
     }
 
     return (

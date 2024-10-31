@@ -8,7 +8,8 @@ export type TArticleListSchema ={
     view: EArticleView;
 
     page: number;
-    limit?: number;
+    limit: number;
     hasMore: boolean;
     _init: boolean;
 } & EntityState<TArticle, string>
+

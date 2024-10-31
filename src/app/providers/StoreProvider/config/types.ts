@@ -2,14 +2,15 @@ import type { EnhancedStore, Reducer, ThunkDispatch, Action} from '@reduxjs/tool
 import { AxiosInstance } from 'axios';
 
 import type { TArticleDetailsComments } from '@/pages/ArticleDetailsPage';
-import { TArticleListSchema } from '@/pages/ArticlePage';
+import type { TArticleListSchema } from '@/pages/ArticlePage';
 import type { TAddCommentFormSchema } from '@/features/AddCommentForm'
 import type { TLoginSchema } from '@/features/AuthByUserName';
 import type { TCounterSchema } from '@/entities/Counter';
 import type { TUserSchema } from '@/entities/User';
 import type { TArticleSchema } from '@/entities/Article';
 import type { TProfileSchema } from '@/entities/Profile';
-import type { TScrollSaveShema } from '@/features/ScrollSave'
+import type { TScrollSaveSchema } from '@/features/ScrollSave'
+import type { TFilterSchema } from '@/features/Filter';
 
 
 import {staticReducer} from './store'
@@ -20,7 +21,7 @@ export type StaticReducers = typeof staticReducer
 export type TStateSchema = {
     counter: TCounterSchema;
     user: TUserSchema;
-    scrollSave: TScrollSaveShema;
+    scrollSave: TScrollSaveSchema;
 
     // Асинхронный редюсеры
     login?: TLoginSchema;
@@ -29,6 +30,7 @@ export type TStateSchema = {
     articleDetailsComment?: TArticleDetailsComments;
     addCommentForm?: TAddCommentFormSchema;
     articleList?: TArticleListSchema;
+    filter?: TFilterSchema;
 };
 
 export type TStateSchemaKey  = keyof TStateSchema;
