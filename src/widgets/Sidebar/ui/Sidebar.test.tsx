@@ -1,6 +1,7 @@
-import {fireEvent, screen} from '@testing-library/react'
-import { Sidebar } from '@/widgets/Sidebar/ui'
-import {componentRender} from '@/shared/lib/test'
+import {fireEvent, screen} from '@testing-library/react';
+import {componentRender} from '@/shared/lib/test';
+
+import { Sidebar } from './Sidebar';
 
 describe('classNames', ()=> {
     test('Sidebar render', ()=> {

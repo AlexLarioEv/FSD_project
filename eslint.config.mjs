@@ -4,6 +4,7 @@ import tseslint from "typescript-eslint";
 import pluginReact from "eslint-plugin-react";
 import i18next from 'eslint-plugin-i18next';
 import reactHooks from "eslint-plugin-react-hooks";
+import alexlarioPlugin from "eslint-plugin-alexlario-plugin";
 
 export default [
     {languageOptions: { globals: globals.browser }},
@@ -15,6 +16,7 @@ export default [
         plugins: {
             "react": pluginReact,
             "react-hooks": reactHooks,
+            "alexlario-plugin": alexlarioPlugin
         },
         files: ["**/*.{js,mjs,cjs,ts,jsx,tsx}"],
         "settings": {
@@ -41,6 +43,7 @@ export default [
             '@typescript-eslint/no-unused-expressions': ["error", { "allowShortCircuit": true }],
             ...reactHooks.configs.recommended.rules,
             "react-hooks/exhaustive-deps": "error",
+            "alexlario-plugin/path-checker": "error",
         },
         ignores: [
             "node_modules/*",    

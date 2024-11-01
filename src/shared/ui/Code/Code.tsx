@@ -1,7 +1,7 @@
 import { useCallback, memo } from "react";
 
 import { classNames } from "@/shared/lib";
-import { Button , EButtonTheme} from "@/shared/ui/Button";
+import { Button , EButtonTheme} from "../Button";
 import CopyIcon from '@/shared/assets/icons/copy-20-20.svg'
 
 import styles from './Code.module.scss';
