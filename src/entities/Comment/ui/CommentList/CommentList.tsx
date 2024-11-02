@@ -8,7 +8,7 @@ import { CommentCard } from "../CommentCard/CommentCard";
 import {CommentCardLoading} from '../CommentCard/CommentCardLoading';
 import { TComment } from "../../model/types/types";
 
-import styles from './CommentList.module.scss';
+import { VStack } from "@/shared/ui/Stack";
 
 type TCommentListProps = {
     isLoading?: boolean;
@@ -28,18 +28,18 @@ const CommentList = memo(({ className, comments, isLoading }: TCommentListProps)
 
     if(isLoading){
         return (
-            <div className={classNames(styles.CommentList, {}, [className])}>
+            <VStack gap={16} className={classNames('', {}, [className])}>
                 <CommentCardLoading isLoading />
                 <CommentCardLoading isLoading />
                 <CommentCardLoading isLoading />
-            </div>
+            </VStack>
         )
     }
 
     return (
-        <div className={classNames(styles.CommentList, {}, [className])}>
+        <VStack gap={16} className={classNames('', {}, [className])}>
             {commentList}
-        </div>
+        </VStack>
     );
 });
 

@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import { fn } from '@storybook/test';
 
-import {SelectCountry} from './SelectCountry';
+import SelectCountry from './SelectCountry';
 import { ECountry } from '../../model/types';
 
 const meta = {

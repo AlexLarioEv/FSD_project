@@ -1,6 +1,8 @@
 import { FC, ReactNode, useCallback } from "react";
+import { createSelector } from "@reduxjs/toolkit";
 
 import { classNames } from "@/shared/lib";
+import { VStack } from "@/shared/ui/Stack";
 import { useAppDispatch, useAppSelector, useInitEffect } from "@/shared/hooks";
 import { Skeleton } from '@/shared/ui/Skeleton';
 import { Avatar } from "@/shared/ui/Avatar";
@@ -23,14 +25,24 @@ type TArticleDetailsProps = {
     id: string;
 };
 
+const selectArticleState = createSelector(
+    [
+        isArticleLoading,
+        getArticleError,
+        getArticleData
+    ],
+    (isLoading, error, dataArticle) => ({
+        isLoading,
+        error,
+        dataArticle
+    })
+);
+
 export const ArticleDetails: FC<TArticleDetailsProps> = ({ className, id }) => {
 
     const dispatch = useAppDispatch()
-    const {isLoading, error, dataArticle} = useAppSelector((state)=> ({
-        isLoading: isArticleLoading(state),
-        error: getArticleError(state),
-        dataArticle: getArticleData(state)
-    }))
+    const {isLoading, error, dataArticle} = useAppSelector(selectArticleState);
+
     const {title, subtitle, img, views, blocks, createdAt} = dataArticle || {}
     let content:ReactNode = null;
     
@@ -89,8 +101,8 @@ export const ArticleDetails: FC<TArticleDetailsProps> = ({ className, id }) => {
     }
 
     return (
-        <div className={classNames(styles.ArticleDetails, {}, [className])}>
+        <VStack gap={16} className={classNames(styles.ArticleDetails, {}, [className])}>
             {content}
-        </div>
+        </VStack>
     );
 };

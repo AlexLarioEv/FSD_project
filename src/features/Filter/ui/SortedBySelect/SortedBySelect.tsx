@@ -8,8 +8,8 @@ import { useAppDispatch, useAppSelector } from "@/shared/hooks";
 import { filterActions } from '../../model/slice/filterSlice';
 import { EOrderFilter } from "../../model/types/filterSchema";
 
-import styles from './SortedBySelect.module.scss';
 import { getOrder, getSort } from "../../model/selectors/getFilter";
+import { HStack } from "@/shared/ui/Stack";
 
 type TFilterBySelectProps = {
     fieldOptions: TOptionsType<string>[];
@@ -56,7 +56,7 @@ export const SortedBySelect: FC<TFilterBySelectProps> = ({
     ], [t]);
 
     return (
-        <div className={classNames(styles.SortBySelect, {}, [className])}>
+        <HStack gap={8} className={classNames('', {}, [className])}>
             <Select 
                 defaultValue={sort}
                 label={label}  
@@ -64,6 +64,6 @@ export const SortedBySelect: FC<TFilterBySelectProps> = ({
                 onChange={handleChangeField} 
             />
             <Select defaultValue={order} label={labelOrder} options={orderOptions} onChange={handleChangeOrder} />
-        </div>
+        </HStack>
     );
 };

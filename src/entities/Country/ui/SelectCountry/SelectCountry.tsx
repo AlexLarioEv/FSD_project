@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC,memo } from "react";
 import { useTranslation } from "react-i18next";
 
 import { Select, TOptionsType } from "@/shared/ui/Select";
@@ -18,7 +18,7 @@ const optionList: TOptionsType<ECountry>[] = [
     {value: ECountry.KAZAKHSTAN, content: ECountry.RUSSIA  },
     {value: ECountry.UKRAINE, content: ECountry.UKRAINE  }]
 
-export const SelectCountry: FC<TSelectCountryProps> = ({ className,defaultValue,readonly, onChange }) => {
+const SelectCountry: FC<TSelectCountryProps> = ({ className,defaultValue,readonly, onChange }) => {
     const {t} = useTranslation();
     
     const handleChange = (e: ECountry) => {
@@ -37,3 +37,5 @@ export const SelectCountry: FC<TSelectCountryProps> = ({ className,defaultValue,
         />
     );
 };
+
+export default memo(SelectCountry);

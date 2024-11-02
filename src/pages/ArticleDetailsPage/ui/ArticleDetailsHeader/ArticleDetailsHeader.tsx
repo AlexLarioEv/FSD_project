@@ -6,20 +6,20 @@ import { classNames } from "@/shared/lib";
 import { Button, EButtonTheme } from "@/shared/ui/Button";
 import { RoutePath } from "@/shared/config/routeConfig";
 
-import styles from './ArticleDetailsHeader.module.scss';
+import { HStack } from "@/shared/ui/Stack";
 
 type TArticleDetailsHeaderProps = {
     className?: string;
 };
 
 type TParamsUrl = {
-    id: string
+    id: string;
 }
 
 export const ArticleDetailsHeader: FC<TArticleDetailsHeaderProps> = ({ className }) => {
 
-    const {t} = useTranslation('articleDetails')
-    const {id} = useParams<TParamsUrl>()
+    const {t} = useTranslation('articleDetails');
+    const {id} = useParams<TParamsUrl>();
     const navigate = useNavigate();
 
     const handleClickBack = () => {
@@ -31,13 +31,13 @@ export const ArticleDetailsHeader: FC<TArticleDetailsHeaderProps> = ({ className
     }
 
     return (
-        <div className={classNames(styles.ArticleDetailsHeader, {}, [className])}>
+        <HStack justify='between' gap={8} className={classNames('', {}, [className])}>
             <Button theme={EButtonTheme.BORDER} onClick={handleClickBack}>
                 {t("back_to_aricles")}
             </Button>
             <Button theme={EButtonTheme.BORDER} onClick={handleClickEdit}>
                 {t("edit_page")}
             </Button>
-        </div>
+        </HStack>
     );
 };

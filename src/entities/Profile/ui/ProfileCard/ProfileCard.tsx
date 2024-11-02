@@ -14,6 +14,7 @@ import { ECurrency } from '@/entities/Currency';
 import { ECountry } from '@/entities/Country';
 
 import {TProfile} from "../../model/types/ProfileSchema";
+import { VStack } from "@/shared/ui/Stack";
 
 export type TProfileCardProps = {
     className?: string;
@@ -80,7 +81,7 @@ export const ProfileCard: FC<TProfileCardProps> = ({
     }
     
     return (
-        <div className={classNames(styles.ProfileCard, mods, [className])}>
+        <VStack gap={8} className={classNames(styles.ProfileCard, mods, [className])}>
             <Avatar className={styles.avatar} size={100} src={avatar ?? ''} alt={username ?? ''}/>
             <Input aria-label="firstName" disabled={readonly} onChange={onChangeFirstname} placeholder={t('firstName')} value={first} />
             <Input aria-label="lastName" disabled={readonly} onChange={onChangeLastname} placeholder={t('lastName')} value={lastname} />
@@ -90,6 +91,6 @@ export const ProfileCard: FC<TProfileCardProps> = ({
             <Input aria-label="avatar" disabled={readonly} onChange={onChangeAvatar} placeholder={t('avatar')} value={avatar} />
             <SelectCurrency readonly={readonly} onChange={onChangeCurrency} defaultValue={currency}/>
             <SelectCountry readonly={readonly} onChange={onChangeCountry} defaultValue={country}/>
-        </div>
+        </VStack>
     );
 };

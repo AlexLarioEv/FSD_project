@@ -1,15 +1,6 @@
 .ProfileCard {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
     border: solid 2px var(--inverted-bg-color);
     padding: 16px;
-}
-
-.header {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 16px;
 }
 
 .edit {

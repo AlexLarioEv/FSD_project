@@ -17,15 +17,13 @@ export const SidebarItem: FC<TSidebarItemProps> = ({ className, path, collapsed,
     const {t} = useTranslation()
 
     return (
-        <div className={classNames(styles.SidebarItem, {}, [className])}>
-            <AppLink className={styles.link} type={EApplinkTypes.SECONDARY} to={path}> 
-                <div>
-                    <Icon className={styles.icon}/>
-                </div>
-                <span>
-                    {!collapsed && t(text)} 
-                </span>
-            </AppLink>
-        </div>
+        <AppLink className={classNames(styles.link,{}, [className])} type={EApplinkTypes.SECONDARY} to={path}> 
+            <div>
+                <Icon className={styles.icon}/>
+            </div>
+            <span>
+                {!collapsed && t(text)} 
+            </span>
+        </AppLink>
     );
 };

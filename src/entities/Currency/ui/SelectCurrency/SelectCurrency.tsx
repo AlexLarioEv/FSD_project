@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, memo } from "react";
 import { useTranslation } from "react-i18next";
 
 import { Select, TOptionsType } from "@/shared/ui/Select";
@@ -18,7 +18,7 @@ const optionList: TOptionsType<ECurrency>[] = [
     {value: ECurrency.USD, content: ECurrency.USD  }
 ];
 
-export const SelectCurrency: FC<TSelectCountryProps> = ({ className, defaultValue, onChange, readonly}) => {
+const SelectCurrency: FC<TSelectCountryProps> = ({ className, defaultValue, onChange, readonly}) => {
     const {t} = useTranslation()
 
     const handleChange = (e: ECurrency) => {
@@ -38,3 +38,5 @@ export const SelectCurrency: FC<TSelectCountryProps> = ({ className, defaultValu
         />
     );
 };
+
+export default memo(SelectCurrency);

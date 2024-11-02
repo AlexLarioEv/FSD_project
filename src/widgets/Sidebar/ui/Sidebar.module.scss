@@ -12,10 +12,6 @@
 .switcher {
     position: absolute;   
     bottom: 16px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    gap: 16px;
 }
 
 .button {
@@ -26,15 +22,7 @@
 }
 
 .links {
-    display: flex;
-    flex-direction: column;
     padding-left: 24px;
-    gap: 8px;
-}
-
-.link {
-    display: flex;
-    gap: 8px;
 }
 
 .icon {

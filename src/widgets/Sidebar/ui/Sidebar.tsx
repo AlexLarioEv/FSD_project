@@ -12,6 +12,7 @@ import {getSidebarItems} from '../model/selectors/getSidebarItems'
 import {SidebarItem} from '../../SidebarItem/'
 import styles from './Sidebar.module.scss';
 import { useSelector } from "react-redux";
+import { HStack, VStack } from "@/shared/ui/Stack";
 
 type TSidebarProps = {
   className?: string;
@@ -38,9 +39,9 @@ export const Sidebar: FC<TSidebarProps> = ({ className,testId }) => {
         <div data-testid={testId}
             className={classNames(styles.Sidebar, {[styles.collapsed]: collapsed}, [className])
             }>
-            <div className={styles.links}>
+            <VStack gap={8} className={styles.links}>
                 {sidebarLinks}
-            </div>
+            </VStack>
             <Button 
                 size={EButtonSize.L}
                 className={styles.button}
@@ -50,10 +51,10 @@ export const Sidebar: FC<TSidebarProps> = ({ className,testId }) => {
             > 
                 {t(collapsed ? '>' : '<')} 
             </Button>
-            <div className={styles.switcher}>
+            <HStack justify="center" max gap={16} className={styles.switcher}>
                 <ThemeSwitcher />
                 <LangSwitcher/>
-            </div>
+            </HStack>
         </div>
     );
 };

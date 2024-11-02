@@ -1,14 +1,16 @@
 import { FC, useMemo } from "react";
+import { useTranslation } from "react-i18next";
 
 import { classNames } from "@/shared/lib";
+import { Text } from "@/shared/ui/Text";
 
+
+import { EArticleView, TArticle } from "../../model/types/ArticleSchema";
 import { ArticleItem } from '../ArticleItem/ArticleItem';
+import { ArticleItemLoading } from "../ArticleItem/ArticleItemLoading";
 
 import styles from './ArticleList.module.scss';
-import { EArticleView, TArticle } from "../../model/types/ArticleSchema";
-import { ArticleItemLoading } from "../ArticleItem/ArticleItemLoading";
-import { Text } from "@/shared/ui/Text";
-import { useTranslation } from "react-i18next";
+import { Flex } from "@/shared/ui/Stack";
 
 type TArticleListProps = {
     className?: string;
@@ -35,9 +37,14 @@ export const ArticleList: FC<TArticleListProps> = ({ className, view, articles, 
     }
     
     return (
-        <div className={classNames(styles.ArticleList, {}, [className, styles[view]])}>
+        <Flex 
+            max 
+            gap={16} 
+            direction={EArticleView.BIG === view ? 'column' : 'row'} 
+            className={classNames(styles.ArticleList, {}, [className, styles[view]])}
+        >
             {articleItem}
             {isLoading && skeleton}
-        </div>
+        </Flex>
     );
 };

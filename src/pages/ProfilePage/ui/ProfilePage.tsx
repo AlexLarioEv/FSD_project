@@ -2,6 +2,7 @@ import {useCallback, FC, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 
+import { Page } from '@/widgets/Page';
 import { 
     ProfileCard, 
     fetchProfile, 
@@ -16,8 +17,10 @@ import { DynamicModuleLoader, TReducerList } from "@/shared/lib/components";
 import { Text , ETypeText} from '@/shared/ui/Text';
 import { useAppDispatch,useAppSelector, useInitEffect } from "@/shared/hooks";
 
-import {ProfilePageHeader} from './ProfilePageHeader/ProfilePageHeader';
-import { Page } from '@/widgets/Page';
+import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader';
+
+import styles from './ProfilePage.module.scss';
+import { createSelector } from '@reduxjs/toolkit';
 
 const reducers:TReducerList = {
     profile: profileReducer
@@ -27,25 +30,54 @@ type TProfilePageProps = {
   className?: string;
 };
 
+const selectProfileData = createSelector(
+    [
+        selectorProfile.isLoadingProfileData,
+        selectorProfile.isErrorProfileData,
+        selectorProfile.getFirstName,
+        selectorProfile.getLastName,
+        selectorProfile.getUsername,
+        selectorProfile.getAge,
+        selectorProfile.getCountry,
+        selectorProfile.getCurrency,
+        selectorProfile.getCity,
+        selectorProfile.getAvatar,
+        selectorProfile.isReadOnly
+    ],
+    (
+        isLoading,
+        error,
+        firstName,
+        lastName,
+        userName,
+        age,
+        country,
+        currency,
+        city,
+        avatar,
+        readonly
+    ) => ({
+        isLoading,
+        error,
+        firstName,
+        lastName,
+        userName,
+        age,
+        country,
+        currency,
+        city,
+        avatar,
+        readonly
+    })
+);
+
 const ProfilePage: FC<TProfilePageProps> = () => {
     const {t} = useTranslation('profile');
     const {id} = useParams()
 
     const {
         firstName, lastName,userName, age, country, currency, avatar, city, isLoading, error, readonly 
-    } = useAppSelector( state =>  ({
-        isLoading: selectorProfile.isLoadingProfileData(state),
-        error: selectorProfile.isErrorProfileData(state),
-        firstName: selectorProfile.getFirstName(state),
-        lastName: selectorProfile.getLastName(state),
-        userName: selectorProfile.getUsername(state),
-        age: selectorProfile.getAge(state),
-        country: selectorProfile.getCountry(state),
-        currency: selectorProfile.getCurrency(state),
-        city: selectorProfile.getCity(state),
-        avatar : selectorProfile.getAvatar(state),
-        readonly: selectorProfile.isReadOnly(state),
-    }));
+    } = useAppSelector(selectProfileData);
 
     const isServerError = error?.includes(EErrorValidateForm.SERVER_ERROR);
     
@@ -101,7 +133,7 @@ const ProfilePage: FC<TProfilePageProps> = () => {
     return (
         <DynamicModuleLoader reducers={reducers} >
             <Page>
-                <ProfilePageHeader readonly={readonly}/>
+                <ProfilePageHeader className={styles.header} readonly={readonly}/>
                 {textError}
                 <ProfileCard
                     isLoading={isLoading}

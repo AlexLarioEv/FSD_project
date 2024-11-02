@@ -1,5 +1,6 @@
 import { FC, useCallback, useMemo } from "react";
 import { useTranslation } from "react-i18next";
+import { createSelector } from "@reduxjs/toolkit";
 
 import { DynamicModuleLoader, TReducerList } from "@/shared/lib/components";
 import { classNames } from "@/shared/lib";
@@ -30,6 +31,7 @@ import styles from './ArticlePage.module.scss';
 import { Page } from "@/widgets/Page";
 import { useSearchParams } from "react-router-dom";
 import { initArticlesPage } from "../model/services/initArticalPage";
+import { TStateSchema } from "@/app/providers/StoreProvider";
 
 type TArticlePageProps = {
   className?: string;
@@ -40,19 +42,32 @@ const reducers: TReducerList = {
     filter: filterReducer,
 }
 
+const selectArticleData = createSelector(
+    [
+        (state: TStateSchema) => getArticleList.selectAll(state),
+        getErrorArticleList,
+        isLoadingArticleList,
+        getViewArticleList,
+        getPageArticleList,
+        getHasMoreArticleList,
+        getInitArticleList
+    ],
+    (articles, error, loading, view, page, hasMore, inited) => ({
+        articles,
+        error,
+        loading,
+        view,
+        page,
+        hasMore,
+        inited
+    })
+);
+
 const ArticlePage: FC<TArticlePageProps> = ({ className }) => {
     const dispatch = useAppDispatch()
     const {t} = useTranslation('articles');
     const [searchParams] = useSearchParams();
-    const {articles, error, loading, view, page, hasMore, inited } = useAppSelector( state => ({ 
-        articles: getArticleList.selectAll(state),
-        error: getErrorArticleList(state),
-        loading: isLoadingArticleList(state),
-        view: getViewArticleList(state),
-        page: getPageArticleList(state),
-        hasMore: getHasMoreArticleList(state),
-        inited: getInitArticleList(state)
-    }))
+    const {articles, error, loading, view, page, hasMore, inited } = useAppSelector(selectArticleData);
 
     const selectSortParams: TOptionsType<TArticleKey>[] =useMemo(()=>[
         {
@@ -114,7 +129,6 @@ const ArticlePage: FC<TArticlePageProps> = ({ className }) => {
             dispatch(initArticlesPage(searchParams));
         }
     })
-    console.log(searchParams)
 
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount={false}>

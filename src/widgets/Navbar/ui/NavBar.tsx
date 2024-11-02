@@ -13,6 +13,7 @@ import { classNames} from '@/shared/lib'
 import styles from './NavBar.module.scss'
 import { useNavigate } from "react-router-dom"
 import { RoutePath } from "@/shared/config/routeConfig"
+import { HStack } from "@/shared/ui/Stack"
 
 type TNavBarProps = {
     className?: string
@@ -46,7 +47,7 @@ export const NavBar: FC<TNavBarProps> = ({className}) => {
     },[dispatch])
 
     return (
-        <div className={classNames(styles.navbar, {}, [className])}>
+        <HStack max aling="center" className={classNames(styles.navbar, {}, [className])}>
             <Text className={styles.mainTitle} type={ETypeText.INVERTED} title={t('main_title')}/>
             <Button onClick={handleCreateArticle} inverted>{t('create_article')}</Button>
             <div className={styles.auth}>
@@ -54,6 +55,6 @@ export const NavBar: FC<TNavBarProps> = ({className}) => {
                     : <Button inverted onClick={handleOpenLoginModal}>{t('sign_in')}</Button>}
             </div>
             <AuthModal isOpen={isOpen} onClose={handleCloseLoginModal} />
-        </div>
+        </HStack>
     );
 }
