@@ -47,7 +47,7 @@ export const NavBar: FC<TNavBarProps> = ({className}) => {
     },[dispatch])
 
     return (
-        <HStack max aling="center" className={classNames(styles.navbar, {}, [className])}>
+        <HStack role='navigation' max align="center" className={classNames(styles.navbar, {}, [className])}>
             <Text className={styles.mainTitle} type={ETypeText.INVERTED} title={t('main_title')}/>
             <Button onClick={handleCreateArticle} inverted>{t('create_article')}</Button>
             <div className={styles.auth}>

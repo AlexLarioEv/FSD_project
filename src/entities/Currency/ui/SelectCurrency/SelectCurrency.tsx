@@ -1,9 +1,8 @@
 import { FC, memo } from "react";
 import { useTranslation } from "react-i18next";
 
-import { Select, TOptionsType } from "@/shared/ui/Select";
-
-import {ECurrency} from '../../model/types'
+import { ECurrency } from '../../model/types'
+import { ListBox, TListBoxItem } from "@/shared/ui/ListBox";
 
 type TSelectCountryProps = {
   className?: string;
@@ -12,10 +11,10 @@ type TSelectCountryProps = {
   readonly?: boolean;
 };
 
-const optionList: TOptionsType<ECurrency>[] = [
-    {value: ECurrency.EUR, content: ECurrency.EUR  },
-    {value: ECurrency.RUB, content: ECurrency.RUB  }, 
-    {value: ECurrency.USD, content: ECurrency.USD  }
+const optionList: TListBoxItem<ECurrency>[] = [
+    {value: ECurrency.EUR, content: ECurrency.RUB },
+    {value: ECurrency.RUB, content: ECurrency.RUB }, 
+    {value: ECurrency.USD, content: ECurrency.USD }
 ];
 
 const SelectCurrency: FC<TSelectCountryProps> = ({ className, defaultValue, onChange, readonly}) => {
@@ -27,14 +26,15 @@ const SelectCurrency: FC<TSelectCountryProps> = ({ className, defaultValue, onCh
     }
 
     return (
-        <Select
-            testId="selectCurrency"
-            readonly={readonly}
-            className={className} 
-            label={t('currency')} 
-            defaultValue = {defaultValue}
-            options={optionList}  
+        <ListBox 
             onChange={handleChange}
+            readonly={readonly}
+            className={className}
+            label={t('currency')}
+            data-testid='selectCountry'
+            items={optionList}
+            defaultValue={defaultValue}
+            direction='top'
         />
     );
 };

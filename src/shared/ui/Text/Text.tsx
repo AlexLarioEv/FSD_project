@@ -16,6 +16,7 @@ export enum ETextAlign {
 }
 
 export enum ESizeText {
+    S = 'size_s',
     M = 'size_m',
     L = 'size_l',
 }
@@ -30,6 +31,14 @@ type TTextProps = {
     className?: string;
 };
 
+type TElementTitle = 'h1' | 'h2' | 'h3';
+
+const mapSizeToComponent: Record<ESizeText, TElementTitle> = {
+    [ESizeText.L]: 'h1',
+    [ESizeText.M]: 'h2',
+    [ESizeText.S]: 'h3'
+}
+
 const Text = memo(({ 
     className, 
     title, 
@@ -39,12 +48,14 @@ const Text = memo(({
     testId, 
     align=ETextAlign.START }:TTextProps) => {
 
+    const TitleComponent = mapSizeToComponent[size];
+
     return (
         <div data-testid={testId} className={classNames(
             styles.Text, 
             {}, 
             [className, styles[type], styles[align], styles[size]])}>
-            {title && <span className={classNames(styles.title)}>{title}</span>}
+            {title && <TitleComponent className={classNames(styles.title)}>{title}</TitleComponent>}
             {description && <span className={classNames(styles.description)}>{description}</span>}
         </div>
     );

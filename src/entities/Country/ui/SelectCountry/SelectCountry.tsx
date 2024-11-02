@@ -1,7 +1,7 @@
 import { FC,memo } from "react";
 import { useTranslation } from "react-i18next";
 
-import { Select, TOptionsType } from "@/shared/ui/Select";
+import { ListBox, TListBoxItem } from '@/shared/ui/ListBox';
 
 import {ECountry} from '../../model/types'
 
@@ -12,7 +12,7 @@ type TSelectCountryProps = {
   onChange?: (e: ECountry) => void;
 };
 
-const optionList: TOptionsType<ECountry>[] = [
+const optionList: TListBoxItem<ECountry>[] = [
     {value: ECountry.ARMENIA, content: ECountry.ARMENIA  },
     {value: ECountry.BELARUS, content: ECountry.BELARUS  },
     {value: ECountry.KAZAKHSTAN, content: ECountry.RUSSIA  },
@@ -26,15 +26,18 @@ const SelectCountry: FC<TSelectCountryProps> = ({ className,defaultValue,readonl
     }
 
     return (
-        <Select 
-            testId="selectCountry"
-            readonly={readonly}
-            onChange={handleChange}
-            className={className} 
-            label={t('country')} 
-            options={optionList}  
-            defaultValue={defaultValue}
-        />
+        <>
+            <ListBox 
+                onChange={handleChange}
+                readonly={readonly}
+                className={className}
+                label={t('country')}
+                data-testid='selectCountry'
+                items={optionList}
+                defaultValue={defaultValue}
+                direction='top'
+            />
+        </>
     );
 };
 

@@ -17,6 +17,7 @@ export const ThemeDecorator: Decorator = (StoreComponent, context) => {
     )
 }
 
+
 export const globalTypes = {
     theme: {
         name: 'Theme',

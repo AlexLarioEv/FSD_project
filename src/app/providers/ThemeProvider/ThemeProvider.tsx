@@ -15,11 +15,15 @@ export const ThemeProvider: FC<TProps> = ({children, value}) => {
         setTheme(value)
     },[value])
 
+    useEffect(()=> {
+        document.body.className = '';
+
+        document.body.classList.add(theme);
+    },[theme])
+
     return (
         <ThemeContext.Provider value={defaultProps}>
-            <div className={theme}>
-                {children}
-            </div>
+            {children}
         </ThemeContext.Provider>
     )
 }

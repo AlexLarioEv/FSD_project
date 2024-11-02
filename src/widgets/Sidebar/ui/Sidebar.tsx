@@ -36,7 +36,7 @@ export const Sidebar: FC<TSidebarProps> = ({ className,testId }) => {
 
 
     return (
-        <div data-testid={testId}
+        <aside data-testid={testId}
             className={classNames(styles.Sidebar, {[styles.collapsed]: collapsed}, [className])
             }>
             <VStack gap={8} className={styles.links}>
@@ -55,6 +55,6 @@ export const Sidebar: FC<TSidebarProps> = ({ className,testId }) => {
                 <ThemeSwitcher />
                 <LangSwitcher/>
             </HStack>
-        </div>
+        </aside>
     );
 };

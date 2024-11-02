@@ -11,7 +11,7 @@ type TPageLoaderProps = {
 
 export const PageLoader: FC<TPageLoaderProps> = ({ className }) => {
     return (
-        <Flex justify="center" aling="center" className={classNames(styles.PageLoader, {}, [className])}>
+        <Flex justify="center" align="center" className={classNames(styles.PageLoader, {}, [className])}>
             <Loader/>
         </Flex>
     );
