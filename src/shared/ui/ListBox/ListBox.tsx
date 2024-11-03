@@ -3,7 +3,7 @@ import { Listbox as HListBox } from '@headlessui/react';
 import { classNames } from '@/shared/lib';
 import { HStack } from '../Stack';
 import { Button, EButtonTheme } from '../Button/Button';
-import cls from './ListBox.module.scss';
+import styles from './ListBox.module.scss';
 
 export type TListBoxItem<T> = {
     value: T; 
@@ -11,23 +11,26 @@ export type TListBoxItem<T> = {
     disabled?: boolean;
 }
 
-type DropdownDirection = 'top' | 'bottom';
+type TDropdownDirection = 'top left'| 'top right' | 'bottom left' | 'bottom right';
+
+const mapDirectionClass: Record<TDropdownDirection, string> = {
+    'top left': styles.topLeft,
+    'top right': styles.topRight,
+    'bottom left': styles.bottomLeft,
+    'bottom right': styles.bottomRight
+} 
 
 type TListBoxProps<T> = {
+    testId?: string;
     items?: TListBoxItem<T>[];
     className?: string;
     value?: string;
     defaultValue?: string;
     onChange: (value: T) => void;
     readonly?: boolean;
-    direction?: DropdownDirection;
+    direction?: TDropdownDirection;
     label?: string;
 }
-
-const mapDirectionClass: Record<DropdownDirection, string> = {
-    bottom: cls.optionsBottom,
-    top: cls.optionsTop,
-};
 
 export function ListBox<T extends string>(props: TListBoxProps<T>) {
     const {
@@ -37,8 +40,9 @@ export function ListBox<T extends string>(props: TListBoxProps<T>) {
         defaultValue,
         onChange,
         readonly,
-        direction = 'bottom',
+        direction = 'bottom right',
         label,
+        testId
     } = props;
 
     const optionsClasses = [mapDirectionClass[direction]];
@@ -49,16 +53,16 @@ export function ListBox<T extends string>(props: TListBoxProps<T>) {
             <HListBox
                 disabled={readonly}
                 as="div"
-                className={classNames(cls.ListBox, {}, [className])}
+                className={classNames(styles.ListBox, {}, [className])}
                 value={value}
                 onChange={onChange}
             >
-                <HListBox.Button className={cls.trigger}>
+                <HListBox.Button data-testId={testId} className={styles.trigger}>
                     <Button theme={EButtonTheme.BORDER} disabled={readonly}>
                         {value ?? defaultValue}
                     </Button>
                 </HListBox.Button>
-                <HListBox.Options as='div' className={classNames(cls.options, {}, optionsClasses)}>
+                <HListBox.Options as='div' className={classNames(styles.options, {}, optionsClasses)}>
                     {items?.map((item) => (
                         <HListBox.Option
                             key={item.value}
@@ -69,10 +73,10 @@ export function ListBox<T extends string>(props: TListBoxProps<T>) {
                             {({ active, selected }) => (
                                 <li
                                     className={classNames(
-                                        cls.item,
+                                        styles.item,
                                         {
-                                            [cls.active]: active,
-                                            [cls.disabled]: item.disabled,
+                                            [styles.active]: active,
+                                            [styles.disabled]: item.disabled,
                                         },
                                     )}
                                 >

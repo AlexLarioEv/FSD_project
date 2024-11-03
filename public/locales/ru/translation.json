@@ -26,5 +26,7 @@
     "asc":"возрастанию",
     "not_fund": "Не найдено",
     "create_article": "Создать статью",
-    "edit_article": "Изменить статью"
+    "edit_article": "Изменить статью",
+    "enter_currency": "Введите валюту",
+    "enter_country": "Введите страну"
 }

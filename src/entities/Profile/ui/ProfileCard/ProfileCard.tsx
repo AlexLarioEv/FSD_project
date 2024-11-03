@@ -89,8 +89,8 @@ export const ProfileCard: FC<TProfileCardProps> = ({
             <Input aria-label="city" disabled={readonly} onChange={onChangeCity} placeholder={t('city')} value={city} />
             <Input aria-label="username" disabled={readonly} onChange={onChangeUsername} placeholder={t('username')} value={username} />
             <Input aria-label="avatar" disabled={readonly} onChange={onChangeAvatar} placeholder={t('avatar')} value={avatar} />
-            <SelectCurrency readonly={readonly} onChange={onChangeCurrency} defaultValue={currency}/>
-            <SelectCountry readonly={readonly} onChange={onChangeCountry} defaultValue={country}/>
+            <SelectCurrency readonly={readonly} onChange={onChangeCurrency} value={currency}/>
+            <SelectCountry readonly={readonly} onChange={onChangeCountry} value={country}/>
         </VStack>
     );
 };

@@ -5,9 +5,9 @@ import { ListBox, TListBoxItem } from '@/shared/ui/ListBox';
 
 import {ECountry} from '../../model/types'
 
-type TSelectCountryProps = {
+export type TSelectCountryProps = {
   className?: string;
-  defaultValue?: string;
+  value?: string;
   readonly?: boolean;
   onChange?: (e: ECountry) => void;
 };
@@ -18,7 +18,7 @@ const optionList: TListBoxItem<ECountry>[] = [
     {value: ECountry.KAZAKHSTAN, content: ECountry.RUSSIA  },
     {value: ECountry.UKRAINE, content: ECountry.UKRAINE  }]
 
-const SelectCountry: FC<TSelectCountryProps> = ({ className,defaultValue,readonly, onChange }) => {
+const SelectCountry: FC<TSelectCountryProps> = ({ className,value,readonly, onChange }) => {
     const {t} = useTranslation();
     
     const handleChange = (e: ECountry) => {
@@ -28,14 +28,15 @@ const SelectCountry: FC<TSelectCountryProps> = ({ className,defaultValue,readonl
     return (
         <>
             <ListBox 
+                value ={value}
                 onChange={handleChange}
                 readonly={readonly}
                 className={className}
                 label={t('country')}
-                data-testid='selectCountry'
+                testId='selectCountry'
                 items={optionList}
-                defaultValue={defaultValue}
-                direction='top'
+                defaultValue={t('enter_country')}
+                direction='top right'
             />
         </>
     );

@@ -22,6 +22,6 @@ export const Default: Story = {};
 
 export const DefaultRUB: Story = {
     args:{
-        defaultValue: ECurrency.RUB
+        value: ECurrency.EUR
     }
 };

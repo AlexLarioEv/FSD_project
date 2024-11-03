@@ -4,20 +4,20 @@ import { useTranslation } from "react-i18next";
 import { ECurrency } from '../../model/types'
 import { ListBox, TListBoxItem } from "@/shared/ui/ListBox";
 
-type TSelectCountryProps = {
+export type TSelectCurrencyProps = {
   className?: string;
-  defaultValue?: ECurrency;
+  value?: ECurrency;
   onChange?: (e: ECurrency)=> void;
   readonly?: boolean;
 };
 
 const optionList: TListBoxItem<ECurrency>[] = [
-    {value: ECurrency.EUR, content: ECurrency.RUB },
+    {value: ECurrency.EUR, content: ECurrency.EUR },
     {value: ECurrency.RUB, content: ECurrency.RUB }, 
     {value: ECurrency.USD, content: ECurrency.USD }
 ];
 
-const SelectCurrency: FC<TSelectCountryProps> = ({ className, defaultValue, onChange, readonly}) => {
+const SelectCurrency: FC<TSelectCurrencyProps> = ({ className, value, onChange, readonly}) => {
     const {t} = useTranslation()
 
     const handleChange = (e: ECurrency) => {
@@ -31,10 +31,11 @@ const SelectCurrency: FC<TSelectCountryProps> = ({ className, defaultValue, onCh
             readonly={readonly}
             className={className}
             label={t('currency')}
-            data-testid='selectCountry'
+            testId='selectCurrency'
             items={optionList}
-            defaultValue={defaultValue}
-            direction='top'
+            value={value}
+            defaultValue={t('enter_currency')}
+            direction='top right'
         />
     );
 };

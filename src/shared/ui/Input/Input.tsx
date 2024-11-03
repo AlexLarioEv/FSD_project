@@ -26,7 +26,7 @@ export type TInputProps = {
 const Input = memo(({
     className, 
     onChange, 
-    value, 
+    value = '', 
     type = 'text', 
     placeholder, 
     autofocus, 

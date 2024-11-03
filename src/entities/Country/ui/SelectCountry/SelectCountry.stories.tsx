@@ -23,6 +23,6 @@ export const Default: Story = {};
 
 export const DefaultRUB: Story = {
     args:{
-        defaultValue: ECountry.RUSSIA
+        value: ECountry.RUSSIA
     }
 };

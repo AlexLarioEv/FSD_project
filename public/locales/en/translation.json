@@ -26,5 +26,7 @@
     "asc":"ascending",
     "not_fund": "Not fund",
     "create_article": "Create article",
-    "edit_article": "Edit article"
+    "edit_article": "Edit article",
+    "enter_currency": "Enter currency",
+    "enter_country": "Enter country"
 }
