@@ -46,8 +46,9 @@ export default [
             "alexlario-plugin/path-checker": "error",
         },
         ignores: [
-            "node_modules/*",    
-            "build/*",       
+            "node_modules/*",
+            "build/*",
+            "scripts/*"
         ],
     },
     {

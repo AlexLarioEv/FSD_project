@@ -29,6 +29,7 @@
   },
   "exclude": [
     "config/storybook/main.ts",
-    "config/storybook/webpack.config.ts"
-  ]
+    "config/storybook/webpack.config.ts",
+    "scripts/**/*"
+  ],
 }
