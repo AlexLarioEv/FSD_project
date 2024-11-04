@@ -13,7 +13,7 @@ import { VStack } from "@/shared/ui/Stack";
 type TCommentListProps = {
     isLoading?: boolean;
     className?: string;
-    comments?: TComment[]
+    comments: TComment[]
     error?: string;
 };
 
@@ -21,7 +21,7 @@ const CommentList = memo(({ className, comments, isLoading }: TCommentListProps)
 
     const {t} = useTranslation('articleDetails')
 
-    const commentList = useMemo(()=> comments?.length ? comments?.map((comment)=> {
+    const commentList = useMemo(()=> comments.length ? comments?.map((comment)=> {
         return <CommentCard comment={comment} key={comment.id}/>
     }): <Text description={t('no_comments_found')}/>,
     [comments,t])

@@ -3,7 +3,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { TAsyncThunk } from "@/app/providers/StoreProvider";
 import { EArticleType, TArticle } from "@/entities/Article";
 import { getLimitArticleList, getPageArticleList } from "../selectors/articleList";
-import { getFilterQuery, getOrder, getSort, getTagQuery } from "@/features/Filter";
+import { getFilterQuery, getOrder, getSort, getTagQuery } from "@/entities/Filter";
 import { addQueryParams } from "@/shared/lib/url";
 
 export type TFetchArticleListParams = {

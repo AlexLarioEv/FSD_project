@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 import { classNames } from "@/shared/lib";
@@ -10,16 +10,11 @@ import { HStack } from "@/shared/ui/Stack";
 
 type TArticleDetailsHeaderProps = {
     className?: string;
+    id: string;
 };
 
-type TParamsUrl = {
-    id: string;
-}
-
-export const ArticleDetailsHeader: FC<TArticleDetailsHeaderProps> = ({ className }) => {
-
+export const ArticleDetailsHeader: FC<TArticleDetailsHeaderProps> = ({ className, id }) => {
     const {t} = useTranslation('articleDetails');
-    const {id} = useParams<TParamsUrl>();
     const navigate = useNavigate();
 
     const handleClickBack = () => {

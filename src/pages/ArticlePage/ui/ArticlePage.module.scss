@@ -1,8 +1,5 @@
-.sortItem{
-    margin-bottom: 16px;
+.ArticlePage{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 }
-
-.filterItem{
-    margin:16px 0;
-};
-

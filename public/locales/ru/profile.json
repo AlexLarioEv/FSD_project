@@ -1,5 +1,6 @@
 {
     "profile": "Профиль",
+    "not_fund_profile": "Профиль не найден",
     "edit": "Редактировать",
     "firstName": "Имя",
     "lastName": "Фамилия",

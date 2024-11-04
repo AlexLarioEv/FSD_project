@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { TAsyncThunk } from '@/app/providers/StoreProvider';
-import { EOrderFilter, filterActions } from '@/features/Filter';
+import { EOrderFilter, filterActions } from '@/entities/Filter';
 
 import {fetchArticleList} from './fetchArticleList';
 import {articleListAction} from '../slices/articleListSlice';

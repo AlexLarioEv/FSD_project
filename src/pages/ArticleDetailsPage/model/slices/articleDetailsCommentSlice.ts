@@ -7,7 +7,7 @@ import {TComment} from '@/entities/Comment'
 import { TStateSchema } from '@/app/providers/StoreProvider'
 
 import {fetchCommentById} from '../services/fetchCommentById'
-import { TArticleDetailsComments } from '../types/articleDetailsCommentSchema';
+import { TArticleDetailsCommentsShema } from '../types/articleDetailsCommentSchema';
   
 const commentsAdapter = createEntityAdapter({
 
@@ -19,7 +19,7 @@ export const getArticleComments = commentsAdapter.getSelectors<TStateSchema>((st
   
 const articleDetailsCommentSlice = createSlice({
     name: 'comments',
-    initialState: commentsAdapter.getInitialState<TArticleDetailsComments>({
+    initialState: commentsAdapter.getInitialState<TArticleDetailsCommentsShema>({
         isLoading: false,
         error:undefined,
         ids: [],
