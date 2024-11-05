@@ -75,6 +75,7 @@ export const ProfileCard: FC<TProfileCardProps> = ({
                     title={t('Произошла ошибка при загрузке профиля')}
                     description={t('Попробуйте обновить страницу')}
                     align={ETextAlign.CENTER}
+                    testId="EditableProfileCard.Error"
                 />
             </div>
         );
@@ -83,12 +84,48 @@ export const ProfileCard: FC<TProfileCardProps> = ({
     return (
         <VStack gap={8} className={classNames(styles.ProfileCard, mods, [className])}>
             <Avatar className={styles.avatar} size={100} src={avatar ?? ''} alt={username ?? ''}/>
-            <Input aria-label="firstName" disabled={readonly} onChange={onChangeFirstname} placeholder={t('firstName')} value={first} />
-            <Input aria-label="lastName" disabled={readonly} onChange={onChangeLastname} placeholder={t('lastName')} value={lastname} />
-            <Input aria-label="age" disabled={readonly} onChange={onChangeAge} placeholder={t('age')} value={age} />
-            <Input aria-label="city" disabled={readonly} onChange={onChangeCity} placeholder={t('city')} value={city} />
-            <Input aria-label="username" disabled={readonly} onChange={onChangeUsername} placeholder={t('username')} value={username} />
-            <Input aria-label="avatar" disabled={readonly} onChange={onChangeAvatar} placeholder={t('avatar')} value={avatar} />
+            <Input 
+                testId={'ProfileCard.firstname'} 
+                aria-label="firstName" 
+                disabled={readonly} 
+                onChange={onChangeFirstname} 
+                placeholder={t('firstName')} 
+                value={first} />
+            <Input 
+                testId={'ProfileCard.lastname'} 
+                aria-label="lastName" 
+                disabled={readonly} 
+                onChange={onChangeLastname} 
+                placeholder={t('lastName')} 
+                value={lastname} />
+            <Input 
+                testId={'ProfileCard.age'} 
+                aria-label="age" 
+                disabled={readonly} 
+                onChange={onChangeAge} 
+                placeholder={t('age')} 
+                value={age} />
+            <Input 
+                testId={'ProfileCard.city'} 
+                aria-label="city" 
+                disabled={readonly}
+                onChange={onChangeCity} 
+                placeholder={t('city')} 
+                value={city} />
+            <Input 
+                testId={'ProfileCard.username'} 
+                aria-label="username" 
+                disabled={readonly} 
+                onChange={onChangeUsername} 
+                placeholder={t('username')} 
+                value={username} />
+            <Input 
+                testId={'ProfileCard.avatar'} 
+                aria-label="avatar" 
+                disabled={readonly} 
+                onChange={onChangeAvatar} 
+                placeholder={t('avatar')} 
+                value={avatar} />
             <SelectCurrency readonly={readonly} onChange={onChangeCurrency} value={currency}/>
             <SelectCountry readonly={readonly} onChange={onChangeCountry} value={country}/>
         </VStack>

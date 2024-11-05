@@ -28,5 +28,7 @@
     "create_article": "Create article",
     "edit_article": "Edit article",
     "enter_currency": "Enter currency",
-    "enter_country": "Enter country"
+    "enter_country": "Enter country",
+    "access_denied": "Access denied",
+    "admin": "Admin"
 }

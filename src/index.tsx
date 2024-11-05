@@ -11,7 +11,13 @@ import './shared/config/i18';
 import './app/styles/index.scss'
 
 const defaultTheme = localStorage.getItem(ELocalStorageKey.THEME) as ETheme || ETheme.LIGHT;
-const root = createRoot(document.getElementById('root') as Element);
+const container = document.getElementById('root');
+
+if(!container){
+    throw new Error('Контейнер root не найден. Не удалось вмонтировать рект приложение')
+}
+
+const root = createRoot(container);
 root.render(
     <BrowserRouter>
         <StoreProvider>

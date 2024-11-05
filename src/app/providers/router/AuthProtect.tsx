@@ -1,18 +1,33 @@
-import { FC , PropsWithChildren} from "react";
+import { FC , PropsWithChildren, useMemo} from "react";
 import { Navigate } from "react-router-dom";
 
-import { isAuth } from "@/entities/User";
+import { ERoleUser, isAuth, getRoles } from "@/entities/User";
 import { useAppSelector } from "@/shared/hooks";
 import {RoutePath} from '@/shared/config/routeConfig';
 
+type TPropsAuthProtect = {
+    roles?: ERoleUser[]
+}
 
 
-
-export const AuthProtect:FC<PropsWithChildren> = ({children}) => {
+export const AuthProtect:FC<PropsWithChildren<TPropsAuthProtect>> = ({children, roles}) => {
     const auth = useAppSelector(isAuth)
+    const rolesUser = useAppSelector(getRoles);
+
+    const hasRequiredRoles = useMemo(()=>{
+        if(!roles){
+            return true
+        }
+        console.log(roles, rolesUser)
+        return roles.some((role) => rolesUser?.includes(role))    
+    },[roles, rolesUser])
 
     if(!auth){
         return <Navigate to={RoutePath.main}/>
+    }
+
+    if(!hasRequiredRoles){
+        return <Navigate to={RoutePath.forbidden}/>
     }
 
     return <>{children}</> 

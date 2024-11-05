@@ -81,12 +81,12 @@ const ArticlePage: FC<TArticlePageProps> = ({ className }) => {
     }
 
     return (
-        <DynamicModuleLoader reducers={reducers} removeAfterUnmount={false}>
-            <Page onScrollEnd={onLoadNextPart} className={classNames(styles.ArticlePage, {}, [className])}>
+        <Page onScrollEnd={onLoadNextPart} className={classNames(styles.ArticlePage, {}, [className])}>
+            <DynamicModuleLoader reducers={reducers} removeAfterUnmount={false}>
                 <FilterArticleList />
                 <AricleListWithView />
-            </Page>
-        </DynamicModuleLoader>
+            </DynamicModuleLoader>
+        </Page>
     );
 };
 

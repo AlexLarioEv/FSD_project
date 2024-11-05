@@ -1,3 +1,4 @@
+import { ERoleUser } from "@/entities/User";
 import { 
     MainPage, 
     AboutPage,
@@ -6,12 +7,15 @@ import {
     ArticleDetailsPage, 
     ArticlePage,
     AritcleCteatePage,
-    AritcleEditPage } from "@/pages";
+    AritcleEditPage,
+    ForbiddenPage, 
+    AdminPage} from "@/pages";
 import { RouteProps } from "react-router-dom";
 
 
 export type TAppRouteProps  = RouteProps & {
     authOnly?: boolean;
+    roles?: ERoleUser[];
 }
 
 
@@ -23,6 +27,8 @@ export enum EAppRoutes {
     ARTICLE_DETAILS = 'article_details',
     ARTICLE_CREATE = 'article_create',
     ARTICLE_EDIT = 'article_edit',
+    ADMIN = 'admin',
+    FORBIDDEN='forbidden',
 
 
     NOT_FUND = 'not_fund',
@@ -36,6 +42,8 @@ export const RoutePath: Record<EAppRoutes, string> = {
     [EAppRoutes.ARTICLE_DETAILS]: '/article/',
     [EAppRoutes.ARTICLE_CREATE]: '/article/create',
     [EAppRoutes.ARTICLE_EDIT]: '/article/',
+    [EAppRoutes.ADMIN]: '/admin',
+    [EAppRoutes.FORBIDDEN]: '/forbidden',
 
     [EAppRoutes.NOT_FUND]: '*'
 }
@@ -73,6 +81,15 @@ export const routeConfig: Record<EAppRoutes, TAppRouteProps> = {
         path: `${RoutePath.article_edit}:id/edit`,
         element: <AritcleEditPage/>,
         authOnly: true
+    },
+    [EAppRoutes.ADMIN]: {
+        path: RoutePath.admin,
+        element: <AdminPage />,
+        roles: [ERoleUser.ADMIN, ERoleUser.MANAGER]
+    },
+    [EAppRoutes.FORBIDDEN]: {
+        path: RoutePath.forbidden,
+        element: <ForbiddenPage />,
     },
     [EAppRoutes.NOT_FUND]: {
         path: RoutePath.not_fund,

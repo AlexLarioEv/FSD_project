@@ -117,6 +117,7 @@ export const EditProfile: FC<TEditProfileProps> = ({ className, id }) => {
             type={ETypeText.ERROR} 
             title={t('error')} 
             description={t(errorName)}
+            testId="EditableProfileCard.Error"
         />) 
         : null , [isServerError, error, t])
     return (

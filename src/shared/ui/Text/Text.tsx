@@ -51,12 +51,16 @@ const Text = memo(({
     const TitleComponent = mapSizeToComponent[size];
 
     return (
-        <div data-testid={testId} className={classNames(
+        <div  data-testid={testId} className={classNames(
             styles.Text, 
             {}, 
             [className, styles[type], styles[align], styles[size]])}>
-            {title && <TitleComponent className={classNames(styles.title)}>{title}</TitleComponent>}
-            {description && <span className={classNames(styles.description)}>{description}</span>}
+            {title && <TitleComponent 
+                data-testid={testId && `${testId}.Header`} 
+                className={classNames(styles.title)}>{title}</TitleComponent>}
+            {description && <span 
+                data-testid={testId && `${testId}.Paragraph`} 
+                className={classNames(styles.description)}>{description}</span>}
         </div>
     );
 });

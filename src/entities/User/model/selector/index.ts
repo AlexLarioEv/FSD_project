@@ -1,1 +1,0 @@
-export {getUser, isAuth, isInit, getAuthData} from './getUser'

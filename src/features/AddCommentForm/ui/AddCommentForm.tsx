@@ -41,7 +41,7 @@ const AddCommentForm = memo(({ className, onSendComment }: TAddCommentFormProps)
     return (
         <DynamicModuleLoader reducers={reducers}>
             <div className={classNames(styles.AddCommentForm, {}, [className])}>
-                <Input data-testid={'add_comment'} value={comment} onChange={handleChangeComment} placeholder={t('add_comment')}/>
+                <Input testId='add_comment' value={comment} onChange={handleChangeComment} placeholder={t('add_comment')}/>
                 <Button onClick={handleSendComment} theme={EButtonTheme.BORDER}>{t('add')}</Button>
             </div>
         </DynamicModuleLoader>

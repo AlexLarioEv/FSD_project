@@ -32,4 +32,5 @@
     "config/storybook/webpack.config.ts",
     "scripts/**/*"
   ],
+  "isolatedModules": true
 }

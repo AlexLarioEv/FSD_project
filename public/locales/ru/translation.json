@@ -28,5 +28,7 @@
     "create_article": "Создать статью",
     "edit_article": "Изменить статью",
     "enter_currency": "Введите валюту",
-    "enter_country": "Введите страну"
+    "enter_country": "Введите страну",
+    "access_denied": "Доступ запрещен",
+    "admin": "Админ"
 }

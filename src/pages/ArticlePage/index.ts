@@ -1,3 +1,3 @@
 export {LazyArticlePage as ArticlePage} from './ui/LazyArticlePage';
 
-export {TArticleListSchema} from './model/types/articleListSchema';
+export type {TArticleListSchema} from './model/types/articleListSchema';

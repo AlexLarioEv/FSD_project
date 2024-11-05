@@ -1,4 +1,4 @@
 import Select from './Select';
 
 export {Select}
-export { TOptionsType } from './Select';
+export type { TOptionsType } from './Select';

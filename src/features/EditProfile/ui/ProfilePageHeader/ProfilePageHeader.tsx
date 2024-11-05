@@ -48,15 +48,19 @@ const ProfilePageHeader: FC<TProfilePageHeaderProps> = ({ className, readonly })
     const handleCancelProfile = () => {
         dispatch(profileActions.cancelEdit());
     }
-    console.log(canEdit,  className, readonly)
     
     const buttonMenu = readonly ? 
-        <Button onClick={handleEditProfile} theme={EButtonTheme.BORDER}>{t('edit')}</Button> : 
+        <Button testId='EditProfileHeader.EditButton' onClick={handleEditProfile} theme={EButtonTheme.BORDER}>{t('edit')}</Button> : 
         <HStack gap={8}>
-            <Button 
+            <Button
+                testId="EditProfileHeader.SaveButton"
                 onClick={handleSaveProfile} 
                 theme={EButtonTheme.BORDER}>{t('save')}</Button>
-            <Button onClick={handleCancelProfile} danger theme={EButtonTheme.BORDER}>{t('cancel')}</Button>
+            <Button 
+                testId="EditProfileHeader.CancelButton" 
+                onClick={handleCancelProfile} 
+                danger 
+                theme={EButtonTheme.BORDER}>{t('cancel')}</Button>
         </HStack>
 
     return (

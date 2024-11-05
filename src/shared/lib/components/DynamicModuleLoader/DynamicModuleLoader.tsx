@@ -6,6 +6,8 @@ import {useIgnoreEffectDeps} from '@/shared/hooks'
 import {ReduxStoreWithManager, TStateSchemaKey} from '@/app/providers/StoreProvider/config'
 import { Loader } from '@/shared/ui/Loader'
 
+import styles from './DynamicModuleLoader.module.scss'
+
 export type TReducerList = {
     [key in TStateSchemaKey]?: Reducer
 }
@@ -49,7 +51,7 @@ export const DynamicModuleLoader:FC<TDynamicModuleRenderProps> = ({
 
     return (
         <>
-            {initReduser ? children : <Loader/>}
+            {initReduser ? children : <div className={styles.loaderWrapper}><Loader /></div>}
         </>
     )
 }

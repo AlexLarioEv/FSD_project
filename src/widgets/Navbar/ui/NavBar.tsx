@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom"
 import { useDispatch } from "react-redux"
 
 import {AuthModal} from '@/features/AuthByUserName/ui'
-import {getUser, userActions} from '@/entities/User'
+import {getUser, isManager, isAdmin, userActions} from '@/entities/User'
 import { useAppSelector } from "@/shared/hooks"
 import { Text,ETypeText } from "@/shared/ui/Text"
 import { Button } from "@/shared/ui/Button"
@@ -28,8 +28,11 @@ export const NavBar: FC<TNavBarProps> = ({className}) => {
     const {t} = useTranslation();
     const navigate = useNavigate()
     const {auth} = useAppSelector(getUser)
+    const manager = useAppSelector(isManager)
+    const admin = useAppSelector(isAdmin)
     const dispatch = useDispatch();
 
+    const showAdmin = manager || admin;
     
     const handleCreateArticle = () => {
         navigate(RoutePath.article_create)
@@ -48,13 +51,19 @@ export const NavBar: FC<TNavBarProps> = ({className}) => {
     },[dispatch])
     
     const itemsDropdown = useMemo(()=> [
+        ...(showAdmin ? [
+            <AppLink 
+                type={EApplinkTypes.SECONDARY} 
+                to={RoutePath.admin} key='1'>
+                {t('admin')}
+            </AppLink>]: []),
         <AppLink 
             type={EApplinkTypes.SECONDARY} 
-            to={`${RoutePath.profile}${auth?.id}`} key='1'>
+            to={`${RoutePath.profile}${auth?.id}`} key='21'>
             {t('profile')}
         </AppLink>,
         <Button key='2' inverted onClick={handleLogout}>{t('exit')}</Button>,
-    ],[auth?.id, handleLogout, t])
+    ],[auth?.id, handleLogout, t, showAdmin])
 
     useEffect(()=> {
         dispatch(userActions.initAuthData())

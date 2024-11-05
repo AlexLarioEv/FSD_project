@@ -1,1 +1,2 @@
-export { ListBox, TListBoxItem } from './ListBox';
+export { ListBox } from './ListBox';
+export type {TListBoxItem} from './ListBox'

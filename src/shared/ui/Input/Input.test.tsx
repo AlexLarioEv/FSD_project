@@ -47,7 +47,7 @@ describe("Input Component", () => {
     });
 
     test("handles autofocus prop", () => {
-        componentRender(<Input data-testid="input" autofocus />);
+        componentRender(<Input testId="input" autofocus />);
         const inputElement = screen.getByTestId("input");
 
         fireEvent.focus(inputElement);  // manually focus

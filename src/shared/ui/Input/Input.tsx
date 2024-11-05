@@ -19,6 +19,7 @@ export type TInputProps = {
   type?: HTMLInputTypeAttribute
   onChange?: (e: string) => void;
   placeholder?: string; 
+  testId?: string;
   autofocus?: boolean;
   disabled?: boolean;
 } & TInputAttributes;
@@ -29,7 +30,8 @@ const Input = memo(({
     value = '', 
     type = 'text', 
     placeholder, 
-    autofocus, 
+    autofocus,
+    testId,
     ...otherProps
 }:TInputProps) => {
     
@@ -63,6 +65,7 @@ const Input = memo(({
             <div className={styles.wrapperCaret}>
                 <input 
                     {...otherProps}
+                    data-testid={testId}
                     ref={ref}
                     onBlur={onBlur} 
                     onFocus={onFocus} 
