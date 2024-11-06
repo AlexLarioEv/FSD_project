@@ -1,10 +1,13 @@
-.Modal{
+.Modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: absolute;
     inset: 0;
     z-index: var(--modal-z-index);
 }
 
-.overlay{
+.overlay {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -13,7 +16,8 @@
     background: rgb(0 0 0 / 66%);
 }
 
-.content{
+.content {
+    display: flex;
     padding: 16px;
     border-radius: 8px ;
     background: var(--bg-color);
@@ -39,4 +43,3 @@
         scale: 1;
     }
   }
-

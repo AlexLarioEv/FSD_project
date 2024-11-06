@@ -13,13 +13,11 @@ describe('classNames', ()=> {
         componentRender(<Text title='Test' type={ETypeText.PRIMARY} testId='text'/>);
         const textComponent = screen.getByTestId('text')
         expect(textComponent).toHaveClass('primary');
-        screen.debug()
     })
 
     test('with Text error type', ()=> {
         componentRender(<Text title='Test' type={ETypeText.ERROR} testId='text'/>);
         const textComponent = screen.getByTestId('text')
         expect(textComponent).toHaveClass('error');
-        screen.debug()
     })
 })
