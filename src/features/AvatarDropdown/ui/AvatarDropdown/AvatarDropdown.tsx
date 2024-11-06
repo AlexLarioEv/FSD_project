@@ -11,8 +11,6 @@ import { isAdmin, isManager, userActions } from "@/entities/User";
 import { AppLink, EApplinkTypes } from "@/shared/ui/AppLink";
 import { RoutePath } from "@/shared/config/routeConfig";
 
-import styles from './AvatarDropdown.module.scss';
-
 type TAvatarDropdownProps = {
     className?: string;
     avatar?: string;
@@ -50,7 +48,7 @@ export const AvatarDropdown: FC<TAvatarDropdownProps> = ({ className, avatar, id
 
     return ( 
         <Dropdown 
-            className={classNames(styles.AvatarDropdown, {}, [className])}
+            className={classNames('', {}, [className])}
             label={<Avatar src={avatar}/>} 
             items={itemsDropdown}
             direction='bottom left'

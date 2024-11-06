@@ -46,7 +46,10 @@ export function buildPlugins({paths, isDev, api, project}: BuildOptions): webpac
         })
     ]
 
-    if(isDev){
+
+    // TODO: починить BundleAnalyzerPlugin потом в isDev
+    // eslint-disable-next-line no-constant-condition
+    if(false){
         plugins.push(new BundleAnalyzerPlugin({
             openAnalyzer: false
         }),)
