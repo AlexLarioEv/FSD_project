@@ -3,36 +3,30 @@ import { Menu } from '@headlessui/react';
 
 import { classNames } from '@/shared/lib';
 
-import styles from './Dropdown.module.scss';
+import {mapDirectionClass, TPopupDirection} from '../../styles/const';
+import popupStyles from '../../styles/popup.module.scss';
 
-type TDropdownDirection = 'top left'| 'top right' | 'bottom left' | 'bottom right';
+import styles from './Dropdown.module.scss';
 
 type TDropdownProps = {
     className?: string;
     items: ReactNode[];
     label: ReactNode;
-    direction?: TDropdownDirection;
+    direction?: TPopupDirection;
 }
-
-const mapDirectionClass: Record<TDropdownDirection, string> = {
-    'top left': styles.topLeft,
-    'top right': styles.topRight,
-    'bottom left': styles.bottomLeft,
-    'bottom right': styles.bottomRight
-} 
 
 export const Dropdown:FC<TDropdownProps> = ({className, items, label, direction = 'bottom right'}) => {
     
     return (
         <Menu as='div' className={classNames(styles.Dropdown, {}, [className])}>
-            <Menu.Button className={styles.button}>{label}</Menu.Button>
+            <Menu.Button className={popupStyles.trigger}>{label}</Menu.Button>
             <Menu.Items as='ul' className={classNames(styles.items, {}, [mapDirectionClass[direction]])}>
                 <>
                     {items.map((item, index)=>(
                         <Menu.Item key={index}>
                             {({ active }) => (
                                 <li 
-                                    className={classNames(styles.item, {[styles.active]: active} )}>
+                                    className={classNames(popupStyles.item, {[popupStyles.active]: active} )}>
                                     {item}
                                 </li>
                             )}

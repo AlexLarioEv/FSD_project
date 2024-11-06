@@ -1,7 +1,7 @@
 import { FC,memo } from "react";
 import { useTranslation } from "react-i18next";
 
-import { ListBox, TListBoxItem } from '@/shared/ui/ListBox';
+import { ListBox, TListBoxItem } from '@/shared/ui/Popups';
 
 import {ECountry} from '../../model/types'
 

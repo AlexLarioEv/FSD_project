@@ -6,12 +6,13 @@ import styles from './Icon.module.scss';
 
 type TIconProps = {
     className?: string;
+    inverted?: boolean;
     Svg: React.FunctionComponent<React.SVGAttributes<SVGElement>>;
 };
 
-const Icon= memo(({ className,Svg }: TIconProps) => {
+const Icon= memo(({ className, Svg, inverted }: TIconProps) => {
     return (
-        <Svg className={classNames(styles.Icon, {}, [className])}/>
+        <Svg className={classNames(styles.Icon, {[styles.inverted]: inverted}, [className])}/>
     );
 });
 

@@ -1,0 +1,12 @@
+.Dropdown {
+    max-width: max-content;
+    position: relative;
+}
+
+.items {
+    background: var(--listbox-bg);
+    position: absolute;
+    z-index: 10000;
+    border-radius: 12px;
+    box-shadow: 4px 4px 8px var(--listbox-bg);
+}

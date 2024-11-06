@@ -1,10 +1,4 @@
-.Dropdown {
-    max-width: max-content;
-    position: relative;
-}
-
-.button {
-    color: var(--primary-color);
+.trigger {
     background: none;
     border: none;
     outline: none;
@@ -12,15 +6,8 @@
     margin: 0;
 }
 
-.items {
-    background: var(--listbox-bg);
-    position: absolute;
-    z-index: 10000;
-    border-radius: 12px;
-    box-shadow: 4px 4px 8px var(--listbox-bg);
-}
-
 .item {
+    color: var(--secondary-color);
     padding: 10px 20px;
 }
 
@@ -28,6 +15,11 @@
     background: var(--inverted-bg-color);
     border-radius: 12px;
 }
+
+.disabled {
+    opacity: 0.7;
+}
+
 
 .topLeft{
     bottom: 100%;

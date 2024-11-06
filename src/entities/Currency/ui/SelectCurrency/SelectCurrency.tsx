@@ -2,7 +2,7 @@ import { FC, memo } from "react";
 import { useTranslation } from "react-i18next";
 
 import { ECurrency } from '../../model/types'
-import { ListBox, TListBoxItem } from "@/shared/ui/ListBox";
+import { ListBox, TListBoxItem } from "@/shared/ui/Popups";
 
 export type TSelectCurrencyProps = {
   className?: string;

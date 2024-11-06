@@ -1,24 +1,19 @@
 import { Fragment, ReactNode } from 'react';
 import { Listbox as HListBox } from '@headlessui/react';
 import { classNames } from '@/shared/lib';
-import { HStack } from '../Stack';
-import { Button, EButtonTheme } from '../Button/Button';
+
+import { HStack } from '../../../Stack';
+import { Button, EButtonTheme } from '../../../Button/Button';
+import {mapDirectionClass, TPopupDirection} from '../../styles/const';
+
 import styles from './ListBox.module.scss';
+import popupStyles from '../../styles/popup.module.scss';
 
 export type TListBoxItem<T> = {
     value: T; 
     content: ReactNode;
     disabled?: boolean;
 }
-
-type TDropdownDirection = 'top left'| 'top right' | 'bottom left' | 'bottom right';
-
-const mapDirectionClass: Record<TDropdownDirection, string> = {
-    'top left': styles.topLeft,
-    'top right': styles.topRight,
-    'bottom left': styles.bottomLeft,
-    'bottom right': styles.bottomRight
-} 
 
 type TListBoxProps<T> = {
     testId?: string;
@@ -28,7 +23,7 @@ type TListBoxProps<T> = {
     defaultValue?: string;
     onChange: (value: T) => void;
     readonly?: boolean;
-    direction?: TDropdownDirection;
+    direction?: TPopupDirection;
     label?: string;
 }
 
@@ -57,7 +52,7 @@ export function ListBox<T extends string>(props: TListBoxProps<T>) {
                 value={value}
                 onChange={onChange}
             >
-                <HListBox.Button data-testId={testId} className={styles.trigger}>
+                <HListBox.Button data-testId={testId} className={popupStyles.trigger}>
                     <Button theme={EButtonTheme.BORDER} disabled={readonly}>
                         {value ?? defaultValue}
                     </Button>
@@ -73,10 +68,10 @@ export function ListBox<T extends string>(props: TListBoxProps<T>) {
                             {({ active, selected }) => (
                                 <li
                                     className={classNames(
-                                        styles.item,
+                                        popupStyles.item,
                                         {
-                                            [styles.active]: active,
-                                            [styles.disabled]: item.disabled,
+                                            [popupStyles.active]: active,
+                                            [popupStyles.disabled]: item.disabled,
                                         },
                                     )}
                                 >
