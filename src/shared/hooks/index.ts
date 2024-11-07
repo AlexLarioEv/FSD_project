@@ -7,3 +7,4 @@ export { useAppSelector } from './useAppSelector/useAppSelector';
 export { useInfiniteScroll } from './useInfiniteScroll/useInfiniteScroll';
 export { useThrottle } from './useThrottle/useThrottle';
 export { useDebounce } from './useDebounce/useDebounce';
+export { useModalClosed } from './useModal/useModal';

@@ -1,9 +1,10 @@
-import { FC, ReactNode, useEffect, useState , useRef} from "react";
+import { FC, ReactNode} from "react";
 
 import { classNames, TMods } from "@/shared/lib";
 import { Portal } from "../Portal";
 
 import styles from './Modal.module.scss';
+import { useModalClosed } from "@/shared/hooks";
 
 export type TModalProps = {
     isOpen: boolean
@@ -14,26 +15,12 @@ export type TModalProps = {
 
 export const Modal: FC<TModalProps> = ({ isOpen,onClose,className, children }) => {
 
-    const [isClose, setIsClose] = useState(true);
-    const timerId = useRef<ReturnType<typeof setTimeout>>();
+    const isClose =  useModalClosed(isOpen);
 
     const mods: TMods = {
         [styles.opened]: isOpen,
         [styles.closed]: !isOpen,
     }
-
-    useEffect(()=>{
-        if(!isOpen){
-            timerId.current = setTimeout(()=> setIsClose(true), 300)
-        } else {
-            setIsClose(false)
-        }
-    },[isOpen]);
-    
-
-    useEffect(()=>()=>{
-        clearTimeout( timerId.current)
-    },[])
 
     return (
         !isClose ? 

@@ -2,13 +2,15 @@ import { FC, memo, useMemo, useState } from "react";
 import { BrowserView, MobileView } from 'react-device-detect';
 import { classNames } from "@/shared/lib";
 
-import styles from './NotificationButton.module.scss';
+import { AnimationProvider } from "@/shared/lib/components"
 import { Popover } from "@/shared/ui/Popups";
 import { Icon } from "@/shared/ui/Icon";
 import NotificationIcon from '@/shared/assets/icons/notification.svg'
 import { NotificationList } from "@/entities/Notification";
-import Drawer from "@/shared/ui/Drawer/Drawer";
+import { Drawer } from "@/shared/ui/Drawer/Drawer";
 import { Button } from "@/shared/ui/Button";
+
+import styles from './NotificationButton.module.scss';
 
 type TNotificationButtonProps = {
     className?: string;
@@ -39,9 +41,11 @@ const NotificationButton: FC<TNotificationButtonProps> = ({ className }) => {
             </BrowserView>
             <MobileView>
                 {trigger}
-                <Drawer onClose={()=> setIsOpen(false)} isOpen={isOpen}>
-                    <NotificationList />
-                </Drawer>
+                <AnimationProvider>
+                    <Drawer onClose={()=> setIsOpen(false)} isOpen={isOpen}>
+                        <NotificationList />
+                    </Drawer>
+                </AnimationProvider>
             </MobileView>
         </>
     )
