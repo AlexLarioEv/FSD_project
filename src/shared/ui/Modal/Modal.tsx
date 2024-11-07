@@ -5,6 +5,7 @@ import { Portal } from "../Portal";
 
 import styles from './Modal.module.scss';
 import { useModalClosed } from "@/shared/hooks";
+import Overlay from "../Overlay/Overlay";
 
 export type TModalProps = {
     isOpen: boolean
@@ -26,9 +27,8 @@ export const Modal: FC<TModalProps> = ({ isOpen,onClose,className, children }) =
         !isClose ? 
             <Portal >
                 <div className={classNames(styles.Modal, mods, [className])}>
-                    <div onClick={onClose} className={styles.overlay}>
-                        <div onClick={(e) => e.stopPropagation()} className={styles.content}>{children}</div>
-                    </div>
+                    <Overlay onClick={onClose}/>
+                    <div onClick={(e) => e.stopPropagation()} className={styles.content}>{children}</div>
                 </div>
             </Portal> : null
     );

@@ -1,7 +1,7 @@
 import {ReactNode, FC}from 'react'
 import { createPortal } from "react-dom"
 
-import 'app/styles/index.scss'
+// import 'app/styles/index.scss'
 
 type TProps = {
     children: ReactNode;
