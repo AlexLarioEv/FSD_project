@@ -2,6 +2,7 @@
     "comment": "Комментарий",
     "not_fund_article": "Статья не найдена",
     "no_comments_found": "Коментарии не найдены",
-    "back_to_aricles": "Назад к списку статей",
-    "edit_page": "Редактировать статью"
+    "back_to_articles": "Назад к списку статей",
+    "edit_page": "Редактировать статью",
+    "rating_question": "Как вам статья?"
 }

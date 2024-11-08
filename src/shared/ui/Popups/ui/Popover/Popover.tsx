@@ -24,7 +24,12 @@ export const Popover: FC<PropsWithChildren<HPopoverProps>> = ({
     
     return (
         <HPopover  className={classNames(styles.Popover, {}, [className])}>
-            <HPopover.Button className={popupStyles.trigger}>{trigger}</HPopover.Button>
+            <HPopover.Button 
+                as='div' 
+                className={popupStyles.trigger
+                }>
+                {trigger}
+            </HPopover.Button>
     
             <HPopover.Panel className={classNames(styles.panel, {}, optionsClasses)}>
                 {children}

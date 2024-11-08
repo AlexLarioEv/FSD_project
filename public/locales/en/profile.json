@@ -15,5 +15,6 @@
     "currencyNotCorrect": "Currency not correct",
     "countryNotCorrect": "Country not correct",
     "notData": "Data is not find",
-    "error": "Error"
+    "error": "Error",
+    "rating_question": "How do you like the profile?"
 }

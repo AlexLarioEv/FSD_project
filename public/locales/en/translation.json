@@ -30,5 +30,8 @@
     "enter_currency": "Enter currency",
     "enter_country": "Enter country",
     "access_denied": "Access denied",
-    "admin": "Admin"
+    "admin": "Admin",
+    "feedback": "Feedback",
+    "save": "Save",
+    "thanks": "Thanks"
 }

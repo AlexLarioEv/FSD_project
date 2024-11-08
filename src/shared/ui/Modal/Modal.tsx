@@ -9,7 +9,7 @@ import Overlay from "../Overlay/Overlay";
 
 export type TModalProps = {
     isOpen: boolean
-    onClose: VoidFunction
+    onClose?: VoidFunction
     className?: string;
     children?: ReactNode;
 };

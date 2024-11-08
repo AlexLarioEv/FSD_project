@@ -8,11 +8,14 @@ type TIconProps = {
     className?: string;
     inverted?: boolean;
     Svg: React.FunctionComponent<React.SVGAttributes<SVGElement>>;
-};
+} & React.SVGProps<SVGAElement>;
 
-const Icon= memo(({ className, Svg, inverted }: TIconProps) => {
+const Icon= memo(({ className, Svg, inverted, ...otherProps }: TIconProps) => {
     return (
-        <Svg className={classNames(styles.Icon, {[styles.inverted]: inverted}, [className])}/>
+        <Svg 
+            {...otherProps} 
+            className={classNames(styles.Icon, {[styles.inverted]: inverted}, [className])}
+        />
     );
 });
 

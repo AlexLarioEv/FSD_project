@@ -28,7 +28,7 @@ export const ArticleDetailsHeader: FC<TArticleDetailsHeaderProps> = ({ className
     return (
         <HStack justify='between' gap={8} className={classNames('', {}, [className])}>
             <Button theme={EButtonTheme.BORDER} onClick={handleClickBack}>
-                {t("back_to_aricles")}
+                {t("back_to_articles")}
             </Button>
             <Button theme={EButtonTheme.BORDER} onClick={handleClickEdit}>
                 {t("edit_page")}

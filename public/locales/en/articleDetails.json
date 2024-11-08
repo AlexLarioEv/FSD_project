@@ -2,6 +2,7 @@
     "comment": "Comment",
     "not_fund_article": "Not fund article",
     "no_comments_found": "No comments found",
-    "back_to_aricles": "Back to the list of articles",
-    "edit_page": "Edit page"
+    "back_to_articles": "Back to the list of articles",
+    "edit_page": "Edit page",
+    "rating_question": "How do you like the article?"
 }

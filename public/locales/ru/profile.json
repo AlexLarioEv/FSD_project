@@ -15,5 +15,6 @@
     "currencyNotCorrect": "Валюта невалидна",
     "countryNotCorrect": "Страна невалидна",
     "notData": "Данны невалидны",
-    "error": "Ошибка"
+    "error": "Ошибка",
+    "rating_question": "Как вам профиль?"
 }

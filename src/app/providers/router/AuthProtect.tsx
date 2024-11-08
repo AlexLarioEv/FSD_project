@@ -18,7 +18,7 @@ export const AuthProtect:FC<PropsWithChildren<TPropsAuthProtect>> = ({children, 
         if(!roles){
             return true
         }
-        console.log(roles, rolesUser)
+        
         return roles.some((role) => rolesUser?.includes(role))    
     },[roles, rolesUser])
 

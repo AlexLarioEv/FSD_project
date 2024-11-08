@@ -30,5 +30,8 @@
     "enter_currency": "Введите валюту",
     "enter_country": "Введите страну",
     "access_denied": "Доступ запрещен",
-    "admin": "Админ"
+    "admin": "Админ",
+    "feedback": "Ваш отзыв",
+    "save": "Сохранить",
+    "thanks": "Спасибо"
 }

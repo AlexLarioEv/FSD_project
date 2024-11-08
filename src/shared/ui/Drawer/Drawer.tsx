@@ -1,17 +1,15 @@
 import  { ReactNode, useCallback, useEffect,FC } from 'react';
 import { classNames } from '@/shared/lib';
-import { useAnimationLibs } from '@/shared/lib/components';
+import { AnimationProvider, useAnimationLibs } from '@/shared/lib/components';
 
 import Overlay from '../Overlay/Overlay';
 import styles from './Drawer.module.scss';
 import { Portal } from '../Portal/Portal';
 
-// TODO: Продебажить компонент
-
 type TDrawerProps = {
     className?: string;
     children: ReactNode;
-    isOpen?: boolean;
+    isOpen: boolean;
     onClose?: () => void;
 }
 
@@ -80,7 +78,7 @@ const DrawerContent:FC<TDrawerProps> = ({
     return (
         <Portal>
             <div className={classNames(styles.Drawer, {}, [className])}>
-                <Overlay onClick={onClose} />
+                <Overlay />
                 <Spring.a.div
                     className={styles.sheet}
                     style={{ display, bottom: `calc(-100vh + ${height - 100}px)`, y }}
@@ -93,7 +91,7 @@ const DrawerContent:FC<TDrawerProps> = ({
     );
 };
 
-export const Drawer = (props: TDrawerProps) => {
+const AsyncDrawer:FC<TDrawerProps>  = (props) => {
     const { isLoaded } = useAnimationLibs();
 
     if (!isLoaded) {
@@ -102,3 +100,7 @@ export const Drawer = (props: TDrawerProps) => {
 
     return <DrawerContent {...props} />;
 };
+
+export const Drawer:FC<TDrawerProps> = (props) => {
+    return <AnimationProvider><AsyncDrawer {...props}/></AnimationProvider>
+}

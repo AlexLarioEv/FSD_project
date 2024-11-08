@@ -2,7 +2,6 @@ import { FC, memo, useMemo, useState } from "react";
 import { BrowserView, MobileView } from 'react-device-detect';
 import { classNames } from "@/shared/lib";
 
-import { AnimationProvider } from "@/shared/lib/components"
 import { Popover } from "@/shared/ui/Popups";
 import { Icon } from "@/shared/ui/Icon";
 import NotificationIcon from '@/shared/assets/icons/notification.svg'
@@ -41,11 +40,9 @@ const NotificationButton: FC<TNotificationButtonProps> = ({ className }) => {
             </BrowserView>
             <MobileView>
                 {trigger}
-                <AnimationProvider>
-                    <Drawer onClose={()=> setIsOpen(false)} isOpen={isOpen}>
-                        <NotificationList />
-                    </Drawer>
-                </AnimationProvider>
+                <Drawer onClose={()=> setIsOpen(false)} isOpen={isOpen}>
+                    <NotificationList />
+                </Drawer>
             </MobileView>
         </>
     )

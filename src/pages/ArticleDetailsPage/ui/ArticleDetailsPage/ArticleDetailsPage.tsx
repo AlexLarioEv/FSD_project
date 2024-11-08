@@ -14,6 +14,7 @@ import ArticleDetailsComments from '../ArticleDetailsComments/ArticleDetailsComm
 import { ArticleDetailsHeader } from "../ArticleDetailsHeader/ArticleDetailsHeader";
 
 import styles from "./ArticleDetailsPage.module.scss"
+import { ArticleRating } from "@/features/ArticleRating";
 type TArticleDetailsPageProps = {
   className?: string;
 };
@@ -33,9 +34,10 @@ const ArticleDetailsPage: FC<TArticleDetailsPageProps> = ({ className }) => {
 
     return (
         <DynamicModuleLoader  reducers={reducers}>
-            <Page className={classNames('', {}, [className])}>
+            <Page className={classNames(styles.articleDetailsPage, {}, [className])}>
                 <ArticleDetailsHeader id={id} />
-                <ArticleDetails id={id} className={styles.articleDetails} />
+                <ArticleDetails id={id} />
+                <ArticleRating  id={id}/>
                 <ArticleDetailsComments id={id}/>
             </Page>
         </DynamicModuleLoader>
