@@ -4,8 +4,8 @@ import { buildCssLoader, buildSvgloader, buildbabelLoader } from './loaders'
 
 export function buildLoaders({isDev}: BuildOptions): webpack.RuleSetRule[] {
 
-    const babelLoader = buildbabelLoader({isTsx: false});
-    const babelLoaderTsx = buildbabelLoader({isTsx: true});
+    const babelLoader = buildbabelLoader({isTsx: false, isProd: !isDev});
+    const babelLoaderTsx = buildbabelLoader({isTsx: true, isProd: !isDev});
 
     const fileLoader = {
         test: /\.(png|jpe?g|gif|woff2|woff)$/i,

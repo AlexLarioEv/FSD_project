@@ -7,8 +7,8 @@ import {
     NotFundPage, 
     ArticleDetailsPage, 
     ArticlePage,
-    AritcleCteatePage,
-    AritcleEditPage,
+    ArticleCreatePage,
+    ArticleEditPage,
     ForbiddenPage, 
     AdminPage} from "@/pages";
 import { RouteProps } from "react-router-dom";
@@ -35,65 +35,76 @@ export enum EAppRoutes {
     NOT_FUND = 'not_fund',
 }
 
+export const getRouteMain = () => '/';
+export const getRouteAbout = () => '/about';
+export const getRouteProfile = (id:string) => `/profile/${id}`;
+export const getRouteArticles = () => '/article';
+export const getRouteArticleDetails = (id:string) => `/article/${id}`;
+export const getRouteArticleCreate = () => '/article/create';
+export const getRouteArticleEdit = (id:string) => `/article/${id}/edit`;
+export const getRouteAdmin = () => '/admin';
+export const getRouteForbidden = () => '/article/create';
+
+
 export const RoutePath: Record<EAppRoutes, string> = {
-    [EAppRoutes.MAIN]: '/',
-    [EAppRoutes.ABOUT]: '/about',
-    [EAppRoutes.PROFILE]: '/profile/',
-    [EAppRoutes.ARTICLE]: '/article',
-    [EAppRoutes.ARTICLE_DETAILS]: '/article/',
-    [EAppRoutes.ARTICLE_CREATE]: '/article/create',
-    [EAppRoutes.ARTICLE_EDIT]: '/article/',
-    [EAppRoutes.ADMIN]: '/admin',
-    [EAppRoutes.FORBIDDEN]: '/forbidden',
+    [EAppRoutes.MAIN]: getRouteMain(),
+    [EAppRoutes.ABOUT]: getRouteAbout(),
+    [EAppRoutes.PROFILE]: getRouteProfile(':id'),
+    [EAppRoutes.ARTICLE]: getRouteArticles(),
+    [EAppRoutes.ARTICLE_DETAILS]: getRouteArticleDetails(':id'),
+    [EAppRoutes.ARTICLE_CREATE]: getRouteArticleCreate(),
+    [EAppRoutes.ARTICLE_EDIT]: getRouteArticleEdit(':id'),
+    [EAppRoutes.ADMIN]: getRouteAdmin(),
+    [EAppRoutes.FORBIDDEN]: getRouteForbidden(),
 
     [EAppRoutes.NOT_FUND]: '*'
 }
 
 export const routeConfig: Record<EAppRoutes, TAppRouteProps> = {
     [EAppRoutes.MAIN]: {
-        path: RoutePath.main,
+        path: getRouteMain(),
         element: <MainPage/>
     },
     [EAppRoutes.ABOUT]: {
-        path: RoutePath.about,
+        path: getRouteAbout(),
         element: <AboutPage/>
     },
     [EAppRoutes.PROFILE]: {
-        path: `${RoutePath.profile}:id`,
+        path: getRouteProfile(':id'),
         element: <ProfilePage/>,
         authOnly: true
     },
     [EAppRoutes.ARTICLE]: {
-        path: RoutePath.article,
+        path: getRouteArticles(),
         element: <ArticlePage/>,
         authOnly: true
     },
     [EAppRoutes.ARTICLE_DETAILS]: {
-        path: `${RoutePath.article_details}:id`,
+        path: getRouteArticleDetails(':id'),
         element: <ArticleDetailsPage/>,
         authOnly: true
     },
     [EAppRoutes.ARTICLE_CREATE]: {
-        path: RoutePath.article_create,
-        element: <AritcleCteatePage/>,
+        path: getRouteArticleCreate(),
+        element: <ArticleCreatePage/>,
         authOnly: true
     },
     [EAppRoutes.ARTICLE_EDIT]: {
-        path: `${RoutePath.article_edit}:id/edit`,
-        element: <AritcleEditPage/>,
+        path: getRouteArticleEdit(':id'),
+        element: <ArticleEditPage/>,
         authOnly: true
     },
     [EAppRoutes.ADMIN]: {
-        path: RoutePath.admin,
+        path: getRouteAdmin(),
         element: <AdminPage />,
         roles: [ERoleUser.ADMIN, ERoleUser.MANAGER]
     },
     [EAppRoutes.FORBIDDEN]: {
-        path: RoutePath.forbidden,
+        path: getRouteForbidden(),
         element: <ForbiddenPage />,
     },
     [EAppRoutes.NOT_FUND]: {
-        path: RoutePath.not_fund,
+        path: '*',
         element: <NotFundPage/>
     }
 }

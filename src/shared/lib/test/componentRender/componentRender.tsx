@@ -6,7 +6,7 @@ import { ReducersMapObject } from '@reduxjs/toolkit';
 import { MemoryRouter} from 'react-router-dom'
 
 import {StoreProvider} from '@/app/providers/StoreProvider'
-import {RoutePath} from '@/shared/config/routeConfig'
+import {getRouteMain} from '@/shared/config/routeConfig'
 import i18nForTest from '@/shared/config/i18/i18nForTest'
 import { TStateSchema } from '@/shared/config/storeConfig/types';
 
@@ -19,7 +19,7 @@ export type TRenderOptions = {
 }
 
 export const componentRender = (component: ReactNode, optins?: TRenderOptions) => {
-    const {route = RoutePath.main,  initialState, asyncReducers} = optins || {};
+    const {route = getRouteMain(),  initialState, asyncReducers} = optins || {};
     return render(
         <MemoryRouter initialEntries={[route]}>
             <StoreProvider initialState={initialState} asyncReducers={asyncReducers}>

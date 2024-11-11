@@ -9,7 +9,7 @@ import { Text } from "@/shared/ui/Text";
 import { Icon } from "@/shared/ui/Icon";
 import { Avatar } from "@/shared/ui/Avatar";
 import { Button, EButtonTheme } from "@/shared/ui/Button";
-import { RoutePath } from "@/shared/config/routeConfig";
+import { getRouteArticleDetails } from "@/shared/config/routeConfig";
 import { classNames } from "@/shared/lib";
 
 
@@ -43,7 +43,7 @@ export const ArticleItem: FC<TArticleItemProps> = ({ className, view, article })
     );
 
     const handleClickCard = useCallback(() => {
-        navigate(RoutePath.article_details + id)
+        navigate(getRouteArticleDetails(id))
     },[id, navigate])
 
     if(view === EArticleView.BIG){

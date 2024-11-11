@@ -9,7 +9,7 @@ import { Avatar } from "@/shared/ui/Avatar";
 import { useAppDispatch, useAppSelector } from "@/shared/hooks";
 import { isAdmin, isManager, userActions } from "@/entities/User";
 import { AppLink, EApplinkTypes } from "@/shared/ui/AppLink";
-import { RoutePath } from "@/shared/config/routeConfig";
+import { getRouteProfile, getRouteAdmin } from "@/shared/config/routeConfig";
 
 type TAvatarDropdownProps = {
     className?: string;
@@ -33,14 +33,14 @@ export const AvatarDropdown: FC<TAvatarDropdownProps> = ({ className, avatar, id
         ...(showAdmin ? [
             <AppLink 
                 type={EApplinkTypes.SECONDARY} 
-                to={RoutePath.admin} key='1'>
+                to={getRouteAdmin()} key='1'>
                 {t('admin')}
             </AppLink>]
             : 
             []),
         <AppLink 
             type={EApplinkTypes.SECONDARY} 
-            to={`${RoutePath.profile}${id}`} key='2'>
+            to={getRouteProfile(id)} key='2'>
             {t('profile')}
         </AppLink>,
         <Button key='3' inverted onClick={handleLogout}>{t('exit')}</Button>,

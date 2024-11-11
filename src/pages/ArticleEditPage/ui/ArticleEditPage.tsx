@@ -6,7 +6,7 @@ import { Page } from "@/widgets/Page";
 import { useParams } from "react-router-dom";
 
 
-type TAritcleEditPageProps = {
+type TArticleEditPageProps = {
     className?: string;
 };
 
@@ -14,7 +14,7 @@ type TParamsUtl = {
     id: string;
 }
 
-const AritcleEditPage: FC<TAritcleEditPageProps> = ({ className }) => {
+const ArticleEditPage: FC<TArticleEditPageProps> = ({ className }) => {
     const {t} = useTranslation();
     const {id} = useParams<TParamsUtl>()
 
@@ -25,4 +25,4 @@ const AritcleEditPage: FC<TAritcleEditPageProps> = ({ className }) => {
     );
 };
 
-export default AritcleEditPage;
+export default ArticleEditPage;

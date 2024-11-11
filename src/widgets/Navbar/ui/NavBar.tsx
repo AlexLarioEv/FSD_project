@@ -9,7 +9,7 @@ import { useAppSelector } from "@/shared/hooks"
 import { Text,ETypeText } from "@/shared/ui/Text"
 import { Button } from "@/shared/ui/Button"
 import { classNames} from '@/shared/lib'
-import { RoutePath } from "@/shared/config/routeConfig"
+import { getRouteArticleCreate } from "@/shared/config/routeConfig"
 import { HStack } from "@/shared/ui/Stack"
 
 import { AvatarDropdown } from "@/features/AvatarDropdown"
@@ -30,7 +30,7 @@ export const NavBar: FC<TNavBarProps> = ({className}) => {
     const dispatch = useDispatch();
 
     const handleCreateArticle = () => {
-        navigate(RoutePath.article_create)
+        navigate(getRouteArticleCreate())
     }
 
     const handleOpenLoginModal = useCallback(() => {

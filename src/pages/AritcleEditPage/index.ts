@@ -1,1 +1,0 @@
-export {LazyAritcleEditPage as AritcleEditPage} from './ui/LazyAritcleEditPage';

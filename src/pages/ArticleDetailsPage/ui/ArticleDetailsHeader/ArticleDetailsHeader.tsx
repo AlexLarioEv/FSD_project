@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 
 import { classNames } from "@/shared/lib";
 import { Button, EButtonTheme } from "@/shared/ui/Button";
-import { RoutePath } from "@/shared/config/routeConfig";
+import { getRouteArticles, getRouteArticleEdit } from "@/shared/config/routeConfig";
 
 import { HStack } from "@/shared/ui/Stack";
 
@@ -18,11 +18,11 @@ export const ArticleDetailsHeader: FC<TArticleDetailsHeaderProps> = ({ className
     const navigate = useNavigate();
 
     const handleClickBack = () => {
-        navigate(RoutePath.article);
+        navigate(getRouteArticles());
     }
     
     const handleClickEdit = () => {
-        navigate(`${RoutePath.article_edit}${id}/edit`);
+        navigate(getRouteArticleEdit(id));
     }
 
     return (

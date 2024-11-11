@@ -1,4 +1,4 @@
-import { RoutePath, EAppRoutes } from "@/shared/config/routeConfig";
+import { getRouteMain, getRouteAbout, getRouteProfile, EAppRoutes, getRouteArticles } from "@/shared/config/routeConfig";
 import MainPage from "@/shared/assets/icons/main-20-20.svg"
 import AboutPage from "@/shared/assets/icons/about-20-20.svg"
 import ProfilePage from "@/shared/assets/icons/profile-20-20.svg"
@@ -13,11 +13,11 @@ export const getSidebarItems = createSelector(getAuthData,(userData) => {
     const sidebarItems: TSidebarItem[] = [
         {
             text: EAppRoutes.MAIN,
-            path:RoutePath.main,
+            path: getRouteMain(),
             Icon: MainPage
         },{
             text: EAppRoutes.ABOUT,
-            path: RoutePath.about,
+            path: getRouteAbout(),
             Icon: AboutPage
         }
     ]
@@ -25,12 +25,12 @@ export const getSidebarItems = createSelector(getAuthData,(userData) => {
     if(userData?.id){
         sidebarItems.push({
             text: EAppRoutes.PROFILE,
-            path: `${RoutePath.profile}${userData.id}`,
+            path: getRouteProfile(userData.id),
             Icon: ProfilePage,
             authOnly: true,
         },{
             text: EAppRoutes.ARTICLE,
-            path: RoutePath.article,
+            path: getRouteArticles(),
             Icon: ArticlePage,
             authOnly: true,
         })

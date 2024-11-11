@@ -1,1 +1,0 @@
-export {LazyArticleCreatePage as AritcleCteatePage} from './ui/LazyArticleCreatePage';

@@ -4,7 +4,7 @@ import { classNames } from "@/shared/lib";
 import { Text } from "@/shared/ui/Text";
 import { Avatar } from "@/shared/ui/Avatar";
 import { AppLink } from "@/shared/ui/AppLink";
-import { RoutePath } from "@/shared/config/routeConfig";
+import { getRouteProfile } from "@/shared/config/routeConfig";
 
 import {TComment} from '../../model/types/types'
 import styles from './CommentCard.module.scss';
@@ -19,7 +19,7 @@ const CommentCard = memo(({ className, comment }: TCommentCardProps) => {
 
     return (
         <div className={classNames(styles.CommentCard, {}, [className])}>
-            <AppLink to={`${RoutePath.profile}${user.id}`} className={styles.header}>
+            <AppLink to={getRouteProfile(user.id)} className={styles.header}>
                 <Avatar src={user.avatar} size={30}/>
                 <Text title={user.username}/>
             </AppLink>
