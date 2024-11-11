@@ -5,6 +5,7 @@ import pluginReact from "eslint-plugin-react";
 import i18next from 'eslint-plugin-i18next';
 import reactHooks from "eslint-plugin-react-hooks";
 import alexlarioPlugin from "eslint-plugin-alexlario-plugin";
+import unusedImports from "eslint-plugin-unused-imports";
 
 export default [
     {languageOptions: { globals: globals.browser }},
@@ -16,7 +17,8 @@ export default [
         plugins: {
             "react": pluginReact,
             "react-hooks": reactHooks,
-            "alexlario-plugin": alexlarioPlugin
+            "alexlario-plugin": alexlarioPlugin,
+            "unused-imports": unusedImports,
         },
         files: ["**/*.{js,mjs,cjs,ts,jsx,tsx}"],
         "settings": {
@@ -43,6 +45,16 @@ export default [
             '@typescript-eslint/no-unused-expressions': ["error", { "allowShortCircuit": true }],
             ...reactHooks.configs.recommended.rules,
             "react-hooks/exhaustive-deps": "error",
+            "unused-imports/no-unused-imports": "error",
+            "unused-imports/no-unused-vars": [
+                "warn",
+                {
+                    "vars": "all",
+                    "varsIgnorePattern": "^_",
+                    "args": "after-used",
+                    "argsIgnorePattern": "^_",
+                },
+            ],
             "alexlario-plugin/path-checker": [
                 "error",
                 {
@@ -54,6 +66,12 @@ export default [
                     alias: '@',
                     testFilesPatterns: ['**/*.test.ts', '**/*.test.tsx']
                 }],
+            // "alexlario-plugin/layer-imports": [
+            //     "error",
+            //     {
+            //         alias: '@',
+            //         ignoreImportPatterns: ['**/*.test.ts', '**/*.test.tsx']
+            //     }],  
         },
         ignores: [
             "node_modules/*",
