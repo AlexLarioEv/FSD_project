@@ -23,7 +23,7 @@ export const DynamicModuleLoader:FC<TDynamicModuleRenderProps> = ({
     reducers,
     removeAfterUnmount = true, 
 }) =>{
-    const [initReduser, setInitReduser] = useState(false);
+    const [initReducer, setInitReducer] = useState(false);
 
     const store = useStore() as ReduxStoreWithManager;
     const mountedReducers = store.reducerManager.getReducerMap();
@@ -36,7 +36,7 @@ export const DynamicModuleLoader:FC<TDynamicModuleRenderProps> = ({
                 store.reducerManager.add( nameReducer as TStateSchemaKey,reducer)
                 dispatch({type: `@INIT ${nameReducer} reducer`})
             }
-            setInitReduser(true)
+            setInitReducer(true)
         })
         return () => {
             if(removeAfterUnmount) {
@@ -51,7 +51,7 @@ export const DynamicModuleLoader:FC<TDynamicModuleRenderProps> = ({
 
     return (
         <>
-            {initReduser ? children : <div className={styles.loaderWrapper}><Loader /></div>}
+            {initReducer ? children : <div className={styles.loaderWrapper}><Loader /></div>}
         </>
     )
 }
