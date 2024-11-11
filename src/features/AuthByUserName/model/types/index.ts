@@ -1,1 +1,1 @@
-export {TLoginSchema, TLoginByUsernameProps} from './UserSchema'
+export type {TLoginSchema, TLoginByUsernameProps} from './UserSchema'

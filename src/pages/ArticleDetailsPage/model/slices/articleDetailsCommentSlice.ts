@@ -2,9 +2,9 @@ import {
     createEntityAdapter,
     createSlice,
     PayloadAction,
-} from '@reduxjs/toolkit'
-import {TComment} from '@/entities/Comment'
-import { TStateSchema } from '@/app/providers/StoreProvider'
+} from '@reduxjs/toolkit';
+import {TComment} from '@/entities/Comment';
+import { TStateSchema } from '@/shared/config/storeConfig';
 
 import {fetchCommentById} from '../services/fetchCommentById'
 import { TArticleDetailsCommentsShema } from '../types/articleDetailsCommentSchema';

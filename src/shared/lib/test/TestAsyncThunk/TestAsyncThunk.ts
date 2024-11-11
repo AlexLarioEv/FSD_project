@@ -1,7 +1,7 @@
 import axios, {AxiosStatic}  from 'axios';
 
-import {TAsyncThunk} from '@/app/providers/StoreProvider'
-import { TStateSchema } from "@/app/providers/StoreProvider/config";
+import { TAsyncThunk} from '@/shared/config/storeConfig';
+import { TStateSchema } from "@/shared/config/storeConfig";
 import { AsyncThunkAction } from "@reduxjs/toolkit";
 import { DeepPartial } from '../../helpers';
 

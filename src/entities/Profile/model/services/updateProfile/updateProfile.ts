@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-import { TAsyncThunk } from '@/app/providers/StoreProvider';
+import { TAsyncThunk } from '@/shared/config/storeConfig';
 
 import {validateProfileData} from '../validateProfileData/validateProfileData'
 import {getProfileData} from '../../selector'

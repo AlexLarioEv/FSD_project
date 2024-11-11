@@ -11,7 +11,7 @@ import {
     isLoadingArticleList, } from "../../model/selectors/articleList";
 import { articleListAction, getArticleList } from "../../model/slices/articleListSlice";
 
-import { TStateSchema } from "@/app/providers/StoreProvider";
+import { TStateSchema } from '@/shared/config/storeConfig';
 import { createSelector } from "@reduxjs/toolkit";
 
 type TAricleListWithViewProps = {

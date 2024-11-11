@@ -719,6 +719,12 @@
       "userId": "2",
       "text": "Armenia",
       "id": "goPXYqx"
+    },
+    {
+      "articleId": "2",
+      "userId": "1",
+      "text": "+rep",
+      "id": "iJRJnY3"
     }
   ],
   "users": [
@@ -755,7 +761,7 @@
       "id": "1",
       "first": "Иван",
       "lastname": "Иванов",
-      "age": 42,
+      "age": 41,
       "currency": "EUR",
       "country": "Kazakhstan",
       "city": "Moscow",
@@ -814,6 +820,13 @@
       "articleId": "10",
       "rate": 3,
       "id": "cv7EKkl"
+    },
+    {
+      "userId": "1",
+      "articleId": "18",
+      "rate": 5,
+      "feedback": "Класс",
+      "id": "1z4WNG1"
     }
   ],
   "profile-ratings": [

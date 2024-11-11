@@ -1,6 +1,6 @@
 import { DeepPartial } from '@/shared/lib/helpers';
 import {getCommentError, getCommentText} from './getComment';
-import { TStateSchema } from '@/app/providers/StoreProvider';
+import { TStateSchema } from '@/shared/config/storeConfig';
 
 const state: DeepPartial<TStateSchema> = {
     addCommentForm: {text: 'text', error: 'error'}

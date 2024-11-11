@@ -1,4 +1,4 @@
-import { TStateSchema } from '@/app/providers/StoreProvider';
+import { TStateSchema } from '@/shared/config/storeConfig';
 
 import { getArticle, getArticleData, getArticleError, isArticleLoading } from './getArticle';
 import { DeepPartial } from '@/shared/lib/helpers';

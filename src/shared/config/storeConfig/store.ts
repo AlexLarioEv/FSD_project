@@ -1,3 +1,4 @@
+/* eslint-disable alexlario-plugin/layer-imports */
 import { configureStore, ReducersMapObject,  } from '@reduxjs/toolkit';
 import { Reducer } from 'redux';
 

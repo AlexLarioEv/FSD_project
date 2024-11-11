@@ -1,7 +1,7 @@
 import {Counter} from './Counter'
 
 import {fireEvent, screen} from '@testing-library/react'
-import { TStateSchema } from '@/app/providers/StoreProvider/config/types'
+import { TStateSchema } from '@/shared/config/storeConfig/types'
 import { DeepPartial } from '@/shared/lib/helpers'
 import {componentRender} from '@/shared/lib/test'
 

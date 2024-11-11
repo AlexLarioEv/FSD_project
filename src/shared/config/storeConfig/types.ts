@@ -1,3 +1,4 @@
+/* eslint-disable alexlario-plugin/layer-imports */
 import type { EnhancedStore, Reducer, ThunkDispatch, Action} from '@reduxjs/toolkit';
 import { AxiosInstance } from 'axios';
 

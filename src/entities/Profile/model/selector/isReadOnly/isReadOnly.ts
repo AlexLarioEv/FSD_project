@@ -1,3 +1,3 @@
-import { TStateSchema } from "@/app/providers/StoreProvider";
+import { TStateSchema } from '@/shared/config/storeConfig';
 
 export const isReadOnly = (state: TStateSchema) => !!state.profile?.readonly

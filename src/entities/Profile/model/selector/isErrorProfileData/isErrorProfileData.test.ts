@@ -1,4 +1,4 @@
-import { TStateSchema } from '@/app/providers/StoreProvider';
+import { TStateSchema } from '@/shared/config/storeConfig';
 import {isErrorProfileData} from './isErrorProfileData';
 import { DeepPartial } from '@/shared/lib/helpers';
 import { EErrorValidateForm } from '../../types/ProfileSchema';

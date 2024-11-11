@@ -1,4 +1,4 @@
-import { TStateSchema } from "@/app/providers/StoreProvider/config/types";
+import { TStateSchema } from "@/shared/config/storeConfig/types";
 
 export const getArticle = (state:TStateSchema) => state.article;
 export const getArticleError = (state:TStateSchema) => state.article?.error;

@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-import {TAsyncThunk} from '@/app/providers/StoreProvider'
+import { TAsyncThunk} from '@/shared/config/storeConfig';
 import { TComment } from "@/entities/Comment";
 import { getUser } from "@/entities/User";
 import { getArticleData } from "@/entities/Article";    

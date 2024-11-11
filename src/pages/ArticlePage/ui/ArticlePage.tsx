@@ -2,7 +2,7 @@ import { FC, useCallback } from "react";
 import { createSelector } from "@reduxjs/toolkit";
 import { useSearchParams } from "react-router-dom";
 
-import { TStateSchema } from "@/app/providers/StoreProvider";
+import { TStateSchema } from '@/shared/config/storeConfig';
 import { Page } from "@/widgets/Page";
 import { filterReducer } from '@/entities/Filter';
 import { useAppDispatch, useAppSelector, useInitEffect } from "@/shared/hooks";

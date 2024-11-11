@@ -3,8 +3,8 @@ import {Provider} from 'react-redux';
 import { FC, ReactNode } from "react";
 import { DeepPartial } from '@/shared/lib/helpers';
 
-import {createReduxStore} from '../config'
-import { TStateSchema } from '../config/types';
+import {createReduxStore} from '../../../../shared/config/storeConfig'
+import { TStateSchema } from '../../../../shared/config/storeConfig/types';
 
 type TStoreProvideProps = {
   children?: ReactNode;

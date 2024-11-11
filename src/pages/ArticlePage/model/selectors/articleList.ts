@@ -1,4 +1,4 @@
-import { TStateSchema } from "@/app/providers/StoreProvider";
+import { TStateSchema } from '@/shared/config/storeConfig';
 import { EArticleView } from "@/entities/Article";
 
 export const isLoadingArticleList = (state: TStateSchema) => !!state.articleList?.isLoading;

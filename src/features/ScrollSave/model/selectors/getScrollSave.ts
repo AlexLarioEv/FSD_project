@@ -1,4 +1,4 @@
-import { TStateSchema } from "@/app/providers/StoreProvider";
+import { TStateSchema } from '@/shared/config/storeConfig';
 import { createSelector } from "@reduxjs/toolkit";
 
 const getScroll = (state: TStateSchema) => state.scrollSave.scroll;

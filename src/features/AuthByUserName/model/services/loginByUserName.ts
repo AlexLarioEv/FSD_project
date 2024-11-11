@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-import {TAsyncThunk} from '@/app/providers/StoreProvider'
+import { TAsyncThunk} from '@/shared/config/storeConfig';
 import { TUser, userActions } from "@/entities/User";
 import {ELocalStorageKey}from '@/shared/const';
 

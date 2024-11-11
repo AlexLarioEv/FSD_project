@@ -3,7 +3,7 @@ import { useStore,useDispatch} from 'react-redux'
 import { Reducer } from '@reduxjs/toolkit'
 
 import {useIgnoreEffectDeps} from '@/shared/hooks'
-import {ReduxStoreWithManager, TStateSchemaKey} from '@/app/providers/StoreProvider/config'
+import {ReduxStoreWithManager, TStateSchemaKey} from '@/shared/config/storeConfig'
 import { Loader } from '@/shared/ui/Loader'
 
 import styles from './DynamicModuleLoader.module.scss'

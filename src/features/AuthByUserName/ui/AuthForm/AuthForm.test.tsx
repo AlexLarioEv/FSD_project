@@ -2,7 +2,7 @@ import { screen, fireEvent } from '@testing-library/react';
 
 import {componentRender} from '@/shared/lib/test';
 
-import { TStateSchema } from '@/app/providers/StoreProvider';
+import { TStateSchema } from '@/shared/config/storeConfig';
 import { DeepPartial } from '@/shared/lib/helpers';
 
 import { loginActions } from '../../model/slice';

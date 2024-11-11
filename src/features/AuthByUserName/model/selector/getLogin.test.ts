@@ -1,6 +1,6 @@
 import {getLogin} from './getLogin'
 
-import { TStateSchema } from '@/app/providers/StoreProvider/config'
+import { TStateSchema } from '@/shared/config/storeConfig'
 import { DeepPartial } from '@/shared/lib/helpers'
 
 describe('getLogin.test', ()=>{

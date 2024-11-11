@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import {createReduxStore} from '@/app/providers/StoreProvider'
+import {createReduxStore} from "@/shared/config/storeConfig"
 
 export type TAppDispatch = ReturnType<typeof createReduxStore>['dispatch'];
 

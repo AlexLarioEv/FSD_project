@@ -3,7 +3,7 @@ import {
     createSlice,
     PayloadAction,
 } from '@reduxjs/toolkit'
-import { TStateSchema } from '@/app/providers/StoreProvider'
+import { TStateSchema } from '@/shared/config/storeConfig';
 
 import { fetchArticleList } from '../services/fetchArticleList'
 import { TArticleListSchema } from '../types/articleListSchema';

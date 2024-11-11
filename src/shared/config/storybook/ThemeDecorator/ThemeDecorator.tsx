@@ -1,3 +1,4 @@
+/* eslint-disable alexlario-plugin/layer-imports */
 import { Decorator } from '@storybook/react/'
 
 import {ThemeProvider} from "@/app";

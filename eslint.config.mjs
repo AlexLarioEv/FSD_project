@@ -66,12 +66,12 @@ export default [
                     alias: '@',
                     testFilesPatterns: ['**/*.test.ts', '**/*.test.tsx']
                 }],
-            // "alexlario-plugin/layer-imports": [
-            //     "error",
-            //     {
-            //         alias: '@',
-            //         ignoreImportPatterns: ['**/*.test.ts', '**/*.test.tsx']
-            //     }],  
+            "alexlario-plugin/layer-imports": [
+                "error",
+                {
+                    alias: '@',
+                    ignoreImportPatterns: ['**/*.test.ts', '**/*.test.tsx']
+                }],  
         },
         ignores: [
             "node_modules/*",

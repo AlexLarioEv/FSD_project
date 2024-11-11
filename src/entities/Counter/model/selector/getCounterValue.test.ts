@@ -1,5 +1,5 @@
 import { getCounterValue } from "./getCounterValue";
-import { TStateSchema } from "@/app/providers/StoreProvider/config/types";
+import { TStateSchema } from "@/shared/config/storeConfig/types";
 import { DeepPartial } from "@/shared/lib/helpers";
 
 describe('getCounter', ()=>{

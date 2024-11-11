@@ -1,18 +1,18 @@
 import { FC, useState, useMemo } from "react";
 import { useTranslation } from 'react-i18next';
 
-import { ThemeSwitcher } from "@/widgets/ThemeSwitcher";
-import { LangSwitcher } from "@/widgets/LangSwitcher";
+import { ThemeSwitcher } from "@/features/ThemeSwitcher";
+import { LangSwitcher } from "@/features/LangSwitcher";
 
 import {  Button, EButtonSize } from "@/shared/ui/Button"
 import { classNames } from "@/shared/lib";
-import {getSidebarItems} from '../model/selectors/getSidebarItems'
+import { getSidebarItems } from '../model/selectors/getSidebarItems'
 
-
-import {SidebarItem} from '../../SidebarItem/'
-import styles from './Sidebar.module.scss';
+import { SidebarItem } from '../../SidebarItem/'
 import { useSelector } from "react-redux";
 import { HStack, VStack } from "@/shared/ui/Stack";
+
+import styles from './Sidebar.module.scss';
 
 type TSidebarProps = {
   className?: string;

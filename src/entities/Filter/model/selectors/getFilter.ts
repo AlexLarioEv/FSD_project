@@ -1,4 +1,4 @@
-import { TStateSchema } from "@/app/providers/StoreProvider";
+import { TStateSchema } from '@/shared/config/storeConfig';
 
 export const getFilterQuery= (state: TStateSchema) => state.filter?.filterQuery;
 export const getTagQuery = (state: TStateSchema) => state.filter?.tagQuery;

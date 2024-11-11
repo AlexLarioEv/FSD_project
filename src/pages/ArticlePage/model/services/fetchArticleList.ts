@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-import { TAsyncThunk } from "@/app/providers/StoreProvider";
+import { TAsyncThunk } from '@/shared/config/storeConfig';
 import { EArticleType, TArticle } from "@/entities/Article";
 import { getLimitArticleList, getPageArticleList } from "../selectors/articleList";
 import { getFilterQuery, getOrder, getSort, getTagQuery } from "@/entities/Filter";

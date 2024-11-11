@@ -1,4 +1,4 @@
-import { TStateSchema } from '@/app/providers/StoreProvider';
+import { TStateSchema } from '@/shared/config/storeConfig';
 import {isLoadingProfileData} from './isLoadingProfileData';
 import { DeepPartial } from '@/shared/lib/helpers';
 
