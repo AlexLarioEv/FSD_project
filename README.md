@@ -94,33 +94,49 @@ npm run start:dev или npm run start:dev:vite - запуск сервера + 
 Пример:
 
 ```typescript jsx
-import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
+import { fn } from '@storybook/test';
 
-import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
-import { Button, ButtonSize, ButtonTheme } from './Button';
-import { Theme } from '@/shared/const/theme';
+import { Button, EButtonTheme } from './Button';
+import { ETheme } from '@/shared/contexts';
 
-export default {
+
+const meta = {
     title: 'shared/Button',
     component: Button,
-    argTypes: {
-        backgroundColor: { control: 'color' },
+    parameters: {
+
+        layout: 'centered',
     },
-} as ComponentMeta<typeof Button>;
 
-const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
 
-export const Primary = Template.bind({});
-Primary.args = {
-    children: 'Text',
+    args: { onClick: fn() },
+} satisfies Meta<typeof Button>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+
+export const Default: Story = {
+    args: {
+        children: 'Button'
+    },
 };
 
-export const Clear = Template.bind({});
-Clear.args = {
-    children: 'Text',
-    theme: ButtonTheme.CLEAR,
+export const Clear: Story = {
+    args: {
+        theme: EButtonTheme.CLEAR,
+        children: 'Button'
+    },
 };
+
+export const Border: Story = {
+    args:{
+        theme: EButtonTheme.BORDER,
+        children: 'Button'
+    }
+}
+
 ```
 
 
