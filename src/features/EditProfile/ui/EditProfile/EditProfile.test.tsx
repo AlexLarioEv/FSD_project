@@ -5,7 +5,8 @@ import { ECurrency } from '@/entities/Currency';
 import { ECountry } from '@/entities/Country';
 import userEvent from '@testing-library/user-event';
 import { api } from '@/shared/api/api';
-import { profileReducer } from '@/entities/Profile/model/slice/profileSlice';
+import { profileReducer } from '@/entities/Profile/testing';
+
 import { EditProfile } from './EditProfile';
 
 const profile: TProfile = {

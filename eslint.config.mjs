@@ -43,7 +43,17 @@ export default [
             '@typescript-eslint/no-unused-expressions': ["error", { "allowShortCircuit": true }],
             ...reactHooks.configs.recommended.rules,
             "react-hooks/exhaustive-deps": "error",
-            "alexlario-plugin/path-checker": "error",
+            "alexlario-plugin/path-checker": [
+                "error",
+                {
+                    alias: '@',
+                }],
+            "alexlario-plugin/public-api-imports": [
+                "error",
+                {
+                    alias: '@',
+                    testFilesPatterns: ['**/*.test.ts', '**/*.test.tsx']
+                }],
         },
         ignores: [
             "node_modules/*",

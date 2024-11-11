@@ -1,8 +1,8 @@
 import { FC, useState, useMemo } from "react";
 import { useTranslation } from 'react-i18next';
 
-import { ThemeSwitcher } from "@/widgets/ThemeSwitcher/ui";
-import { LangSwitcher } from "@/widgets/LangSwitcher/ui";
+import { ThemeSwitcher } from "@/widgets/ThemeSwitcher";
+import { LangSwitcher } from "@/widgets/LangSwitcher";
 
 import {  Button, EButtonSize } from "@/shared/ui/Button"
 import { classNames } from "@/shared/lib";

@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next"
 import { useNavigate } from "react-router-dom"
 import { useDispatch } from "react-redux"
 
-import {AuthModal} from '@/features/AuthByUserName/ui'
+import {AuthModal} from '@/features/AuthByUserName'
 import {getUser, userActions} from '@/entities/User'
 import { useAppSelector } from "@/shared/hooks"
 import { Text,ETypeText } from "@/shared/ui/Text"

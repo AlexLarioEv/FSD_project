@@ -1,8 +1,8 @@
 import { FC, memo } from "react";
+import { createSelector } from "@reduxjs/toolkit";
 import { useTranslation } from "react-i18next";
 
 import { profileActions, selectorProfile, updateProfile } from '@/entities/Profile'
-import { } from "@/entities/Profile";
 import { getAuthData } from "@/entities/User";
 import { classNames } from "@/shared/lib";
 import { Text } from '@/shared/ui/Text'
@@ -10,7 +10,6 @@ import { Button, EButtonTheme } from "@/shared/ui/Button";
 import { useAppDispatch, useAppSelector } from "@/shared/hooks";
 
 import { HStack } from "@/shared/ui/Stack";
-import { createSelector } from "@reduxjs/toolkit";
 
 type TProfilePageHeaderProps = {
   className?: string;

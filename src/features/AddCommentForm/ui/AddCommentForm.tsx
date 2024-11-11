@@ -9,7 +9,7 @@ import { Input } from '@/shared/ui/Input';
 import { DynamicModuleLoader, TReducerList } from "@/shared/lib/components";
 
 import {addCommentReducer, addCommentActions} from '../model/slice/addCommentSlice';
-import {getCommentText} from '../model/selectors/getComment';
+import { getCommentText } from "../model/selectors/getComment";
 import styles from './AddCommentForm.module.scss';
 
 type TAddCommentFormProps = {

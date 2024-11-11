@@ -1,7 +1,7 @@
 import  {AppRouter } from '@/app/providers/router'
 
-import { NavBar } from '@/widgets/Navbar/ui';
-import { Sidebar } from '@/widgets/Sidebar/ui';
+import { NavBar } from '@/widgets/Navbar';
+import { Sidebar } from '@/widgets/Sidebar';
 
 import { classNames } from '@/shared/lib';
 import { useAppSelector } from '@/shared/hooks';

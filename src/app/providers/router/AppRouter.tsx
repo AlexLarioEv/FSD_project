@@ -1,7 +1,7 @@
 import { Suspense, useCallback } from 'react'
 import { Routes, Route } from 'react-router-dom';
 
-import { PageLoader } from '@/widgets/PageLoader/ui'
+import { PageLoader } from '@/widgets/PageLoader'
 import { Page } from '@/widgets/Page';
 import { routeConfig } from '@/shared/config';
 import { TAppRouteProps } from '@/shared/config/routeConfig/routeConfig';
