@@ -1,9 +1,9 @@
 name: linting, testing, building
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
   pull_request:
-    branches: [ master ]
+    branches: [ main, develop ]
 
 permissions:
   contents: write
@@ -48,6 +48,7 @@ jobs:
         uses: chromaui/action@latest
         with:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+        if: always()
 
       - name: Deploy to GitHub Pages
         id: deployment
