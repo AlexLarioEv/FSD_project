@@ -6,7 +6,7 @@ import { classNames } from "@/shared/lib";
 import { EErrorValidateForm, fetchProfile, profileActions, ProfileCard, profileReducer, selectorProfile } from "@/entities/Profile";
 import { ETypeText, Text } from "@/shared/ui/Text";
 import { DynamicModuleLoader, TReducerList } from "@/shared/lib/components";
-import { useAppDispatch, useAppSelector, useInitEffect } from "@/shared/hooks";
+import { useAppDispatch, useAppSelector, useInitEffect } from "@/shared/lib/hooks";
 import { createSelector } from "@reduxjs/toolkit";
 import { ECountry } from "@/entities/Country";
 import { ECurrency } from "@/entities/Currency";

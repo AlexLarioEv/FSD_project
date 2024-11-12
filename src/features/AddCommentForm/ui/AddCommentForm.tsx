@@ -2,7 +2,7 @@ import { memo, useCallback } from "react";
 import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 
-import { useAppDispatch } from "@/shared/hooks";
+import { useAppDispatch } from "@/shared/lib/hooks";
 import { classNames } from "@/shared/lib";
 import { Button, EButtonTheme } from "@/shared/ui/Button";
 import { Input } from '@/shared/ui/Input';

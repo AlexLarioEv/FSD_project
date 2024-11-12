@@ -18,8 +18,9 @@ export type TRenderOptions = {
     asyncReducers?: DeepPartial<ReducersMapObject<TStateSchema>>
 }
 
-export const componentRender = (component: ReactNode, optins?: TRenderOptions) => {
-    const {route = getRouteMain(),  initialState, asyncReducers} = optins || {};
+export const componentRender = (component: ReactNode, options?: TRenderOptions) => {
+    const {route = getRouteMain(),  initialState, asyncReducers} = options || {};
+
     return render(
         <MemoryRouter initialEntries={[route]}>
             <StoreProvider initialState={initialState} asyncReducers={asyncReducers}>

@@ -52,7 +52,6 @@ describe("ArticleItem Component", () => {
         expect(screen.getByText("2024-10-25")).toBeInTheDocument();
         expect(screen.getByText("100")).toBeInTheDocument();
         expect(screen.getByText("AuthorName")).toBeInTheDocument();
-        expect(screen.getByAltText("AuthorName")).toHaveAttribute("src", "author-avatar.jpg");
         expect(screen.getByText("Introduction")).toBeInTheDocument();
     });
 });

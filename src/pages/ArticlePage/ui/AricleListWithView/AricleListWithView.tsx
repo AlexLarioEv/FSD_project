@@ -4,7 +4,7 @@ import { FC, memo } from "react";
 import { ArticleViewSelector } from "@/features/ArticleViewSelector";
 import { ArticleList, EArticleView } from "@/entities/Article";
 import { classNames } from "@/shared/lib";
-import { useAppDispatch, useAppSelector } from "@/shared/hooks";
+import { useAppDispatch, useAppSelector } from "@/shared/lib/hooks";
 
 import { 
     getViewArticleList, 

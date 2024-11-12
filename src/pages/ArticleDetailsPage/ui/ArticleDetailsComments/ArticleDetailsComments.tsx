@@ -5,7 +5,7 @@ import { AddCommentForm } from "@/features/AddCommentForm";
 import { CommentList } from "@/entities/Comment";
 import { Text } from "@/shared/ui/Text";
 import { classNames } from "@/shared/lib";
-import { useAppDispatch, useAppSelector, useInitEffect } from "@/shared/hooks";
+import { useAppDispatch, useAppSelector, useInitEffect } from "@/shared/lib/hooks";
 
 
 import { getArticleComments } from "../../model/slices/articleDetailsCommentSlice";

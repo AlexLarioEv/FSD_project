@@ -1,0 +1,1 @@
+export {TTestProps} from './testType';

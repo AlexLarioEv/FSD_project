@@ -1,13 +1,13 @@
 import {  useCallback, memo } from "react";
 import { useTranslation } from "react-i18next";
-import { useAppSelector } from "@/shared/hooks";
+import { useAppSelector } from "@/shared/lib/hooks";
 
 import { Input } from "@/shared/ui/Input";
 import { Button } from "@/shared/ui/Button";
 import { Text,ETypeText } from '@/shared/ui/Text'
 import { classNames } from "@/shared/lib/helpers";
 import { DynamicModuleLoader, TReducerList } from "@/shared/lib/components";
-import { useAppDispatch } from '@/shared/hooks'
+import { useAppDispatch } from '@/shared/lib/hooks'
 
 import {getLogin} from '../../model/selector'
 import {loginByUserName} from '../../model/services'

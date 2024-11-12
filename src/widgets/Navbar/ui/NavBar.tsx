@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux"
 
 import {AuthModal} from '@/features/AuthByUserName'
 import {getUser, userActions} from '@/entities/User'
-import { useAppSelector } from "@/shared/hooks"
+import { useAppSelector } from "@/shared/lib/hooks"
 import { Text,ETypeText } from "@/shared/ui/Text"
 import { Button } from "@/shared/ui/Button"
 import { classNames} from '@/shared/lib'

@@ -5,7 +5,7 @@ import { useSearchParams } from "react-router-dom";
 import { TStateSchema } from '@/shared/config/storeConfig';
 import { Page } from "@/widgets/Page";
 import { filterReducer } from '@/entities/Filter';
-import { useAppDispatch, useAppSelector, useInitEffect } from "@/shared/hooks";
+import { useAppDispatch, useAppSelector, useInitEffect } from "@/shared/lib/hooks";
 import { ETypeText, Text } from "@/shared/ui/Text";
 import { classNames } from "@/shared/lib";
 import { DynamicModuleLoader, TReducerList } from "@/shared/lib/components";

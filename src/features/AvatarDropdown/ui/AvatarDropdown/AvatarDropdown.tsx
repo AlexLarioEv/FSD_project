@@ -6,7 +6,7 @@ import { classNames } from "@/shared/lib";
 import { Button } from "@/shared/ui/Button";
 import { Dropdown } from "@/shared/ui/Popups";
 import { Avatar } from "@/shared/ui/Avatar";
-import { useAppDispatch, useAppSelector } from "@/shared/hooks";
+import { useAppDispatch, useAppSelector } from "@/shared/lib/hooks";
 import { isAdmin, isManager, userActions } from "@/entities/User";
 import { AppLink, EApplinkTypes } from "@/shared/ui/AppLink";
 import { getRouteProfile, getRouteAdmin } from "@/shared/config/routeConfig";

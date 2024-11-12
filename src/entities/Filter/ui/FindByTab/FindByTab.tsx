@@ -2,7 +2,7 @@ import { FC, useCallback } from "react";
 
 import { classNames } from "@/shared/lib";
 import { Tabs } from "@/shared/ui/Tabs";
-import { useAppDispatch, useAppSelector } from "@/shared/hooks";
+import { useAppDispatch, useAppSelector } from "@/shared/lib/hooks";
 
 import { filterActions } from "../../model/slice/filterSlice";
 import { getTagQuery } from "../../model/selectors/getFilter";

@@ -1,12 +1,12 @@
-import {FC, PropsWithChildren, useState} from 'react'
-import { useStore,useDispatch} from 'react-redux'
-import { Reducer } from '@reduxjs/toolkit'
+import {FC, PropsWithChildren, useState} from 'react';
+import { useStore,useDispatch} from 'react-redux';
+import { Reducer } from '@reduxjs/toolkit';
 
-import {useIgnoreEffectDeps} from '@/shared/hooks'
-import {ReduxStoreWithManager, TStateSchemaKey} from '@/shared/config/storeConfig'
-import { Loader } from '@/shared/ui/Loader'
+import {useIgnoreEffectDeps} from '../../hooks';
+import {ReduxStoreWithManager, TStateSchemaKey} from '@/shared/config/storeConfig';
+import { Loader } from '@/shared/ui/Loader';
 
-import styles from './DynamicModuleLoader.module.scss'
+import styles from './DynamicModuleLoader.module.scss';
 
 export type TReducerList = {
     [key in TStateSchemaKey]?: Reducer

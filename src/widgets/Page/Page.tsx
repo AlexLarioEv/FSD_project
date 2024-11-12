@@ -2,17 +2,19 @@ import { FC, MutableRefObject, PropsWithChildren, useRef, UIEventHandler } from 
 
 import { classNames } from "@/shared/lib";
 import { getScrollByPath, scrollSaveActions } from "@/features/ScrollSave";
-import { useAppDispatch, useAppSelector, useInfiniteScroll, useInitEffect, useThrottle } from '@/shared/hooks'
+import { useAppDispatch, useAppSelector, useInfiniteScroll, useInitEffect, useThrottle } from '@/shared/lib/hooks'
 
 import styles from './Page.module.scss';
 import { useLocation } from "react-router-dom";
+import { TTestProps } from "@/shared/lib/types";
 
 type TPageProps = {
     className?: string;
     onScrollEnd?: () => void;
-};
+} & TTestProps;
 
-export const Page: FC<PropsWithChildren<TPageProps>> = ({ className, children, onScrollEnd }) => {
+export const Page: FC<PropsWithChildren<TPageProps>> = (props) => {
+    const { className, children, onScrollEnd } = props;
     const {pathname} = useLocation();
     const dispatch = useAppDispatch();
     const scrollPosition = useAppSelector(state => getScrollByPath(state ,pathname));
@@ -33,9 +35,13 @@ export const Page: FC<PropsWithChildren<TPageProps>> = ({ className, children, o
     useInfiniteScroll({triggerRef, wrapperRef, callback: onScrollEnd})
 
     return (
-        <section onScroll={handleScroll} ref={wrapperRef} className={classNames(styles.Page, {}, [className])}>
+        <main 
+            data-testid={props["data-testid"] ?? "Page"} 
+            onScroll={handleScroll} 
+            ref={wrapperRef} 
+            className= {classNames(styles.Page, {}, [className])}>
             {children}
             <div ref={triggerRef as MutableRefObject<HTMLDivElement>} />
-        </section>
+        </main>
     );
 };

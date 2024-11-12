@@ -2,7 +2,7 @@ import { memo } from "react";
 
 import { Button } from '@/shared/ui/Button';
 import { classNames } from "@/shared/lib";
-import { useTheme } from '@/shared/hooks'
+import { useTheme } from '@/shared/lib/hooks'
 import { ETheme } from '@/shared/contexts'
 
 import LightIcon from '@/shared/assets/icons/theme-light.svg'

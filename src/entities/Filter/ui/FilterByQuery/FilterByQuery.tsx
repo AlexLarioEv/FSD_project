@@ -3,7 +3,7 @@ import { FC, useCallback } from "react";
 
 import { classNames } from "@/shared/lib";
 import { Input, TInputProps } from "@/shared/ui/Input";
-import { useAppDispatch, useAppSelector } from "@/shared/hooks";
+import { useAppDispatch, useAppSelector } from "@/shared/lib/hooks";
 
 import { filterActions } from "../../model/slice/filterSlice";
 import { getFilterQuery } from "../../model/selectors/getFilter";

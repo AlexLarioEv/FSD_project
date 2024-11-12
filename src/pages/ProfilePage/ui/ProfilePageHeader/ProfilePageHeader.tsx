@@ -7,7 +7,7 @@ import { getAuthData } from "@/entities/User";
 import { classNames } from "@/shared/lib";
 import { Text } from '@/shared/ui/Text'
 import { Button, EButtonTheme } from "@/shared/ui/Button";
-import { useAppDispatch, useAppSelector } from "@/shared/hooks";
+import { useAppDispatch, useAppSelector } from "@/shared/lib/hooks";
 
 import { HStack } from "@/shared/ui/Stack";
 import { createSelector } from "@reduxjs/toolkit";

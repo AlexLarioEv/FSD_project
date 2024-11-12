@@ -19,6 +19,8 @@ import { EArticleBlockType, EArticleView, TArticle } from "../../model/types/Art
 import styles from './ArticleItem.module.scss';
 
 import Eye from "@/shared/assets/icons/eye-20-20.svg";
+import { AppImage } from "@/shared/ui/AppImage";
+import { Skeleton } from "@/shared/ui/Skeleton";
 
 type TArticleItemProps = {
     className?: string;
@@ -62,7 +64,7 @@ export const ArticleItem: FC<TArticleItemProps> = ({ className, view, article })
                 </div>
                 <Text className={styles.title} title={title}/>
                 {types}
-                <img className={styles.img} src={img}/>
+                <AppImage className={styles.img} src={img} fallbackLoading= {<Skeleton height={200}/>}/>
                 {textBlock && <ArticleTextBlock className={styles.textBlock} title={textBlock.title} paragraphs={textBlock.paragraphs} />}
                 <div className={styles.bottom}>
                     <Button onClick={handleClickCard} theme={EButtonTheme.BORDER}>{t("read_more")}</Button>
@@ -77,7 +79,7 @@ export const ArticleItem: FC<TArticleItemProps> = ({ className, view, article })
             <>
                 <div className={styles.wrapperImg}>
                     <Text description={createdAt} className={styles.createAt}/>
-                    <img src={img} className={styles.img}/>
+                    <AppImage className={styles.img} src={img} fallbackLoading= {<Skeleton height={'100%'}/>} />
                 </div>
                 <div className={styles.info}>
                     {types}

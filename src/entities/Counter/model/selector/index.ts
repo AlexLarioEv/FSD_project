@@ -1,1 +1,1 @@
-export {getCounterValue}  from './getCounterValue';
+export {getCounterValue, useCounterValue}  from './getCounterValue';

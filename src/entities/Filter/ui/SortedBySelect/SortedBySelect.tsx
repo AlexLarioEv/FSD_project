@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 
 import { classNames } from "@/shared/lib";
 import { Select, TOptionsType } from "@/shared/ui/Select";
-import { useAppDispatch, useAppSelector } from "@/shared/hooks";
+import { useAppDispatch, useAppSelector } from "@/shared/lib/hooks";
 
 import { filterActions } from '../../model/slice/filterSlice';
 import { EOrderFilter } from "../../model/types/filterSchema";

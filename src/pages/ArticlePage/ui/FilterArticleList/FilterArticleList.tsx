@@ -8,7 +8,7 @@ import { EArticleType, TArticleKey } from "@/entities/Article";
 import { Text } from "@/shared/ui/Text";
 import { TOptionsType } from "@/shared/ui/Select";
 
-import { useAppDispatch, useDebounce } from "@/shared/hooks";
+import { useAppDispatch, useDebounce } from "@/shared/lib/hooks";
 import { articleListAction } from "../../model/slices/articleListSlice";
 import { fetchArticleList } from "../../model/services/fetchArticleList";
 import { tabsArray } from '../../model/constants/constants';

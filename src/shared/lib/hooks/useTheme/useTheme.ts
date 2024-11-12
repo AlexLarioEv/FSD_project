@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 
-import {IThemeContextProps, ThemeContext, ETheme} from '../../contexts';
-import {ELocalStorageKey} from '../../const/localStorage'
+import {IThemeContextProps, ThemeContext, ETheme} from '../../..//contexts';
+import {ELocalStorageKey} from '../../../const/localStorage'
 
 export const useTheme = () : IThemeContextProps=> {
     const {theme, setTheme} = useContext(ThemeContext);

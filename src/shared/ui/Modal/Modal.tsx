@@ -4,7 +4,7 @@ import { classNames, TMods } from "@/shared/lib";
 import { Portal } from "../Portal";
 
 import styles from './Modal.module.scss';
-import { useModalClosed } from "@/shared/hooks";
+import { useModalClosed } from "@/shared/lib/hooks";
 import Overlay from "../Overlay/Overlay";
 
 export type TModalProps = {

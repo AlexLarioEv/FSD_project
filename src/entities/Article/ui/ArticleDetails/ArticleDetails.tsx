@@ -3,7 +3,7 @@ import { createSelector } from "@reduxjs/toolkit";
 
 import { classNames } from "@/shared/lib";
 import { VStack } from "@/shared/ui/Stack";
-import { useAppDispatch, useAppSelector, useInitEffect } from "@/shared/hooks";
+import { useAppDispatch, useAppSelector, useInitEffect } from "@/shared/lib/hooks";
 import { Skeleton } from '@/shared/ui/Skeleton';
 import { Avatar } from "@/shared/ui/Avatar";
 import { Text, ETypeText, ESizeText } from '@/shared/ui/Text';

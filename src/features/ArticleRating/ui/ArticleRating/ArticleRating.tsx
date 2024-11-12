@@ -5,7 +5,7 @@ import { classNames } from "@/shared/lib";
 
 import { Rating } from "@/entities/Rating";
 import { useRateArticleMutation, useGetArticleRatingQuery } from "../../api/articleRatingApi";
-import { useAppSelector } from "@/shared/hooks";
+import { useAppSelector } from "@/shared/lib/hooks";
 import { Skeleton } from "@/shared/ui/Skeleton";
 import { getAuthData } from "@/entities/User";
 

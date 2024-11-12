@@ -8,6 +8,8 @@ import { TAppRouteProps } from '@/shared/config/routeConfig/routeConfig';
 
 import {AuthProtect} from './AuthProtect'
 
+// TODO: Починить тесты с роутингом в AppRoute
+
 export const AppRouter = () => {
 
     const renderWithWrapper = useCallback((route: TAppRouteProps) => {

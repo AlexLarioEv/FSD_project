@@ -1,31 +1,33 @@
 import { FC } from "react";
 import { Button, EButtonTheme } from "@/shared/ui/Button";
-import { useDispatch } from 'react-redux'
-import { useAppSelector } from "@/shared/hooks";
 
-import {counterActions} from '../model/slice'
-import {getCounterValue} from '../model/selector'
+import { useCounterActions } from '../model/slice'
+import { useCounterValue } from '../model/selector'
 import { useTranslation } from "react-i18next";
 
 export const Counter: FC= () => {
     const {t} = useTranslation();
-    const counter = useAppSelector(getCounterValue);
+    const counter = useCounterValue();
+    const {add, decremented, incremented} = useCounterActions()
 
-    const dispatch = useDispatch();
-
-    const increment = () => {
-        dispatch(counterActions.incremented())
+    const handleIncrement = () => {
+        incremented()
     }
 
-    const decrement = () => {
-        dispatch(counterActions.decremented())
+    const handleDecrement = () => {
+        decremented()
+    }
+
+    const handleAddFive = () => {
+        add(5);
     }
 
     return (
         <div>
             <h2 data-testid='counter'>{counter}</h2>
-            <Button testId="increment" theme={EButtonTheme.BORDER} onClick={increment}>{t('increment')}</Button>
-            <Button testId="decrement" theme={EButtonTheme.BORDER} onClick={decrement}>{t('decrement')}</Button>
+            <Button testId="increment" theme={EButtonTheme.BORDER} onClick={handleIncrement}>{t('increment')}</Button>
+            <Button testId="decrement" theme={EButtonTheme.BORDER} onClick={handleDecrement}>{t('decrement')}</Button>
+            <Button theme={EButtonTheme.BORDER} onClick={handleAddFive}>{5}</Button>
         </div>
     );
 };

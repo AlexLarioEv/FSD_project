@@ -2,7 +2,7 @@ import { FC , PropsWithChildren, useMemo} from "react";
 import { Navigate } from "react-router-dom";
 
 import { ERoleUser, isAuth, getRoles } from "@/entities/User";
-import { useAppSelector } from "@/shared/hooks";
+import { useAppSelector } from "@/shared/lib/hooks";
 import {getRouteMain, getRouteForbidden} from '@/shared/config/routeConfig';
 
 type TPropsAuthProtect = {
