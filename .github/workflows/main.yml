@@ -52,17 +52,18 @@ jobs:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
         if: always()
 
-      - name: Upload build output as artifact
-        uses: actions/upload-artifact@v3
+      - name: Setup Pages
+        uses: actions/configure-pages@v2
+        if: always()
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        if: always()
         with:
-          name: build-output
-          path: './reports'
-
+          path: 'reports'
       - name: Deploy to GitHub Pages
         id: deployment
+        if: always()
         uses: actions/deploy-pages@v1
-        with:
-          artifact-name: build-output
 
   checks:
     runs-on: ubuntu-latest
