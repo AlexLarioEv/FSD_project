@@ -28,7 +28,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      
+        with:
+          fetch-depth: 0
+  
       - name: Setup Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
@@ -50,11 +52,18 @@ jobs:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
         if: always()
 
+      - name: Upload build output as artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-output
+          path: './reports'
+
       - name: Deploy to GitHub Pages
         id: deployment
-        if: always()
         uses: actions/deploy-pages@v1
-  
+        with:
+          artifact-name: build-output
+
   checks:
     runs-on: ubuntu-latest
     strategy:
@@ -63,17 +72,17 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Staring Node.js ${{ matrix.node-version }}
+      - name: Setup Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: install modules
+      - name: Install modules
         run: npm ci --force
 
-      - name: linting typescript
+      - name: Linting TypeScript
         run: npm run lint
         if: always()
 
-      - name: linting css
+      - name: Linting CSS
         run: npm run lint:scss
