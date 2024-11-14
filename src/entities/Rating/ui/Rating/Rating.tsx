@@ -67,26 +67,26 @@ export const Rating: FC<TRatingProps> = ({
         return (
             <VStack>
                 <Text title={feedbackTitle}/>
-                <Input value={currentFeedback} placeholder={t('feedback')} onChange={handleChangeFeedback}/>
+                <Input testId="Rating.Input" value={currentFeedback} placeholder={t('feedback')} onChange={handleChangeFeedback}/>
             </VStack>
         )
     }, [currentFeedback, feedbackTitle, handleChangeFeedback, t])
 
     return (
-        <Card className={classNames(styles.Rating, {}, [className])}>
+        <Card data-testid="Rating" className={classNames(styles.Rating, {}, [className])}>
             <VStack gap={8} align='center'>
                 <Text title={currentStarCount ? t('thanks') : title }/>
-                <StarRating selectedStars={currentStarCount} size={40} onSelected={handleSelectStar}/>
+                <StarRating  selectedStars={currentStarCount} size={40} onSelected={handleSelectStar}/>
             </VStack>
             <BrowserView>
                 <Modal isOpen={isModalOpen}>
                     <VStack max gap={32}>
                         {modalContent}
                         <HStack gap={16} justify="end">
-                            <Button theme={EButtonTheme.BORDER} onClick={handleCancel} danger>
+                            <Button testId="Rating.Close" theme={EButtonTheme.BORDER} onClick={handleCancel} danger>
                                 {t('close')}
                             </Button>
-                            <Button theme={EButtonTheme.BORDER} onClick={handleAccept}>
+                            <Button testId="Rating.Save" theme={EButtonTheme.BORDER} onClick={handleAccept}>
                                 {t('save')}
                             </Button>
                         </HStack>

@@ -3,6 +3,7 @@ import { FC, PropsWithChildren } from "react";
 import { classNames } from "@/shared/lib";
 
 import styles from './Flex.module.scss';
+import { TTestProps } from "@/shared/lib/types";
 
 type TFlexJustify = 'start' | 'end' | 'center' | 'between';
 type TFlexAlign = 'start' | 'end' | 'center';
@@ -16,7 +17,7 @@ export type TFlexProps = {
     direction?: TFlexDirection;
     gap?: TFlexGap;
     max?: boolean;
-} & React.HTMLAttributes<HTMLDivElement>;;
+} & React.HTMLAttributes<HTMLDivElement> & TTestProps;
 
 const justifyClassMap: Record<TFlexJustify, string> = {
     start: styles.justifyStart,
@@ -38,16 +39,16 @@ const gapClassMap: Record<TFlexGap, string> = {
     '32': styles.gap32,
 }
 
-export const Flex: FC<PropsWithChildren<TFlexProps>> = ({ 
-    className,
-    children,
-    justify,
-    align ,
-    direction,
-    gap,
-    max
-}) => {
-    
+export const Flex: FC<PropsWithChildren<TFlexProps>> = (props) => {
+    const { 
+        className,
+        children,
+        justify,
+        align ,
+        direction,
+        gap,
+        max
+    } =  props;
     const classes = [
         justify && justifyClassMap[justify],
         align && alignClassMap[align],
@@ -57,7 +58,7 @@ export const Flex: FC<PropsWithChildren<TFlexProps>> = ({
     ];
     
     return (  
-        <div className={classNames(styles.Flex, {[styles.max]: max}, classes)}>
+        <div data-testid={props["data-testid"]} className={classNames(styles.Flex, {[styles.max]: max}, classes)}>
             {children}
         </div>
     );

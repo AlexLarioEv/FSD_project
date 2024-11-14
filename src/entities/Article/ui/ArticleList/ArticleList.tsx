@@ -37,7 +37,8 @@ export const ArticleList: FC<TArticleListProps> = ({ className, view, articles, 
     }
     
     return (
-        <Flex 
+        <Flex
+            data-testid="ArticleList"
             max 
             gap={16} 
             direction={EArticleView.BIG === view ? 'column' : 'row'} 

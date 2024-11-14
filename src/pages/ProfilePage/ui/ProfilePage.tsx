@@ -22,7 +22,7 @@ const ProfilePage: FC<TProfilePageProps> = () => {
     }
 
     return (
-        <Page className={styles.ProfilePage}>
+        <Page data-testid='ProfilePage' className={styles.ProfilePage}>
             <EditProfile id={id}/>
             <ProfileRating id={id} />
         </Page>

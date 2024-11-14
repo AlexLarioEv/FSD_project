@@ -11,17 +11,19 @@ import { DynamicModuleLoader, TReducerList } from "@/shared/lib/components";
 import {addCommentReducer, addCommentActions} from '../model/slice/addCommentSlice';
 import { getCommentText } from "../model/selectors/getComment";
 import styles from './AddCommentForm.module.scss';
+import { TTestProps } from "@/shared/lib/types";
 
 type TAddCommentFormProps = {
     className?: string;
     onSendComment: (value: string) => void;
-};
+} & TTestProps;
 
 const reducers: TReducerList = {
     addCommentForm:addCommentReducer
 }
 
-const AddCommentForm = memo(({ className, onSendComment }: TAddCommentFormProps) => {
+const AddCommentForm = memo((props: TAddCommentFormProps) => {
+    const { className, onSendComment } = props;
     const {t} = useTranslation();
     const comment = useSelector(getCommentText)
     const dispatch = useAppDispatch();
@@ -40,9 +42,9 @@ const AddCommentForm = memo(({ className, onSendComment }: TAddCommentFormProps)
 
     return (
         <DynamicModuleLoader reducers={reducers}>
-            <div className={classNames(styles.AddCommentForm, {}, [className])}>
+            <div data-testid={props["data-testid"]} className={classNames(styles.AddCommentForm, {}, [className])}>
                 <Input testId='add_comment' value={comment} onChange={handleChangeComment} placeholder={t('add_comment')}/>
-                <Button onClick={handleSendComment} theme={EButtonTheme.BORDER}>{t('add')}</Button>
+                <Button testId="AddCommentForm.Button" onClick={handleSendComment} theme={EButtonTheme.BORDER}>{t('add')}</Button>
             </div>
         </DynamicModuleLoader>
     );

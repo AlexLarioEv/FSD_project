@@ -87,7 +87,7 @@ export const ArticleDetails: FC<TArticleDetailsProps> = ({ className, id }) => {
             <>
                 <Avatar size={200} className={styles.avatar} src={img} alt={title}/>
                 <Text size={ESizeText.L} title={title} description={subtitle}/>
-                <div className={styles.info}>
+                <div data-testid="ArticleDetails.Info" className={styles.info}>
                     <Icon Svg={Eye}/>
                     <Text title={String(views)}/>
                 </div>

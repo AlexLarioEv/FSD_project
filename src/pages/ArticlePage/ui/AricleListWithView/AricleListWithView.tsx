@@ -1,20 +1,18 @@
 import { FC, memo } from "react";
-
+import { createSelector } from "@reduxjs/toolkit";
 
 import { ArticleViewSelector } from "@/features/ArticleViewSelector";
 import { ArticleList, EArticleView } from "@/entities/Article";
 import { classNames } from "@/shared/lib";
 import { useAppDispatch, useAppSelector } from "@/shared/lib/hooks";
+import { TStateSchema } from '@/shared/config/storeConfig';
 
 import { 
     getViewArticleList, 
     isLoadingArticleList, } from "../../model/selectors/articleList";
 import { articleListAction, getArticleList } from "../../model/slices/articleListSlice";
 
-import { TStateSchema } from '@/shared/config/storeConfig';
-import { createSelector } from "@reduxjs/toolkit";
-
-type TAricleListWithViewProps = {
+type TArticleListWithViewProps = {
     className?: string;
 };
 
@@ -31,7 +29,7 @@ const selectArticleData = createSelector(
     })
 );
 
-const AricleListWithView: FC<TAricleListWithViewProps> = ({ className }) => {
+const ArticleListWithView: FC<TArticleListWithViewProps> = ({ className }) => {
     const dispatch = useAppDispatch()
 
     const {articles, loading, view} = useAppSelector(selectArticleData);
@@ -49,4 +47,4 @@ const AricleListWithView: FC<TAricleListWithViewProps> = ({ className }) => {
     );
 };
 
-export default memo(AricleListWithView);
+export default memo(ArticleListWithView);

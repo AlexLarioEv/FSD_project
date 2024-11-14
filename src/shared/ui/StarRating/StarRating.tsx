@@ -42,6 +42,8 @@ export const StarRating: FC<TStarRatingProps> = ({ className, size, selectedStar
 
     const starList = stars.map((starNumber)=> (
         <Icon 
+            testId={`StarRating.${starNumber}`}
+            data-selected={isSelected}
             className={classNames( 
                 styles.starRating, 
                 {[styles.hovered]: currentStar >=starNumber, [styles.selected]: isSelected}, 

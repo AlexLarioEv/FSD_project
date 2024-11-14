@@ -22,7 +22,7 @@ import { fetchArticleList } from "../model/services/fetchArticleList";
 
 import { initArticlesPage } from "../model/services/initArticalPage";
 import { FilterArticleList } from "./FilterArticleList/FilterArticleList";
-import AricleListWithView  from "./AricleListWithView/AricleListWithView";
+import ArticleListWithView  from "./AricleListWithView/AricleListWithView";
 
 import styles from './ArticlePage.module.scss';
 
@@ -81,10 +81,10 @@ const ArticlePage: FC<TArticlePageProps> = ({ className }) => {
     }
 
     return (
-        <Page onScrollEnd={onLoadNextPart} className={classNames(styles.ArticlePage, {}, [className])}>
+        <Page data-testid="ArticlePage" onScrollEnd={onLoadNextPart} className={classNames(styles.ArticlePage, {}, [className])}>
             <DynamicModuleLoader reducers={reducers} removeAfterUnmount={false}>
                 <FilterArticleList />
-                <AricleListWithView />
+                <ArticleListWithView />
             </DynamicModuleLoader>
         </Page>
     );

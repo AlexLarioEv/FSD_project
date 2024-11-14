@@ -76,13 +76,19 @@ export default [
         ignores: [
             "node_modules/*",
             "build/*",
-            "scripts/*"
+            "scripts/*",
         ],
     },
     {
         files: ['**/src/**/*.{test,stories}.{ts,tsx}'],
         rules: {
             "max-len": "off"
+        }
+    },
+    {
+        files: ["cypress/**/*.{js,ts,tsx}"],
+        rules: {
+            "@typescript-eslint/no-namespace": "off"
         }
     }
 ];

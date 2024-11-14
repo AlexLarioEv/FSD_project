@@ -22,7 +22,7 @@ export const AppRouter = () => {
             <Route
                 key={route.path}
                 path={route.path}
-                element={<AuthProtect roles={route.roles}>{element}</AuthProtect>}
+                element={<AuthProtect authOnly={route.authOnly} roles={route.roles}>{element}</AuthProtect>}
             />
         );
     }, []);

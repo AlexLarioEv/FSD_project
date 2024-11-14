@@ -8,7 +8,7 @@ const MainPage = () => {
     const {t} = useTranslation('mainPage')
 
     return (
-        <Page>
+        <Page data-testid='MainPage'>
             {t('title')}
             <Counter />
             <Rating title='Как вам статья' feedbackTitle='Отзыв'/>

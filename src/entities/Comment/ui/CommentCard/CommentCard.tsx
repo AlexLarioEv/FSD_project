@@ -18,7 +18,7 @@ const CommentCard = memo(({ className, comment }: TCommentCardProps) => {
     const {text, user} = comment || {};
 
     return (
-        <div className={classNames(styles.CommentCard, {}, [className])}>
+        <div data-testid={"CommentCard"} className={classNames(styles.CommentCard, {}, [className])}>
             <AppLink to={getRouteProfile(user.id)} className={styles.header}>
                 <Avatar src={user.avatar} size={30}/>
                 <Text title={user.username}/>

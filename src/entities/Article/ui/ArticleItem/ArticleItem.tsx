@@ -92,6 +92,7 @@ export const ArticleItem: FC<TArticleItemProps> = ({ className, view, article })
 
     return (
         <Card 
+            data-testid="ArticleList"
             onClick={view === EArticleView.SMALL? handleClickCard: undefined} 
             className={classNames(styles.ArticleItem, {}, [className, styles[view]])}>
             {content}

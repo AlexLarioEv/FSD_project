@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "types": ["@testing-library/jest-dom"],
+    "types": ["jest", "@testing-library/jest-dom"],
     "outDir": "./dist/",
     // Подсвечивает все места где не указан тип
     // Однако это не означает, что теперь вовсе нельзя использовать any.
@@ -30,7 +30,9 @@
   "exclude": [
     "config/storybook/main.ts",
     "config/storybook/webpack.config.ts",
-    "scripts/**/*"
+    "scripts/**/*",
+    "./cypress.config.ts",
+    "./cypress/**/*"
   ],
   "isolatedModules": true
 }

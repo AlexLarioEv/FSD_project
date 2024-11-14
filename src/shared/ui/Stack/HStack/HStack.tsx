@@ -6,9 +6,11 @@ import { Flex, TFlexProps } from "../Flex/Flex";
 
 type THStackProps = Omit<TFlexProps, 'direction'>
 
-export const HStack: FC<PropsWithChildren<THStackProps>> = ({ className, children, ...rest }) => {
+export const HStack: FC<PropsWithChildren<THStackProps>> = (props) => {
+    const { className, children, ...rest } = props;
+
     return (
-        <Flex {...rest} direction="row" className={classNames('', {}, [className])}>
+        <Flex data-testod={props["data-testid"]} {...rest} direction="row" className={classNames('', {}, [className])}>
             {children}
         </Flex>
     );

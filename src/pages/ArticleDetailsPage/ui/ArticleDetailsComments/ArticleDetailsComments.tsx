@@ -40,7 +40,7 @@ const ArticleDetailsComments: FC<TArticleDetailsCommentsProps> = ({ className, i
     return (
         <VStack gap={16} className={classNames('', {}, [className])}>
             <Text title= {t('comment')}/>
-            <AddCommentForm onSendComment={handleSendComment} />
+            <AddCommentForm data-testid="Article.AddCommentForm" onSendComment={handleSendComment} />
             <CommentList isLoading={isCommentLoading}  comments={comments}/>
         </VStack>
     );
