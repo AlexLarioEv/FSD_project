@@ -1,1 +1,1 @@
-export {createStateStory, createRoutePath} from'./StoreDecorator';
+export {createStateStory} from'./StoreDecorator';
