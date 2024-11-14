@@ -4,7 +4,7 @@ import {ArticleTextBlock} from './ArticleTextBlock';
 
 
 const meta = {
-    title: 'entities/ArticleTextBlock',
+    title: 'entities/Article/ArticleTextBlock',
     component: ArticleTextBlock,
 
     args:{

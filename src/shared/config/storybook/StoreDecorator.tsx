@@ -2,7 +2,7 @@
 import { ReducersMapObject } from '@reduxjs/toolkit';
 import { Decorator } from '@storybook/react/';
 
-import {BrowserRouter} from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom'
 import {StoreProvider} from '@/app/providers/StoreProvider';
 import { DeepPartial } from '@/shared/lib/helpers';
 import { TStateSchema } from '../../config/storeConfig';
@@ -30,4 +30,3 @@ export const createStateStory = (
         asyncReducers
     }
 )
-  

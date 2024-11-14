@@ -5,7 +5,7 @@ import { EArticleBlockType, EArticleType, EArticleView } from '../../model/types
 
 
 const meta = {
-    title: 'entities/ArticleItem',
+    title: 'entities/Article/ArticleItem',
     component: ArticleItem,
 
     args:{

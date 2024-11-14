@@ -36,7 +36,7 @@ const aricle = {
 } as TArticle;
 
 const meta = {
-    title: 'entities/ArticleList',
+    title: 'entities/Article/ArticleList',
     component: ArticleList,
 
     args:{

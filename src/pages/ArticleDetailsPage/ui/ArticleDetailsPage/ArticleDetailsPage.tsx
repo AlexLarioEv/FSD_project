@@ -25,8 +25,8 @@ const reducers:TReducerList = {
 } 
 
 const ArticleDetailsPage: FC<TArticleDetailsPageProps> = ({ className }) => {
-    const {t} = useTranslation('articleDetails')
-    const {id} =  useParams()
+    const {t} = useTranslation('articleDetails');
+    const {id} =  useParams();
 
     if(!id){
         return <Text description={t('not_fund_article')}/>

@@ -5,7 +5,7 @@ import {ArticleImageBlock} from './ArticleImageBlock';
 
 
 const meta = {
-    title: 'entities/ArticleImageBlock',
+    title: 'entities/Article/ArticleImageBlock',
     component: ArticleImageBlock,
 
     args:{

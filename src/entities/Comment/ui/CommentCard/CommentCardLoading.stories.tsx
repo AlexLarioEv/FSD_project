@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import {CommentCardLoading} from './CommentCardLoading';
 
 const meta = {
-    title: 'entities/CommentCardLoading',
+    title: 'entities/Comment/CommentCardLoading',
     component: CommentCardLoading,
 
     args:{

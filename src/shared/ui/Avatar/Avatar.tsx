@@ -25,8 +25,8 @@ const Avatar = memo(({ className, src, alt='', size = 40}: TAvatarProps) => {
             style={{width: size, height: size}}
             src={src}
             alt={alt}
-            fallbackLoading={<Skeleton data-testid="loading" width={40} border="50%" height={40}/>}
-            fallbackError={<Icon Svg={Profile}/>}
+            fallbackLoading={<Skeleton className={className} data-testid="loading" width={size} border="50%" height={size}/>}
+            fallbackError={<Icon  className={className} Svg={Profile}/>}
         />
     );
 });

@@ -3,6 +3,10 @@
     position: relative;
 }
 
+.trigger{
+    color: var(--secondary-color);
+}
+
 .items {
     background: var(--listbox-bg);
     position: absolute;

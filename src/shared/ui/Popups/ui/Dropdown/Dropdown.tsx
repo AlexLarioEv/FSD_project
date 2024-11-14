@@ -19,7 +19,7 @@ export const Dropdown:FC<TDropdownProps> = ({className, items, label, direction 
     
     return (
         <Menu as='div' className={classNames(styles.Dropdown, {}, [className])}>
-            <Menu.Button className={popupStyles.trigger}>{label}</Menu.Button>
+            <Menu.Button className={classNames(styles.trigger,{},[popupStyles.trigger])}>{label}</Menu.Button>
             <Menu.Items as='ul' className={classNames(styles.items, {}, [mapDirectionClass[direction]])}>
                 <>
                     {items.map((item, index)=>(

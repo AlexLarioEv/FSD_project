@@ -4,7 +4,7 @@ import {ArticleCodeBlock} from './ArticleCodeBlock';
 
 
 const meta = {
-    title: 'entities/ArticleCodeBlock',
+    title: 'entities/Article/ArticleCodeBlock',
     component: ArticleCodeBlock,
 
     args:{

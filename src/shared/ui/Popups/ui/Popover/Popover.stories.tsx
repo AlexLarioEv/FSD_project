@@ -6,16 +6,18 @@ import { Card } from '../../../Card';
 
 
 const meta = {
-    title: 'shared/Popover',
+    title: 'shared/Popups/Popover',
     component: Popover,
     args: {
         trigger: <Text description='Open Popover'/>,
-        children: (<>
-            <Card><Text description='content Popover'/></Card>
-            <Card><Text description='content Popover'/></Card>
-            <Card><Text description='content Popover'/></Card>
-            <Card><Text description='content Popover'/></Card>
-        </>)
+        children: (
+            <>
+                <Card><Text description='content Popover'/></Card>
+                <Card><Text description='content Popover'/></Card>
+                <Card><Text description='content Popover'/></Card>
+                <Card><Text description='content Popover'/></Card>
+            </>
+        )
     }
 
 } satisfies Meta<typeof Popover>;
