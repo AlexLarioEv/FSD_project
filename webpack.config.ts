@@ -6,11 +6,7 @@ import {BuildPaths,BuildEnv} from "./config/build/types/config";
 import {EProject} from './config/build/types/config'
 
 
-export default ({
-    mode = 'development', 
-    port = 3000, 
-    api = 'http://localhost:8000', 
-    project = EProject.FRONTED}: BuildEnv) => {
+export default (env: BuildEnv) => {
 
     const paths: BuildPaths = {
         entry: path.resolve(__dirname, 'src', 'index.tsx'),
@@ -20,6 +16,12 @@ export default ({
         locales: path.resolve(__dirname, 'public', 'locales'),
         buildLocales: path.resolve(__dirname, 'build', 'locales')
     }
+
+    const mode = env?.mode || 'development';
+    const port = env?.port || 3000;
+    const api = env?.api || 'http://localhost:8000';
+    const project = env?.project || EProject.FRONTED;
+
     const isDev = mode === 'development';
     
     const config: webpack.Configuration = buildWebpackConfig({
