@@ -18,7 +18,7 @@ const profile: TProfile = {
     country: ECountry.KAZAKHSTAN,
     city: 'Moscow',
     username: 'admin213',
-    avatar: ''
+    avatar: '',
 };
 
 const options: TRenderOptions = {
@@ -27,7 +27,7 @@ const options: TRenderOptions = {
             readonly: true,
             data: profile,
             form: profile,
-            isLoading: false
+            isLoading: false,
         },
         user: {
             auth: { id: '1', username: 'admin' },
@@ -41,37 +41,60 @@ const options: TRenderOptions = {
 describe('features/EditProfile', () => {
     test('Режим рид онли должен переключиться', async () => {
         componentRender(<EditProfile id="1" />, options);
-        await userEvent.click(screen.getByTestId('EditProfileHeader.EditButton'));
-        expect(screen.getByTestId('EditProfileHeader.CancelButton')).toBeInTheDocument();
+        await userEvent.click(
+            screen.getByTestId('EditProfileHeader.EditButton'),
+        );
+        expect(
+            screen.getByTestId('EditProfileHeader.CancelButton'),
+        ).toBeInTheDocument();
     });
 
     test('При отмене значения должны обнуляться', async () => {
         componentRender(<EditProfile id="1" />, options);
-        await userEvent.click(screen.getByTestId('EditProfileHeader.EditButton'));
+        await userEvent.click(
+            screen.getByTestId('EditProfileHeader.EditButton'),
+        );
 
         await userEvent.clear(screen.getByTestId('ProfileCard.firstname'));
         await userEvent.clear(screen.getByTestId('ProfileCard.lastname'));
 
-        await userEvent.type(screen.getByTestId('ProfileCard.firstname'), 'user');
-        await userEvent.type(screen.getByTestId('ProfileCard.lastname'), 'user');
+        await userEvent.type(
+            screen.getByTestId('ProfileCard.firstname'),
+            'user',
+        );
+        await userEvent.type(
+            screen.getByTestId('ProfileCard.lastname'),
+            'user',
+        );
 
         expect(screen.getByTestId('ProfileCard.firstname')).toHaveValue('user');
         expect(screen.getByTestId('ProfileCard.lastname')).toHaveValue('user');
 
-        await userEvent.click(screen.getByTestId('EditProfileHeader.CancelButton'));
+        await userEvent.click(
+            screen.getByTestId('EditProfileHeader.CancelButton'),
+        );
 
-        expect(screen.getByTestId('ProfileCard.firstname')).toHaveValue('admin');
+        expect(screen.getByTestId('ProfileCard.firstname')).toHaveValue(
+            'admin',
+        );
         expect(screen.getByTestId('ProfileCard.lastname')).toHaveValue('admin');
     });
 
     test('Если нет ошибок валидации, то на сервер должен уйти PUT запрос', async () => {
         const mockPutReq = jest.spyOn(api, 'put');
         componentRender(<EditProfile id="1" />, options);
-        await userEvent.click(screen.getByTestId('EditProfileHeader.EditButton'));
+        await userEvent.click(
+            screen.getByTestId('EditProfileHeader.EditButton'),
+        );
 
-        await userEvent.type(screen.getByTestId('ProfileCard.firstname'), 'user');
+        await userEvent.type(
+            screen.getByTestId('ProfileCard.firstname'),
+            'user',
+        );
 
-        await userEvent.click(screen.getByTestId('EditProfileHeader.SaveButton'));
+        await userEvent.click(
+            screen.getByTestId('EditProfileHeader.SaveButton'),
+        );
 
         expect(mockPutReq).toHaveBeenCalled();
     });

@@ -1,13 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import  { ArticleRating }  from './ArticleRating';
+import { ArticleRating } from './ArticleRating';
 
 const meta = {
     title: 'features/ArticleRating',
     component: ArticleRating,
     args: {
-        id: '1'
-    }
+        id: '1',
+    },
 } satisfies Meta<typeof ArticleRating>;
 
 export default meta;

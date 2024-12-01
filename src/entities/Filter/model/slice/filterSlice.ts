@@ -1,6 +1,6 @@
-import { createSlice,PayloadAction } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import {EOrderFilter, TFilterSchema} from '../types/filterSchema'
+import { EOrderFilter, TFilterSchema } from '../types/filterSchema';
 
 const initialState: TFilterSchema = {};
 
@@ -21,6 +21,6 @@ export const filterSlice = createSlice({
             state.tagQuery = action.payload;
         },
     },
-})
+});
 
-export const {actions: filterActions, reducer:  filterReducer} = filterSlice;
+export const { actions: filterActions, reducer: filterReducer } = filterSlice;

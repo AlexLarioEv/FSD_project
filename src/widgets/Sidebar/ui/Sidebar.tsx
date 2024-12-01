@@ -1,59 +1,74 @@
-import { FC, useState, useMemo } from "react";
+import { FC, useState, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { ThemeSwitcher } from "@/features/ThemeSwitcher";
-import { LangSwitcher } from "@/features/LangSwitcher";
+import { ThemeSwitcher } from '@/features/ThemeSwitcher';
+import { LangSwitcher } from '@/features/LangSwitcher';
 
-import {  Button, EButtonSize } from "@/shared/ui/Button"
-import { classNames } from "@/shared/lib";
-import { getSidebarItems } from '../model/selectors/getSidebarItems'
+import { Button, EButtonSize } from '@/shared/ui/Button';
+import { classNames } from '@/shared/lib';
+import { getSidebarItems } from '../model/selectors/getSidebarItems';
 
-import { SidebarItem } from '../../SidebarItem/'
-import { useSelector } from "react-redux";
-import { HStack, VStack } from "@/shared/ui/Stack";
+import { SidebarItem } from '../../SidebarItem/';
+import { useSelector } from 'react-redux';
+import { HStack, VStack } from '@/shared/ui/Stack';
 
 import styles from './Sidebar.module.scss';
 
 type TSidebarProps = {
-  className?: string;
-  testId?: string;
+    className?: string;
+    testId?: string;
 };
 
-export const Sidebar: FC<TSidebarProps> = ({ className,testId }) => {
+export const Sidebar: FC<TSidebarProps> = ({ className, testId }) => {
     const [collapsed, setCollapsed] = useState(false);
-    const {t} = useTranslation()
+    const { t } = useTranslation();
 
-    const sidebarItems = useSelector(getSidebarItems)
+    const sidebarItems = useSelector(getSidebarItems);
 
     const handleToggle = () => {
-        setCollapsed(prev => !prev)
-    }
+        setCollapsed((prev) => !prev);
+    };
 
-    const sidebarLinks = useMemo(()=> sidebarItems.map(({path, Icon, text}, index)=> {
-        return <SidebarItem path={path} Icon={Icon} text={text} collapsed={collapsed} key={index}/>
-    }),[collapsed, sidebarItems])
-    
-
+    const sidebarLinks = useMemo(
+        () =>
+            sidebarItems.map(({ path, Icon, text }, index) => {
+                return (
+                    <SidebarItem
+                        path={path}
+                        Icon={Icon}
+                        text={text}
+                        collapsed={collapsed}
+                        key={index}
+                    />
+                );
+            }),
+        [collapsed, sidebarItems],
+    );
 
     return (
-        <aside data-testid={testId}
-            className={classNames(styles.Sidebar, {[styles.collapsed]: collapsed}, [className])
-            }>
+        <aside
+            data-testid={testId}
+            className={classNames(
+                styles.Sidebar,
+                { [styles.collapsed]: collapsed },
+                [className],
+            )}
+        >
             <VStack gap={8} className={styles.links}>
                 {sidebarLinks}
             </VStack>
-            <Button 
+            <Button
                 size={EButtonSize.L}
                 className={styles.button}
-                testId="toggleSidebar"  
+                testId="toggleSidebar"
                 onClick={handleToggle}
                 inverted
-            > 
-                {t(collapsed ? '>' : '<')} 
+            >
+                {t(collapsed ? '>' : '<')}
             </Button>
             <HStack justify="center" max gap={16} className={styles.switcher}>
                 <ThemeSwitcher />
-                <LangSwitcher/>
+                <LangSwitcher />
             </HStack>
         </aside>
     );

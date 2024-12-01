@@ -1,8 +1,8 @@
-export { 
-    routeConfig, 
-    RoutePath, 
+export {
+    routeConfig,
+    RoutePath,
     EAppRoutes,
-    getRouteMain, 
+    getRouteMain,
     getRouteAbout,
     getRouteProfile,
     getRouteArticles,
@@ -10,5 +10,5 @@ export {
     getRouteArticleEdit,
     getRouteArticleCreate,
     getRouteAdmin,
-    getRouteForbidden
-} from './routeConfig'
+    getRouteForbidden,
+} from './routeConfig';

@@ -6,12 +6,10 @@ const meta = {
     title: 'shared/Code',
     component: Code,
     parameters: {
-
         layout: 'centered',
     },
 
     args: { code: 'Hello world' },
-
 } satisfies Meta<typeof Code>;
 
 export default meta;

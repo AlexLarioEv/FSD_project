@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import  AddCommentForm  from './AddCommentForm';
+import AddCommentForm from './AddCommentForm';
 import { fn } from '@storybook/test';
 
 const meta = {
@@ -8,13 +8,11 @@ const meta = {
     component: AddCommentForm,
 
     args: {
-        onSendComment: fn()
-    }
-
+        onSendComment: fn(),
+    },
 } satisfies Meta<typeof AddCommentForm>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
-
 
 export const Default: Story = {};

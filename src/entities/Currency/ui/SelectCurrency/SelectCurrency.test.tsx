@@ -3,17 +3,14 @@ import i18n from '@/shared/config/i18';
 import { componentRender } from '@/shared/lib/test';
 
 import { ECurrency } from '../../model/types';
-import SelectCurrency, {TSelectCurrencyProps} from './SelectCurrency';
+import SelectCurrency, { TSelectCurrencyProps } from './SelectCurrency';
 
 describe('SelectCurrency component', () => {
     const mockOnChange = jest.fn();
 
     const componentRenderWithProps = (props: TSelectCurrencyProps = {}) => {
         return componentRender(
-            <SelectCurrency
-                onChange={mockOnChange}
-                {...props}
-            />
+            <SelectCurrency onChange={mockOnChange} {...props} />,
         );
     };
 
@@ -28,12 +25,11 @@ describe('SelectCurrency component', () => {
     });
 
     test('calls onChange when an option is selected', () => {
-        componentRenderWithProps({ onChange: mockOnChange});
-        
-        const listBox = screen.getByTestId('selectCurrency');
-        
-        fireEvent.click(listBox);
+        componentRenderWithProps({ onChange: mockOnChange });
 
+        const listBox = screen.getByTestId('selectCurrency');
+
+        fireEvent.click(listBox);
 
         const option = screen.getByText(ECurrency.RUB);
 
@@ -43,11 +39,14 @@ describe('SelectCurrency component', () => {
     });
 
     test('does not call onChange when readonly is true', () => {
-        componentRenderWithProps({ readonly: true, value: ECurrency.RUB, onChange: mockOnChange });
-        
+        componentRenderWithProps({
+            readonly: true,
+            value: ECurrency.RUB,
+            onChange: mockOnChange,
+        });
+
         const listBox = screen.getByTestId('selectCurrency');
         fireEvent.click(listBox);
-
 
         const option = screen.getByText(ECurrency.RUB);
         fireEvent.click(option);

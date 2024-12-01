@@ -8,4 +8,4 @@
         "isolatedModules": false
     },
     "include": ["**/*.ts", "**/*.tsx"]
-  }
+}

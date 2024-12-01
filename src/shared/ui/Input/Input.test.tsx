@@ -1,56 +1,56 @@
-import { screen, fireEvent } from "@testing-library/react";
-import { Input } from "./Input";
-import { componentRender } from "@/shared/lib/test";
+import { screen, fireEvent } from '@testing-library/react';
+import { Input } from './Input';
+import { componentRender } from '@/shared/lib/test';
 
-describe("Input Component", () => {
-    test("renders with default props", () => {
+describe('Input Component', () => {
+    test('renders with default props', () => {
         componentRender(<Input />);
-        const inputElement = screen.getByRole("textbox");
+        const inputElement = screen.getByRole('textbox');
         expect(inputElement).toBeInTheDocument();
-        expect(inputElement).toHaveValue("");
+        expect(inputElement).toHaveValue('');
     });
 
-    test("displays placeholder text", () => {
-        const placeholderText = "Enter text";
+    test('displays placeholder text', () => {
+        const placeholderText = 'Enter text';
         componentRender(<Input placeholder={placeholderText} />);
         const placeholderElement = screen.getByText(`${placeholderText}>`);
         expect(placeholderElement).toBeInTheDocument();
     });
 
-    test("focuses input on click and shows caret", () => {
+    test('focuses input on click and shows caret', () => {
         componentRender(<Input />);
-        const inputElement = screen.getByRole("textbox");
+        const inputElement = screen.getByRole('textbox');
 
         fireEvent.focus(inputElement);
 
-        const caretElement = screen.getByTestId("caret");
+        const caretElement = screen.getByTestId('caret');
         expect(caretElement).toBeInTheDocument();
     });
 
-    test("calls onChange and updates value correctly", () => {
+    test('calls onChange and updates value correctly', () => {
         const handleChange = jest.fn();
-        componentRender(<Input value='Hello' onChange={handleChange} />);
-        const inputElement = screen.getByRole("textbox");
+        componentRender(<Input value="Hello" onChange={handleChange} />);
+        const inputElement = screen.getByRole('textbox');
 
-        expect(inputElement).toHaveValue("Hello");
+        expect(inputElement).toHaveValue('Hello');
     });
 
-    test("updates caret position on input", () => {
-        componentRender(<Input value='Hello' />);
-        const inputElement = screen.getByRole("textbox");
+    test('updates caret position on input', () => {
+        componentRender(<Input value="Hello" />);
+        const inputElement = screen.getByRole('textbox');
 
         // fireEvent.change(inputElement, { target: { value: "Hello" } });
         fireEvent.select(inputElement);
 
-        const caretElement = screen.getByTestId("caret");
-        expect(caretElement).toHaveStyle({ left: "45px" });
+        const caretElement = screen.getByTestId('caret');
+        expect(caretElement).toHaveStyle({ left: '45px' });
     });
 
-    test("handles autofocus prop", () => {
+    test('handles autofocus prop', () => {
         componentRender(<Input testId="input" autofocus />);
-        const inputElement = screen.getByTestId("input");
+        const inputElement = screen.getByTestId('input');
 
-        fireEvent.focus(inputElement);  // manually focus
+        fireEvent.focus(inputElement); // manually focus
 
         expect(inputElement).toHaveFocus();
     });

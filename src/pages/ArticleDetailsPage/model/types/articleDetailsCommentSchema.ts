@@ -1,7 +1,7 @@
-import { EntityState } from "@reduxjs/toolkit";
-import { TComment } from "@/entities/Comment";
+import { EntityState } from '@reduxjs/toolkit';
+import { TComment } from '@/entities/Comment';
 
-export type TArticleDetailsCommentsShema ={
+export type TArticleDetailsCommentsShema = {
     isLoading?: boolean;
     error?: string;
-} & EntityState<TComment, string>
+} & EntityState<TComment, string>;

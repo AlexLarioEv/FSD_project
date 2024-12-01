@@ -1,10 +1,10 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import {ELocalStorageKey} from '@/shared/const'
-import {TUser, TUserSchema} from '../types'
+import { ELocalStorageKey } from '@/shared/const';
+import { TUser, TUserSchema } from '../types';
 
 const initialState: TUserSchema = {
-    _init: false
+    _init: false,
 };
 
 export const userSlice = createSlice({
@@ -19,13 +19,13 @@ export const userSlice = createSlice({
             if (user) {
                 state.auth = JSON.parse(user);
             }
-            state._init = true
+            state._init = true;
         },
         logout: (state) => {
             state.auth = undefined;
             localStorage.removeItem(ELocalStorageKey.USER);
         },
-    }
-})
+    },
+});
 
-export const {actions: userActions, reducer: userReducer} = userSlice;
+export const { actions: userActions, reducer: userReducer } = userSlice;

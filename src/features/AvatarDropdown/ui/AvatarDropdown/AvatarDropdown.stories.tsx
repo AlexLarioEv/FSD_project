@@ -6,10 +6,9 @@ const meta = {
     title: 'features/AvatarDropdown',
     component: AvatarDropdown,
 
-    args:{
-        id: '1'
-    }
-
+    args: {
+        id: '1',
+    },
 } satisfies Meta<typeof AvatarDropdown>;
 
 export default meta;

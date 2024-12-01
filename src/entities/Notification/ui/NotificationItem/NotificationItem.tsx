@@ -8,11 +8,10 @@ import { TNotification } from '../../model/types/notification';
 import cls from './NotificationItem.module.scss';
 interface NotificationItemProps {
     className?: string;
-    item: TNotification
+    item: TNotification;
 }
 
 const NotificationItem: FC<NotificationItemProps> = ({ className, item }) => {
-
     const content = (
         <Card
             theme={ECardTheme.OUTLINED}
@@ -24,7 +23,12 @@ const NotificationItem: FC<NotificationItemProps> = ({ className, item }) => {
 
     if (item.href) {
         return (
-            <a className={cls.link} target="_blank" href={item.href} rel="noreferrer">
+            <a
+                className={cls.link}
+                target="_blank"
+                href={item.href}
+                rel="noreferrer"
+            >
                 {content}
             </a>
         );

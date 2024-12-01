@@ -1,22 +1,19 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import avatar from '@/shared/assets/icons/avatar.jpg'
-import {ArticleImageBlock} from './ArticleImageBlock';
-
+import avatar from '@/shared/assets/icons/avatar.jpg';
+import { ArticleImageBlock } from './ArticleImageBlock';
 
 const meta = {
     title: 'entities/Article/ArticleImageBlock',
     component: ArticleImageBlock,
 
-    args:{
+    args: {
         title: 'Заяц',
-        src: avatar
-    }
-
+        src: avatar,
+    },
 } satisfies Meta<typeof ArticleImageBlock>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
-
 
 export const Default: Story = {};

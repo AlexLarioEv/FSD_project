@@ -1,1 +1,1 @@
-export {loginActions, loginReducer} from './loginSlice'
+export { loginActions, loginReducer } from './loginSlice';

@@ -7,23 +7,23 @@ import { EditProfile } from '@/features/EditProfile';
 import { ProfileRating } from '@/features/ProfileRating';
 import { Text } from '@/shared/ui/Text';
 
-import styles from './ProfilePage.module.scss'
+import styles from './ProfilePage.module.scss';
 
 type TProfilePageProps = {
-  className?: string;
+    className?: string;
 };
 
 const ProfilePage: FC<TProfilePageProps> = () => {
-    const {t}  = useTranslation('profile')
-    const {id} = useParams();
+    const { t } = useTranslation('profile');
+    const { id } = useParams();
 
-    if(!id){
-        return <Text description={t('not_fund_profile')} />
+    if (!id) {
+        return <Text description={t('not_fund_profile')} />;
     }
 
     return (
-        <Page data-testid='ProfilePage' className={styles.ProfilePage}>
-            <EditProfile id={id}/>
+        <Page data-testid="ProfilePage" className={styles.ProfilePage}>
+            <EditProfile id={id} />
             <ProfileRating id={id} />
         </Page>
     );

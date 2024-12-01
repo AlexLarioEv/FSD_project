@@ -1,4 +1,4 @@
-import  { AppRouter } from './providers/router'
+import { AppRouter } from './providers/router';
 
 import { NavBar } from '@/widgets/Navbar';
 import { Sidebar } from '@/widgets/Sidebar';
@@ -8,16 +8,15 @@ import { useAppSelector } from '@/shared/lib/hooks';
 import { isInit } from '@/entities/User';
 
 export const App = () => {
-
-    const initUser = useAppSelector(isInit)
+    const initUser = useAppSelector(isInit);
 
     return (
         <div className={classNames('app', {}, [])}>
             <NavBar />
-            <div className='content-page'>
+            <div className="content-page">
                 <Sidebar />
-                {initUser ?<AppRouter/> : null}
+                {initUser ? <AppRouter /> : null}
             </div>
         </div>
     );
-}
+};

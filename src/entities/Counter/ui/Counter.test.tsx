@@ -1,29 +1,29 @@
-import {Counter} from './Counter'
+import { Counter } from './Counter';
 
-import {fireEvent, screen} from '@testing-library/react'
-import { TStateSchema } from '@/shared/config/storeConfig/types'
-import { DeepPartial } from '@/shared/lib/helpers'
-import {componentRender} from '@/shared/lib/test'
+import { fireEvent, screen } from '@testing-library/react';
+import { TStateSchema } from '@/shared/config/storeConfig/types';
+import { DeepPartial } from '@/shared/lib/helpers';
+import { componentRender } from '@/shared/lib/test';
 
-describe('Counter', ()=> {
-    const state: DeepPartial<TStateSchema> = {counter: {value: 5}}
+describe('Counter', () => {
+    const state: DeepPartial<TStateSchema> = { counter: { value: 5 } };
 
-    test('Counter render', ()=> {
-        componentRender(<Counter />,{initialState: state});
-        expect(screen.getByTestId("counter")).toHaveTextContent('5');
-    })
+    test('Counter render', () => {
+        componentRender(<Counter />, { initialState: state });
+        expect(screen.getByTestId('counter')).toHaveTextContent('5');
+    });
 
-    test('Counter incremented', ()=> {
-        componentRender(<Counter />, {initialState: state});
-        const toggleIncrement = screen.getByTestId("increment")
+    test('Counter incremented', () => {
+        componentRender(<Counter />, { initialState: state });
+        const toggleIncrement = screen.getByTestId('increment');
         fireEvent.click(toggleIncrement);
-        expect(screen.getByTestId("counter")).toHaveTextContent('6');
-    })
+        expect(screen.getByTestId('counter')).toHaveTextContent('6');
+    });
 
-    test('Counter decremented', ()=> {
-        componentRender(<Counter />, {initialState: state});
-        const toggleDecrement = screen.getByTestId("decrement")
+    test('Counter decremented', () => {
+        componentRender(<Counter />, { initialState: state });
+        const toggleDecrement = screen.getByTestId('decrement');
         fireEvent.click(toggleDecrement);
-        expect(screen.getByTestId("counter")).toHaveTextContent('4');
-    })
-})
+        expect(screen.getByTestId('counter')).toHaveTextContent('4');
+    });
+});

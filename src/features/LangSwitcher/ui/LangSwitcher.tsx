@@ -1,22 +1,26 @@
-import { memo } from "react";
+import { memo } from 'react';
 
-import { Button } from "@/shared/ui/Button";
-import { classNames } from "@/shared/lib";
+import { Button } from '@/shared/ui/Button';
+import { classNames } from '@/shared/lib';
 import { useTranslation } from 'react-i18next';
 
 type TLangSwitcherProps = {
-  className?: string;
+    className?: string;
 };
 
-const LangSwitcher = memo(({ className }:TLangSwitcherProps) => {
-    const { t, i18n } = useTranslation() 
+const LangSwitcher = memo(({ className }: TLangSwitcherProps) => {
+    const { t, i18n } = useTranslation();
 
     const handleClick = () => {
         i18n.changeLanguage(i18n.language === 'ru' ? 'en' : 'ru');
-    }
+    };
 
     return (
-        <Button inverted onClick={handleClick} className={classNames('', {}, [className])}>
+        <Button
+            inverted
+            onClick={handleClick}
+            className={classNames('', {}, [className])}
+        >
             {t('language')}
         </Button>
     );
@@ -24,4 +28,4 @@ const LangSwitcher = memo(({ className }:TLangSwitcherProps) => {
 
 LangSwitcher.displayName = 'LangSwitcher';
 
-export {LangSwitcher};
+export { LangSwitcher };

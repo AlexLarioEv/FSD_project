@@ -1,50 +1,47 @@
 /* eslint-disable alexlario-plugin/layer-imports*/
-import { ERoleUser } from "@/entities/User";
-import { 
-    MainPage, 
+import { ERoleUser } from '@/entities/User';
+import {
+    MainPage,
     AboutPage,
-    ProfilePage, 
-    NotFundPage, 
-    ArticleDetailsPage, 
+    ProfilePage,
+    NotFundPage,
+    ArticleDetailsPage,
     ArticlePage,
     ArticleCreatePage,
     ArticleEditPage,
-    ForbiddenPage, 
-    AdminPage} from "@/pages";
-import { RouteProps } from "react-router-dom";
+    ForbiddenPage,
+    AdminPage,
+} from '@/pages';
+import { RouteProps } from 'react-router-dom';
 
-
-export type TAppRouteProps  = RouteProps & {
+export type TAppRouteProps = RouteProps & {
     authOnly?: boolean;
     roles?: ERoleUser[];
-}
-
+};
 
 export enum EAppRoutes {
     MAIN = 'main',
     ABOUT = 'about',
-    PROFILE= 'profile',
+    PROFILE = 'profile',
     ARTICLE = 'article',
     ARTICLE_DETAILS = 'article_details',
     ARTICLE_CREATE = 'article_create',
     ARTICLE_EDIT = 'article_edit',
     ADMIN = 'admin',
-    FORBIDDEN='forbidden',
-
+    FORBIDDEN = 'forbidden',
 
     NOT_FUND = 'not_fund',
 }
 
 export const getRouteMain = () => '/';
 export const getRouteAbout = () => '/about';
-export const getRouteProfile = (id:string) => `/profile/${id}`;
+export const getRouteProfile = (id: string) => `/profile/${id}`;
 export const getRouteArticles = () => '/article';
-export const getRouteArticleDetails = (id:string) => `/article/${id}`;
+export const getRouteArticleDetails = (id: string) => `/article/${id}`;
 export const getRouteArticleCreate = () => '/article/create';
-export const getRouteArticleEdit = (id:string) => `/article/${id}/edit`;
+export const getRouteArticleEdit = (id: string) => `/article/${id}/edit`;
 export const getRouteAdmin = () => '/admin';
 export const getRouteForbidden = () => '/article/create';
-
 
 export const RoutePath: Record<EAppRoutes, string> = {
     [EAppRoutes.MAIN]: getRouteMain(),
@@ -57,47 +54,47 @@ export const RoutePath: Record<EAppRoutes, string> = {
     [EAppRoutes.ADMIN]: getRouteAdmin(),
     [EAppRoutes.FORBIDDEN]: getRouteForbidden(),
 
-    [EAppRoutes.NOT_FUND]: '*'
-}
+    [EAppRoutes.NOT_FUND]: '*',
+};
 
 export const routeConfig: Record<EAppRoutes, TAppRouteProps> = {
     [EAppRoutes.MAIN]: {
         path: getRouteMain(),
-        element: <MainPage/>
+        element: <MainPage />,
     },
     [EAppRoutes.ABOUT]: {
         path: getRouteAbout(),
-        element: <AboutPage/>
+        element: <AboutPage />,
     },
     [EAppRoutes.PROFILE]: {
         path: getRouteProfile(':id'),
-        element: <ProfilePage/>,
-        authOnly: true
+        element: <ProfilePage />,
+        authOnly: true,
     },
     [EAppRoutes.ARTICLE]: {
         path: getRouteArticles(),
-        element: <ArticlePage/>,
-        authOnly: true
+        element: <ArticlePage />,
+        authOnly: true,
     },
     [EAppRoutes.ARTICLE_DETAILS]: {
         path: getRouteArticleDetails(':id'),
-        element: <ArticleDetailsPage/>,
-        authOnly: true
+        element: <ArticleDetailsPage />,
+        authOnly: true,
     },
     [EAppRoutes.ARTICLE_CREATE]: {
         path: getRouteArticleCreate(),
-        element: <ArticleCreatePage/>,
-        authOnly: true
+        element: <ArticleCreatePage />,
+        authOnly: true,
     },
     [EAppRoutes.ARTICLE_EDIT]: {
         path: getRouteArticleEdit(':id'),
-        element: <ArticleEditPage/>,
-        authOnly: true
+        element: <ArticleEditPage />,
+        authOnly: true,
     },
     [EAppRoutes.ADMIN]: {
         path: getRouteAdmin(),
         element: <AdminPage />,
-        roles: [ERoleUser.ADMIN, ERoleUser.MANAGER]
+        roles: [ERoleUser.ADMIN, ERoleUser.MANAGER],
     },
     [EAppRoutes.FORBIDDEN]: {
         path: getRouteForbidden(),
@@ -105,6 +102,6 @@ export const routeConfig: Record<EAppRoutes, TAppRouteProps> = {
     },
     [EAppRoutes.NOT_FUND]: {
         path: '*',
-        element: <NotFundPage/>
-    }
-}
+        element: <NotFundPage />,
+    },
+};

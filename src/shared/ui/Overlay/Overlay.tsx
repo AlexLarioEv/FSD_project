@@ -7,9 +7,12 @@ interface OverlayProps {
     onClick?: () => void;
 }
 
-const Overlay:FC<OverlayProps> = ({ className, onClick }) => {
+const Overlay: FC<OverlayProps> = ({ className, onClick }) => {
     return (
-        <div onClick={onClick} className={classNames(styles.Overlay, {}, [className])} />
+        <div
+            onClick={onClick}
+            className={classNames(styles.Overlay, {}, [className])}
+        />
     );
 };
 

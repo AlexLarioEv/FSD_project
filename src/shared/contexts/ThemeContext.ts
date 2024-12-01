@@ -1,4 +1,4 @@
-import {createContext} from 'react'
+import { createContext } from 'react';
 import { ELocalStorageKey } from '../const';
 
 export enum ETheme {
@@ -8,9 +8,12 @@ export enum ETheme {
 
 export interface IThemeContextProps {
     theme: ETheme;
-    setTheme?: (theme: ETheme) => void
+    setTheme?: (theme: ETheme) => void;
 }
 
-const theme = localStorage.getItem(ELocalStorageKey.THEME) === ETheme.LIGHT ? ETheme.LIGHT: ETheme.DARK
+const theme =
+    localStorage.getItem(ELocalStorageKey.THEME) === ETheme.LIGHT
+        ? ETheme.LIGHT
+        : ETheme.DARK;
 
-export const ThemeContext = createContext<IThemeContextProps>({theme})
+export const ThemeContext = createContext<IThemeContextProps>({ theme });

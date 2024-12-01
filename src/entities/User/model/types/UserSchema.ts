@@ -9,9 +9,9 @@ export type TUser = {
     username: string;
     avatar?: string;
     role?: ERoleUser;
-}
+};
 
 export type TUserSchema = {
     auth?: TUser;
     _init: boolean;
-}
+};

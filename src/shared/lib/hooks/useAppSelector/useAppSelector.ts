@@ -1,5 +1,5 @@
-import { useSelector } from 'react-redux'
+import { useSelector } from 'react-redux';
 
-import {TStateSchema} from '@/shared/config/storeConfig/types'
+import { TStateSchema } from '@/shared/config/storeConfig/types';
 
-export const useAppSelector = useSelector.withTypes<TStateSchema>()
+export const useAppSelector = useSelector.withTypes<TStateSchema>();

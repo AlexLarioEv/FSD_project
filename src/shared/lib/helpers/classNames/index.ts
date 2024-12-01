@@ -1,1 +1,1 @@
-export { classNames, type TMods } from './classNames'
+export { classNames, type TMods } from './classNames';

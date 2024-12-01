@@ -1,6 +1,6 @@
-import {screen, fireEvent } from '@testing-library/react';
+import { screen, fireEvent } from '@testing-library/react';
 
-import {componentRender} from '@/shared/lib/test';
+import { componentRender } from '@/shared/lib/test';
 
 // import { addCommentActions } from '../model/slice/addCommentSlice';
 import AddCommentForm from './AddCommentForm';
@@ -8,19 +8,20 @@ import AddCommentForm from './AddCommentForm';
 const mockOnSendComment = jest.fn();
 
 const renderComponent = (store = { addCommentForm: { text: '' } }) => {
-
     return componentRender(
-        <AddCommentForm onSendComment={mockOnSendComment} />,{ initialState:store}
+        <AddCommentForm onSendComment={mockOnSendComment} />,
+        { initialState: store },
     );
 };
 
 describe('AddCommentForm', () => {
-
     test('renders input and button', () => {
         renderComponent();
 
         expect(screen.getByTestId('add_comment')).toBeInTheDocument();
-        expect(screen.getByRole('button', { name: /add/i })).toBeInTheDocument();
+        expect(
+            screen.getByRole('button', { name: /add/i }),
+        ).toBeInTheDocument();
     });
 
     // TODO: починить тесты

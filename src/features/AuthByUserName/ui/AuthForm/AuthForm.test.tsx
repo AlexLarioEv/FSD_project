@@ -1,6 +1,6 @@
 import { screen, fireEvent } from '@testing-library/react';
 
-import {componentRender} from '@/shared/lib/test';
+import { componentRender } from '@/shared/lib/test';
 
 import { TStateSchema } from '@/shared/config/storeConfig';
 import { DeepPartial } from '@/shared/lib/helpers';
@@ -10,11 +10,14 @@ import AuthForm from './AuthForm';
 
 const mockOnSuccess = jest.fn();
 
-const renderComponent = (storeState: DeepPartial<TStateSchema> = { login: { username: '', password: '', isLoading: false, error: '' } }) => {
-    
-    return componentRender(
-        <AuthForm onSuccess={mockOnSuccess} />, {initialState: storeState}
-    );
+const renderComponent = (
+    storeState: DeepPartial<TStateSchema> = {
+        login: { username: '', password: '', isLoading: false, error: '' },
+    },
+) => {
+    return componentRender(<AuthForm onSuccess={mockOnSuccess} />, {
+        initialState: storeState,
+    });
 };
 
 describe('AuthForm', () => {
@@ -28,7 +31,9 @@ describe('AuthForm', () => {
         renderComponent();
         expect(screen.getByLabelText('login')).toBeInTheDocument();
         expect(screen.getByLabelText('password')).toBeInTheDocument();
-        expect(screen.getByRole('button', { name: /sign_in/i })).toBeInTheDocument();
+        expect(
+            screen.getByRole('button', { name: /sign_in/i }),
+        ).toBeInTheDocument();
     });
 
     test('dispatches setUsername and setPassword on input change', () => {

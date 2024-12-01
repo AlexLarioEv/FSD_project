@@ -1,16 +1,15 @@
 import { TStateSchema } from '@/shared/config/storeConfig';
-import {getProfileData} from './getProfileData';
+import { getProfileData } from './getProfileData';
 import { DeepPartial } from '@/shared/lib/helpers';
 import { EErrorValidateForm, TProfileSchema } from '../../types/ProfileSchema';
 import { ECurrency } from '@/entities/Currency';
 import { ECountry } from '@/entities/Country';
 
-describe('getProfileData', ()=> {
-    test('get state', ()=>{
-
+describe('getProfileData', () => {
+    test('get state', () => {
         const profile: TProfileSchema = {
             data: {
-                id: '1', 
+                id: '1',
                 first: 'Иван',
                 lastname: 'Иванов',
                 age: 12,
@@ -18,22 +17,22 @@ describe('getProfileData', ()=> {
                 country: ECountry.ARMENIA,
                 city: 'New Your',
                 username: 'Ivan',
-                avatar: ''
+                avatar: '',
             },
             isLoading: true,
             error: [EErrorValidateForm.AGE_NOT_CORRECT],
             readonly: true,
-        }
+        };
 
         const state: DeepPartial<TStateSchema> = {
-            profile
-        }
+            profile,
+        };
 
-        expect(getProfileData(state as TStateSchema)).toEqual(profile)
-    })
+        expect(getProfileData(state as TStateSchema)).toEqual(profile);
+    });
 
-    test('get undefined state', ()=>{
+    test('get undefined state', () => {
         const state: DeepPartial<TStateSchema> = {};
-        expect(getProfileData(state as TStateSchema)).toEqual(undefined)
-    })
-})
+        expect(getProfileData(state as TStateSchema)).toEqual(undefined);
+    });
+});

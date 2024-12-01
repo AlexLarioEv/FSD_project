@@ -7,12 +7,10 @@ const meta = {
     title: 'entities/ProfileCard',
     component: ProfileCard,
     parameters: {
-
         layout: 'centered',
-
     },
 
-    args:{
+    args: {
         onChangeAge: fn(),
         onChangeLastname: fn(),
         onChangeAvatar: fn(),
@@ -21,31 +19,28 @@ const meta = {
         onChangeCurrency: fn(),
         onChangeFirstname: fn(),
         onChangeUsername: fn(),
-    }
-
+    },
 } satisfies Meta<typeof ProfileCard>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-
-export const Default: Story = {
-};
+export const Default: Story = {};
 
 export const Loading: Story = {
-    args:{
-        isLoading: true
-    }
+    args: {
+        isLoading: true,
+    },
 };
 
 export const Error: Story = {
-    args:{
-        error: true
-    }
-}
+    args: {
+        error: true,
+    },
+};
 
 export const Readonly: Story = {
-    args:{
-        readonly: true
-    }
-}
+    args: {
+        readonly: true,
+    },
+};

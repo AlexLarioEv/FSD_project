@@ -3,59 +3,54 @@
  * https://jestjs.io/docs/configuration
  */
 
-import type {Config} from 'jest';
-import {EProject} from '../build/types/config'
+import type { Config } from 'jest';
+import { EProject } from '../build/types/config';
 
 const config: Config = {
     globals: {
         __IS_DEV__: true,
         __API__: '',
-        __PROJECT__: EProject.JEST
+        __PROJECT__: EProject.JEST,
     },
     clearMocks: true,
-    testEnvironment: "jsdom",
-    coveragePathIgnorePatterns: [
-        "\\\\node_modules\\\\"
-    ],
-    moduleDirectories: [
-        "node_modules"
-    ],
+    testEnvironment: 'jsdom',
+    coveragePathIgnorePatterns: ['\\\\node_modules\\\\'],
+    moduleDirectories: ['node_modules'],
     moduleFileExtensions: [
-        "js",
-        "mjs",
-        "cjs",
-        "jsx",
-        "ts",
-        "tsx",
-        "json",
-        "node"
+        'js',
+        'mjs',
+        'cjs',
+        'jsx',
+        'ts',
+        'tsx',
+        'json',
+        'node',
     ],
-    testMatch: [
-        '<rootDir>src/**/*(*.)@(spec|test).[tj]s?(x)'
-    ],
+    testMatch: ['<rootDir>src/**/*(*.)@(spec|test).[tj]s?(x)'],
     rootDir: '../../',
     transform: {
-        "^.+\\.tsx?$": "ts-jest"
+        '^.+\\.tsx?$': 'ts-jest',
     },
-    modulePaths: ["<rootDir>/src"],
+    modulePaths: ['<rootDir>/src'],
     moduleNameMapper: {
         '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
-        '<rootDir>/config/jest/jestEmptyComponent.tsx',
+            '<rootDir>/config/jest/jestEmptyComponent.tsx',
         '\\.(css|scss)$': 'identity-obj-proxy',
         '^@/(.*)$': '<rootDir>/src/$1',
     },
-    setupFilesAfterEnv: [
-        "<rootDir>/config/jest/setupTest.ts"
-    ],
+    setupFilesAfterEnv: ['<rootDir>/config/jest/setupTest.ts'],
 
-    "reporters": [
-        "default",
-        ["jest-html-reporters", {
-            "publicPath": "<rootDir>/reports/unit",
-            "filename": "report.html",
-            "openReport": true,
-            "inlineSource": true
-        }]
+    reporters: [
+        'default',
+        [
+            'jest-html-reporters',
+            {
+                publicPath: '<rootDir>/reports/unit',
+                filename: 'report.html',
+                openReport: true,
+                inlineSource: true,
+            },
+        ],
     ],
 
     // // Indicates whether the coverage information should be collected while executing the test
@@ -110,7 +105,7 @@ const config: Config = {
     // maxWorkers: "50%",
 
     // An array of directory names to be searched recursively up from the requiring module's location
-  
+
     // An array of file extensions your modules use
 
     // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module

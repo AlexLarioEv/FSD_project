@@ -1,26 +1,32 @@
-import { memo } from "react";
+import { memo } from 'react';
 
-import { classNames } from "@/shared/lib";
-import { Text } from "@/shared/ui/Text";
+import { classNames } from '@/shared/lib';
+import { Text } from '@/shared/ui/Text';
 
 import styles from './ArticleImageBlock.module.scss';
-import {IArticleImageBlock} from '../../model/types/ArticleSchema'
+import { IArticleImageBlock } from '../../model/types/ArticleSchema';
 
 type TArticleImageBlockProps = {
-  className?: string;
+    className?: string;
 } & Pick<IArticleImageBlock, 'src' | 'title'>;
 
-const ArticleImageBlock = memo(({ className, title, src }: TArticleImageBlockProps) => {
-    return (
-        <>
-            <div className={classNames(styles.ArticleImageBlock, {}, [className])}>
-                <img className={styles.img} src={src} />
-                <Text title={title}/>
-            </div>
-        </>
-    );
-});
+const ArticleImageBlock = memo(
+    ({ className, title, src }: TArticleImageBlockProps) => {
+        return (
+            <>
+                <div
+                    className={classNames(styles.ArticleImageBlock, {}, [
+                        className,
+                    ])}
+                >
+                    <img className={styles.img} src={src} />
+                    <Text title={title} />
+                </div>
+            </>
+        );
+    },
+);
 
 ArticleImageBlock.displayName = 'ArticleImageBlock';
 
-export {ArticleImageBlock};
+export { ArticleImageBlock };

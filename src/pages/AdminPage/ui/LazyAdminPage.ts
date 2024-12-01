@@ -1,3 +1,3 @@
-import { lazy } from "react";
+import { lazy } from 'react';
 
-export const LazyAdminPage = lazy(()=> import('./AdminPage'));
+export const LazyAdminPage = lazy(() => import('./AdminPage'));

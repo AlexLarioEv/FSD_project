@@ -11,24 +11,29 @@ const stateArticle: DeepPartial<TStateSchema> = {
             avatar: 'avatar',
         },
         _init: true,
-    }
-}
+    },
+};
 
 describe('test selector user', () => {
-
     test('getUser', () => {
-        expect(getUser(stateArticle as TStateSchema)).toEqual(stateArticle.user)
-    })
+        expect(getUser(stateArticle as TStateSchema)).toEqual(
+            stateArticle.user,
+        );
+    });
 
     test('isAuth', () => {
-        expect(isAuth(stateArticle as TStateSchema)).toEqual(true)
-    })
+        expect(isAuth(stateArticle as TStateSchema)).toEqual(true);
+    });
 
     test('isInit', () => {
-        expect(isInit(stateArticle as TStateSchema)).toEqual(stateArticle.user?._init)
-    })
+        expect(isInit(stateArticle as TStateSchema)).toEqual(
+            stateArticle.user?._init,
+        );
+    });
 
     test('getAuthData', () => {
-        expect(getAuthData(stateArticle as TStateSchema)).toEqual(stateArticle.user?.auth)
-    })
-})
+        expect(getAuthData(stateArticle as TStateSchema)).toEqual(
+            stateArticle.user?.auth,
+        );
+    });
+});

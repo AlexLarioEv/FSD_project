@@ -1,39 +1,48 @@
-import { FC, useCallback } from "react";
-import { createSelector } from "@reduxjs/toolkit";
-import { useSearchParams } from "react-router-dom";
+import { FC, useCallback } from 'react';
+import { createSelector } from '@reduxjs/toolkit';
+import { useSearchParams } from 'react-router-dom';
 
 import { TStateSchema } from '@/shared/config/storeConfig';
-import { Page } from "@/widgets/Page";
+import { Page } from '@/widgets/Page';
 import { filterReducer } from '@/entities/Filter';
-import { useAppDispatch, useAppSelector, useInitEffect } from "@/shared/lib/hooks";
-import { ETypeText, Text } from "@/shared/ui/Text";
-import { classNames } from "@/shared/lib";
-import { DynamicModuleLoader, TReducerList } from "@/shared/lib/components";
+import {
+    useAppDispatch,
+    useAppSelector,
+    useInitEffect,
+} from '@/shared/lib/hooks';
+import { ETypeText, Text } from '@/shared/ui/Text';
+import { classNames } from '@/shared/lib';
+import { DynamicModuleLoader, TReducerList } from '@/shared/lib/components';
 
-import { 
-    getErrorArticleList, 
-    getViewArticleList, 
-    isLoadingArticleList, 
-    getPageArticleList, 
-    getHasMoreArticleList, 
-    getInitArticleList} from "../model/selectors/articleList";
-import { articleListReducer, articleListAction, getArticleList } from "../model/slices/articleListSlice";
-import { fetchArticleList } from "../model/services/fetchArticleList";
+import {
+    getErrorArticleList,
+    getViewArticleList,
+    isLoadingArticleList,
+    getPageArticleList,
+    getHasMoreArticleList,
+    getInitArticleList,
+} from '../model/selectors/articleList';
+import {
+    articleListReducer,
+    articleListAction,
+    getArticleList,
+} from '../model/slices/articleListSlice';
+import { fetchArticleList } from '../model/services/fetchArticleList';
 
-import { initArticlesPage } from "../model/services/initArticalPage";
-import { FilterArticleList } from "./FilterArticleList/FilterArticleList";
-import ArticleListWithView  from "./AricleListWithView/AricleListWithView";
+import { initArticlesPage } from '../model/services/initArticalPage';
+import { FilterArticleList } from './FilterArticleList/FilterArticleList';
+import ArticleListWithView from './AricleListWithView/AricleListWithView';
 
 import styles from './ArticlePage.module.scss';
 
 type TArticlePageProps = {
-  className?: string;
+    className?: string;
 };
 
 const reducers: TReducerList = {
     articleList: articleListReducer,
     filter: filterReducer,
-}
+};
 
 const selectArticleProcess = createSelector(
     [
@@ -43,7 +52,7 @@ const selectArticleProcess = createSelector(
         getViewArticleList,
         getPageArticleList,
         getHasMoreArticleList,
-        getInitArticleList
+        getInitArticleList,
     ],
     (articles, error, loading, view, page, hasMore, inited) => ({
         articles,
@@ -52,36 +61,40 @@ const selectArticleProcess = createSelector(
         view,
         page,
         hasMore,
-        inited
-    })
+        inited,
+    }),
 );
 
 const ArticlePage: FC<TArticlePageProps> = ({ className }) => {
-    const dispatch = useAppDispatch()
+    const dispatch = useAppDispatch();
     const [searchParams] = useSearchParams();
-    const { error, loading, page, hasMore, inited } = useAppSelector(selectArticleProcess);
-    
-    const onLoadNextPart = useCallback(()=> {
-        if(hasMore && !loading){
+    const { error, loading, page, hasMore, inited } =
+        useAppSelector(selectArticleProcess);
+
+    const onLoadNextPart = useCallback(() => {
+        if (hasMore && !loading) {
             dispatch(articleListAction.setPage(page + 1));
             dispatch(fetchArticleList());
         }
-    },[page, hasMore, loading, dispatch])
-    
+    }, [page, hasMore, loading, dispatch]);
 
-    useInitEffect(()=>{
-        if(!inited){
+    useInitEffect(() => {
+        if (!inited) {
             dispatch(articleListAction.initState());
             dispatch(initArticlesPage(searchParams));
         }
-    })
-    
-    if(error){
-        return <Text description={error} type={ETypeText.ERROR}/>
+    });
+
+    if (error) {
+        return <Text description={error} type={ETypeText.ERROR} />;
     }
 
     return (
-        <Page data-testid="ArticlePage" onScrollEnd={onLoadNextPart} className={classNames(styles.ArticlePage, {}, [className])}>
+        <Page
+            data-testid="ArticlePage"
+            onScrollEnd={onLoadNextPart}
+            className={classNames(styles.ArticlePage, {}, [className])}
+        >
             <DynamicModuleLoader reducers={reducers} removeAfterUnmount={false}>
                 <FilterArticleList />
                 <ArticleListWithView />

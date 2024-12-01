@@ -1,37 +1,47 @@
-import { FC } from "react";
-import { useNavigate } from "react-router-dom";
-import { useTranslation } from "react-i18next";
+import { FC } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
-import { classNames } from "@/shared/lib";
-import { Button, EButtonTheme } from "@/shared/ui/Button";
-import { getRouteArticles, getRouteArticleEdit } from "@/shared/config/routeConfig";
+import { classNames } from '@/shared/lib';
+import { Button, EButtonTheme } from '@/shared/ui/Button';
+import {
+    getRouteArticles,
+    getRouteArticleEdit,
+} from '@/shared/config/routeConfig';
 
-import { HStack } from "@/shared/ui/Stack";
+import { HStack } from '@/shared/ui/Stack';
 
 type TArticleDetailsHeaderProps = {
     className?: string;
     id: string;
 };
 
-export const ArticleDetailsHeader: FC<TArticleDetailsHeaderProps> = ({ className, id }) => {
-    const {t} = useTranslation('articleDetails');
+export const ArticleDetailsHeader: FC<TArticleDetailsHeaderProps> = ({
+    className,
+    id,
+}) => {
+    const { t } = useTranslation('articleDetails');
     const navigate = useNavigate();
 
     const handleClickBack = () => {
         navigate(getRouteArticles());
-    }
-    
+    };
+
     const handleClickEdit = () => {
         navigate(getRouteArticleEdit(id));
-    }
+    };
 
     return (
-        <HStack justify='between' gap={8} className={classNames('', {}, [className])}>
+        <HStack
+            justify="between"
+            gap={8}
+            className={classNames('', {}, [className])}
+        >
             <Button theme={EButtonTheme.BORDER} onClick={handleClickBack}>
-                {t("back_to_articles")}
+                {t('back_to_articles')}
             </Button>
             <Button theme={EButtonTheme.BORDER} onClick={handleClickEdit}>
-                {t("edit_page")}
+                {t('edit_page')}
             </Button>
         </HStack>
     );

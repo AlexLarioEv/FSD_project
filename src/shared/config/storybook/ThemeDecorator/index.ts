@@ -1,1 +1,1 @@
-export {ThemeDecorator, globalTypes} from'./ThemeDecorator';
+export { ThemeDecorator, globalTypes } from './ThemeDecorator';

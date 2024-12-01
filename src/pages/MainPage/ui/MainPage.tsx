@@ -5,15 +5,15 @@ import { Rating } from '@/entities/Rating';
 import { Counter } from '@/entities/Counter';
 
 const MainPage = () => {
-    const {t} = useTranslation('mainPage')
+    const { t } = useTranslation('mainPage');
 
     return (
-        <Page data-testid='MainPage'>
+        <Page data-testid="MainPage">
             {t('title')}
             <Counter />
-            <Rating title='Как вам статья' feedbackTitle='Отзыв'/>
+            <Rating title="Как вам статья" feedbackTitle="Отзыв" />
         </Page>
-    )
+    );
 };
 
 export default MainPage;

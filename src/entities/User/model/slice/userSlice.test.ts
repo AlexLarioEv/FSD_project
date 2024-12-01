@@ -3,7 +3,7 @@ import { TUser, TUserSchema } from '../types';
 import { ELocalStorageKey } from '@/shared/const';
 
 describe('userSlice', () => {
-    const initialState: TUserSchema= { _init: false };
+    const initialState: TUserSchema = { _init: false };
 
     describe('setAuthData', () => {
         it('should set auth data in the state', () => {
@@ -42,8 +42,14 @@ describe('userSlice', () => {
 
     describe('logout', () => {
         test('should remove auth data from state and clear local storage', () => {
-            const stateWithUser = { ...initialState, auth: { id: '1', username: 'wolf' } }; // Replace with actual fields
-            localStorage.setItem(ELocalStorageKey.USER, JSON.stringify(stateWithUser.auth));
+            const stateWithUser = {
+                ...initialState,
+                auth: { id: '1', username: 'wolf' },
+            }; // Replace with actual fields
+            localStorage.setItem(
+                ELocalStorageKey.USER,
+                JSON.stringify(stateWithUser.auth),
+            );
 
             const action = userActions.logout();
             const newState = userReducer(stateWithUser, action);

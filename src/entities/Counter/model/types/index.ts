@@ -1,1 +1,1 @@
-export {TCounterSchema} from './CounterSchema';
+export { TCounterSchema } from './CounterSchema';

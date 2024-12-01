@@ -1,1 +1,1 @@
-export {TTestProps} from './testType';
+export { TTestProps } from './testType';

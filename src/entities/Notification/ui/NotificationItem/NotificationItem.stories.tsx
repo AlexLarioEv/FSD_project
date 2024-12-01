@@ -6,14 +6,13 @@ const meta = {
     title: 'entities/Notification/NotificationItem',
     component: NotificationItem,
 
-    args:{
-        item:{
+    args: {
+        item: {
             id: '1',
             title: 'title',
             description: 'description',
-        }
-    }
-
+        },
+    },
 } satisfies Meta<typeof NotificationItem>;
 
 export default meta;

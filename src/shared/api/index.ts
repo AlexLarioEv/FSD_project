@@ -1,2 +1,2 @@
-export {api} from './api';
-export {rtkApi} from './rtkApi';
+export { api } from './api';
+export { rtkApi } from './rtkApi';

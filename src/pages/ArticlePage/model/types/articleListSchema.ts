@@ -1,8 +1,8 @@
-import { EntityState } from "@reduxjs/toolkit";
+import { EntityState } from '@reduxjs/toolkit';
 
-import { EArticleView, TArticle } from "@/entities/Article";
+import { EArticleView, TArticle } from '@/entities/Article';
 
-export type TArticleListSchema ={
+export type TArticleListSchema = {
     isLoading: boolean;
     error?: string;
     view: EArticleView;
@@ -11,5 +11,4 @@ export type TArticleListSchema ={
     limit: number;
     hasMore: boolean;
     _init: boolean;
-} & EntityState<TArticle, string>
-
+} & EntityState<TArticle, string>;

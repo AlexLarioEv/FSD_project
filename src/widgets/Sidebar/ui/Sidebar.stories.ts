@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import { Sidebar } from './Sidebar';
 
-
 const meta = {
     title: 'widgets/Sidebar',
     component: Sidebar,
@@ -10,6 +9,5 @@ const meta = {
 
 export default meta;
 type Story = StoryObj<typeof meta>;
-
 
 export const Default: Story = {};

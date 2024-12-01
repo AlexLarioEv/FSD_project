@@ -1,22 +1,23 @@
-import { useEffect, useRef, useState } from "react";
-
+import { useEffect, useRef, useState } from 'react';
 
 export const useModalClosed = (isOpen: boolean) => {
     const [isClose, setIsClose] = useState(true);
     const timerId = useRef<ReturnType<typeof setTimeout>>();
 
-    useEffect(()=> {
-        if(!isOpen){
-            timerId.current = setTimeout(()=> setIsClose(true), 300)
+    useEffect(() => {
+        if (!isOpen) {
+            timerId.current = setTimeout(() => setIsClose(true), 300);
         } else {
-            setIsClose(false)
+            setIsClose(false);
         }
-    },[isOpen])
+    }, [isOpen]);
 
-    useEffect(()=>()=>{
-        clearTimeout(timerId.current)
-    },[])
-
+    useEffect(
+        () => () => {
+            clearTimeout(timerId.current);
+        },
+        [],
+    );
 
     return isClose;
 };

@@ -1,7 +1,7 @@
-import { TUser } from "@/entities/User"
+import { TUser } from '@/entities/User';
 
 export type TComment = {
-    id: string,
-    text: string,
-    user: TUser
-}
+    id: string;
+    text: string;
+    user: TUser;
+};

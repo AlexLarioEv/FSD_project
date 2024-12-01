@@ -9,20 +9,18 @@ const meta = {
     title: 'entities/SelectCountry',
     component: SelectCountry,
 
-    args:{
-        onChange: fn()
-    }
-
+    args: {
+        onChange: fn(),
+    },
 } satisfies Meta<typeof SelectCountry>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-
 export const Default: Story = {};
 
 export const DefaultRUB: Story = {
-    args:{
-        value: ECountry.RUSSIA
-    }
+    args: {
+        value: ECountry.RUSSIA,
+    },
 };

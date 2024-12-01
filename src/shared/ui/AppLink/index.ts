@@ -1,1 +1,1 @@
-export {AppLink, EApplinkTypes} from './AppLink'
+export { AppLink, EApplinkTypes } from './AppLink';

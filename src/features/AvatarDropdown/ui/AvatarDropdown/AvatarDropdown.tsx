@@ -1,15 +1,15 @@
-import { FC, memo, useCallback, useMemo } from "react";
+import { FC, memo, useCallback, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { classNames } from "@/shared/lib";
+import { classNames } from '@/shared/lib';
 
-import { Button } from "@/shared/ui/Button";
-import { Dropdown } from "@/shared/ui/Popups";
-import { Avatar } from "@/shared/ui/Avatar";
-import { useAppDispatch, useAppSelector } from "@/shared/lib/hooks";
-import { isAdmin, isManager, userActions } from "@/entities/User";
-import { AppLink, EApplinkTypes } from "@/shared/ui/AppLink";
-import { getRouteProfile, getRouteAdmin } from "@/shared/config/routeConfig";
+import { Button } from '@/shared/ui/Button';
+import { Dropdown } from '@/shared/ui/Popups';
+import { Avatar } from '@/shared/ui/Avatar';
+import { useAppDispatch, useAppSelector } from '@/shared/lib/hooks';
+import { isAdmin, isManager, userActions } from '@/entities/User';
+import { AppLink, EApplinkTypes } from '@/shared/ui/AppLink';
+import { getRouteProfile, getRouteAdmin } from '@/shared/config/routeConfig';
 
 type TAvatarDropdownProps = {
     className?: string;
@@ -17,41 +17,54 @@ type TAvatarDropdownProps = {
     id: string;
 };
 
-export const AvatarDropdown: FC<TAvatarDropdownProps> = ({ className, avatar, id }) => {
+export const AvatarDropdown: FC<TAvatarDropdownProps> = ({
+    className,
+    avatar,
+    id,
+}) => {
     const { t } = useTranslation();
-    const manager = useAppSelector(isManager)
-    const admin = useAppSelector(isAdmin)
+    const manager = useAppSelector(isManager);
+    const admin = useAppSelector(isAdmin);
     const dispatch = useAppDispatch();
     const showAdmin = manager || admin;
 
     const handleLogout = useCallback(() => {
-        dispatch(userActions.logout())
-    },[dispatch])
-    
+        dispatch(userActions.logout());
+    }, [dispatch]);
 
-    const itemsDropdown = useMemo(()=> [
-        ...(showAdmin ? [
-            <AppLink 
-                type={EApplinkTypes.SECONDARY} 
-                to={getRouteAdmin()} key='1'>
-                {t('admin')}
-            </AppLink>]
-            : 
-            []),
-        <AppLink 
-            type={EApplinkTypes.SECONDARY} 
-            to={getRouteProfile(id)} key='2'>
-            {t('profile')}
-        </AppLink>,
-        <Button key='3' inverted onClick={handleLogout}>{t('exit')}</Button>,
-    ],[id, handleLogout, t, showAdmin])
+    const itemsDropdown = useMemo(
+        () => [
+            ...(showAdmin
+                ? [
+                      <AppLink
+                          type={EApplinkTypes.SECONDARY}
+                          to={getRouteAdmin()}
+                          key="1"
+                      >
+                          {t('admin')}
+                      </AppLink>,
+                  ]
+                : []),
+            <AppLink
+                type={EApplinkTypes.SECONDARY}
+                to={getRouteProfile(id)}
+                key="2"
+            >
+                {t('profile')}
+            </AppLink>,
+            <Button key="3" inverted onClick={handleLogout}>
+                {t('exit')}
+            </Button>,
+        ],
+        [id, handleLogout, t, showAdmin],
+    );
 
-    return ( 
-        <Dropdown 
+    return (
+        <Dropdown
             className={classNames('', {}, [className])}
-            label={<Avatar src={avatar}/>} 
+            label={<Avatar src={avatar} />}
             items={itemsDropdown}
-            direction='bottom left'
+            direction="bottom left"
         />
     );
 };

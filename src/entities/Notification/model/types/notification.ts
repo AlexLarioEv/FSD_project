@@ -3,4 +3,4 @@ export type TNotification = {
     title: string;
     description: string;
     href?: string;
-}
+};

@@ -9,41 +9,39 @@ const content = (
         <div>Content</div>
         <div>Content</div>
     </>
-)
+);
 
 const meta = {
     title: 'shared/VStack',
     component: VStack,
     args: {
-        children: content
-    }
-    
+        children: content,
+    },
 } satisfies Meta<typeof VStack>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-
 export const VStack4: Story = {
-    args:{
-        gap: 4
-    }
+    args: {
+        gap: 4,
+    },
 };
 
 export const VStack8: Story = {
-    args:{
-        gap: 8
-    }
+    args: {
+        gap: 8,
+    },
 };
 
 export const VStack16: Story = {
-    args:{
-        gap: 16
-    }
+    args: {
+        gap: 16,
+    },
 };
 
 export const VStack32: Story = {
-    args:{
-        gap: 32
-    }
+    args: {
+        gap: 32,
+    },
 };

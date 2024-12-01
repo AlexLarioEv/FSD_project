@@ -1,4 +1,4 @@
-import { TUser } from "@/entities/User";
+import { TUser } from '@/entities/User';
 
 export enum EArticleBlockType {
     CODE = 'CODE',
@@ -28,13 +28,16 @@ export interface IArticleTextBlock extends ArticleBlockBase {
     title?: string;
 }
 
-export type ArticleBlock = IArticleCodeBlock | IArticleImageBlock | IArticleTextBlock;
+export type ArticleBlock =
+    | IArticleCodeBlock
+    | IArticleImageBlock
+    | IArticleTextBlock;
 
 export enum EArticleType {
-    ALL="ALL",
+    ALL = 'ALL',
     IT = 'IT',
     SCIENCE = 'SCIENCE',
-    ECONOMICS = 'ECONOMICS'
+    ECONOMICS = 'ECONOMICS',
 }
 
 export enum EArticleView {
@@ -54,10 +57,10 @@ export interface TArticle {
     blocks: ArticleBlock[];
 }
 
-export type TArticleKey = keyof TArticle
+export type TArticleKey = keyof TArticle;
 
 export type TArticleSchema = {
     isLoading: boolean;
     error?: string;
     data?: TArticle;
-}
+};

@@ -1,7 +1,7 @@
-import {FC} from 'react'
+import { FC } from 'react';
 
-const JestEmptyComponent:FC = () => {
+const JestEmptyComponent: FC = () => {
     return null;
-}
+};
 
 export default JestEmptyComponent;

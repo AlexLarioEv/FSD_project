@@ -1,3 +1,3 @@
-import { lazy } from "react";
+import { lazy } from 'react';
 
-export const LazyAddCommentForm = lazy(() => import('./AddCommentForm'))
+export const LazyAddCommentForm = lazy(() => import('./AddCommentForm'));

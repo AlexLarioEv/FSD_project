@@ -1,26 +1,37 @@
-import { FC, useCallback, useMemo } from "react";
+import { FC, useCallback, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { classNames } from "@/shared/lib";
+import { classNames } from '@/shared/lib';
 
-import { EErrorValidateForm, fetchProfile, profileActions, ProfileCard, profileReducer, selectorProfile } from "@/entities/Profile";
-import { ETypeText, Text } from "@/shared/ui/Text";
-import { DynamicModuleLoader, TReducerList } from "@/shared/lib/components";
-import { useAppDispatch, useAppSelector, useInitEffect } from "@/shared/lib/hooks";
-import { createSelector } from "@reduxjs/toolkit";
-import { ECountry } from "@/entities/Country";
-import { ECurrency } from "@/entities/Currency";
-import  ProfilePageHeader  from "../ProfilePageHeader/ProfilePageHeader";
-import { VStack } from "@/shared/ui/Stack";
+import {
+    EErrorValidateForm,
+    fetchProfile,
+    profileActions,
+    ProfileCard,
+    profileReducer,
+    selectorProfile,
+} from '@/entities/Profile';
+import { ETypeText, Text } from '@/shared/ui/Text';
+import { DynamicModuleLoader, TReducerList } from '@/shared/lib/components';
+import {
+    useAppDispatch,
+    useAppSelector,
+    useInitEffect,
+} from '@/shared/lib/hooks';
+import { createSelector } from '@reduxjs/toolkit';
+import { ECountry } from '@/entities/Country';
+import { ECurrency } from '@/entities/Currency';
+import ProfilePageHeader from '../ProfilePageHeader/ProfilePageHeader';
+import { VStack } from '@/shared/ui/Stack';
 
 type TEditProfileProps = {
     className?: string;
     id: string;
 };
 
-const reducers:TReducerList = {
-    profile: profileReducer
-} 
+const reducers: TReducerList = {
+    profile: profileReducer,
+};
 
 const selectProfileData = createSelector(
     [
@@ -34,7 +45,7 @@ const selectProfileData = createSelector(
         selectorProfile.getCurrency,
         selectorProfile.getCity,
         selectorProfile.getAvatar,
-        selectorProfile.isReadOnly
+        selectorProfile.isReadOnly,
     ],
     (
         isLoading,
@@ -47,7 +58,7 @@ const selectProfileData = createSelector(
         currency,
         city,
         avatar,
-        readonly
+        readonly,
     ) => ({
         isLoading,
         error,
@@ -59,85 +70,122 @@ const selectProfileData = createSelector(
         currency,
         city,
         avatar,
-        readonly
-    })
+        readonly,
+    }),
 );
-
 
 export const EditProfile: FC<TEditProfileProps> = ({ className, id }) => {
     const { t } = useTranslation('profile');
 
     const {
-        firstName, lastName,userName, age, country, currency, avatar, city, isLoading, error, readonly 
+        firstName,
+        lastName,
+        userName,
+        age,
+        country,
+        currency,
+        avatar,
+        city,
+        isLoading,
+        error,
+        readonly,
     } = useAppSelector(selectProfileData);
 
     const isServerError = error?.includes(EErrorValidateForm.SERVER_ERROR);
-    
+
     const dispatch = useAppDispatch();
 
-    const onChangeFirstname = useCallback((value?: string) => {
-        dispatch(profileActions.updateProfile({ first: value || '' }));
-    }, [dispatch]);
+    const onChangeFirstname = useCallback(
+        (value?: string) => {
+            dispatch(profileActions.updateProfile({ first: value || '' }));
+        },
+        [dispatch],
+    );
 
-    const onChangeLastname = useCallback((value?: string) => {
-        dispatch(profileActions.updateProfile({ lastname: value || '' }));
-    }, [dispatch]);
+    const onChangeLastname = useCallback(
+        (value?: string) => {
+            dispatch(profileActions.updateProfile({ lastname: value || '' }));
+        },
+        [dispatch],
+    );
 
-    const onChangeCity = useCallback((value?: string) => {
-        dispatch(profileActions.updateProfile({ city: value || '' }));
-    }, [dispatch]);
+    const onChangeCity = useCallback(
+        (value?: string) => {
+            dispatch(profileActions.updateProfile({ city: value || '' }));
+        },
+        [dispatch],
+    );
 
-    const onChangeAge = useCallback((value?: string) => {
-        dispatch(profileActions.updateProfile({ age: Number(value || 0) }));
-    }, [dispatch]);
+    const onChangeAge = useCallback(
+        (value?: string) => {
+            dispatch(profileActions.updateProfile({ age: Number(value || 0) }));
+        },
+        [dispatch],
+    );
 
-    const onChangeUsername = useCallback((value?: string) => {
-        dispatch(profileActions.updateProfile({ username: value || '' }));
-    }, [dispatch]);
+    const onChangeUsername = useCallback(
+        (value?: string) => {
+            dispatch(profileActions.updateProfile({ username: value || '' }));
+        },
+        [dispatch],
+    );
 
-    const onChangeAvatar = useCallback((value?: string) => {
-        dispatch(profileActions.updateProfile({ avatar: value || '' }));
-    }, [dispatch]);
+    const onChangeAvatar = useCallback(
+        (value?: string) => {
+            dispatch(profileActions.updateProfile({ avatar: value || '' }));
+        },
+        [dispatch],
+    );
 
-    const onChangeCurrency = useCallback((value: ECurrency) => {
-        dispatch(profileActions.updateProfile({currency: value }));
-    }, [dispatch]);
+    const onChangeCurrency = useCallback(
+        (value: ECurrency) => {
+            dispatch(profileActions.updateProfile({ currency: value }));
+        },
+        [dispatch],
+    );
 
-    const onChangeCountry = useCallback((value: ECountry) => {
-        dispatch(profileActions.updateProfile({country: value }));
-    }, [dispatch]);
+    const onChangeCountry = useCallback(
+        (value: ECountry) => {
+            dispatch(profileActions.updateProfile({ country: value }));
+        },
+        [dispatch],
+    );
 
-    useInitEffect(()=>{
+    useInitEffect(() => {
         dispatch(fetchProfile(id));
-    })
+    });
 
-    const textError = useMemo(()=> !isServerError ? 
-        error?.map((errorName) => <Text
-            key={errorName} 
-            type={ETypeText.ERROR} 
-            title={t('error')} 
-            description={t(errorName)}
-            testId="EditableProfileCard.Error"
-        />) 
-        : null , [isServerError, error, t])
+    const textError = useMemo(
+        () =>
+            !isServerError
+                ? error?.map((errorName) => (
+                      <Text
+                          key={errorName}
+                          type={ETypeText.ERROR}
+                          title={t('error')}
+                          description={t(errorName)}
+                          testId="EditableProfileCard.Error"
+                      />
+                  ))
+                : null,
+        [isServerError, error, t],
+    );
     return (
-
-        <DynamicModuleLoader reducers={reducers}  removeAfterUnmount={false} >
+        <DynamicModuleLoader reducers={reducers} removeAfterUnmount={false}>
             <VStack gap={8} className={classNames('', {}, [className])}>
-
-                <ProfilePageHeader readonly={readonly}/>
+                <ProfilePageHeader readonly={readonly} />
                 {textError}
                 <ProfileCard
                     isLoading={isLoading}
                     error={error?.includes(EErrorValidateForm.SERVER_ERROR)}
                     readonly={readonly}
-                    first={firstName} 
-                    lastname={lastName} 
-                    username={userName} 
-                    age={age} 
-                    country={country} 
+                    first={firstName}
+                    lastname={lastName}
+                    username={userName}
+                    age={age}
+                    country={country}
                     currency={currency}
-                    city={city} 
+                    city={city}
                     avatar={avatar}
                     onChangeFirstname={onChangeFirstname}
                     onChangeLastname={onChangeLastname}
@@ -148,7 +196,6 @@ export const EditProfile: FC<TEditProfileProps> = ({ className, id }) => {
                     onChangeCurrency={onChangeCurrency}
                     onChangeCountry={onChangeCountry}
                 />
-
             </VStack>
         </DynamicModuleLoader>
     );

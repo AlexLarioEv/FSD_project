@@ -8,20 +8,18 @@ const meta = {
     title: 'entities/SelectCurrency',
     component: SelectCurrency,
 
-    args:{
-        onChange: fn()
-    }
-
+    args: {
+        onChange: fn(),
+    },
 } satisfies Meta<typeof SelectCurrency>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-
 export const Default: Story = {};
 
 export const DefaultRUB: Story = {
-    args:{
-        value: ECurrency.EUR
-    }
+    args: {
+        value: ECurrency.EUR,
+    },
 };

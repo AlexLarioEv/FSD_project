@@ -1,4 +1,4 @@
-import  { ReactNode, useCallback, useEffect,FC } from 'react';
+import { ReactNode, useCallback, useEffect, FC } from 'react';
 import { classNames } from '@/shared/lib';
 import { AnimationProvider, useAnimationLibs } from '@/shared/lib/components';
 
@@ -11,19 +11,19 @@ type TDrawerProps = {
     children: ReactNode;
     isOpen: boolean;
     onClose?: () => void;
-}
+};
 
 const height = window.innerHeight - 100;
 
-const DrawerContent:FC<TDrawerProps> = ({
+const DrawerContent: FC<TDrawerProps> = ({
     className,
     children,
     onClose,
     isOpen = false,
 }) => {
-    const { Spring, Gesture} = useAnimationLibs();
+    const { Spring, Gesture } = useAnimationLibs();
 
-    const [{ y }, api] = Spring.useSpring(() => ({ y: height }))
+    const [{ y }, api] = Spring.useSpring(() => ({ y: height }));
 
     const openDrawer = useCallback(() => {
         api.start({ y: 0, immediate: false });
@@ -65,7 +65,10 @@ const DrawerContent:FC<TDrawerProps> = ({
             }
         },
         {
-            from: () => [0, y.get()], filterTaps: true, bounds: { top: 0 }, rubberband: true,
+            from: () => [0, y.get()],
+            filterTaps: true,
+            bounds: { top: 0 },
+            rubberband: true,
         },
     );
 
@@ -81,7 +84,11 @@ const DrawerContent:FC<TDrawerProps> = ({
                 <Overlay />
                 <Spring.a.div
                     className={styles.sheet}
-                    style={{ display, bottom: `calc(-100vh + ${height - 100}px)`, y }}
+                    style={{
+                        display,
+                        bottom: `calc(-100vh + ${height - 100}px)`,
+                        y,
+                    }}
                     {...bind()}
                 >
                     {children}
@@ -91,7 +98,7 @@ const DrawerContent:FC<TDrawerProps> = ({
     );
 };
 
-const AsyncDrawer:FC<TDrawerProps>  = (props) => {
+const AsyncDrawer: FC<TDrawerProps> = (props) => {
     const { isLoaded } = useAnimationLibs();
 
     if (!isLoaded) {
@@ -101,6 +108,10 @@ const AsyncDrawer:FC<TDrawerProps>  = (props) => {
     return <DrawerContent {...props} />;
 };
 
-export const Drawer:FC<TDrawerProps> = (props) => {
-    return <AnimationProvider><AsyncDrawer {...props}/></AnimationProvider>
-}
+export const Drawer: FC<TDrawerProps> = (props) => {
+    return (
+        <AnimationProvider>
+            <AsyncDrawer {...props} />
+        </AnimationProvider>
+    );
+};

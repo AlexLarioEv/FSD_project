@@ -1,1 +1,1 @@
-export {createStateStory} from'./StoreDecorator';
+export { createStateStory } from './StoreDecorator';

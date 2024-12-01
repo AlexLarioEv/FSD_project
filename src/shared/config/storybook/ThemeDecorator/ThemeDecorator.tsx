@@ -1,23 +1,22 @@
 /* eslint-disable alexlario-plugin/layer-imports */
-import { Decorator } from '@storybook/react/'
+import { Decorator } from '@storybook/react/';
 
-import {ThemeProvider} from "@/app";
-import {ThemeBlock} from './ThemeBlock'
-import { ETheme } from '@/shared/contexts'
+import { ThemeProvider } from '@/app';
+import { ThemeBlock } from './ThemeBlock';
+import { ETheme } from '@/shared/contexts';
 
 export const ThemeDecorator: Decorator = (StoreComponent, context) => {
-    const theme = context.parameters.theme || context.globals.theme
-    const storyTheme = theme === 'dark' ? ETheme.DARK : ETheme.LIGHT
-    
+    const theme = context.parameters.theme || context.globals.theme;
+    const storyTheme = theme === 'dark' ? ETheme.DARK : ETheme.LIGHT;
+
     return (
         <ThemeProvider value={storyTheme}>
             <ThemeBlock>
-                <StoreComponent/>
+                <StoreComponent />
             </ThemeBlock>
         </ThemeProvider>
-    )
-}
-
+    );
+};
 
 export const globalTypes = {
     theme: {
@@ -33,4 +32,4 @@ export const globalTypes = {
             showName: true,
         },
     },
-}
+};

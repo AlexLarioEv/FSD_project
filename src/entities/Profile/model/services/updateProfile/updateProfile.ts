@@ -1,24 +1,35 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
+import { createAsyncThunk } from '@reduxjs/toolkit';
 
 import { TAsyncThunk } from '@/shared/config/storeConfig';
 
-import {validateProfileData} from '../validateProfileData/validateProfileData'
-import {getProfileData} from '../../selector'
-import { TProfile, TErrorList, EErrorValidateForm  } from '../../types/ProfileSchema';
+import { validateProfileData } from '../validateProfileData/validateProfileData';
+import { getProfileData } from '../../selector';
+import {
+    TProfile,
+    TErrorList,
+    EErrorValidateForm,
+} from '../../types/ProfileSchema';
 
-export const updateProfile = createAsyncThunk<TProfile, void, TAsyncThunk<TErrorList>>(
+export const updateProfile = createAsyncThunk<
+    TProfile,
+    void,
+    TAsyncThunk<TErrorList>
+>(
     'profile/updateProfileData',
-    async (_, {extra, rejectWithValue, getState}) => {
+    async (_, { extra, rejectWithValue, getState }) => {
         try {
-            const form = getProfileData(getState())?.form
-            
-            const errorList = validateProfileData(form)
+            const form = getProfileData(getState())?.form;
 
-            if(errorList.length){
-                return rejectWithValue(errorList)
+            const errorList = validateProfileData(form);
+
+            if (errorList.length) {
+                return rejectWithValue(errorList);
             }
 
-            const response = await extra.api.put<TProfile>(`/profile/${form?.id}`, form);
+            const response = await extra.api.put<TProfile>(
+                `/profile/${form?.id}`,
+                form,
+            );
 
             if (!response.data) {
                 throw new Error();
@@ -29,4 +40,4 @@ export const updateProfile = createAsyncThunk<TProfile, void, TAsyncThunk<TError
             return rejectWithValue([EErrorValidateForm.SERVER_ERROR]);
         }
     },
-)
+);

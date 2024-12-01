@@ -1,6 +1,6 @@
 {
-  "onlyChanged": true,
-  "projectId": "Project:66f70039ab4fd4d385d18ebb",
-  "storybookConfigDir": "config\\storybook",
-  "zip": true
+    "onlyChanged": true,
+    "projectId": "Project:66f70039ab4fd4d385d18ebb",
+    "storybookConfigDir": "config\\storybook",
+    "zip": true
 }

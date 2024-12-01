@@ -1,1 +1,1 @@
-export {LazyAdminPage as AdminPage} from './ui/LazyAdminPage'
+export { LazyAdminPage as AdminPage } from './ui/LazyAdminPage';

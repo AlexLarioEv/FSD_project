@@ -10,15 +10,10 @@ interface SkeletonProps extends TTestProps {
     height?: string | number;
     width?: string | number;
     border?: string;
-};
+}
 
 const Skeleton = memo((props: SkeletonProps) => {
-    const {
-        className,
-        height,
-        width,
-        border,
-    } = props;
+    const { className, height, width, border } = props;
 
     const style: CSSProperties = {
         width,
@@ -28,13 +23,13 @@ const Skeleton = memo((props: SkeletonProps) => {
 
     return (
         <div
-            data-testid={props["data-testid"]}
+            data-testid={props['data-testid']}
             className={classNames(styles.Skeleton, {}, [className])}
             style={style}
         />
     );
 });
 
-Skeleton.displayName = 'Skeleton'
+Skeleton.displayName = 'Skeleton';
 
-export {Skeleton};
+export { Skeleton };

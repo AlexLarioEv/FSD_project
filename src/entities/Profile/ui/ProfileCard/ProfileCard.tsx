@@ -1,20 +1,20 @@
-import { FC } from "react";
-import { useTranslation } from "react-i18next";
+import { FC } from 'react';
+import { useTranslation } from 'react-i18next';
 
-import { classNames, TMods } from "@/shared/lib";
-import { Loader} from "@/shared/ui/Loader";
-import { Input } from "@/shared/ui/Input";
-import { Avatar } from '@/shared/ui/Avatar'
-import { Text, ETypeText,  ETextAlign} from "@/shared/ui/Text";
+import { classNames, TMods } from '@/shared/lib';
+import { Loader } from '@/shared/ui/Loader';
+import { Input } from '@/shared/ui/Input';
+import { Avatar } from '@/shared/ui/Avatar';
+import { Text, ETypeText, ETextAlign } from '@/shared/ui/Text';
 
 import styles from './ProfileCard.module.scss';
-import { SelectCountry } from "@/entities/Country";
-import { SelectCurrency } from "@/entities/Currency";
+import { SelectCountry } from '@/entities/Country';
+import { SelectCurrency } from '@/entities/Currency';
 import { ECurrency } from '@/entities/Currency';
 import { ECountry } from '@/entities/Country';
 
-import {TProfile} from "../../model/types/ProfileSchema";
-import { VStack } from "@/shared/ui/Stack";
+import { TProfile } from '../../model/types/ProfileSchema';
+import { VStack } from '@/shared/ui/Stack';
 
 export type TProfileCardProps = {
     className?: string;
@@ -31,10 +31,10 @@ export type TProfileCardProps = {
     onChangeCountry?: (value: ECountry) => void;
 } & Partial<TProfile>;
 
-export const ProfileCard: FC<TProfileCardProps> = ({ 
-    className, 
-    first, 
-    lastname, 
+export const ProfileCard: FC<TProfileCardProps> = ({
+    className,
+    first,
+    lastname,
     age,
     currency,
     country,
@@ -53,15 +53,20 @@ export const ProfileCard: FC<TProfileCardProps> = ({
     onChangeCurrency,
     onChangeCountry,
 }) => {
-    const {t} = useTranslation('profile')
+    const { t } = useTranslation('profile');
 
     const mods: TMods = {
-        [styles.edit]: !readonly
-    }
+        [styles.edit]: !readonly,
+    };
 
     if (isLoading) {
         return (
-            <div className={classNames(styles.ProfileCard, {}, [className, styles.loading])}>
+            <div
+                className={classNames(styles.ProfileCard, {}, [
+                    className,
+                    styles.loading,
+                ])}
+            >
                 <Loader testId="loader" />
             </div>
         );
@@ -69,7 +74,12 @@ export const ProfileCard: FC<TProfileCardProps> = ({
 
     if (error) {
         return (
-            <div className={classNames(styles.ProfileCard, {}, [className, styles.error])}>
+            <div
+                className={classNames(styles.ProfileCard, {}, [
+                    className,
+                    styles.error,
+                ])}
+            >
                 <Text
                     type={ETypeText.ERROR}
                     title={t('Произошла ошибка при загрузке профиля')}
@@ -80,54 +90,76 @@ export const ProfileCard: FC<TProfileCardProps> = ({
             </div>
         );
     }
-    
+
     return (
-        <VStack gap={8} className={classNames(styles.ProfileCard, mods, [className])}>
-            <Avatar className={styles.avatar} size={100} src={avatar ?? ''} alt={username ?? ''}/>
-            <Input 
-                testId={'ProfileCard.firstname'} 
-                aria-label="firstName" 
-                disabled={readonly} 
-                onChange={onChangeFirstname} 
-                placeholder={t('firstName')} 
-                value={first} />
-            <Input 
-                testId={'ProfileCard.lastname'} 
-                aria-label="lastName" 
-                disabled={readonly} 
-                onChange={onChangeLastname} 
-                placeholder={t('lastName')} 
-                value={lastname} />
-            <Input 
-                testId={'ProfileCard.age'} 
-                aria-label="age" 
-                disabled={readonly} 
-                onChange={onChangeAge} 
-                placeholder={t('age')} 
-                value={age} />
-            <Input 
-                testId={'ProfileCard.city'} 
-                aria-label="city" 
+        <VStack
+            gap={8}
+            className={classNames(styles.ProfileCard, mods, [className])}
+        >
+            <Avatar
+                className={styles.avatar}
+                size={100}
+                src={avatar ?? ''}
+                alt={username ?? ''}
+            />
+            <Input
+                testId={'ProfileCard.firstname'}
+                aria-label="firstName"
                 disabled={readonly}
-                onChange={onChangeCity} 
-                placeholder={t('city')} 
-                value={city} />
-            <Input 
-                testId={'ProfileCard.username'} 
-                aria-label="username" 
-                disabled={readonly} 
-                onChange={onChangeUsername} 
-                placeholder={t('username')} 
-                value={username} />
-            <Input 
-                testId={'ProfileCard.avatar'} 
-                aria-label="avatar" 
-                disabled={readonly} 
-                onChange={onChangeAvatar} 
-                placeholder={t('avatar')} 
-                value={avatar} />
-            <SelectCurrency readonly={readonly} onChange={onChangeCurrency} value={currency}/>
-            <SelectCountry readonly={readonly} onChange={onChangeCountry} value={country}/>
+                onChange={onChangeFirstname}
+                placeholder={t('firstName')}
+                value={first}
+            />
+            <Input
+                testId={'ProfileCard.lastname'}
+                aria-label="lastName"
+                disabled={readonly}
+                onChange={onChangeLastname}
+                placeholder={t('lastName')}
+                value={lastname}
+            />
+            <Input
+                testId={'ProfileCard.age'}
+                aria-label="age"
+                disabled={readonly}
+                onChange={onChangeAge}
+                placeholder={t('age')}
+                value={age}
+            />
+            <Input
+                testId={'ProfileCard.city'}
+                aria-label="city"
+                disabled={readonly}
+                onChange={onChangeCity}
+                placeholder={t('city')}
+                value={city}
+            />
+            <Input
+                testId={'ProfileCard.username'}
+                aria-label="username"
+                disabled={readonly}
+                onChange={onChangeUsername}
+                placeholder={t('username')}
+                value={username}
+            />
+            <Input
+                testId={'ProfileCard.avatar'}
+                aria-label="avatar"
+                disabled={readonly}
+                onChange={onChangeAvatar}
+                placeholder={t('avatar')}
+                value={avatar}
+            />
+            <SelectCurrency
+                readonly={readonly}
+                onChange={onChangeCurrency}
+                value={currency}
+            />
+            <SelectCountry
+                readonly={readonly}
+                onChange={onChangeCountry}
+                value={country}
+            />
         </VStack>
     );
 };

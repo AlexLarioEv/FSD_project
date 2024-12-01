@@ -1,37 +1,38 @@
 let currentArticleId = '';
 
 describe('Переходит на статью подробнее', () => {
-
-    beforeEach(()=> {
-        cy.login()
-        cy.createArticle().then((article)=> {
-            cy.log(JSON.stringify(article))
+    beforeEach(() => {
+        cy.login();
+        cy.createArticle().then((article) => {
+            cy.log(JSON.stringify(article));
             currentArticleId = article.id;
-            cy.visit(`article/${currentArticleId}`)
-        })
-    })
-  
-    afterEach(()=> {
-        cy.removeArticle(currentArticleId);     
-    })
+            cy.visit(`article/${currentArticleId}`);
+        });
+    });
+
+    afterEach(() => {
+        cy.removeArticle(currentArticleId);
+    });
     it('Статья отображается', () => {
-        cy.getByTestId("ArticleDetails.Info").should('exist');
-    })
+        cy.getByTestId('ArticleDetails.Info').should('exist');
+    });
 
     it('Оставляет комментарии', () => {
-        cy.getByTestId("ArticleDetails.Info").should('exist')
-        cy.getByTestId("Article.AddCommentForm").scrollIntoView()
+        cy.getByTestId('ArticleDetails.Info').should('exist');
+        cy.getByTestId('Article.AddCommentForm').scrollIntoView();
         cy.addComment('text');
-        cy.getByTestId('CommentCard').should('have.length', 1)
-    })
-    
+        cy.getByTestId('CommentCard').should('have.length', 1);
+    });
+
     //TODO: Поправить тест
-    
+
     it.skip('Оставляет оценку', () => {
-        cy.intercept('GET', '**/articles/*', { fixture: 'article-details.json' })
-        cy.getByTestId("ArticleDetails.Info").should('exist')
-        cy.getByTestId("Rating").scrollIntoView()
+        cy.intercept('GET', '**/articles/*', {
+            fixture: 'article-details.json',
+        });
+        cy.getByTestId('ArticleDetails.Info').should('exist');
+        cy.getByTestId('Rating').scrollIntoView();
         cy.setRate(5, 'feedback');
-        cy.get("[data-selected=true]").should('have.value', 5)
-    })
-})
+        cy.get('[data-selected=true]').should('have.value', 5);
+    });
+});

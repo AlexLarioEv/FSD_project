@@ -1,1 +1,1 @@
-export {LazyArticleCreatePage as ArticleCreatePage} from './ui/LazyArticleCreatePage';
+export { LazyArticleCreatePage as ArticleCreatePage } from './ui/LazyArticleCreatePage';
