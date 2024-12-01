@@ -1,1 +1,0 @@
-export { componentRender } from './componentRender';

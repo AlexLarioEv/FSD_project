@@ -1,5 +1,5 @@
 import { screen} from '@testing-library/react'
-import {componentRender} from '@/shared/lib/test/componentRender'
+import {componentRender} from '@/shared/lib/test'
 
 import { Text, ETypeText } from './Text'
 

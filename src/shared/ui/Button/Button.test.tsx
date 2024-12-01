@@ -1,6 +1,6 @@
 import { screen} from '@testing-library/react'
 import { Button, EButtonTheme } from './Button'
-import {componentRender} from '@/shared/lib/test/componentRender'
+import {componentRender} from '@/shared/lib/test'
 
 
 describe('classNames', ()=> {
