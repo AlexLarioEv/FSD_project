@@ -14,7 +14,6 @@ export default [
     ...tseslint.configs.recommended,
     pluginReact.configs.flat.recommended,
     i18next.configs['flat/recommended'],
-    eslintConfigPrettier,
     {
         plugins: {
             react: pluginReact,
@@ -96,4 +95,5 @@ export default [
             '@typescript-eslint/no-namespace': 'off',
         },
     },
+    eslintConfigPrettier,
 ];
