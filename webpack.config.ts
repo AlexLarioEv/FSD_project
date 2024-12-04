@@ -2,8 +2,20 @@ import path from 'path';
 import webpack from 'webpack';
 
 import { buildWebpackConfig } from './config/build/buildWebpackConfig';
-import { BuildPaths, BuildEnv } from './config/build/types/config';
+import { BuildPaths, BuildEnv, BuildMode } from './config/build/types/config';
 import { EProject } from './config/build/types/config';
+
+const getApiUrl = (mode: BuildMode, envApi?: string) => {
+    if (envApi) {
+        return envApi;
+    }
+
+    if (mode === 'production') {
+        return '/api';
+    }
+
+    return 'http://localhost:8000';
+};
 
 export default (env: BuildEnv) => {
     const paths: BuildPaths = {
@@ -17,7 +29,7 @@ export default (env: BuildEnv) => {
 
     const mode = env?.mode || 'development';
     const port = env?.port || 3000;
-    const api = env?.api || 'http://localhost:8000';
+    const api = getApiUrl(env?.mode, env?.api);
     const project = env?.project || EProject.FRONTED;
 
     const isDev = mode === 'development';

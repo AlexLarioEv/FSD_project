@@ -27,8 +27,8 @@
     },
     "lint-staged": {
         "**/*.{ts,tsx}": [
-            "prettier --list-different",
-            "eslint"
+            "npm run prettier",
+            "npm run lint"
         ]
     },
     "keywords": [],
