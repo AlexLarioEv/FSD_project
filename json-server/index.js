@@ -59,12 +59,19 @@ server.use((req, res, next) => {
 
 server.use(router);
 
-// запуск сервера
 
 const PORT = 8433;
+// Только как фейк сервер
+const DEV_PORT = 8000;
+
+// запуск сервера
 
 const httpsServer = https.createServer(options, server);
 
+server.listen(DEV_PORT, () => {
+    console.log('server is running on 8000 port');
+});
+
 httpsServer.listen(PORT, function () {
-        console.log(`Server started at port ${PORT}`);
-    });
+    console.log(`Server started at port ${PORT}`);
+});
