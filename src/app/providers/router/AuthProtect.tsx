@@ -27,8 +27,6 @@ export const AuthProtect: FC<PropsWithChildren<TPropsAuthProtect>> = ({
         return roles.some((role) => rolesUser?.includes(role));
     }, [roles, rolesUser]);
 
-    console.log(auth, hasRequiredRoles);
-
     if (isRequireAuth) {
         return <Navigate to={getRouteMain()} />;
     }

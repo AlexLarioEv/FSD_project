@@ -1,3 +1,5 @@
+import { TFeaturesFlag } from '@/shared/types/featuresFlag';
+
 export enum ERoleUser {
     ADMIN = 'ADMIN',
     USER = 'USER',
@@ -9,6 +11,7 @@ export type TUser = {
     username: string;
     avatar?: string;
     role?: ERoleUser;
+    features?: TFeaturesFlag;
 };
 
 export type TUserSchema = {
