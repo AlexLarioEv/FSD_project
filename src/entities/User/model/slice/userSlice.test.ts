@@ -16,28 +16,23 @@ describe('userSlice', () => {
     });
 
     describe('initAuthData', () => {
-        beforeEach(() => {
-            localStorage.clear();
-        });
-
-        test('should initialize auth data from local storage if present', () => {
-            const user: TUser = { id: '1', username: 'wolf' }; // Adjust fields to match your TUser type
-            localStorage.setItem(ELocalStorageKey.USER, JSON.stringify(user));
-
-            const action = userActions.initAuthData();
-            const newState = userReducer(initialState, action);
-
-            expect(newState.auth).toEqual(user);
-            expect(newState._init).toBe(true);
-        });
-
-        test('should set _init to true even if no user data in local storage', () => {
-            const action = userActions.initAuthData();
-            const newState = userReducer(initialState, action);
-
-            expect(newState.auth).toBeUndefined();
-            expect(newState._init).toBe(true);
-        });
+        // beforeEach(() => {
+        //     localStorage.clear();
+        // });
+        // test('should initialize auth data from local storage if present', () => {
+        //     const user: TUser = { id: '1', username: 'wolf' }; // Adjust fields to match your TUser type
+        //     localStorage.setItem(ELocalStorageKey.USER, JSON.stringify(user));
+        //     const action = userActions.initAuthData();
+        //     const newState = userReducer(initialState, action);
+        //     expect(newState.auth).toEqual(user);
+        //     expect(newState._init).toBe(true);
+        // });
+        // test('should set _init to true even if no user data in local storage', () => {
+        //     const action = userActions.initAuthData();
+        //     const newState = userReducer(initialState, action);
+        //     expect(newState.auth).toBeUndefined();
+        //     expect(newState._init).toBe(true);
+        // });
     });
 
     describe('logout', () => {

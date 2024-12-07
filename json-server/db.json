@@ -761,6 +761,11 @@
             "features": {
                 "enableCounter": true,
                 "enableStarRating": true
+            },
+            "jsonSettings": {
+                "theme": "dark",
+                "isFirstVisit": true,
+                "settingsPageHasBeenOpen": false
             }
         },
         {
@@ -772,6 +777,11 @@
             "features": {
                 "enableCounter": false,
                 "enableStarRating": true
+            },
+            "jsonSettings": {
+                "theme": "light",
+                "isFirstVisit": true,
+                "settingsPageHasBeenOpen": false
             }
         },
         {
@@ -783,6 +793,11 @@
             "features": {
                 "enableCounter": false,
                 "enableStarRating": true
+            },
+            "jsonSettings": {
+                "theme": "dark",
+                "isFirstVisit": true,
+                "settingsPageHasBeenOpen": false
             }
         },
         {
@@ -790,7 +805,12 @@
             "username": "testUser",
             "password": "123",
             "roles": ["USER"],
-            "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1lgamUiRV0x2yku27YBxm6Vl1KdlZZVZWqg&s"
+            "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1lgamUiRV0x2yku27YBxm6Vl1KdlZZVZWqg&s",
+            "jsonSettings": {
+                "theme": "dark",
+                "isFirstVisit": true,
+                "settingsPageHasBeenOpen": false
+            }
         }
     ],
     "profile": [

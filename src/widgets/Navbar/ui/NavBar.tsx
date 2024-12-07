@@ -1,10 +1,9 @@
-import { FC, useCallback, useEffect, useState } from 'react';
+import { FC, useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
 
 import { AuthModal } from '@/features/AuthByUserName';
-import { getUser, userActions } from '@/entities/User';
+import { getUser } from '@/entities/User';
 import { useAppSelector } from '@/shared/lib/hooks';
 import { Text, ETypeText } from '@/shared/ui/Text';
 import { Button } from '@/shared/ui/Button';
@@ -26,7 +25,6 @@ export const NavBar: FC<TNavBarProps> = ({ className }) => {
     const { t } = useTranslation();
     const navigate = useNavigate();
     const { auth } = useAppSelector(getUser);
-    const dispatch = useDispatch();
 
     const handleCreateArticle = () => {
         navigate(getRouteArticleCreate());
@@ -39,10 +37,6 @@ export const NavBar: FC<TNavBarProps> = ({ className }) => {
     const handleCloseLoginModal = useCallback(() => {
         setIsOpen(false);
     }, []);
-
-    useEffect(() => {
-        dispatch(userActions.initAuthData());
-    }, [dispatch]);
 
     return (
         <HStack

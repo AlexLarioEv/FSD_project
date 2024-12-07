@@ -1,16 +1,20 @@
 import { useContext } from 'react';
 
-import { IThemeContextProps, ThemeContext, ETheme } from '../../..//contexts';
-import { ELocalStorageKey } from '../../../const/localStorage';
+import { ThemeContext, ETheme } from '../../..//contexts';
 
-export const useTheme = (): IThemeContextProps => {
+type TProps = {
+    toggleTheme: (saveActions?: (theme: ETheme) => void) => void;
+    theme: ETheme;
+};
+
+export const useTheme = (): TProps => {
     const { theme, setTheme } = useContext(ThemeContext);
 
-    const toggleTheme = () => {
+    const toggleTheme = (saveActions?: (newTheme: ETheme) => void) => {
         const newTheme = theme === ETheme.DARK ? ETheme.LIGHT : ETheme.DARK;
         setTheme?.(newTheme);
-        localStorage.setItem(ELocalStorageKey.THEME, newTheme);
+        saveActions?.(newTheme);
     };
 
-    return { theme: theme || ETheme.LIGHT, setTheme: toggleTheme };
+    return { theme: theme || ETheme.LIGHT, toggleTheme };
 };

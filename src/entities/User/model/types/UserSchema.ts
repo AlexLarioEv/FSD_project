@@ -1,4 +1,5 @@
 import { TFeaturesFlag } from '@/shared/types/featuresFlag';
+import { TJsonSettings } from './jsonSettings';
 
 export enum ERoleUser {
     ADMIN = 'ADMIN',
@@ -12,6 +13,7 @@ export type TUser = {
     avatar?: string;
     role?: ERoleUser;
     features?: TFeaturesFlag;
+    jsonSettings?: TJsonSettings;
 };
 
 export type TUserSchema = {
