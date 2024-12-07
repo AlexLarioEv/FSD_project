@@ -17,6 +17,7 @@
         "lint:scss": "npx stylelint \"**/*.scss\"",
         "lint:scss:fix": "npx stylelint \"**/*.scss\" --fix",
         "unit": "jest --config ./config/jest/jest.config.ts",
+        "unit:coverage": "jest --config ./config/jest/jest.config.coverage.ts",
         "cy:e2e": "cypress open",
         "storybook": "storybook dev -p 6006 -c ./config/storybook",
         "build-storybook": "storybook build -c ./config/storybook",
