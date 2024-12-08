@@ -760,10 +760,11 @@
             "avatar": "https://pic.rutubelist.ru/user/3b/27/3b2758ad5492a76b578f7ee072e4e894.jpg",
             "features": {
                 "enableCounter": true,
-                "enableStarRating": true
+                "enableStarRating": true,
+                "enableAppRedesigned": true
             },
             "jsonSettings": {
-                "theme": "dark",
+                "theme": "light",
                 "isFirstVisit": true,
                 "settingsPageHasBeenOpen": false
             }

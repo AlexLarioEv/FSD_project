@@ -11,6 +11,13 @@ body,.app {
     height: 100vh;
 }
 
+.app_redesigned {
+    font: var(--font-m-redesigned);
+    background: var(--bg-redesigned);
+    color: var(--text-redesignedr);
+    height: 100vh;
+}
+
 .content-page{ 
     display: flex;
     height: calc(100vh - var(--navbar-height));

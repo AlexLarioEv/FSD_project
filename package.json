@@ -25,7 +25,7 @@
         "prepare": "husky",
         "generate:slice": "node ./scripts/createSlice/index.js",
         "postinstall": "node ./scripts/clear-cache.js",
-        "removeFeature": "npx ts-node scripts/remove-feature.ts enableCounter on"
+        "removeFeature": "npx ts-node scripts/remove-feature.ts"
     },
     "lint-staged": {
         "**/*.{ts,tsx}": [
