@@ -764,7 +764,7 @@
                 "enableAppRedesigned": true
             },
             "jsonSettings": {
-                "theme": "light",
+                "theme": "dark",
                 "isFirstVisit": true,
                 "settingsPageHasBeenOpen": false
             }

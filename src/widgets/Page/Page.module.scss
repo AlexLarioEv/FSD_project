@@ -1,5 +1,9 @@
 .Page {
-    overflow: hidden scroll;
+    overflow: hidden auto;
     padding: 20px 20px 20px 40px;
     flex: 1 1 0;
+}
+
+.PageRedesigned {
+    overflow-y: auto;
 }

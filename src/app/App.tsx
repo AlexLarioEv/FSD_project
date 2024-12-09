@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { Suspense, useEffect } from 'react';
 import { AppRouter } from './providers/router';
 
 import { NavBar } from '@/widgets/Navbar';
@@ -8,14 +8,10 @@ import { classNames } from '@/shared/lib';
 import { useAppDispatch, useAppSelector } from '@/shared/lib/hooks';
 import { initAuthData, isInit, isAuth } from '@/entities/User';
 import { PageLoader } from '@/widgets/PageLoader';
-import { useTranslation } from 'react-i18next';
-
-// BUG_FIX: i18 падает в ошибку, если не инициализировать useTranslation
+import { ToggleFeatures } from '@/shared/lib/features';
+import { MainLayout } from '@/shared/loyouts/MainLayout';
 
 export const App = () => {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars, unused-imports/no-unused-vars
-    const { t } = useTranslation();
-
     const initUser = useAppSelector(isInit);
     const initAuth = useAppSelector(isAuth);
     const dispatch = useAppDispatch();
@@ -33,12 +29,31 @@ export const App = () => {
     }
 
     return (
-        <div className={classNames('app', {}, [])}>
-            <NavBar />
-            <div className="content-page">
-                <Sidebar />
-                {initAuth ? <AppRouter /> : null}
-            </div>
-        </div>
+        <ToggleFeatures
+            feature="enableAppRedesigned"
+            on={
+                <Suspense fallback="">
+                    <div className={classNames('app_redesigned', {}, [])}>
+                        <MainLayout
+                            header={<NavBar />}
+                            content={initAuth ? <AppRouter /> : null}
+                            sidebar={<Sidebar />}
+                            toolbar={<div></div>}
+                        />
+                    </div>
+                </Suspense>
+            }
+            off={
+                <Suspense fallback="">
+                    <div className={classNames('app', {}, [])}>
+                        <NavBar />
+                        <div className="content-page">
+                            <Sidebar />
+                            {initAuth ? <AppRouter /> : null}
+                        </div>
+                    </div>
+                </Suspense>
+            }
+        />
     );
 };

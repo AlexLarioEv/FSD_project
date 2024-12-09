@@ -13,6 +13,8 @@ import { useSelector } from 'react-redux';
 import { HStack, VStack } from '@/shared/ui/Stack';
 
 import styles from './Sidebar.module.scss';
+import { ToggleFeatures } from '@/shared/lib/features';
+import { AppLogo } from '@/shared/ui/AppLogo';
 
 type TSidebarProps = {
     className?: string;
@@ -44,32 +46,53 @@ export const Sidebar: FC<TSidebarProps> = ({ className, testId }) => {
             }),
         [collapsed, sidebarItems],
     );
-
     return (
-        <aside
-            data-testid={testId}
-            className={classNames(
-                styles.Sidebar,
-                { [styles.collapsed]: collapsed },
-                [className],
-            )}
-        >
-            <VStack gap={8} className={styles.links}>
-                {sidebarLinks}
-            </VStack>
-            <Button
-                size={EButtonSize.L}
-                className={styles.button}
-                testId="toggleSidebar"
-                onClick={handleToggle}
-                inverted
-            >
-                {t(collapsed ? '>' : '<')}
-            </Button>
-            <HStack justify="center" max gap={16} className={styles.switcher}>
-                <ThemeSwitcher />
-                <LangSwitcher />
-            </HStack>
-        </aside>
+        <ToggleFeatures
+            feature="enableAppRedesigned"
+            on={
+                <aside
+                    data-testid={testId}
+                    className={classNames(
+                        styles.SidebarRedesigned,
+                        { [styles.collapsed]: collapsed },
+                        [className],
+                    )}
+                >
+                    <AppLogo />
+                </aside>
+            }
+            off={
+                <aside
+                    data-testid={testId}
+                    className={classNames(
+                        styles.Sidebar,
+                        { [styles.collapsed]: collapsed },
+                        [className],
+                    )}
+                >
+                    <VStack gap={8} className={styles.links}>
+                        {sidebarLinks}
+                    </VStack>
+                    <Button
+                        size={EButtonSize.L}
+                        className={styles.button}
+                        testId="toggleSidebar"
+                        onClick={handleToggle}
+                        inverted
+                    >
+                        {t(collapsed ? '>' : '<')}
+                    </Button>
+                    <HStack
+                        justify="center"
+                        max
+                        gap={16}
+                        className={styles.switcher}
+                    >
+                        <ThemeSwitcher />
+                        <LangSwitcher />
+                    </HStack>
+                </aside>
+            }
+        />
     );
 };

@@ -15,6 +15,7 @@ import { AvatarDropdown } from '@/features/AvatarDropdown';
 
 import styles from './NavBar.module.scss';
 import { NotificationButton } from '@/features/NotificationButton';
+import { ToggleFeatures } from '@/shared/lib/features';
 
 type TNavBarProps = {
     className?: string;
@@ -39,35 +40,72 @@ export const NavBar: FC<TNavBarProps> = ({ className }) => {
     }, []);
 
     return (
-        <HStack
-            role="navigation"
-            max
-            align="center"
-            className={classNames(styles.navbar, {}, [className])}
-        >
-            <Text
-                className={styles.mainTitle}
-                type={ETypeText.INVERTED}
-                title={t('main_title')}
-            />
-            <Button onClick={handleCreateArticle} inverted>
-                {t('create_article')}
-            </Button>
-            {auth ? (
-                <HStack align="center" gap={16} className={styles.auth}>
-                    <NotificationButton />
-                    <AvatarDropdown avatar={auth.avatar} id={auth.id} />
-                </HStack>
-            ) : (
-                <Button
-                    className={styles.auth}
-                    inverted
-                    onClick={handleOpenLoginModal}
+        <ToggleFeatures
+            feature="enableAppRedesigned"
+            on={
+                <HStack
+                    role="navigation"
+                    max
+                    align="center"
+                    className={classNames(styles.navbarRedesigned, {}, [
+                        className,
+                    ])}
                 >
-                    {t('sign_in')}
-                </Button>
-            )}
-            <AuthModal isOpen={isOpen} onClose={handleCloseLoginModal} />
-        </HStack>
+                    {auth ? (
+                        <HStack align="center" gap={16} className={styles.auth}>
+                            <NotificationButton />
+                            <AvatarDropdown avatar={auth.avatar} id={auth.id} />
+                        </HStack>
+                    ) : (
+                        <Button
+                            className={styles.auth}
+                            inverted
+                            onClick={handleOpenLoginModal}
+                        >
+                            {t('sign_in')}
+                        </Button>
+                    )}
+                    <AuthModal
+                        isOpen={isOpen}
+                        onClose={handleCloseLoginModal}
+                    />
+                </HStack>
+            }
+            off={
+                <HStack
+                    role="navigation"
+                    max
+                    align="center"
+                    className={classNames(styles.navbar, {}, [className])}
+                >
+                    <Text
+                        className={styles.mainTitle}
+                        type={ETypeText.INVERTED}
+                        title={t('main_title')}
+                    />
+                    <Button onClick={handleCreateArticle} inverted>
+                        {t('create_article')}
+                    </Button>
+                    {auth ? (
+                        <HStack align="center" gap={16} className={styles.auth}>
+                            <NotificationButton />
+                            <AvatarDropdown avatar={auth.avatar} id={auth.id} />
+                        </HStack>
+                    ) : (
+                        <Button
+                            className={styles.auth}
+                            inverted
+                            onClick={handleOpenLoginModal}
+                        >
+                            {t('sign_in')}
+                        </Button>
+                    )}
+                    <AuthModal
+                        isOpen={isOpen}
+                        onClose={handleCloseLoginModal}
+                    />
+                </HStack>
+            }
+        />
     );
 };

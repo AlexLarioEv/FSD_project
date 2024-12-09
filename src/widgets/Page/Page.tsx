@@ -19,6 +19,7 @@ import {
 import styles from './Page.module.scss';
 import { useLocation } from 'react-router-dom';
 import { TTestProps } from '@/shared/lib/types';
+import { toggleFeatures } from '@/shared/lib/features';
 
 type TPageProps = {
     className?: string;
@@ -50,12 +51,18 @@ export const Page: FC<PropsWithChildren<TPageProps>> = (props) => {
 
     useInfiniteScroll({ triggerRef, wrapperRef, callback: onScrollEnd });
 
+    const classPage = toggleFeatures({
+        name: 'enableAppRedesigned',
+        on: () => styles.PageRedesigned,
+        off: () => styles.Page,
+    });
+
     return (
         <main
             data-testid={props['data-testid'] ?? 'Page'}
             onScroll={handleScroll}
             ref={wrapperRef}
-            className={classNames(styles.Page, {}, [className])}
+            className={classNames(classPage, {}, [className])}
         >
             {children}
             <div ref={triggerRef as MutableRefObject<HTMLDivElement>} />
