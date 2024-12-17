@@ -1,6 +1,7 @@
 .link {
     display: flex;
     gap: 8px;
+    padding: 8px 0 8px 16px;
 }
 
 .icon {
@@ -9,4 +10,11 @@
 
 .collapsed {
     width: var(--sidebar-width-collapsed);
+}
+
+
+.selected {
+    border-left: 2px solid var(--accent-redesigned);
+    background: var(--gradient-sidebar-background);
+    padding-left: calc(16px - 2px) 
 }

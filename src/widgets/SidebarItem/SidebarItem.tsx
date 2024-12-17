@@ -4,33 +4,47 @@ import { AppLink, EApplinkTypes } from '@/shared/ui/AppLink';
 import { classNames } from '@/shared/lib';
 
 import styles from './SidebarItem.module.scss';
+import { Icon } from '@/shared/ui/Icon';
+import { toggleFeatures } from '@/shared/lib/features';
 
 type TSidebarItemProps = {
     className?: string;
     text: string;
     path: string;
     collapsed: boolean;
-    Icon: FunctionComponent<SVGAttributes<SVGElement>>;
+    selected?: boolean;
+    IconSVG: FunctionComponent<SVGAttributes<SVGElement>>;
 };
 
 export const SidebarItem: FC<TSidebarItemProps> = ({
     className,
     path,
     collapsed,
+    selected,
     text,
-    Icon,
+    IconSVG,
 }) => {
     const { t } = useTranslation();
 
+    const isInverted = toggleFeatures({
+        name: 'enableAppRedesigned',
+        on: () => false,
+        off: () => true,
+    });
+
     return (
         <AppLink
-            className={classNames(styles.link, {}, [className])}
+            className={classNames(
+                styles.link,
+                {
+                    [styles.selected]: selected,
+                },
+                [className],
+            )}
             type={EApplinkTypes.SECONDARY}
             to={path}
         >
-            <div>
-                <Icon className={styles.icon} />
-            </div>
+            <Icon inverted={isInverted} Svg={IconSVG} />
             <span>{!collapsed && t(text)}</span>
         </AppLink>
     );

@@ -41,8 +41,55 @@
 
 
 .SidebarRedesigned {
+    position: relative;
+    overflow: hidden;
     background: var(--light-bg-redesigned);
     width: 220px;
     height: 100%;
     border-radius: 32px;
 }
+
+.appLogo{
+    padding-top: 20px;
+    margin-bottom: 40px;
+}
+
+.linksRedesigned{
+    position: relative;
+    z-index: 1;
+}
+
+.contentWrapper {
+    height: 100%
+}
+
+.switcherRedesigned{
+    align-items: baseline;
+    margin-bottom: 40px;
+}
+
+.buttonRedesigned{
+    position: absolute;
+    top:50%;
+    right: 0;
+}
+
+.collapsedRedesigned {
+    max-width: var(--sidebar-redesigned-width-collapsed);
+
+    .switcher{
+        gap: 0;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .buttonRedesigned{
+        // может сделать через Flex
+        right: 8px;
+    }
+
+    .switcherRedesigned{
+        align-items:center
+    }
+}
+

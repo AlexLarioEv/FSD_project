@@ -2,6 +2,16 @@
     cursor: pointer;
     padding: 4px 20px;
     color: var(--secondary-color);
+    
+    &:hover {
+        opacity: 0.8;
+    }
+}
+
+.ButtonRedesigned {
+    cursor: pointer;
+    padding: 4px 20px;
+    color: var(--icon-redesigned);
 
     &:hover {
         opacity: 0.8;
@@ -54,4 +64,12 @@
 .danger{
     color: var(--error-color);
     border: solid var(--error-color);
+}
+
+// .invertedRedesigned {
+
+// }
+
+.dangerRedesigned {
+    color: var(--cancel-redesigned);
 }

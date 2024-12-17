@@ -49,4 +49,9 @@
 
     // шрифт xl
     --font-xl-redesigned: var(--font-size-xl) / var(--font-line-xl) var(--font-family-header-redesigned);
+
+    // Размеры компонентов
+    --navbar-redesigned-height: 50px;
+    --sidebar-redesigned-width: 300px;
+    --sidebar-redesigned-width-collapsed: 50px;    
 }

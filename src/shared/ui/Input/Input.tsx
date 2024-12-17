@@ -11,6 +11,7 @@ import {
 import { classNames } from '@/shared/lib';
 
 import styles from './Input.module.scss';
+import { ToggleFeatures } from '@/shared/lib/features';
 
 type TInputAttributes = Omit<
     InputHTMLAttributes<HTMLInputElement>,
@@ -23,6 +24,7 @@ export type TInputProps = {
     type?: HTMLInputTypeAttribute;
     onChange?: (e: string) => void;
     placeholder?: string;
+    inputPlaceholder?: string;
     testId?: string;
     autofocus?: boolean;
     disabled?: boolean;
@@ -37,6 +39,7 @@ const Input = memo(
         placeholder,
         autofocus,
         testId,
+        inputPlaceholder,
         ...otherProps
     }: TInputProps) => {
         const [isFocus, setIsFocus] = useState(autofocus);
@@ -63,31 +66,63 @@ const Input = memo(
         };
 
         return (
-            <div className={classNames(styles.wrapperInput)}>
-                {placeholder && <span>{`${placeholder}>`}</span>}
+            <ToggleFeatures
+                feature="enableAppRedesigned"
+                on={
+                    <div className={classNames(styles.wrapperInputRedesigned)}>
+                        {placeholder && <span>{`${placeholder}:`}</span>}
 
-                <div className={styles.wrapperCaret}>
-                    <input
-                        {...otherProps}
-                        data-testid={testId}
-                        ref={ref}
-                        onBlur={onBlur}
-                        onFocus={onFocus}
-                        className={classNames(styles.Input, {}, [className])}
-                        onChange={onChangeHandler}
-                        onSelect={onSelect}
-                        value={value}
-                        type={type}
-                    />
-                    {isFocus && (
-                        <span
-                            data-testid="caret"
-                            style={{ left: `${caretPosition * 9}px` }}
-                            className={styles.caret}
-                        ></span>
-                    )}
-                </div>
-            </div>
+                        <div className={styles.wrapperCaret}>
+                            <input
+                                {...otherProps}
+                                data-testid={testId}
+                                ref={ref}
+                                onBlur={onBlur}
+                                onFocus={onFocus}
+                                className={classNames(
+                                    styles.InputRedesigned,
+                                    {},
+                                    [className],
+                                )}
+                                onChange={onChangeHandler}
+                                onSelect={onSelect}
+                                value={value}
+                                type={type}
+                                placeholder={inputPlaceholder}
+                            />
+                        </div>
+                    </div>
+                }
+                off={
+                    <div className={classNames(styles.wrapperInput)}>
+                        {placeholder && <span>{`${placeholder}>`}</span>}
+
+                        <div className={styles.wrapperCaret}>
+                            <input
+                                {...otherProps}
+                                data-testid={testId}
+                                ref={ref}
+                                onBlur={onBlur}
+                                onFocus={onFocus}
+                                className={classNames(styles.Input, {}, [
+                                    className,
+                                ])}
+                                onChange={onChangeHandler}
+                                onSelect={onSelect}
+                                value={value}
+                                type={type}
+                            />
+                            {isFocus && (
+                                <span
+                                    data-testid="caret"
+                                    style={{ left: `${caretPosition * 9}px` }}
+                                    className={styles.caret}
+                                ></span>
+                            )}
+                        </div>
+                    </div>
+                }
+            />
         );
     },
 );

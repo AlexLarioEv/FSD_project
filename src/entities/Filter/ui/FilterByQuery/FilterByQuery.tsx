@@ -6,6 +6,7 @@ import { useAppDispatch, useAppSelector } from '@/shared/lib/hooks';
 
 import { filterActions } from '../../model/slice/filterSlice';
 import { getFilterQuery } from '../../model/selectors/getFilter';
+import { ToggleFeatures } from '@/shared/lib/features';
 
 type TFilterByQueryProps = {
     className?: string;
@@ -29,11 +30,25 @@ export const FilterByQuery: FC<TFilterByQueryProps> = ({
     );
 
     return (
-        <Input
-            value={filterQuery}
-            placeholder={placeholder}
-            onChange={handleChangeFilter}
-            className={classNames('', {}, [className])}
+        <ToggleFeatures
+            feature="enableAppRedesigned"
+            on={
+                <Input
+                    inputPlaceholder="Поиск"
+                    value={filterQuery}
+                    placeholder={placeholder}
+                    onChange={handleChangeFilter}
+                    className={classNames('', {}, [className])}
+                />
+            }
+            off={
+                <Input
+                    value={filterQuery}
+                    placeholder={placeholder}
+                    onChange={handleChangeFilter}
+                    className={classNames('', {}, [className])}
+                />
+            }
         />
     );
 };

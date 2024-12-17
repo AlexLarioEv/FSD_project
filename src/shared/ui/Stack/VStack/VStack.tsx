@@ -10,7 +10,7 @@ export const VStack: FC<PropsWithChildren<TVStackProps>> = (props) => {
     const { className, children, ...rest } = props;
     return (
         <Flex
-            data-testod={props['data-testid']}
+            data-testid={props['data-testid']}
             {...rest}
             direction="column"
             className={classNames('', {}, [className])}

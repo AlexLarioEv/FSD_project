@@ -35,6 +35,24 @@
 }
 
 
+.InputRedesigned{
+    width: 100%;
+    padding: 8px 16px;
+    border: 1px solid var(--accent-redesigned);
+    border-radius: 48px;
+    outline: none;
+    background-color: transparent;
+    color: var(--text-redesigned);
+}
+
+.wrapperInputRedesigned{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+
 @keyframes blink {
     0% {
         opacity: 0;

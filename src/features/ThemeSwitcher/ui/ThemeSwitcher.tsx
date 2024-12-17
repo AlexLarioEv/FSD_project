@@ -7,7 +7,10 @@ import { ETheme } from '@/shared/contexts';
 
 import LightIcon from '@/shared/assets/icons/theme-light.svg';
 import DarkIcon from '@/shared/assets/icons/theme-dark.svg';
+import ThemeIcon from '@/shared/assets/icons/newTheme.svg';
 import { saveJsonServer } from '@/entities/User';
+import { ToggleFeatures } from '@/shared/lib/features';
+import { Icon } from '@/shared/ui/Icon';
 
 type TThemeSwitcherProps = {
     className?: string;
@@ -28,7 +31,11 @@ const ThemeSwitcher = memo(({ className }: TThemeSwitcherProps) => {
             className={classNames('', {}, [className])}
             onClick={handleTheme}
         >
-            {theme === ETheme.LIGHT ? <LightIcon /> : <DarkIcon />}
+            <ToggleFeatures
+                feature="enableAppRedesigned"
+                on={<Icon Svg={ThemeIcon} />}
+                off={theme === ETheme.LIGHT ? <LightIcon /> : <DarkIcon />}
+            />
         </Button>
     );
 });
