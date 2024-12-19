@@ -27,3 +27,16 @@
     touch-action: none;
     padding: 15px;
 }
+
+.sheetRedesigned{
+    z-index: var(--modal-z-index);
+    position: fixed;
+    left: 2vw;
+    height: calc(100vh + 100px);
+    width: 96vw;
+    border-radius: 20px 20px 0;
+    background: var(--bg-redesigned);
+    touch-action: none;
+    border: 1px solid var(--accent-redesigned);
+    padding: 15px;
+}

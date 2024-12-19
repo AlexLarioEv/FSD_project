@@ -5,6 +5,7 @@ import { AnimationProvider, useAnimationLibs } from '@/shared/lib/components';
 import Overlay from '../Overlay/Overlay';
 import styles from './Drawer.module.scss';
 import { Portal } from '../Portal/Portal';
+import { toggleFeatures } from '@/shared/lib/features';
 
 type TDrawerProps = {
     className?: string;
@@ -72,6 +73,12 @@ const DrawerContent: FC<TDrawerProps> = ({
         },
     );
 
+    const sheetClass = toggleFeatures({
+        name: 'enableAppRedesigned',
+        on: () => styles.sheetRedesigned,
+        off: () => styles.sheet,
+    });
+
     if (!isOpen) {
         return null;
     }
@@ -83,7 +90,7 @@ const DrawerContent: FC<TDrawerProps> = ({
             <div className={classNames(styles.Drawer, {}, [className])}>
                 <Overlay />
                 <Spring.a.div
-                    className={styles.sheet}
+                    className={sheetClass}
                     style={{
                         display,
                         bottom: `calc(-100vh + ${height - 100}px)`,

@@ -6,6 +6,7 @@ import { mapDirectionClass, TPopupDirection } from '../../styles/const';
 
 import styles from './Popover.module.scss';
 import popupStyles from '../../styles/popup.module.scss';
+import { toggleFeatures } from '@/shared/lib/features';
 
 type HPopoverProps = {
     className?: string;
@@ -21,6 +22,12 @@ export const Popover: FC<PropsWithChildren<HPopoverProps>> = ({
 }) => {
     const optionsClasses = [mapDirectionClass[direction]];
 
+    const classPanel = toggleFeatures({
+        name: 'enableAppRedesigned',
+        on: () => styles.panelRedesigned,
+        off: () => styles.panel,
+    });
+
     return (
         <HPopover className={classNames(styles.Popover, {}, [className])}>
             <HPopover.Button as="div" className={popupStyles.trigger}>
@@ -28,7 +35,7 @@ export const Popover: FC<PropsWithChildren<HPopoverProps>> = ({
             </HPopover.Button>
 
             <HPopover.Panel
-                className={classNames(styles.panel, {}, optionsClasses)}
+                className={classNames(classPanel, {}, optionsClasses)}
             >
                 {children}
             </HPopover.Panel>

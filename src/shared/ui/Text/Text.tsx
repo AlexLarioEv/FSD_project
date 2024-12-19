@@ -2,6 +2,7 @@ import { memo } from 'react';
 import { classNames } from '@/shared/lib';
 
 import styles from './Text.module.scss';
+import { toggleFeatures } from '@/shared/lib/features';
 
 export enum ETypeText {
     PRIMARY = 'primary',
@@ -51,6 +52,18 @@ const Text = memo(
     }: TTextProps) => {
         const TitleComponent = mapSizeToComponent[size];
 
+        const classTitle = toggleFeatures({
+            name: 'enableAppRedesigned',
+            on: () => styles.titleRedesigned,
+            off: () => styles.title,
+        });
+
+        const classDescription = toggleFeatures({
+            name: 'enableAppRedesigned',
+            on: () => styles.descriptionRedesigned,
+            off: () => styles.description,
+        });
+
         return (
             <div
                 data-testid={testId}
@@ -64,7 +77,7 @@ const Text = memo(
                 {title && (
                     <TitleComponent
                         data-testid={testId && `${testId}.Header`}
-                        className={classNames(styles.title)}
+                        className={classNames(classTitle)}
                     >
                         {title}
                     </TitleComponent>
@@ -72,7 +85,7 @@ const Text = memo(
                 {description && (
                     <span
                         data-testid={testId && `${testId}.Paragraph`}
-                        className={classNames(styles.description)}
+                        className={classNames(classDescription)}
                     >
                         {description}
                     </span>

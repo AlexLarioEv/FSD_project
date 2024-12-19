@@ -2,29 +2,36 @@ import { FC, memo } from 'react';
 import { classNames } from '@/shared/lib';
 import { Card, ECardTheme } from '@/shared/ui/Card';
 import { Text } from '@/shared/ui/Text';
+import { ToggleFeatures } from '@/shared/lib/features';
 
 import { TNotification } from '../../model/types/notification';
 
-import cls from './NotificationItem.module.scss';
+import styles from './NotificationItem.module.scss';
 interface NotificationItemProps {
     className?: string;
     item: TNotification;
 }
 
 const NotificationItem: FC<NotificationItemProps> = ({ className, item }) => {
-    const content = (
+    const text = <Text title={item.title} description={item.description} />;
+
+    const card = (
         <Card
             theme={ECardTheme.OUTLINED}
-            className={classNames(cls.NotificationItem, {}, [className])}
+            className={classNames(styles.NotificationItem, {}, [className])}
         >
-            <Text title={item.title} description={item.description} />
+            {text}
         </Card>
+    );
+
+    const content = (
+        <ToggleFeatures feature="enableAppRedesigned" on={text} off={card} />
     );
 
     if (item.href) {
         return (
             <a
-                className={cls.link}
+                className={styles.link}
                 target="_blank"
                 href={item.href}
                 rel="noreferrer"

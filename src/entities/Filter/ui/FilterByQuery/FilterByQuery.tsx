@@ -36,7 +36,6 @@ export const FilterByQuery: FC<TFilterByQueryProps> = ({
                 <Input
                     inputPlaceholder="Поиск"
                     value={filterQuery}
-                    placeholder={placeholder}
                     onChange={handleChangeFilter}
                     className={classNames('', {}, [className])}
                 />
