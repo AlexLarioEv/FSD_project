@@ -4,5 +4,9 @@
     "date": "Date",
     "title": "Title",
     "by": "by",
-    "find": "Find"
+    "find": "Find",
+    "asc": "ascending",
+    "desc": "descending",
+    "createdAt": "Date",
+    "categories": "Categories"
 }

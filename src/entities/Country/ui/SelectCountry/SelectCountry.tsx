@@ -15,7 +15,8 @@ export type TSelectCountryProps = {
 const optionList: TListBoxItem<ECountry>[] = [
     { value: ECountry.ARMENIA, content: ECountry.ARMENIA },
     { value: ECountry.BELARUS, content: ECountry.BELARUS },
-    { value: ECountry.KAZAKHSTAN, content: ECountry.RUSSIA },
+    { value: ECountry.RUSSIA, content: ECountry.RUSSIA },
+    { value: ECountry.KAZAKHSTAN, content: ECountry.KAZAKHSTAN },
     { value: ECountry.UKRAINE, content: ECountry.UKRAINE },
 ];
 

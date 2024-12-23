@@ -14,11 +14,16 @@ import { Button, EButtonTheme } from '@/shared/ui/Button';
 import { useAppDispatch, useAppSelector } from '@/shared/lib/hooks';
 
 import { HStack } from '@/shared/ui/Stack';
+import { Avatar } from '@/shared/ui/Avatar';
+import { ToggleFeatures } from '@/shared/lib/features';
+
+import styles from './ProfilePageHeader.module.scss';
 
 type TProfilePageHeaderProps = {
     className?: string;
     readonly?: boolean;
     canEdit?: boolean;
+    avatar?: string;
 };
 
 const selectAuthAndProfileData = createSelector(
@@ -32,11 +37,13 @@ const selectAuthAndProfileData = createSelector(
 const ProfilePageHeader: FC<TProfilePageHeaderProps> = ({
     className,
     readonly,
+    avatar,
 }) => {
     const { t } = useTranslation('profile');
     const dispatch = useAppDispatch();
 
     const { authData, idProfile } = useAppSelector(selectAuthAndProfileData);
+    const isLoading = useAppSelector(selectorProfile.isLoadingProfileData);
 
     const canEdit = authData?.id === idProfile;
 
@@ -80,12 +87,68 @@ const ProfilePageHeader: FC<TProfilePageHeaderProps> = ({
         </HStack>
     );
 
-    return (
-        <HStack justify="between" className={classNames('', {}, [className])}>
-            <Text title={t('profile')} />
-
-            {canEdit && <div>{buttonMenu}</div>}
+    const buttonMenuRedesigned = (
+        <HStack
+            className={classNames('', {}, [className])}
+            gap={8}
+            align="center"
+            justify="between"
+            max
+        >
+            {readonly ? (
+                <div className={styles.button} />
+            ) : (
+                <Button
+                    className={styles.button}
+                    testId="EditProfileHeader.CancelButton"
+                    onClick={handleCancelProfile}
+                    danger
+                    theme={EButtonTheme.BORDER}
+                >
+                    {t('cancel')}
+                </Button>
+            )}
+            <Avatar src={avatar} size={128} />
+            {readonly ? (
+                <Button
+                    className={styles.button}
+                    testId="EditProfileHeader.EditButton"
+                    onClick={handleEditProfile}
+                    theme={EButtonTheme.BORDER}
+                >
+                    {t('edit')}
+                </Button>
+            ) : (
+                <Button
+                    className={styles.button}
+                    testId="EditProfileHeader.SaveButton"
+                    onClick={handleSaveProfile}
+                    theme={EButtonTheme.BORDER}
+                >
+                    {t('save')}
+                </Button>
+            )}
         </HStack>
+    );
+
+    if (isLoading) {
+        return null;
+    }
+
+    return (
+        <ToggleFeatures
+            feature="enableAppRedesigned"
+            on={buttonMenuRedesigned}
+            off={
+                <HStack
+                    justify="between"
+                    className={classNames('', {}, [className])}
+                >
+                    <Text title={t('profile')} />
+                    {canEdit && <div>{buttonMenu}</div>}
+                </HStack>
+            }
+        />
     );
 };
 

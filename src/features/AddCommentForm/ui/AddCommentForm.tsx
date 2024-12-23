@@ -15,6 +15,11 @@ import {
 import { getCommentText } from '../model/selectors/getComment';
 import styles from './AddCommentForm.module.scss';
 import { TTestProps } from '@/shared/lib/types';
+import { ToggleFeatures } from '@/shared/lib/features';
+import { HStack } from '@/shared/ui/Stack';
+import { Icon } from '@/shared/ui/Icon';
+
+import SubmitIcon from '@/shared/assets/icons/submit.svg';
 
 type TAddCommentFormProps = {
     className?: string;
@@ -47,24 +52,57 @@ const AddCommentForm = memo((props: TAddCommentFormProps) => {
 
     return (
         <DynamicModuleLoader reducers={reducers}>
-            <div
-                data-testid={props['data-testid']}
-                className={classNames(styles.AddCommentForm, {}, [className])}
-            >
-                <Input
-                    testId="add_comment"
-                    value={comment}
-                    onChange={handleChangeComment}
-                    placeholder={t('add_comment')}
-                />
-                <Button
-                    testId="AddCommentForm.Button"
-                    onClick={handleSendComment}
-                    theme={EButtonTheme.BORDER}
-                >
-                    {t('add')}
-                </Button>
-            </div>
+            <ToggleFeatures
+                feature="enableAppRedesigned"
+                on={
+                    <div
+                        data-testid={props['data-testid']}
+                        className={classNames(
+                            styles.AddCommentFormRedesigned,
+                            {},
+                            [className],
+                        )}
+                    >
+                        <HStack max gap={16} align="center">
+                            <Input
+                                testId="add_comment"
+                                value={comment}
+                                onChange={handleChangeComment}
+                                inputPlaceholder={t('add_comment')}
+                            />
+                            <Button
+                                testId="AddCommentForm.Button"
+                                onClick={handleSendComment}
+                                theme={EButtonTheme.CLEAR}
+                            >
+                                <Icon Svg={SubmitIcon} />
+                            </Button>
+                        </HStack>
+                    </div>
+                }
+                off={
+                    <div
+                        data-testid={props['data-testid']}
+                        className={classNames(styles.AddCommentForm, {}, [
+                            className,
+                        ])}
+                    >
+                        <Input
+                            testId="add_comment"
+                            value={comment}
+                            onChange={handleChangeComment}
+                            placeholder={t('add_comment')}
+                        />
+                        <Button
+                            testId="AddCommentForm.Button"
+                            onClick={handleSendComment}
+                            theme={EButtonTheme.BORDER}
+                        >
+                            {t('add')}
+                        </Button>
+                    </div>
+                }
+            />
         </DynamicModuleLoader>
     );
 });

@@ -16,6 +16,8 @@ import { VStack } from '@/shared/ui/Stack';
 import { ToggleFeatures } from '@/shared/lib/features';
 import { Card } from '@/shared/ui/Card';
 
+import styles from './FilterArticleList.module.scss';
+
 type TFilterArticleListProps = {
     className?: string;
 };
@@ -74,9 +76,10 @@ export const FilterArticleList: FC<TFilterArticleListProps> = ({
         <ToggleFeatures
             feature="enableAppRedesigned"
             on={
-                <Card>
+                <Card className={styles.FilterArticleList}>
                     <VStack gap={32}>
                         <FilterByQuery
+                            className={styles.FilterByQuery}
                             placeholder={t('find')}
                             onChange={handleChangeQuerySearch}
                         />

@@ -2,6 +2,7 @@ import { FC, ReactNode } from 'react';
 import { Menu } from '@headlessui/react';
 
 import { classNames } from '@/shared/lib';
+import { toggleFeatures } from '@/shared/lib/features';
 
 import { mapDirectionClass, TPopupDirection } from '../../styles/const';
 import popupStyles from '../../styles/popup.module.scss';
@@ -21,6 +22,24 @@ export const Dropdown: FC<TDropdownProps> = ({
     label,
     direction = 'bottom right',
 }) => {
+    const classItems = toggleFeatures({
+        name: 'enableAppRedesigned',
+        on: () => styles.itemsRedesigned,
+        off: () => styles.items,
+    });
+
+    const classItem = toggleFeatures({
+        name: 'enableAppRedesigned',
+        on: () => popupStyles.itemRedesigned,
+        off: () => popupStyles.item,
+    });
+
+    const classActive = toggleFeatures({
+        name: 'enableAppRedesigned',
+        on: () => popupStyles.activeRedesigned,
+        off: () => popupStyles.active,
+    });
+
     return (
         <Menu as="div" className={classNames(styles.Dropdown, {}, [className])}>
             <Menu.Button
@@ -32,7 +51,7 @@ export const Dropdown: FC<TDropdownProps> = ({
             </Menu.Button>
             <Menu.Items
                 as="ul"
-                className={classNames(styles.items, {}, [
+                className={classNames(classItems, {}, [
                     mapDirectionClass[direction],
                 ])}
             >
@@ -41,8 +60,8 @@ export const Dropdown: FC<TDropdownProps> = ({
                         <Menu.Item key={index}>
                             {({ active }) => (
                                 <li
-                                    className={classNames(popupStyles.item, {
-                                        [popupStyles.active]: active,
+                                    className={classNames(classItem, {
+                                        [classActive]: active,
                                     })}
                                 >
                                     {item}

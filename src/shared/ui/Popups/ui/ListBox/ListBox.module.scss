@@ -11,3 +11,29 @@
     border-radius: 12px;
     box-shadow: 4px 4px 8px var(--listbox-bg);
 }
+
+.optionsRedesigned {
+    min-width: 100%;
+    max-width: max-content;
+    background: var(--bg-redesigned);
+    position: absolute;
+    z-index: 10000;
+    overflow: hidden;
+}
+
+.borderOptionsBottom {
+    border-radius: 0 0 var(--border-button) var(--border-button);
+}
+
+.borderOptionsTop {
+    border-radius: var(--border-button) var(--border-button) 0 0;
+}
+
+.buttonTrigger{
+    background: var(--light-bg-redesigned);
+    border-radius: var(--border-button);
+}
+
+.triggerOpened{
+    border-radius: var(--border-button) var(--border-button) 0;
+}

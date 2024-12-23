@@ -1,5 +1,36 @@
+.ArticleViewSelector{
+    display: flex;
+}
+
+.button{
+    display: flex;
+    padding: 18px;
+    background: var(--dark-bg-redesigned);
+    
+    &:first-child{
+        border: 2px solid var(--dark-bg-redesigned);
+        border-radius: 44px 0 0 44px;
+    }
+
+    &:last-child{
+        border: 2px solid var(--dark-bg-redesigned);
+        border-radius: 0 44px 44px 0;
+    }
+}
+
+.buttonSelected{
+    background: var(--light-bg-redesigned);
+}
+
 .notSelected {
     &.notSelected{
         fill: var(--secondary-color)
     }
-}
+};
+
+
+.notSelectedRedesigned {
+    &.notSelectedRedesigned{
+        fill: var(--light-bg-redesigned)
+    }
+};

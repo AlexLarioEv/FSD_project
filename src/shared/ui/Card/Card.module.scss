@@ -1,6 +1,9 @@
 .Card {
-    padding: 15px;
     border-radius: 12px;
+}
+
+.CardRedesigned{
+    border-radius: 32px;
 }
 
 .normal {
@@ -9,6 +12,10 @@
 
 .outlined {
     border: 1px solid var(--primary-color);
+}
+
+.padding {
+    padding: 15px;
 }
 
 .normalRedesigned {

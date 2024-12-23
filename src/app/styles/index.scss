@@ -39,6 +39,6 @@
 
 *::-webkit-scrollbar-thumb {
     background-color: var(--inverted-primary-color);    /* цвет плашки */
-    border-radius: 20px;                                /* закругления плашки */
+    border-radius: var(--border-button);                                /* закругления плашки */
     border: 2px solid var(--primary-color);             /* padding вокруг плашки */
 }

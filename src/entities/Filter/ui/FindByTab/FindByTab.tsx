@@ -7,7 +7,8 @@ import { useAppDispatch, useAppSelector } from '@/shared/lib/hooks';
 import { filterActions } from '../../model/slice/filterSlice';
 import { getTagQuery } from '../../model/selectors/getFilter';
 
-import styles from './FindByTav.module.scss';
+import { HStack, VStack } from '@/shared/ui/Stack';
+import { ToggleFeatures } from '@/shared/lib/features';
 
 type TFindByTabProps = {
     className?: string;
@@ -35,12 +36,26 @@ export const FindByTab: FC<TFindByTabProps> = ({
     );
 
     return (
-        <div className={classNames(styles.FindByTab, {}, [className])}>
-            <Tabs
-                onClick={handleClickTabFilter}
-                value={tag ?? defaultValue}
-                tabs={tabs}
-            />
-        </div>
+        <ToggleFeatures
+            feature="enableAppRedesigned"
+            on={
+                <VStack gap={8} className={classNames('', {}, [className])}>
+                    <Tabs
+                        onClick={handleClickTabFilter}
+                        value={tag ?? defaultValue}
+                        tabs={tabs}
+                    />
+                </VStack>
+            }
+            off={
+                <HStack gap={8} className={classNames('', {}, [className])}>
+                    <Tabs
+                        onClick={handleClickTabFilter}
+                        value={tag ?? defaultValue}
+                        tabs={tabs}
+                    />
+                </HStack>
+            }
+        />
     );
 };

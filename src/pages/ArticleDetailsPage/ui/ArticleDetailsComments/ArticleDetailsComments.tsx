@@ -17,6 +17,9 @@ import { addCommentForArticle } from '../../model/services/addCommentForArticle/
 import { fetchCommentById } from '../../model/services/fetchCommentById';
 
 import { VStack } from '@/shared/ui/Stack';
+import { ToggleFeatures } from '@/shared/lib/features';
+
+import styles from './ArticleDetailsComments.module.scss';
 
 type TArticleDetailsCommentsProps = {
     className?: string;
@@ -42,14 +45,36 @@ const ArticleDetailsComments: FC<TArticleDetailsCommentsProps> = ({
     });
 
     return (
-        <VStack gap={16} className={classNames('', {}, [className])}>
-            <Text title={t('comment')} />
-            <AddCommentForm
-                data-testid="Article.AddCommentForm"
-                onSendComment={handleSendComment}
-            />
-            <CommentList isLoading={isCommentLoading} comments={comments} />
-        </VStack>
+        <ToggleFeatures
+            feature="enableAppRedesigned"
+            on={
+                <VStack gap={16} className={classNames('', {}, [className])}>
+                    <Text title={t('comment')} />
+                    <AddCommentForm
+                        className={styles.AddCommentForm}
+                        data-testid="Article.AddCommentForm"
+                        onSendComment={handleSendComment}
+                    />
+                    <CommentList
+                        isLoading={isCommentLoading}
+                        comments={comments}
+                    />
+                </VStack>
+            }
+            off={
+                <VStack gap={16} className={classNames('', {}, [className])}>
+                    <Text title={t('comment')} />
+                    <AddCommentForm
+                        data-testid="Article.AddCommentForm"
+                        onSendComment={handleSendComment}
+                    />
+                    <CommentList
+                        isLoading={isCommentLoading}
+                        comments={comments}
+                    />
+                </VStack>
+            }
+        />
     );
 };
 

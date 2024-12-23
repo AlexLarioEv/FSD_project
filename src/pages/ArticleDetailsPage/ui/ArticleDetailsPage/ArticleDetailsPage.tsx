@@ -15,6 +15,8 @@ import { ArticleDetailsHeader } from '../ArticleDetailsHeader/ArticleDetailsHead
 
 import styles from './ArticleDetailsPage.module.scss';
 import { ArticleRating } from '@/features/ArticleRating';
+import { Card } from '@/shared/ui/Card';
+import { ToggleFeatures } from '@/shared/lib/features';
 type TArticleDetailsPageProps = {
     className?: string;
 };
@@ -39,10 +41,25 @@ const ArticleDetailsPage: FC<TArticleDetailsPageProps> = ({ className }) => {
                     className,
                 ])}
             >
-                <ArticleDetailsHeader id={id} />
-                <ArticleDetails id={id} />
-                <ArticleRating id={id} />
-                <ArticleDetailsComments id={id} />
+                <ToggleFeatures
+                    feature="enableAppRedesigned"
+                    on={
+                        <Card className={styles.articleDetailsWrapper}>
+                            <ArticleDetailsHeader id={id} />
+                            <ArticleDetails id={id} />
+                            <ArticleRating id={id} />
+                            <ArticleDetailsComments id={id} />
+                        </Card>
+                    }
+                    off={
+                        <>
+                            <ArticleDetailsHeader id={id} />
+                            <ArticleDetails id={id} />
+                            <ArticleRating id={id} />
+                            <ArticleDetailsComments id={id} />
+                        </>
+                    }
+                />
             </Page>
         </DynamicModuleLoader>
     );

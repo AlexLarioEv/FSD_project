@@ -6,6 +6,8 @@ import { ArticleList, EArticleView } from '@/entities/Article';
 import { classNames } from '@/shared/lib';
 import { useAppDispatch, useAppSelector } from '@/shared/lib/hooks';
 import { TStateSchema } from '@/shared/config/storeConfig';
+import { HStack } from '@/shared/ui/Stack';
+import { ToggleFeatures } from '@/shared/lib/features';
 
 import {
     getViewArticleList,
@@ -43,10 +45,39 @@ const ArticleListWithView: FC<TArticleListWithViewProps> = ({ className }) => {
     };
 
     return (
-        <div className={classNames('', {}, [className])}>
-            <ArticleViewSelector view={view} onViewClick={handleSwitchView} />
-            <ArticleList view={view} articles={articles} isLoading={loading} />
-        </div>
+        <ToggleFeatures
+            feature="enableAppRedesigned"
+            on={
+                <HStack
+                    gap={16}
+                    className={classNames('', {}, [className])}
+                    align="start"
+                >
+                    <ArticleViewSelector
+                        view={view}
+                        onViewClick={handleSwitchView}
+                    />
+                    <ArticleList
+                        view={view}
+                        articles={articles}
+                        isLoading={loading}
+                    />
+                </HStack>
+            }
+            off={
+                <div className={classNames('', {}, [className])}>
+                    <ArticleViewSelector
+                        view={view}
+                        onViewClick={handleSwitchView}
+                    />
+                    <ArticleList
+                        view={view}
+                        articles={articles}
+                        isLoading={loading}
+                    />
+                </div>
+            }
+        />
     );
 };
 

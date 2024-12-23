@@ -2,7 +2,18 @@
     width: fit-content;
 }
 
+.TabRedesigned{
+    width: fit-content;
+    padding: 8px 16px;
+    border-radius: 34px;
+}
+
+
 .active{
     background: var(--inverted-bg-color);
    
+}
+
+.activeRedesigned{
+    background: var(--light-bg-redesigned);
 }

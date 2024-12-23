@@ -10,8 +10,7 @@
 
 .ButtonRedesigned {
     cursor: pointer;
-    padding: 4px 20px;
-    color: var(--icon-redesigned);
+    color: var(--text-redesigned);
 
     &:hover {
         opacity: 0.8;
@@ -26,8 +25,24 @@
     outline: none;
 }
 
+.clearRedesigned{
+    padding: 0;
+    margin: 0;
+    border: none;
+    background: none;
+    outline: none;
+}
+
 .border{
     border: solid var(--secondary-color);
+}
+
+
+.borderRedesigned{
+    border: 1px solid var(--icon-redesigned);
+    background: var(--dark-bg-redesigned);
+    padding: 8px 16px;
+    border-radius: var(--border-button);
 }
 
 .size-auto{
@@ -57,6 +72,10 @@
     color: var(--inverted-secondary-color);
 }
 
+// .invertedRedesigned {
+
+// }
+
 .disabled{
     opacity: 0.7;
 }
@@ -66,10 +85,10 @@
     border: solid var(--error-color);
 }
 
-// .invertedRedesigned {
-
-// }
-
 .dangerRedesigned {
     color: var(--cancel-redesigned);
+}
+
+.padding {
+    padding: 8px 16px;
 }

@@ -83,6 +83,7 @@ export const Rating: FC<TRatingProps> = ({
         <Card
             data-testid="Rating"
             className={classNames(styles.Rating, {}, [className])}
+            padding={false}
         >
             <VStack gap={8} align="center">
                 <Text title={currentStarCount ? t('thanks') : title} />

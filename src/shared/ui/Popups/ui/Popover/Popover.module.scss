@@ -16,6 +16,6 @@
     border: 1px solid var(--accent-redesigned);
     position: absolute;
     z-index: 10000;
-    border-radius: 20px;
+    border-radius: var(--border-button);
     padding: 16px;
 }

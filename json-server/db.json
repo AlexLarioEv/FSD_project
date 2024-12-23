@@ -749,6 +749,12 @@
             "userId": "4",
             "text": "text",
             "id": "YkD9rFp"
+        },
+        {
+            "articleId": "6",
+            "userId": "1",
+            "text": "Круто",
+            "id": "ASIUIQl"
         }
     ],
     "users": [
@@ -780,7 +786,7 @@
                 "enableStarRating": true
             },
             "jsonSettings": {
-                "theme": "light",
+                "theme": "dark",
                 "isFirstVisit": true,
                 "settingsPageHasBeenOpen": false
             }

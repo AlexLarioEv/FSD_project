@@ -4,8 +4,18 @@
     stroke: var(--primary-color);
 }
 
+.starRatingRedesigned{
+    fill: none;
+    cursor: pointer;
+    stroke: var(--accent-redesigned);
+}
+
 .hovered {
     fill: var(--primary-color)
+}
+
+.hoveredRedesigned{
+    fill: var(--accent-redesigned)
 }
 
 .selected {

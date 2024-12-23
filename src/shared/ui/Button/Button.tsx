@@ -24,7 +24,13 @@ export type TButtonProps = {
     testId?: string;
     inverted?: boolean;
     danger?: boolean;
+    padding?: boolean;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
+
+const classThemeRedesignedMap = {
+    [EButtonTheme.CLEAR]: styles.clearRedesigned,
+    [EButtonTheme.BORDER]: styles.borderRedesigned,
+};
 
 const Button = memo(
     ({
@@ -36,6 +42,7 @@ const Button = memo(
         inverted,
         disabled,
         danger,
+        padding,
         ...otherProps
     }: TButtonProps) => {
         const mods = toggleFeatures({
@@ -44,11 +51,13 @@ const Button = memo(
                 [styles.invertedRedesigned]: inverted,
                 [styles.disabledRedesigned]: disabled,
                 [styles.dangerRedesigned]: danger,
+                [styles.padding]: padding,
             }),
             off: () => ({
                 [styles.inverted]: inverted,
                 [styles.disabled]: disabled,
                 [styles.danger]: danger,
+                [styles.padding]: padding,
             }),
         });
 
@@ -58,12 +67,18 @@ const Button = memo(
             off: () => styles.Button,
         });
 
+        const classTheme = toggleFeatures({
+            name: 'enableAppRedesigned',
+            on: () => classThemeRedesignedMap[theme],
+            off: () => styles[theme],
+        });
+
         return (
             <button
                 data-testid={testId}
                 className={classNames(classButton, mods, [
                     className,
-                    styles[theme],
+                    classTheme,
                     styles[size],
                 ])}
                 disabled={disabled}

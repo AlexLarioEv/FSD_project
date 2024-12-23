@@ -6,9 +6,20 @@
     margin: 0;
 }
 
+.buttonTrigger{
+    background: var(--light-bg-redesigned);
+    border-radius: var(--border-button);
+}
+
+
 .item {
     color: var(--secondary-color);
     padding: 10px 20px;
+}
+
+.itemRedesigned {
+    color: var(--text-redesigned);
+    padding: 8px 16px;
 }
 
 .active {
@@ -16,10 +27,13 @@
     border-radius: 12px;
 }
 
+.activeRedesigned {
+    background: var(--light-bg-redesigned);
+}
+
 .disabled {
     opacity: 0.7;
 }
-
 
 .topLeft{
     bottom: 100%;
@@ -39,4 +53,24 @@
 .bottomRight{
     top: 100%;
     left: 0;
+}
+
+.topLeftBorder {
+    border-radius: var(--border-button) var(--border-button) 0 0;
+}
+
+.topRightBorder {
+    border-radius: 0 0 var(--border-button) var(--border-button) ;
+}
+
+.bottomLeftBorder {
+    border-radius: var(--border-button) var(--border-button) 0 0;
+}
+
+.bottomRightBorder{
+    border-radius: var(--border-button) var(--border-button) 0 0;
+}
+
+.selected{
+    background: var(--light-bg-redesigned);
 }

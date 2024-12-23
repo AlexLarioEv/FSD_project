@@ -10,3 +10,12 @@
 .avatar{
     align-self: center;
 }
+
+.profileCardColumn{
+    flex-grow: 1
+}
+
+.loaderWrapper{
+    display: flex;
+    justify-content: center;
+}

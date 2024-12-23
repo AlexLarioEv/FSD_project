@@ -34,6 +34,8 @@ import { FilterArticleList } from './FilterArticleList/FilterArticleList';
 import ArticleListWithView from './AricleListWithView/AricleListWithView';
 
 import styles from './ArticlePage.module.scss';
+import { HStack } from '@/shared/ui/Stack';
+import { ToggleFeatures } from '@/shared/lib/features';
 
 type TArticlePageProps = {
     className?: string;
@@ -96,8 +98,21 @@ const ArticlePage: FC<TArticlePageProps> = ({ className }) => {
             className={classNames(styles.ArticlePage, {}, [className])}
         >
             <DynamicModuleLoader reducers={reducers} removeAfterUnmount={false}>
-                <FilterArticleList />
-                <ArticleListWithView />
+                <ToggleFeatures
+                    feature="enableAppRedesigned"
+                    on={
+                        <HStack gap={16} align="start">
+                            <ArticleListWithView />
+                            <FilterArticleList />
+                        </HStack>
+                    }
+                    off={
+                        <>
+                            <FilterArticleList />
+                            <ArticleListWithView />
+                        </>
+                    }
+                />
             </DynamicModuleLoader>
         </Page>
     );

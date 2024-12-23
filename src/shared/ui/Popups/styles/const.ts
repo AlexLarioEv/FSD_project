@@ -12,3 +12,10 @@ export const mapDirectionClass: Record<TPopupDirection, string> = {
     'bottom left': styles.bottomLeft,
     'bottom right': styles.bottomRight,
 };
+
+export const mapDirectionBorderClass: Record<TPopupDirection, string> = {
+    'top left': styles.topLeftBorder,
+    'top right': styles.topRightBorder,
+    'bottom left': styles.bottomLeftBorder,
+    'bottom right': styles.bottomRightBorder,
+};

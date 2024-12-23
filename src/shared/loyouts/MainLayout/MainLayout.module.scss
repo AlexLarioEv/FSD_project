@@ -4,7 +4,7 @@
     grid-template-areas:  
                 "sidebar content rightbar";
     grid-template-columns: min-content 1fr 176px;
-
+    overflow-x: hidden;
 }
 
 .sidebar{

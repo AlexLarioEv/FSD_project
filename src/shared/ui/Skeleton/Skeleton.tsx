@@ -1,9 +1,10 @@
 import { CSSProperties, memo } from 'react';
 
 import { classNames } from '@/shared/lib';
+import { TTestProps } from '@/shared/lib/types';
+import { toggleFeatures } from '@/shared/lib/features';
 
 import styles from './Skeleton.module.scss';
-import { TTestProps } from '@/shared/lib/types';
 
 interface SkeletonProps extends TTestProps {
     className?: string;
@@ -21,10 +22,16 @@ const Skeleton = memo((props: SkeletonProps) => {
         borderRadius: border,
     };
 
+    const classSkeleton = toggleFeatures({
+        name: 'enableAppRedesigned',
+        on: () => styles.SkeletonRedesigned,
+        off: () => styles.Skeleton,
+    });
+
     return (
         <div
             data-testid={props['data-testid']}
-            className={classNames(styles.Skeleton, {}, [className])}
+            className={classNames(classSkeleton, {}, [className])}
             style={style}
         />
     );

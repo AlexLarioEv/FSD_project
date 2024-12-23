@@ -5,6 +5,12 @@
     overflow: auto;
 }
 
+.CodeRedesigned {
+    border: 1px solid var(--accent-redesigned);
+    padding: 20px;
+    overflow: auto;
+}
+
 .wrapperCode{
     position: relative;
 }
@@ -17,4 +23,8 @@
 
 .copyIcon path {
     stroke: var(--primary-color);
+}
+
+.copyIconRedesigned path {
+    stroke: var(--accent-redesigned);
 }

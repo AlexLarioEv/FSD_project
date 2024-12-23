@@ -9,7 +9,10 @@ import { filterActions } from '../../model/slice/filterSlice';
 import { EOrderFilter } from '../../model/types/filterSchema';
 
 import { getOrder, getSort } from '../../model/selectors/getFilter';
-import { HStack } from '@/shared/ui/Stack';
+import { HStack, VStack } from '@/shared/ui/Stack';
+import { ToggleFeatures } from '@/shared/lib/features';
+import { Text } from '@/shared/ui/Text';
+import { ListBox } from '@/shared/ui/Popups';
 
 type TFilterBySelectProps = {
     fieldOptions: TOptionsType<string>[];
@@ -28,7 +31,7 @@ export const SortedBySelect: FC<TFilterBySelectProps> = ({
     onChangeOrder,
     onChangeField,
 }) => {
-    const { t } = useTranslation();
+    const { t } = useTranslation('articles');
 
     const dispatch = useAppDispatch();
     const order = useAppSelector(getOrder);
@@ -67,19 +70,42 @@ export const SortedBySelect: FC<TFilterBySelectProps> = ({
     );
 
     return (
-        <HStack gap={8} className={classNames('', {}, [className])}>
-            <Select
-                defaultValue={sort}
-                label={label}
-                options={fieldOptions}
-                onChange={handleChangeField}
-            />
-            <Select
-                defaultValue={order}
-                label={labelOrder}
-                options={orderOptions}
-                onChange={handleChangeOrder}
-            />
-        </HStack>
+        <ToggleFeatures
+            feature="enableAppRedesigned"
+            on={
+                <VStack gap={8} className={classNames('', {}, [className])}>
+                    <Text description="Соритировать по:" />
+                    <ListBox
+                        value={sort ? t(sort) : undefined}
+                        defaultValue={t('categories')}
+                        onChange={handleChangeField}
+                        items={fieldOptions}
+                        direction="bottom right"
+                    />
+                    <ListBox
+                        value={t(order)}
+                        onChange={handleChangeOrder}
+                        items={orderOptions}
+                        direction="bottom right"
+                    />
+                </VStack>
+            }
+            off={
+                <HStack gap={8} className={classNames('', {}, [className])}>
+                    <Select
+                        defaultValue={sort}
+                        label={label}
+                        options={fieldOptions}
+                        onChange={handleChangeField}
+                    />
+                    <Select
+                        defaultValue={order}
+                        label={labelOrder}
+                        options={orderOptions}
+                        onChange={handleChangeOrder}
+                    />
+                </HStack>
+            }
+        />
     );
 };

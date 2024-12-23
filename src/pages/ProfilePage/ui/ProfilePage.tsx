@@ -8,6 +8,9 @@ import { ProfileRating } from '@/features/ProfileRating';
 import { Text } from '@/shared/ui/Text';
 
 import styles from './ProfilePage.module.scss';
+import { ToggleFeatures } from '@/shared/lib/features';
+import { Card } from '@/shared/ui/Card';
+import { VStack } from '@/shared/ui/Stack';
 
 type TProfilePageProps = {
     className?: string;
@@ -23,8 +26,23 @@ const ProfilePage: FC<TProfilePageProps> = () => {
 
     return (
         <Page data-testid="ProfilePage" className={styles.ProfilePage}>
-            <EditProfile id={id} />
-            <ProfileRating id={id} />
+            <ToggleFeatures
+                feature="enableAppRedesigned"
+                on={
+                    <Card className={styles.wrapperContent}>
+                        <VStack gap={16}>
+                            <EditProfile id={id} />
+                            <ProfileRating id={id} />
+                        </VStack>
+                    </Card>
+                }
+                off={
+                    <>
+                        <EditProfile id={id} />
+                        <ProfileRating id={id} />
+                    </>
+                }
+            />
         </Page>
     );
 };

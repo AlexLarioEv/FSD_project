@@ -9,6 +9,7 @@ import { Icon } from '@/shared/ui/Icon';
 import ListIcon from '@/shared/assets/icons/list-24-24.svg';
 import TiledIcon from '@/shared/assets/icons/tiled-24-24.svg';
 import { EArticleView } from '@/entities/Article';
+import { ToggleFeatures } from '@/shared/lib/features';
 
 type TArticleViewSelectorProps = {
     className?: string;
@@ -42,27 +43,59 @@ export const ArticleViewSelector: FC<TArticleViewSelectorProps> = ({
     const views = useMemo(
         () =>
             viewTypes.map((element, index) => (
-                <Button
+                <ToggleFeatures
                     key={index}
-                    theme={EButtonTheme.CLEAR}
-                    onClick={handleClickView(element.view)}
-                >
-                    <Icon
-                        className={classNames('', {
-                            [styles.notSelected]: view !== element.view,
-                        })}
-                        Svg={element.icon}
-                    />
-                </Button>
+                    feature="enableAppRedesigned"
+                    on={
+                        <Button
+                            key={index}
+                            theme={EButtonTheme.CLEAR}
+                            onClick={handleClickView(element.view)}
+                            className={classNames(styles.button, {
+                                [styles.buttonSelected]: view === element.view,
+                            })}
+                        >
+                            <Icon
+                                className={classNames('', {
+                                    [styles.notSelectedRedesigned]:
+                                        view !== element.view,
+                                })}
+                                Svg={element.icon}
+                            />
+                        </Button>
+                    }
+                    off={
+                        <Button
+                            key={index}
+                            theme={EButtonTheme.CLEAR}
+                            onClick={handleClickView(element.view)}
+                        >
+                            <Icon
+                                className={classNames('', {
+                                    [styles.notSelected]: view !== element.view,
+                                })}
+                                Svg={element.icon}
+                            />
+                        </Button>
+                    }
+                />
             )),
         [handleClickView, view],
     );
 
     return (
-        <div
-            className={classNames(styles.ArticleViewSelector, {}, [className])}
-        >
-            {views}
-        </div>
+        <ToggleFeatures
+            feature="enableAppRedesigned"
+            on={
+                <div
+                    className={classNames(styles.ArticleViewSelector, {}, [
+                        className,
+                    ])}
+                >
+                    {views}
+                </div>
+            }
+            off={<div className={classNames('', {}, [className])}>{views}</div>}
+        />
     );
 };

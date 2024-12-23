@@ -172,8 +172,8 @@ export const EditProfile: FC<TEditProfileProps> = ({ className, id }) => {
     );
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount={false}>
-            <VStack gap={8} className={classNames('', {}, [className])}>
-                <ProfilePageHeader readonly={readonly} />
+            <VStack gap={16} className={classNames('', {}, [className])}>
+                <ProfilePageHeader readonly={readonly} avatar={avatar} />
                 {textError}
                 <ProfileCard
                     isLoading={isLoading}

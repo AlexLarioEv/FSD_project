@@ -19,6 +19,7 @@ export enum ECardThemeRedesigned {
 type TCardProps = {
     className?: string;
     theme?: ECardTheme;
+    padding?: boolean;
 } & HTMLAttributes<HTMLDivElement> &
     TTestProps;
 
@@ -32,6 +33,7 @@ export const Card: FC<PropsWithChildren<TCardProps>> = (props) => {
         className,
         children,
         theme = ECardTheme.NORMAL,
+        padding = true,
         ...otherProps
     } = props;
 
@@ -41,11 +43,20 @@ export const Card: FC<PropsWithChildren<TCardProps>> = (props) => {
         off: () => styles[theme],
     });
 
+    const classCard = toggleFeatures({
+        name: 'enableAppRedesigned',
+        on: () => styles.CardRedesigned,
+        off: () => styles.Card,
+    });
+
     return (
         <div
             data-testid={props['data-testid'] ?? 'Card'}
             {...otherProps}
-            className={classNames(styles.Card, {}, [className, classTheme])}
+            className={classNames(classCard, { [styles.padding]: padding }, [
+                className,
+                classTheme,
+            ])}
         >
             {children}
         </div>

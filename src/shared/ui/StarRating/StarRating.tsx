@@ -6,6 +6,7 @@ import { Icon } from '../Icon';
 import Star from '../../assets/icons/star.svg';
 import styles from './StarRating.module.scss';
 import { HStack } from '../Stack';
+import { ToggleFeatures } from '@/shared/lib/features';
 
 type TStarRatingProps = {
     className?: string;
@@ -45,27 +46,60 @@ export const StarRating: FC<TStarRatingProps> = ({
         }
     };
 
-    const starList = stars.map((starNumber) => (
-        <Icon
-            testId={`StarRating.${starNumber}`}
-            data-selected={isSelected}
-            className={classNames(
-                styles.starRating,
-                {
-                    [styles.hovered]: currentStar >= starNumber,
-                    [styles.selected]: isSelected,
-                },
-                [className],
-            )}
-            Svg={Star}
-            key={starNumber}
-            width={size}
-            height={size}
-            onMouseLeave={handleLeave}
-            onMouseEnter={handleHover(starNumber)}
-            onClick={handleClick(starNumber)}
+    return (
+        <ToggleFeatures
+            feature="enableAppRedesigned"
+            on={
+                <HStack gap={8}>
+                    {stars.map((starNumber) => (
+                        <Icon
+                            testId={`StarRating.${starNumber}`}
+                            data-selected={isSelected}
+                            className={classNames(
+                                styles.starRatingRedesigned,
+                                {
+                                    [styles.hoveredRedesigned]:
+                                        currentStar >= starNumber,
+                                    [styles.selected]: isSelected,
+                                },
+                                [className],
+                            )}
+                            Svg={Star}
+                            key={starNumber}
+                            width={size}
+                            height={size}
+                            onMouseLeave={handleLeave}
+                            onMouseEnter={handleHover(starNumber)}
+                            onClick={handleClick(starNumber)}
+                        />
+                    ))}
+                </HStack>
+            }
+            off={
+                <HStack gap={8}>
+                    {stars.map((starNumber) => (
+                        <Icon
+                            testId={`StarRating.${starNumber}`}
+                            data-selected={isSelected}
+                            className={classNames(
+                                styles.starRating,
+                                {
+                                    [styles.hovered]: currentStar >= starNumber,
+                                    [styles.selected]: isSelected,
+                                },
+                                [className],
+                            )}
+                            Svg={Star}
+                            key={starNumber}
+                            width={size}
+                            height={size}
+                            onMouseLeave={handleLeave}
+                            onMouseEnter={handleHover(starNumber)}
+                            onClick={handleClick(starNumber)}
+                        />
+                    ))}
+                </HStack>
+            }
         />
-    ));
-
-    return <HStack gap={8}>{starList}</HStack>;
+    );
 };
