@@ -14,6 +14,7 @@ export function buildPlugins({paths, isDev, api, project}: BuildOptions): webpac
     const plugins = [
         new HTMLWebpackPlugin({
             template: paths.html,
+            
         }),
         new webpack.ProgressPlugin(),
         new webpack.DefinePlugin({
@@ -53,6 +54,7 @@ export function buildPlugins({paths, isDev, api, project}: BuildOptions): webpac
         plugins.push(new CopyPlugin({
             patterns: [
                 { from: paths.locales, to: paths.buildLocales },
+                { from: paths.icons, to: paths.buildIcons },
             ],
         }))
     }

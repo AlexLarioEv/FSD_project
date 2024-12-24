@@ -22,9 +22,11 @@ export default (env: BuildEnv) => {
         entry: path.resolve(__dirname, 'src', 'index.tsx'),
         build: path.resolve(__dirname, 'build'),
         html: path.resolve(__dirname, 'public', 'index.html'),
+        icons: path.resolve(__dirname, 'public', 'icons'),
         src: path.resolve(__dirname, 'src'),
         locales: path.resolve(__dirname, 'public', 'locales'),
         buildLocales: path.resolve(__dirname, 'build', 'locales'),
+        buildIcons: path.resolve(__dirname, 'build', 'icons'),
     };
 
     const mode = env?.mode || 'development';

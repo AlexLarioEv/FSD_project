@@ -32,12 +32,18 @@ export const SidebarItem: FC<TSidebarItemProps> = ({
         off: () => true,
     });
 
+    const classSelected = toggleFeatures({
+        name: 'enableAppRedesigned',
+        on: () => styles.selected,
+        off: () => '',
+    });
+
     return (
         <AppLink
             className={classNames(
                 styles.link,
                 {
-                    [styles.selected]: selected,
+                    [classSelected]: selected,
                 },
                 [className],
             )}
