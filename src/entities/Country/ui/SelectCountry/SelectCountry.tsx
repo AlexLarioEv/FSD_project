@@ -7,6 +7,7 @@ import { ECountry } from '../../model/types';
 
 export type TSelectCountryProps = {
     className?: string;
+    classNameTrigger?: string;
     value?: string;
     readonly?: boolean;
     onChange?: (e: ECountry) => void;
@@ -22,6 +23,7 @@ const optionList: TListBoxItem<ECountry>[] = [
 
 const SelectCountry: FC<TSelectCountryProps> = ({
     className,
+    classNameTrigger,
     value,
     readonly,
     onChange,
@@ -39,6 +41,7 @@ const SelectCountry: FC<TSelectCountryProps> = ({
                 onChange={handleChange}
                 readonly={readonly}
                 className={className}
+                classNameTrigger={classNameTrigger}
                 label={t('country')}
                 testId="selectCountry"
                 items={optionList}

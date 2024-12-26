@@ -144,11 +144,17 @@ export const ProfileCard: FC<TProfileCardProps> = ({
                             value={avatar}
                         />
                         <SelectCurrency
+                            classNameTrigger={classNames('', {
+                                [styles.select]: readonly,
+                            })}
                             readonly={readonly}
                             onChange={onChangeCurrency}
                             value={currency}
                         />
                         <SelectCountry
+                            classNameTrigger={classNames('', {
+                                [styles.select]: readonly,
+                            })}
                             readonly={readonly}
                             onChange={onChangeCountry}
                             value={country}

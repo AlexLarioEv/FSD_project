@@ -6,6 +6,7 @@ import { ListBox, TListBoxItem } from '@/shared/ui/Popups';
 
 export type TSelectCurrencyProps = {
     className?: string;
+    classNameTrigger?: string;
     value?: ECurrency;
     onChange?: (e: ECurrency) => void;
     readonly?: boolean;
@@ -19,6 +20,7 @@ const optionList: TListBoxItem<ECurrency>[] = [
 
 const SelectCurrency: FC<TSelectCurrencyProps> = ({
     className,
+    classNameTrigger,
     value,
     onChange,
     readonly,
@@ -34,6 +36,7 @@ const SelectCurrency: FC<TSelectCurrencyProps> = ({
             onChange={handleChange}
             readonly={readonly}
             className={className}
+            classNameTrigger={classNameTrigger}
             label={t('currency')}
             testId="selectCurrency"
             items={optionList}

@@ -49,7 +49,7 @@ export const Page: FC<PropsWithChildren<TPageProps>> = (props) => {
         );
     }, 500);
 
-    useInfiniteScroll({ triggerRef, wrapperRef, callback: onScrollEnd });
+    useInfiniteScroll({ triggerRef, callback: onScrollEnd });
 
     const classPage = toggleFeatures({
         name: 'enableAppRedesigned',

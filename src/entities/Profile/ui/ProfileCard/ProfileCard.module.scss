@@ -19,3 +19,11 @@
     display: flex;
     justify-content: center;
 }
+
+.select{
+    cursor:auto;
+
+    &:hover{
+        opacity: 1;
+    }
+}

@@ -5,10 +5,9 @@
 @import "variables/mixin";
 
 
-// body {
-//     font: var(--font-m);
-//     color: var(--primary-color);
-// }
+body {
+    overflow-x: hidden;
+}
 
 .app {
     font: var(--font-m);

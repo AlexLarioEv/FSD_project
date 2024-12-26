@@ -24,6 +24,7 @@ type TListBoxProps<T> = {
     testId?: string;
     items?: TListBoxItem<T>[];
     className?: string;
+    classNameTrigger?: string;
     value?: string;
     defaultValue?: string;
     onChange: (value: T) => void;
@@ -42,6 +43,7 @@ const mapToBorderOptions: Record<TPopupDirection, string> = {
 export function ListBox<T extends string>(props: TListBoxProps<T>) {
     const {
         className,
+        classNameTrigger,
         items,
         value,
         defaultValue,
@@ -89,7 +91,7 @@ export function ListBox<T extends string>(props: TListBoxProps<T>) {
                                                     {
                                                         [borderClass]: open,
                                                     },
-                                                    [],
+                                                    [classNameTrigger],
                                                 )}
                                                 theme={EButtonTheme.CLEAR}
                                                 disabled={readonly}

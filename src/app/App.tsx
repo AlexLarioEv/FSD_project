@@ -29,10 +29,10 @@ export const App = () => {
     }
 
     return (
-        <ToggleFeatures
-            feature="enableAppRedesigned"
-            on={
-                <Suspense fallback="">
+        <Suspense fallback="">
+            <ToggleFeatures
+                feature="enableAppRedesigned"
+                on={
                     <div className={classNames('app_redesigned', {}, [])}>
                         <MainLayout
                             header={<NavBar />}
@@ -41,10 +41,8 @@ export const App = () => {
                             toolbar={<div></div>}
                         />
                     </div>
-                </Suspense>
-            }
-            off={
-                <Suspense fallback="">
+                }
+                off={
                     <div className={classNames('app', {}, [])}>
                         <NavBar />
                         <div className="content-page">
@@ -52,8 +50,8 @@ export const App = () => {
                             {initAuth ? <AppRouter /> : null}
                         </div>
                     </div>
-                </Suspense>
-            }
-        />
+                }
+            />
+        </Suspense>
     );
 };
