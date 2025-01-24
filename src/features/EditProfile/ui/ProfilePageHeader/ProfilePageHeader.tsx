@@ -87,6 +87,26 @@ const ProfilePageHeader: FC<TProfilePageHeaderProps> = ({
         </HStack>
     );
 
+    const readonlyButton = readonly ? (
+        <Button
+            className={styles.button}
+            testId="EditProfileHeader.EditButton"
+            onClick={handleEditProfile}
+            theme={EButtonTheme.BORDER}
+        >
+            {t('edit')}
+        </Button>
+    ) : (
+        <Button
+            className={styles.button}
+            testId="EditProfileHeader.SaveButton"
+            onClick={handleSaveProfile}
+            theme={EButtonTheme.BORDER}
+        >
+            {t('save')}
+        </Button>
+    );
+
     const buttonMenuRedesigned = (
         <HStack
             className={classNames('', {}, [className])}
@@ -109,25 +129,7 @@ const ProfilePageHeader: FC<TProfilePageHeaderProps> = ({
                 </Button>
             )}
             <Avatar src={avatar} size={128} />
-            {readonly ? (
-                <Button
-                    className={styles.button}
-                    testId="EditProfileHeader.EditButton"
-                    onClick={handleEditProfile}
-                    theme={EButtonTheme.BORDER}
-                >
-                    {t('edit')}
-                </Button>
-            ) : (
-                <Button
-                    className={styles.button}
-                    testId="EditProfileHeader.SaveButton"
-                    onClick={handleSaveProfile}
-                    theme={EButtonTheme.BORDER}
-                >
-                    {t('save')}
-                </Button>
-            )}
+            {canEdit ? readonlyButton : <div className={styles.button} />}
         </HStack>
     );
 

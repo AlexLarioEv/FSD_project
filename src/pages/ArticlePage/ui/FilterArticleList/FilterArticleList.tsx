@@ -121,26 +121,4 @@ export const FilterArticleList: FC<TFilterArticleListProps> = ({
             }
         />
     );
-
-    return (
-        <VStack gap={8} className={classNames('', {}, [className])}>
-            <Text title={t('sort')} />
-            <SortedBySelect
-                label={t('by')}
-                labelOrder={t('by')}
-                fieldOptions={selectSortParams}
-                onChangeOrder={handleChangeOrder}
-                onChangeField={handleChangeField}
-            />
-            <FilterByQuery
-                placeholder={t('find')}
-                onChange={handleChangeQuerySearch}
-            />
-            <FindByTab
-                defaultValue={EArticleType.ALL}
-                tabs={tabsArray.map((select) => t(select))}
-                onClick={handleClickTab}
-            />
-        </VStack>
-    );
 };

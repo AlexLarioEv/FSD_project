@@ -5,29 +5,30 @@ npm install - устанавливаем зависимости
 npm run start:dev или npm run start:dev:vite - запуск сервера + frontend проекта в dev режиме
 ```
 
-----
+---
 
 ## Скрипты
 
-- `npm run start` - Запуск frontend проекта на webpack dev server
-- `npm run start:vite` - Запуск frontend проекта на vite
-- `npm run start:dev` - Запуск frontend проекта на webpack dev server + backend
-- `npm run start:dev:vite` - Запуск frontend проекта на vite + backend
-- `npm run start:dev:server` - Запуск backend сервера
-- `npm run build:prod` - Сборка в prod режиме
-- `npm run build:dev` - Сборка в dev режиме (не минимизирован)
-- `npm run lint` - Проверка файлов линтером eslint
-- `npm run lint:fix` - Исправление файлов линтером eslint
-- `npm run lint:scss` - Проверка scss файлов style линтером
-- `npm run lint:scss:fix` - Исправление scss файлов style линтером
-- `npm run unit` - Запуск unit тестов с jest
-- `npm run storybook` - Pапуск Storybook
-- `npm run build-storybook` - Сборка storybook билда
-- `npm run chromatic` - Скриншотное тестирование через storybook c интеграцией chromatic
-- `npm run prepare` - Прекоммит хуки
-- `npm run generate:slice` - Скрипт для генерации FSD слайсов
+-   `npm run start` - Запуск frontend проекта на webpack dev server
+-   `npm run start:vite` - Запуск frontend проекта на vite
+-   `npm run start:dev` - Запуск frontend проекта на webpack dev server + backend
+-   `npm run start:dev:vite` - Запуск frontend проекта на vite + backend
+-   `npm run start:dev:server` - Запуск backend сервера
+-   `npm run build:prod` - Сборка в prod режиме
+-   `npm run build:dev` - Сборка в dev режиме (не минимизирован)
+-   `npm run lint` - Проверка файлов линтером eslint
+-   `npm run lint:fix` - Исправление файлов линтером eslint
+-   `npm run lint:scss` - Проверка scss файлов style линтером
+-   `npm run lint:scss:fix` - Исправление scss файлов style линтером
+-   `npm run unit` - Запуск unit тестов с jest
+-   `npm run storybook` - Pапуск Storybook
+-   `npm run build-storybook` - Сборка storybook билда
+-   `npm run chromatic` - Скриншотное тестирование через storybook c интеграцией chromatic
+-   `npm run prepare` - Прекоммит хуки
+-   `npm run generate:slice` - Скрипт для генерации FSD слайсов
+-   `npm run removeFeature [nameYourFeatureFlag] [on/off]` - Скрипт для удаления неактуальных FeatureFlag
 
-----
+---
 
 ## Архитектура проекта
 
@@ -35,7 +36,23 @@ npm run start:dev или npm run start:dev:vite - запуск сервера + 
 
 Ссылка на документацию - [feature sliced design](https://feature-sliced.design/docs/get-started/tutorial)
 
-----
+---
+
+## Структура проекта
+
+-   **.deploy/**: Содержит файлы и скрипты для деплоя приложения.
+-   **.github/workflows/**: Конфигурации для GitHub Actions.
+-   **.husky/**: Хуки для Git.
+-   **config/**: Конфигурационные файлы проекта.
+-   **cypress/**: Тесты и конфигурации для Cypress.
+-   **docs/**: Документация проекта.
+-   **json-server/**: Файлы для эмуляции API с помощью JSON Server.
+-   **public/**: Статические файлы и ресурсы.
+-   **reports/**: Отчеты о тестировании и другие.
+-   **scripts/**: Скрипты для различных задач.
+-   **src/**: Исходный код приложения.
+
+---
 
 ## Работа с переводами
 
@@ -46,39 +63,43 @@ npm run start:dev или npm run start:dev:vite - запуск сервера + 
 
 Документация i18next - [https://react.i18next.com/](https://react.i18next.com/)
 
-----
+---
 
 ## Тесты
 
 В проекте используются 4 вида тестов:
-1) Обычные unit тесты на jest - `npm run unit`
-2) Тесты на компоненты с React testing library -`npm run unit`
-3) Скриншотное тестирование - `npm run chromatic`
-4) e2e тестирование с Cypress `npm run test:e2e`
+
+1. Обычные unit тесты на jest - `npm run unit`
+2. Тесты на компоненты с React testing library -`npm run unit`
+3. Скриншотное тестирование - `npm run chromatic`
+4. e2e тестирование с Cypress `npm run test:e2e`
 
 Подробнее о тестах - [документация тестирование](/docs/tests.md)
 
-----
+---
 
 ## Линтинг
 
 В проекте используется eslint для проверки typescript кода и stylelint для проверки файлов со стилями.
 
 Также для строгого контроля главных архитектурных принципов
-используется собственный eslint plugin *eslint-plugin-alexlario-plugin"*,
+используется собственный eslint plugin _eslint-plugin-alexlario-plugin"_,
 который содержит 3 правила
-1) path-checker - запрещает использовать абсолютные импорты в рамках одного модуля
-2) layer-imports - проверяет корректность использования слоев с точки зрения FSD
+
+1. path-checker - запрещает использовать абсолютные импорты в рамках одного модуля
+2. layer-imports - проверяет корректность использования слоев с точки зрения FSD
    (например widgets нельзя использовать в features и entitites)
-3) public-api-imports - разрешает импорт из других модулей только из public api.
+3. public-api-imports - разрешает импорт из других модулей только из public api.
 
 ##### Запуск линтеров
-- `npm run lint` - Проверка ts файлов линтером
-- `npm run lint:fix` - Исправление ts файлов линтером
-- `npm run lint:scss` - Проверка scss файлов style линтером
-- `npm run lint:scss:fix` - Исправление scss файлов style линтером
 
-----
+-   `npm run lint` - Проверка ts файлов линтером
+-   `npm run lint:fix` - Исправление ts файлов линтером
+-   `npm run lint:scss` - Проверка scss файлов style линтером
+-   `npm run lint:scss:fix` - Исправление scss файлов style линтером
+
+---
+
 ## Storybook
 
 В проекте для каждого компонента описываются стори-кейсы.
@@ -87,7 +108,8 @@ npm run start:dev или npm run start:dev:vite - запуск сервера + 
 Файл со сторикейсами создает рядом с компонентом с расширением .stories.tsx
 
 Запустить сторибук можно командой:
-- `npm run storybook`
+
+-   `npm run storybook`
 
 Подробнее о [Storybook](/docs/storybook.md)
 
@@ -100,15 +122,12 @@ import { fn } from '@storybook/test';
 import { Button, EButtonTheme } from './Button';
 import { ETheme } from '@/shared/contexts';
 
-
 const meta = {
     title: 'shared/Button',
     component: Button,
     parameters: {
-
         layout: 'centered',
     },
-
 
     args: { onClick: fn() },
 } satisfies Meta<typeof Button>;
@@ -116,49 +135,48 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-
 export const Default: Story = {
     args: {
-        children: 'Button'
+        children: 'Button',
     },
 };
 
 export const Clear: Story = {
     args: {
         theme: EButtonTheme.CLEAR,
-        children: 'Button'
+        children: 'Button',
     },
 };
 
 export const Border: Story = {
-    args:{
+    args: {
         theme: EButtonTheme.BORDER,
-        children: 'Button'
-    }
-}
-
+        children: 'Button',
+    },
+};
 ```
 
-
-----
+---
 
 ## Конфигурация проекта
 
 Для разработки проект содержит 2 конфига:
+
 1. Webpack - ./config/build
 2. vite - vite.config.ts
 
 Оба сборщика адаптированы под основные фичи приложения.
 
 Вся конфигурация хранится в /config
-- /config/babel - babel
-- /config/build - конфигурация webpack
-- /config/jest - конфигурация тестовой среды
-- /config/storybook - конфигурация сторибука
+
+-   /config/babel - babel
+-   /config/build - конфигурация webpack
+-   /config/jest - конфигурация тестовой среды
+-   /config/storybook - конфигурация сторибука
 
 В папке `scripts` находятся различные скрипты для рефакторинга\упрощения написания кода\генерации отчетов и тд.
 
-----
+---
 
 ## CI pipeline и pre commit хуки
 
@@ -167,7 +185,7 @@ export const Border: Story = {
 
 В прекоммит хуках проверяем проект линтерами, конфиг в /.husky
 
-----
+---
 
 ### Работа с данными
 
@@ -179,33 +197,41 @@ export const Border: Story = {
 Для асинхронного подключения редюсеров (чтобы не тянуть их в общий бандл) используется
 [DynamicModuleLoader](/src/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader.tsx)
 
-----
-
+---
 
 ## Сущности (entities)
 
-- [Article](/src/entities/Article)
-- [Comment](/src/entities/Comment)
-- [Counter](/src/entities/Counter)
-- [Country](/src/entities/Country)
-- [Currency](/src/entities/Currency)
-- [Filter](/src/entities/Filter)
-- [Notification](/src/entities/Notification)
-- [Profile](/src/entities/Profile)
-- [Rating](/src/entities/Rating)
-- [User](/src/entities/User)
+-   [Article](/src/entities/Article)
+-   [Comment](/src/entities/Comment)
+-   [Counter](/src/entities/Counter)
+-   [Country](/src/entities/Country)
+-   [Currency](/src/entities/Currency)
+-   [Filter](/src/entities/Filter)
+-   [Notification](/src/entities/Notification)
+-   [Profile](/src/entities/Profile)
+-   [Rating](/src/entities/Rating)
+-   [User](/src/entities/User)
 
 ## Фичи (features)
 
-- [AddCommentForm](/src/features/AddCommentForm)
-- [ArticleRating](/src/features/ArticleRating)
-- [ArticleViewSelector](/src/features/ArticleViewSelector)
-- [AuthByUsername](/src/features/AuthByUsername)
-- [AvatarDropdown](/src/features/AvatarDropdown)
-- [EditProfile](/src/features/EditProfile)
-- [LangSwitcher](/src/features/LangSwitcher)
-- [NotificationButton](/src/features/NotificationButton)
-- [ProfileRating](/src/features/ProfileRating)
-- [ScrollSave](/src/features/ScrollSave)
-- [ThemeSwitcher](/src/features/ThemeSwitcher)
+-   [AddCommentForm](/src/features/AddCommentForm)
+-   [ArticleRating](/src/features/ArticleRating)
+-   [ArticleViewSelector](/src/features/ArticleViewSelector)
+-   [AuthByUsername](/src/features/AuthByUsername)
+-   [AvatarDropdown](/src/features/AvatarDropdown)
+-   [EditProfile](/src/features/EditProfile)
+-   [LangSwitcher](/src/features/LangSwitcher)
+-   [NotificationButton](/src/features/NotificationButton)
+-   [ProfileRating](/src/features/ProfileRating)
+-   [ScrollSave](/src/features/ScrollSave)
+-   [ThemeSwitcher](/src/features/ThemeSwitcher)
 
+## Редизайн приложения и пользователи
+
+Под пользователи
+логин: admin; пароль: 123; - Доступен новый дизайн приложения.
+логин: user; пароль: 123; - Доступен старый дизайн приложения.
+логин: manager; пароль: 123; - Доступ к роли manager.
+логин: testUser; пароль:123; - Пользователь для тестирования e2e.
+
+Для перехода на новый дезайн для всех пользователей необходимо выполнить скрипт `npm run removeFeature enableAppRedesigned on`.

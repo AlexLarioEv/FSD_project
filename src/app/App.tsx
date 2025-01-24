@@ -8,7 +8,7 @@ import { classNames } from '@/shared/lib';
 import { useAppDispatch, useAppSelector } from '@/shared/lib/hooks';
 import { initAuthData, isInit, isAuth } from '@/entities/User';
 import { PageLoader } from '@/widgets/PageLoader';
-import { ToggleFeatures } from '@/shared/lib/features';
+import { toggleFeatures, ToggleFeatures } from '@/shared/lib/features';
 import { MainLayout } from '@/shared/loyouts/MainLayout';
 
 export const App = () => {
@@ -20,9 +20,15 @@ export const App = () => {
         dispatch(initAuthData());
     }, [dispatch]);
 
+    const classAppName = toggleFeatures({
+        name: 'enableAppRedesigned',
+        on: () => 'app_redesigned-full-screen',
+        off: () => 'app',
+    });
+
     if (!initUser) {
         return (
-            <div className={classNames('app', {}, [])}>
+            <div className={classNames(classAppName, {}, [])}>
                 <PageLoader className="" />
             </div>
         );

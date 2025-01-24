@@ -32,6 +32,7 @@ const articleListSlice = createSlice({
         limit: 9,
         page: 1,
         hasMore: true,
+        fetchingReplace: false,
         _init: false,
     }),
     reducers: {
@@ -44,6 +45,9 @@ const articleListSlice = createSlice({
         },
         setPage: (state, action: PayloadAction<number>) => {
             state.page = action.payload;
+        },
+        setFetchingReplace: (state, action: PayloadAction<boolean>) => {
+            state.fetchingReplace = action.payload;
         },
         initState: (state) => {
             state.limit = state.view === EArticleView.BIG ? 4 : 9;
@@ -62,17 +66,25 @@ const articleListSlice = createSlice({
                 if (action.meta.arg?.replace) {
                     articleListAdapter.removeAll(state);
                 }
+
+                state.fetchingReplace = action.meta.arg?.replace ?? false;
             })
             .addCase(fetchArticleList.fulfilled, (state, action) => {
-                articleListAdapter.setMany(state, action.payload);
+                // Во время запроса данных подмены. Старый запрос выходит сразу.
+                const deprecatedRequest =
+                    state.fetchingReplace && !action.meta.arg?.replace;
+
+                if (deprecatedRequest) return;
+
                 state.hasMore = action.payload.length >= state.limit;
-                state.isLoading = false;
 
                 if (action.meta.arg?.replace) {
                     articleListAdapter.setAll(state, action.payload);
                 } else {
                     articleListAdapter.addMany(state, action.payload);
                 }
+
+                state.isLoading = false;
             })
             .addCase(fetchArticleList.rejected, (state, action) => {
                 state.error = action.payload;

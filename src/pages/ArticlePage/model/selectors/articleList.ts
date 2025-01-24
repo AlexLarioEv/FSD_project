@@ -16,6 +16,8 @@ export const getHasMoreArticleList = (state: TStateSchema) =>
     state.articleList?.hasMore;
 export const getInitArticleList = (state: TStateSchema) =>
     state.articleList?._init;
+export const isFetching = (state: TStateSchema) =>
+    state.articleList?.fetchingReplace;
 
 export const [useArticleById] = buildSelector(
     (state, id: string) => state.articleList?.entities[id],

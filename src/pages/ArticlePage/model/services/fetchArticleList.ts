@@ -41,6 +41,7 @@ export const fetchArticleList = createAsyncThunk<
             search,
             type,
         });
+
         const response = await extra.api.get<TArticle[]>('/articles', {
             params: {
                 _expand: 'user',
